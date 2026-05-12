@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* font-family: "Tajawal", sans-serif;
+  font-family: "Noto Kufi Arabic", sans-serif; */
+}
+:root{
+  --min-color:#6e3f1f;
+  --background:#f1f1f1;
+  --background2:#ffdede;
+  --bottms-color:#444444;
+  --border-color:#BABABA;
+  --white-color:rgb(255, 255, 255);
+  --bottm-nav:#F2F2F2;
+  --text-color-1:#000000;
+  --text-color-2:#1d1d1d;
+  --text-white:white;
+}
+
+body{
+background-color: var(--background);
+font-family: "Tajawal", sans-serif;
+direction: rtl;
+
+
+}
+
+img{
+  width: 100%;
+}
+h1,h2,h3,h4,h5,h6,input,button{
+  color: black;
+  font-family: "Noto Kufi Arabic", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+p{
+  color: #141414;
+  padding: 0;
+  margin: 0;
+}
+input,button,select,textarea{
+  outline: none;
+  border: none;
+}
+a{
+  text-decoration: none;
+}
+.continar{
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1350px;
+}
+/* loding */
+.skiltone {
+  background-color: #e0e0e0;
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0)
+  );
+  background-size: 40px 100%;
+  background-repeat: no-repeat;
+  background-position: left -48px top 0;
+  animation: shine 2s ease infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: right -48px top 0;
+  }
+}
+/* loding */
+

@@ -1,0 +1,135 @@
+/* :root{
+    --min-color:#6e3f1f;
+    --background:#FFF9F9;
+    --background2:#E6E6E6;
+    --bottms-color:#444444;
+    --border-color:#BABABA;
+    --white-color:rgb(255, 255, 255);
+    --bottm-nav:#F2F2F2;
+    --text-color-1:#000000;
+    --text-color-2:#1d1d1d;
+    --text-white:white;
+  } */
+/*البيانات بدون تعديل*/
+.data-arya {
+    
+     margin: 15px;
+    
+     
+
+}
+.data-arya .titel-data-user{
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+  
+    border-bottom: 1px solid var(--border-color);
+}
+.data-arya .data{
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    width: 80%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+  
+}
+.data-arya .ptm-add-arya{
+  
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    
+
+}
+.data-arya .ptm-amendment{
+    width: 100px;
+    height: 25px;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0000;
+    border-radius: 10px;
+    color: var(--bottms-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+   
+}
+.data-arya .ptm-amendment svg {
+    margin-right:5px ;
+}
+/*البيانات بدون تعديل*/
+
+/*لا يوجد بيانات*/
+.no-data{
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+}
+.no-data .no-data-text{
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+   
+}
+.no-data .ptm-add-data{
+    text-align: center;
+    width: 100px;
+    color: var(--white-color);
+    padding: 3px;
+    border-radius: 5px;
+    background-color:var(--bottms-color);
+    cursor: pointer;
+}
+/*لا يوجد بيانات*/
+
+/*وضع تعديل البيانات*/
+.modify-data{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.modify-data .titel-data-user{
+    margin-bottom: 5px 0px;
+    
+}
+.modify-data .input-data{
+    width: 90%;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 3px 8px;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+
+}
+.modify-data .error{
+    color: red;
+    margin: 2px 5px;
+}
+.ptm-updat, .ptm-cancel{
+    width: 100px;
+    font-weight: 700;
+    border-radius: 10px;
+    margin: 5px;
+    color: var(--white-color);
+}
+.modify-data .ptm-updat{
+    background-color:var(--bottms-color) ;
+}
+.modify-data .ptm-cancel{
+    background-color:rgb(231, 46, 39) ;
+}
+/*وضع تعديل البيانات*/

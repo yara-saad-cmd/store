@@ -1,0 +1,105 @@
+/* :root{
+    --min-color:#6e3f1f;
+    --background:#FFF9F9;
+    --background2:#E6E6E6;
+    --bottms-color:#444444;
+    --border-color:#BABABA;
+    --white-color:rgb(255, 255, 255);
+    --bottm-nav:#F2F2F2;
+    --text-color-1:#000000;
+    --text-color-2:#1d1d1d;
+    --text-white:white;
+  }
+   */
+.footer{
+   margin-top: auto;
+    background-color: var(--min-color);
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    img{
+        width: 90px;
+       
+    }
+}
+
+.footerTwo{
+    background-color: var(--min-color);
+    margin-top: 30px;
+    
+
+    .logo-and-icon{
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 0;
+
+        .icon{
+            color:var(--white-color);
+            display: flex;
+            justify-content: space-between;
+            width: 120px;
+            font-size: 18px;
+
+        }
+        .logo{
+            width: 100px;
+        }
+    }
+    .links {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-rows: repeat(3, auto);
+        gap: 20px 40px; /* صفوف | أعمدة */
+        width: fit-content;
+        padding-bottom: 30px;
+          a {
+        text-decoration: none;
+        color: var(--text-color-1);
+        font-weight: 300;
+        font-size: 20px;
+      }
+        a:hover{
+            background-color: rgba(245, 245, 245, 0.233);
+        }
+      }
+      
+     
+    .all-links{
+      display: flex;
+
+      .links{
+        padding-left: 50px;
+      }
+
+      .titel{
+          color: var(--text-color-1);
+          font-size: 15px;
+          font-weight: bold;
+          padding: 0 0 10px 0;
+        }
+    }
+}
+@media (max-width: 480px){
+ 
+  .footerTwo .links a {
+  font-size: 14px;
+  }
+
+}
+@media (max-width: 768px) {
+  .footerTwo .continar{
+    grid-auto-flow: row;      /* يخليهم تحت بعض */
+  }
+
+  .footerTwo .links {
+     grid-template-rows: repeat(2, auto);
+  }
+  .footerTwo .all-links{
+    display: grid;
+    grid-template-columns: 1fr; /* عمود واحد */
+   
+    
+  }
+}

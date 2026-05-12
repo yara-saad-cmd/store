@@ -1,0 +1,211 @@
+:root{
+    --min-color:#6e3f1f;
+    --background:#FFF9F9;
+    --background2:#E6E6E6;
+    --bottms-color:#444444;
+    --border-color:#BABABA;
+    --white-color:rgb(255, 255, 255);
+    --bottm-nav:#F2F2F2;
+    --text-color-1:#000000;
+    --text-color-2:#1d1d1d;
+    --text-white:white;
+  }
+  
+.pg-account .pg-body{
+   display: flex;
+   gap: 10px;
+   margin:10px 0 50px 0;
+ 
+    
+    
+}
+.pg-account  .LogOut{
+    margin: 10px 20px;
+    .ptm-logout{
+        background-color: rgba(255, 255, 255, 0);
+        color: var(--text-color-1);
+        font-weight: bold;
+        
+    }
+   .ptm-logout:hover{
+        color: red;
+    }
+
+   
+}
+
+
+.pg-account .data-user-and-orders{
+    flex: 4;
+ 
+}
+.pg-account .data-user-and-orders .usar-data{
+    margin-bottom: 30px;
+}
+
+.cash-visa , .pagse ,.usar-data{   
+    border-radius: 20px;
+    margin: 10px ;
+    padding: 5px;
+    background-color: var(--background);
+    box-shadow: 3px 7px 15px rgba(0, 0, 0, 0.25);
+}
+.pg-account .pagse {
+    flex: 1;
+   
+}
+.pg-account .pagse .user-name h3{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: 10px 20px;
+    padding-bottom: 5px;
+    color: var(--text-color-2);
+    border-bottom: 1px solid var(--border-color);
+
+    svg{
+        font-size: 30px;
+    }
+}
+.pg-account .pagse .mor-pedges{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 25px;
+    margin: 20px;
+
+}
+.pg-account .pagse .mor-pedges svg{
+    font-size: 21px;
+    margin-left: 10px;
+   
+}
+.pg-account .pagse .mor-pedges span{
+  
+    font-size: 17px;
+    font-weight: 500;
+}
+.pg-account .pagse .mor-pedges .pg-user , .pg-favorite , .pg-cart-icon , .masge{
+   cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: var(--text-color-1);
+}
+.pg-account .pagse .mor-pedges .pg-user {
+    color:var(--min-color);
+}
+.pg-user:hover,
+.pg-favorite:hover,
+.pg-cart-icon:hover,
+.masge:hover {
+    color:var(--min-color)
+}
+
+
+
+
+@media only screen and (max-width: 1100px) {
+
+    .pg-account{
+
+    .pg-body{
+        margin: 10px 0 10px 0;
+    }
+
+    .continar
+        {
+            display: flex;
+                flex-direction: column-reverse;  
+
+
+            .LogOut {
+                text-align: center;
+
+
+               .ptm-logout{
+                border: 1px solid var(--border-color);
+                padding: 5px;
+                border-radius: 20px;
+                width: 100%;
+                margin-bottom: 40px;
+                
+
+
+            } 
+            }
+        }
+      
+
+    .pg-body{
+            display: flex;
+            flex-direction: column;
+
+            .mor-pedges{
+                flex-direction: row;
+               
+            }
+        }
+
+
+    }
+    
+
+   
+    
+  }
+
+  @media only screen and (max-width: 760px){
+    .pg-account  .pg-body  .mor-pedges{
+         gap: 0;
+                justify-content: space-around;
+
+                span{
+                    display: none;
+                }
+
+    }
+  }
+/* .pg-account .pg-body .usar-data .data{
+    background-color: #ada9a9;
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    margin: 15px;
+    height: 300px;
+   
+
+
+}
+.pg-account .pg-body .usar-data h3{
+    margin: 10px 0 10px 0;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-color-2);
+}
+.pg-account .pg-body .usar-data .data p{
+    margin: 0 0 10px 0;
+    height: 40px;
+    max-width: 80%;
+    font-size: 17px;
+    font-weight: 500; 
+    overflow: hidden;
+   
+
+}
+.pg-account .pg-body .usar-data .data  span{
+    word-break: break-word;
+    font-weight: 400;
+    overflow-wrap: anywhere;
+
+
+} */
+
+/*   
+  @media only screen and (max-width: 440px) {
+    .card {
+      flex: 1 1 calc(50% - 8px);
+      max-width: calc(50% - 8px);
+      min-width: 170px;
+    }
+  } */
+

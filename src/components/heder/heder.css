@@ -1,0 +1,315 @@
+
+/* :root{
+  --min-color:#01c0fa;
+  --background:#FFF9F9;
+  --background2:#E6E6E6;
+  --bottms-color:#444444;
+  --border-color:#BABABA;
+  --white-color:rgb(255, 255, 255);
+  --bottm-nav:#F2F2F2;
+  --text-color-1:#000000;
+  --text-color-2:#1d1d1d;
+} */
+/*top-hedar*/
+/* @media (max-width: 768px) {
+  body {
+    padding-bottom: 70px; 
+  }
+} */
+hedar{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 10000;
+  background-color: var(--white-color);
+
+}
+.tophedar{
+    background-color: var(--white-color);
+}
+.tophedar .continar{
+    display: flex;
+    align-items: center;
+
+    justify-content: space-between;
+    padding: 15px 0;
+  
+  
+    /* flex-direction: row-reverse; */
+    
+}
+.tophedar .logo-img{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* العرض من 0 إلى 480 بكسل */
+@media only screen and (max-width: 480px) {
+  .logo {
+    width: 90px;
+  }
+
+  
+      
+
+  
+} 
+
+
+
+/* العرض من 481 بكسل إلى 768 بكسل */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .logo {
+    width: 100px;
+
+  }
+  
+}
+/* العرض من 769 بكسل إلى 1024 بكسل */
+@media only screen and (min-width: 769px){
+  .logo {
+    width: 130px;
+  }
+ 
+}
+
+
+
+.tophedar .search{
+  width: 80%;
+  margin: 0 10px 0 10px;
+}
+.tophedar .search-pox{
+    width: 100%;
+    border-radius: 50px;
+    background-color: var(--background);
+    display: flex;
+    align-items: center;
+  
+}
+.tophedar .search-pox input{
+    height: 33px;
+    width: 100%;
+    padding: 5px 15px 5px 20px;
+    border-radius: 50px 0px 0px 50px;
+    padding: 10px;
+     border: var(--border-color) solid 1px;
+     font-size: 13px;
+     font-weight: 500;
+     display: flex;
+     align-items: center;
+   
+}
+.tophedar .search-pox button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--min-color);
+    height: 33px ;
+    width: 50px;
+    border-radius: 0px 50px 50px 0px;
+    cursor: pointer;
+    font-size: 15px;
+    color: var(--white-color);
+  
+}
+
+.tophedar  .icon-hedar{
+    display: flex;
+    gap: 30px;
+    display: flex;
+    align-items: center;
+}
+.tophedar  .icon-hedar .icon-1{
+    position: relative;
+    cursor: pointer;
+}
+.tophedar .icon-hedar .icon-1 svg{
+   font-size: 20px;
+   color: var(--text-color-2);
+   
+  
+}
+.tophedar .icon-hedar .icon-1 .count{
+    position: absolute;
+    bottom: 5px;
+    background-color: var(--min-color);
+    border-radius: 50px;
+    height: 14px;
+    width: 14px;
+    text-align: center;
+    line-height: 14px;
+    color: var(--white-color);
+    
+}
+
+/* افتراضي (كمبيوتر) */
+.desktop-search {
+  display: block;
+}
+
+.mobile-search-icon {
+  display: none;
+ 
+}
+
+/* موبايل */
+@media (max-width: 480px) {
+  .desktop-search {
+    display: none;   /* نخفي شريط البحث */
+  }
+
+  .mobile-search-icon {
+    display: block; /* نظهر أيقونة البحث */
+  }
+}
+/* خلي البحث يظهر في صفحة البحث حتى في الموبايل */
+.search-page .desktop-search {
+  display: block !important;
+}
+
+
+/*top-hedar*/
+
+
+/*btm-hedar*/
+
+  .btm-hedar {
+    background-color: var(--white-color);
+    border-top: 1px solid var(--border-color);
+   
+  }
+  
+  .btm-hedar .continar {
+    overflow-x: auto;       
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+    box-sizing: border-box;
+  
+   
+    scrollbar-width: none; 
+  }
+  
+  .btm-hedar .continar::-webkit-scrollbar {
+    height: 6px;
+    background: transparent; 
+  }
+  
+  .btm-hedar .continar::-webkit-scrollbar-thumb {
+    background-color: transparent; 
+    border-radius: 3px;
+    transition: background-color 0.3s;
+  }
+  
+  
+  .btm-hedar .continar:hover::-webkit-scrollbar-thumb,
+  .btm-hedar .continar:hover::-webkit-scrollbar-track {
+    background-color: #ffffff; 
+   
+  }
+  
+  .btm-hedar .continar:hover::-webkit-scrollbar-thumb {
+    background-color: #7a7a7a; 
+  }
+  
+  
+  .btm-hedar .continar:hover {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) var(--background2);
+    
+  }
+  
+ 
+  .btm-hedar .continar .ptm-nav {
+    display: inline-flex;
+    gap: 20px;
+    list-style: none;
+    padding: 5px;
+    margin: 0;
+  }
+  
+  .btm-hedar .continar .ptm-nav li {
+    flex-shrink: 0;
+  }
+  
+  .btm-hedar .continar .ptm-nav li a {
+    text-decoration: none;
+    color: var(--text-color-2);
+    background-color: var( --bottm-nav);
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 25px;
+    transition: 0.2s;
+    white-space: nowrap;
+    box-shadow: inset 2px 2px 5px rgba(73, 64, 64, 0.137);
+  }
+  
+  .btm-hedar .continar .ptm-nav li a:hover {
+    background: var(--min-color);
+    color: var(--white-color);
+  }
+
+  /*btm-hedar*/
+  /* search*/
+  .search{
+    position: relative;
+  }
+  .suggesions{
+   position: absolute;
+   background-color: var(--white-color); 
+   width: 93%;
+   margin-right: 50px;
+   list-style: none;
+   margin-top: 7px;
+   padding: 5px;
+   box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
+   border-radius: 5px;
+ z-index: 10000;
+
+  }
+  .suggesions li{
+    padding: 3px;
+    margin: 3px;
+    color: var(--text-color-2);
+    border-bottom: 1px solid rgb(221, 221, 221);
+  }
+  .suggesions li:last-child{
+    border: none;
+  }
+
+  /* search*/
+  /* loading btm hedar */
+  .btmhedar-loading {
+    height: 30px; /* ظبط الطول حسب احتياجك */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* عشان لو المربعات كتير متبوظش الصفحة */
+  
+    .Department {
+      background: linear-gradient(90deg, #e4e4e4 25%, #d3d3d3 50%, #e4e4e4 75%);
+      background-size: 200% 100%;
+      animation: loading-shimmer 1.5s infinite;
+      width: 140px;
+      height: 30px;
+      margin: 0 10px;
+      border-radius: 20px;
+    }
+  }
+  
+  /* حركة الإضاءة */
+  @keyframes loading-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+
+
+
+  /* loading btm hedar */

@@ -1,0 +1,19 @@
+.pg-apoutus , .Privacypolicy , .return , .SnippingDelivery , .Temsconditions , .Termsofuse{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .continar {
+    flex: 1;
+  }
+.titel-bedg{
+    margin: 30px 0;
+    text-align: center;
+}
+.content {
+    text-align: start;
+    font-size: 17px;
+    margin: 20px 0 40px 0;
+   
+}

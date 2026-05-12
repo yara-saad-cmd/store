@@ -1,0 +1,361 @@
+/* :root{
+    --min-color:#6e3f1f;
+    --background:#FFF9F9;
+    --background2:#E6E6E6;
+    --bottms-color:#444444;
+    --border-color:#BABABA;
+    --white-color:rgb(255, 255, 255);
+    --bottm-nav:#F2F2F2;
+    --text-color-1:#000000;
+    --text-color-2:#1d1d1d;
+    --text-color-3:#fffff;
+} */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.prodacr-contenr{
+  margin-bottom: 30px;
+}
+
+.txet-product{
+  margin-bottom: 10px ;
+}
+
+.txet-product h3{
+  color: var(--min-color);
+  padding-right: 20px;
+  margin-bottom: 20px;
+}
+
+/* الكونتينر */
+.cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;   /* بدل margin على الكارت */
+  justify-content: flex-start;
+  margin-bottom: 30px;
+}
+
+/* الكارت */
+.card {
+  flex: 1 1 calc(16.66% - 8px);
+  max-width: calc(16.66% - 8px);
+  min-width: 150px;
+  background-color: var(--white-color);
+  border-radius: 6px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 1101px) and (max-width: 1305px) {
+  .card {
+   
+    max-width: calc(20% - 8px);
+    min-width: 150px;
+  }
+
+
+ 
+
+
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1100px) {
+  .card {
+    flex: 1 1 calc(25% - 8px);
+    max-width: calc(25% - 8px);
+  }
+
+
+   .loding-prodacr .prodacr-contenr .cards .skiltone.a , .skiltone.b{
+    display: none;
+  } 
+
+}
+
+@media only screen and (min-width: 441px) and (max-width: 768px) {
+  .card {
+    flex: 1 1 calc(50% - 8px);
+    max-width: calc(50% - 8px);
+  }
+
+  .loding-prodacr .prodacr-contenr .cards .skiltone.a , .skiltone.b , .skiltone.c ,.skiltone.d{
+    display: none;
+    
+  } 
+ 
+ 
+}
+
+@media only screen and (min-width: 391px) and  (max-width: 440px) {
+  .card {
+    flex: 1 1 calc(50% - 8px);
+    max-width: calc(50% - 8px);
+   
+  }
+
+  .loding-prodacr .prodacr-contenr .cards .skiltone.a , .skiltone.b , .skiltone.c ,.skiltone.d{
+    display: none;
+    
+  } 
+}
+
+
+@media only screen and (max-width: 390px) {
+  .card {
+    flex: 1 1 100%;
+    max-width:100%;
+   
+  }
+  .loding-prodacr .prodacr-contenr .cards .skiltone.a , .skiltone.b , .skiltone.c ,.skiltone.d , .skiltone.e{
+    display: none;
+    
+  }
+
+}
+
+
+
+
+
+
+
+ .card .ptm-card{
+  
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+ }
+ .card .ptm-card .in-cart span{
+  color: var(--text-color-1);
+  display: flex;
+  align-items: center;
+  padding: 3px;
+ 
+}
+.card .ptm-card .in-cart span svg{
+  margin-right: 5px;
+  width: 15px;
+  height: 15px;
+  font-weight: bold;
+  color: #2ed15f;
+}
+ 
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.card .img {
+  width: 100%;
+  height:180px;
+  background-color: var(--white-color);
+  overflow: hidden;
+}
+
+.card .img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+@media only screen and (max-width: 390px) {
+  .card .img img {
+   object-fit: contain;
+   
+  }
+}
+
+
+.card .img:hover img {
+  transform: scale(1.07);
+  
+}
+
+
+.card .conttnt {
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+ 
+}
+
+
+.card .text {
+  color: var(--text-color-2);
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; 
+ 
+}
+
+
+.card .StarsAndPrice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.card .StarsAndPrice .stars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--text-color-1);
+}
+
+.card .StarsAndPrice .stars path {
+  color: #f8d941;
+}
+
+
+.card .conttnt h5 {
+  font-size: 17px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card .conttnt h5 span {
+  font-size: 13px;
+}
+
+
+.pag-prodacrs .card .icon {
+  font-size: 20px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 0.2s;
+  cursor: pointer;
+  color: var(--text-color-1);
+  margin: 0px 0px 0px 0px;
+
+  
+}
+
+.in-cart-label {
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 200;
+}
+
+
+.pag-prodacrs .card .icon:hover {
+  background-color: var(--min-color);
+  color: var(--white-color);
+}
+
+/*loding*/
+
+.loding-prodacr .prodacr-contenr h1{
+  height: 36px;
+  width: 200px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  margin-right: 4px;
+}
+.loding-prodacr .prodacr-contenr .cards{
+  display: flex;
+  justify-content: center;
+}
+.loding-prodacr .prodacr-contenr .cards p{
+  width: 25%;
+  height: 300px;
+  border-radius: 5px;
+  margin: 0px 5px 5px 5px;
+}
+.pag-prodacrs .card.incart .icon{
+  pointer-events: none;
+  background-color: var(--min-color);
+  color: var(--white-color);
+}
+
+
+
+@media only screen and (min-width: 441px) and (max-width: 768px) {
+ 
+ 
+  .loding-prodacr .prodacr-contenr .cards p{
+    width: 50%;
+  }
+ 
+}
+
+
+@media only screen and (min-width: 391px) and  (max-width: 440px){
+  .loding-prodacr .prodacr-contenr .cards p{
+    width: 50%;
+  }
+ 
+}
+
+@media only screen and  (max-width: 390px){
+  .loding-prodacr .prodacr-contenr .cards p{
+    width: 100%;
+  }
+ 
+}
+/*loding*/
+
+
+.masg{
+  z-index: 10000;
+}
+.card {
+  position: relative;
+}
+
+.remove-like-btn {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  text-align: center;
+  width: 40%;
+  color: rgb(255, 0, 0);
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  padding: 3px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 20;
+  font-size: 15px;
+  font-weight: 500;
+ 
+}
+
+.card:hover .remove-like-btn{
+  background-color: red;
+  color: var(--white-color);
+}
+
+
+.load-more {
+  display: inline-block;     
+  padding: 10px 20px;        
+  cursor: pointer;          
+  margin: 20px auto;        
+  text-align: center;         
+ color: var(--min-color);  
+        
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  display: block;             
+}
+
+/* تأثير عند المرور */
+.load-more:hover {
+  color: var(--text-color-2);
+}

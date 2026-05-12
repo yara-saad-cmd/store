@@ -1,0 +1,186 @@
+/* :root{
+  --min-color:#6e3f1f;
+  --background:#FFF9F9;
+  --background2:#E6E6E6;
+  --bottms-color:#444444;
+  --border-color:#BABABA;
+  --white-color:rgb(255, 255, 255);
+  --bottm-nav:#F2F2F2;
+  --text-color-1:#000000;
+  --text-color-2:#1d1d1d;
+  --text-white:white;
+} */
+.pg-ordar-detalis{
+    min-height: 100vh;   /* تملى الشاشة لو المحتوى قليل */
+    background-color:var(--background2);
+    display: flex;
+    flex-direction: column;
+    
+}
+.pg-ordar-detalis .detalis{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 40px;
+
+}
+.pg-ordar-detalis.all-content{
+    flex: 1; 
+}
+.data-ordar-and-user{
+    margin-left: 10px;
+    min-width: 0; /* هذا السطر هو السحر، يمنع الديف من التمدد خارج الأب */
+    width: 100%;
+    flex: 2;
+}
+.pg-ordar-detalis .detalis .data-ordar-and-user .detalis-ordar{
+    background-color:var(--white-color);
+    height: auto;
+
+
+    display: flex;
+    gap: 15px;
+    padding: 10px;
+    /* التعديلات الضرورية للاسكرول */
+    overflow-x: auto; 
+    white-space: nowrap; /* يمنع المنتجات من النزول لسطر جديد لإجبار السكرول */
+    width: 100%; 
+    
+    /* تحسين شكل السكرول (اختياري) */
+    scrollbar-width: thin;
+}
+.pg-ordar-detalis .detalis .data-ordar-and-user .user-data{
+    background-color:var(--white-color);
+   
+    padding: 5px;
+    margin-top: 10px;
+}
+.pg-ordar-detalis .detalis .invoice{
+    background-color:var(--white-color);
+    flex: 1;
+    height: fit-content;
+    padding: 10px 0;
+}
+/*prudacts*/
+.pg-ordar-detalis .detalis-ordar{
+    display: flex;
+    max-width: 100%;
+   
+    gap: 15px;
+    overflow-x: auto;  
+    overflow-y: hidden; 
+    padding: 10px;
+   
+
+
+}
+.pg-ordar-detalis .item-cart{
+    padding: 5px;
+    border:  1px solid var(--border-color);
+    border-radius: 10px;
+    flex: 0 0 auto; /* يمنع المنتج من صغر حجمه ويحافظ على أبعاده */
+    width: 120px;
+
+}
+.pg-ordar-detalis .detalis-ordar .img-name img{
+    width: 100px;
+    pointer-events: none;
+    
+}
+.pg-ordar-detalis .detalis-ordar .name-prudact{
+    font-size: 13px;
+    max-width: 100px;
+    white-space: nowrap;      
+    overflow: hidden;         
+    text-overflow: ellipsis; 
+}
+.pg-ordar-detalis .detalis-ordar .prodat-details .size{
+    font-size: 11px;
+    white-space: nowrap;      
+    overflow: hidden;         
+    text-overflow: ellipsis; 
+}
+.pg-ordar-detalis .color-item {
+    display: inline-block;
+    font-size: 13px;
+    max-width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.pg-ordar-detalis .price{
+    font-size: 14px;
+}
+
+/*prudacts*/
+
+/*quantity*/
+.detalis-ordar .quantity{
+    
+    font-size: 11px;
+
+}
+
+/*quantity*/
+@media (max-width: 930px){
+    .pg-ordar-detalis .detalis {
+        flex-direction: column;
+    }
+    .pg-ordar-detalis .detalis .invoice{
+        margin-top: 10px;
+    }
+    .pg-ordar-detalis .item-cart{
+        width: 100px;
+    }
+
+}
+
+/*maseg*/
+.data-ordar-and-user {
+    .maseg {
+      margin: 15px 0;
+      height: fit-content;
+     
+      .masegs {
+        min-width: 100%; 
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 10px;
+      }
+  
+      .time {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+      
+        .time-group {
+          display: flex;
+          align-items: center;
+          gap: 8px; 
+          flex: 1 1 auto;
+          white-space: nowrap; 
+          margin-top: 10px;
+      
+          label {
+            margin: 0;
+            flex-shrink: 0; 
+            margin: 5px 10px;
+          }
+      
+          input.masegs-time {
+            flex-grow: 1; 
+            min-width: 120px; 
+            margin: 0; 
+            padding: 5px;
+            border-radius: 10px;
+          }
+        }
+      }
+      }
+    }
+  
+
+/*maseg*/

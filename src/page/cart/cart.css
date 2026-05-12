@@ -1,0 +1,361 @@
+/* :root{
+    --min-color:#6e3f1f;
+    --background:#FFF9F9;
+    --background2:#dddddd;
+    --bottms-color:#444444;
+    --border-color:#BABABA;
+    --white-color:rgb(255, 255, 255);
+    --bottm-nav:#F2F2F2;
+    --text-color-1:#000000;
+    --text-color-2:#1d1d1d;
+    --text-white:white;
+  } */
+.pg-cart{
+    min-height: 100vh;   /* تملى الشاشة لو المحتوى قليل */
+  background-color:var(--background2);
+  display: flex;
+  flex-direction: column;
+ }
+.all-content{
+    flex: 1; 
+ }
+
+/* .pg-cart .cart {
+    display: flex;
+    justify-content: space-between;
+   
+} */
+.pg-titel {
+   width: 100%;
+    margin-top: 40px;
+    padding: 30px 8px 8px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 600;
+    
+}
+/*------------------------------*/
+/*location*/
+
+.pg-locarion {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 16px;
+    pointer-events: none;
+    cursor: default;
+  }
+  @media (max-width: 550px){
+    .pg-locarion{
+       display: none;
+    } 
+  }
+ 
+  
+  .step-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .step-label {
+    color: #949494;
+    transition: 0.3s;
+    text-decoration: none;
+  }
+  .step-active .step-label {
+    color:var(--text-color-1);
+    font-weight: bold;
+  }
+  
+  .checkout-arrow {
+    display: flex;
+    align-items: center;
+    color: #aaa;
+    font-size: 20px;
+  }
+/*-------------------------------*/
+.pg-cart .cart {
+    display: flex;
+   
+    gap: 20px;
+    align-items: flex-start; /* مهم جداً لعمل الـ sticky */
+    width: 100%;
+    max-width: 100%; /* أو أي عرض تريده للموقع */
+    margin: 0 auto;
+    padding: 20px;
+}
+.pg-cart .cart .cart-prodact{
+    flex: 2; /* يأخذ مساحة أكبر */
+    width: auto; /* الغِ العرض الثابت 55% */
+    
+}
+
+
+.pg-cart .cart .cart-prodact .titel{
+    background-color:var(--white-color);
+    height: 50px;
+    padding: 15px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+.pg-cart .cart .cart-prodact .item-cart{
+    background-color:var(--white-color);
+    margin-top: 10px;
+    height: 140px;
+    padding: 15px;
+    position: relative;
+    display: flex;
+}
+.pg-cart .cart .cart-prodact .item-cart .img-name{
+    width: 110px;
+    height: 110px;
+    max-width: 110px;
+    max-height: 110px;
+    background-color: var(--white-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+}
+.pg-cart .cart .cart-prodact .item-cart .img-name Link img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    background-color:var(--white-color);
+}
+.pg-cart .cart .item-cart .contnt{
+    margin: 0 15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.pg-cart .cart .contnt .name-prudact{
+    max-width: 200px;
+    white-space: nowrap;
+    font-size: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color:var(--white-color);
+    
+}
+ .pg-cart .cart .itme-cart .contnt .size select{
+    width: 80px;
+    margin: 9px 0 ;
+    padding: 3px 5px;
+    height: 20px;
+    color: #fc0404;
+    border-radius: 20px;
+    background-color: var(--background2)
+} 
+.pg-cart .cart .itme-cart .contnt .size option{
+    background-color: var(--background);
+}
+.pg-cart .cart .item-cart .contnt .price{
+    background-color:var(--white-color);
+    padding: 3px 0;
+    font-size: 16px;
+    font-weight: bold;
+   
+}
+.pg-cart .cart .prdact .plus-and-mynas {
+    background-color:var(--white-color);
+    display: flex;
+    align-items: flex-end;
+    padding: 3px;
+    justify-content: space-between;
+    width: 150px;
+
+}
+.pg-cart .cart .prdact .plus-and-mynas svg{
+    font-size: 18px;
+   
+    
+}
+.pg-cart .cart .prdact .plus-and-mynas .icons{
+    display: flex;
+    width: 55px;
+    justify-content: space-between;
+   
+}
+.pg-cart .cart .prdact .plus-and-mynas .quantity{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    
+}
+.pg-cart .cart .prdact .plus-and-mynas .quantity span{
+    padding: 0 10px;
+    height: 20px;
+    background-color: var(--white-color);
+    border-top: var(--text-color-1) solid 1px ;
+    border-bottom: var(--text-color-1) solid 1px;
+}
+.pg-cart .cart .prdact .plus-and-mynas .quantity button{
+    padding: 9px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: var(--text-color-1) solid 1px;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: var(--white-color);
+    max-width: 13px;
+    min-width: 13px;
+    
+}
+.pg-cart .cart .prdact .plus-and-mynas .quantity .minus{
+    border-radius: 0 20px 20px 0;
+
+   
+}
+.pg-cart .cart .prdact .plus-and-mynas .quantity .plus{
+    border-radius: 20px 0 0 20px;
+}
+
+
+/* الفاتوره*/
+
+.pg-cart .cart .invoice-arya{
+    flex: 1; /* يأخذ مساحة أقل */
+    position: -webkit-sticky; /* لدعم متصفحات safari */
+    position: sticky;
+    top: 100px; /* المسافة من أعلى الشاشة أثناء التحرك */
+    width: 100%; /* سيأخذ عرضه من مساحة الـ flex المخصصة له */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+}   
+.pg-cart .cart .invoice-arya .invoice{
+    background-color: var(--white-color);
+}
+
+.pg-cart .cart .invoice-arya .theInvoice .pordr{
+    border-bottom: solid 1px var(--border-color);
+  
+}
+
+.pg-cart .cart .invoice-arya .cach-arya{
+    background-color: var(--white-color);
+    height: 100px;
+    padding: 5px;
+    margin-top: 10px;
+}
+ /*no-prodact*/
+ .no-prodact{
+  
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    img{
+        width: 200px;
+      
+    }
+    h2{
+       font-weight: bold;
+       
+    }
+    .butm-go-home{
+    
+    background-color: var(--min-color);
+        color: var(--white-color);
+        width: 100px;
+        height: 35px;
+        border-radius: 10px;
+        font-weight: bold;
+        margin: 5px;
+    }
+ }
+ /*no-prodact*/
+ @media only screen and (min-width: 999px) and (max-width: 1200px){
+    .pg-cart .cart .contnt .name-prudact{
+        max-width: 150px;
+    }
+ }  
+
+
+
+ @media (max-width: 1000px) {
+    .pg-cart .cart {
+        flex-direction: column; /* تحويل العناصر لتصبح فوق بعضها */
+    }
+
+    .pg-cart .cart .cart-prodact, 
+    .pg-cart .cart .invoice-arya {
+        width: 100%; /* العرض كامل في الشاشات الصغيرة */
+    }
+
+    .pg-cart .cart .invoice-arya {
+        position: static; /* إلغاء التثبيت في الموبايل لسهولة التصفح */
+        margin-top: 20px;
+    }
+    .pg-cart .cart .contnt .name-prudact{
+        max-width: 300px;
+    }
+}
+
+
+
+
+@media (max-width: 700px){
+    .pg-cart .cart .contnt .name-prudact{
+        max-width: 100px;
+    }
+    
+   
+
+}
+@media (max-width: 535px){
+    .pg-cart .cart .item-cart .contnt{
+        flex-direction: column;
+
+       margin: 0;
+
+        .name-prudact{
+            font-size: 18px;
+        }
+        .color-item{
+            font-size: 15px;
+        }
+
+    }
+
+
+    .pg-cart .cart .cart-prodact .item-cart{
+        height: 190px;
+    }
+   
+
+    .pg-cart .cart .cart-prodact .item-cart .img-name Link img{
+        object-fit: cover; 
+    object-position: center;
+    }
+
+    .pg-cart .cart .prdact .plus-and-mynas{
+        width: 135px;
+    }
+}
+@media (max-width: 330px){
+    .pg-cart .cart .cart-prodact .item-cart{
+        flex-direction: column;
+          align-items: center;
+          height: 280px;
+    }
+    .pg-cart .cart .prdact .plus-and-mynas{
+        width: 100%;
+    }
+}
+

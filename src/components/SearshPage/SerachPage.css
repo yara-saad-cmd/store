@@ -1,0 +1,9 @@
+.search-page{
+ margin: 10px 10px;
+}
+.search-page .suggesions{
+    margin: 5px;
+}
+.search-page #search{
+    margin: 5px;
+}

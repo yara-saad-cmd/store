@@ -1,0 +1,62 @@
+/* :root{
+    --min-color:#6e3f1f;
+    --background:#FFF9F9;
+    --background2:#E6E6E6;
+    --bottms-color:#444444;
+    --border-color:#BABABA;
+    --white-color:rgb(255, 255, 255);
+    --bottm-nav:#F2F2F2;
+    --text-color-1:#000000;
+    --text-color-2:#1d1d1d;
+    --text-color-3:#fffff;
+} */
+
+
+.pg-like{
+    min-height: 100vh;   /* تملى الشاشة لو المحتوى قليل */
+    background-color:var(--background2);
+    display: flex;
+    flex-direction: column;
+   
+}
+.all-like{
+    flex: 1;
+    margin-bottom: 100px;
+}
+.pg-like .like .title{
+    color: var(--text-color-1);
+    text-align: center;
+    margin: 10px;
+
+}
+.fivrt-prudact .ampty{
+   text-align: center;
+   margin: 50px;
+}
+.fivrt-prudact .ampty img{
+    width: 250px;
+   
+    
+}
+.fivrt-prudact .ampty p{
+    font-size: 30px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ampty .shop-naw{
+    background-color: var(--min-color);
+    width: 140px;
+    height: 32px;
+    color: var(--white-color);
+    margin: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 15px;
+    transition:transform 320ms ease;
+
+}
+.ampty .shop-naw:hover{
+    transform: scale(1.1);
+}
