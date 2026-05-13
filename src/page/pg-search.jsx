@@ -3,8 +3,8 @@ import { useLocation } from 'react-router-dom'
 import TopHedar from '../components/heder/topHedar'
 import BtmHedar from '../components/heder/btmHedar'
 import PadgTranschan from '../components/padgTranschan'
-import Prsdactloding from '../components/body/prodact-loding'
-import Prodact from '../components/body/prodact'
+import Prsdactloding from '../components/body/product-loading'
+import Prodact from '../components/body/product'
 import Footertwo from '../components/footer/footer2'
 
 function Pgsearch() {

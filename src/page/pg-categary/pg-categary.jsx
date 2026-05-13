@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import TopHedar from '../../components/heder/topHedar';
 import BtmHedar from '../../components/heder/btmHedar';
 import { data, useParams } from 'react-router-dom';
-import Prodact from '../../components/body/prodact';
+import Product from '../../components/body/product';
 import "./pg-categary.css"
-import Prsdactloding from '../../components/body/prodact-loding';
+import Prsdactloding from '../../components/body/product-loading';
 import PadgTranschan from '../../components/padgTranschan';
 import Footertwo from '../../components/footer/footer2';
 
@@ -39,7 +39,7 @@ console.log(gategotyprodact)
         <>
          {Pgcategary ? (<Prsdactloding key={category}/>
          ):(<div className="prodact">
-             <Prodact products={gategotyprodact}  title={category} 
+             <Product products={gategotyprodact}  title={category} 
             />
 
             

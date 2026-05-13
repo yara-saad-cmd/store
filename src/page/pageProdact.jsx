@@ -1,11 +1,11 @@
 import React from 'react'
-import Pgprodact from "../components/prodact/Pg-prodact"
-function PageProdact() {
+import Pgproduct from "../components/product/Pg-product"
+function Pageproduct() {
   return (
     <>
-    <Pgprodact/>
+    <Pgproduct/>
     </>
   )
 }
 
-export default PageProdact
+export default Pageproduct

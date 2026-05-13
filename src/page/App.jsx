@@ -2,7 +2,7 @@
  import TopHedar from "../components/heder/topHedar"
 import BtmHedar from "../components/heder/btmHedar"
 import Home from "./Home"
-import PageProduct from "../page/pageProdact"
+import PageProduct from "./pageProdact"
 import { Route, Routes } from "react-router-dom"
  import Cart from "../page/cart/cart"
 import { Toaster } from "react-hot-toast"
@@ -21,7 +21,7 @@ import Return from "../page/About-This-Site/Return"
  import SnippingDelivery from "../page/About-This-Site/SnippingDelivery"
 import Temsconditions from "../page/About-This-Site/tems-conditions"
 import Termsofuse from "../page/About-This-Site/Termsofuse"
- import SearchPage from "../components/SearshPage/SareshPaege"
+ import SearchPage from "../components/SearchPage/SearchPage"
 import LoadingBtmhedat from "../components/heder/LoadingBtmhedat"
 
  function App() {

@@ -3,7 +3,7 @@ import TopHedar from '../../components/heder/topHedar'
 import BtmHedar from '../../components/heder/btmHedar'
 import { ContxetCart } from '../../components/context/contextcart'
 import PadgTranschan from '../../components/padgTranschan'
-import Prodact from '../../components/body/prodact'
+import Product from '../../components/body/product'
 import "./like.css"
 import likeimg from "../../img/like.png"
 import { Link } from 'react-router-dom'
@@ -41,7 +41,7 @@ function Like() {
                      <h2>قائمة المفضل</h2>
                      </div>
 
-                       <Prodact 
+                       <Product 
                   products={liketitems}
                   isLikePage={true}
                   title={`المنتجات (${liketitems.length})`}

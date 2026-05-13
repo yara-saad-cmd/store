@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 // import TopHedar from "../heder/topHedar"
 // import BtmHedar from "../heder/btmHedar"
-import ProductLayout from './ProdatLayout'
+import ProductLayout from './ProductLayout'
 import { IoIosStar } from "react-icons/io";
 import { TbShoppingCartPlus } from "react-icons/tb";
 import { Link } from 'react-router-dom';
@@ -9,7 +9,7 @@ import { ContxetCart } from "../context/contextcart"
 import { FaCheck } from "react-icons/fa6";
 import toast from 'react-hot-toast';
 
-function product({ products, title, isLikePage = false }){
+function Product({ products, title, isLikePage = false }){
  
  
   const allProducts = Array.isArray(products)
@@ -128,4 +128,4 @@ function product({ products, title, isLikePage = false }){
   );
 }
 
-export default product;
+export default Product;

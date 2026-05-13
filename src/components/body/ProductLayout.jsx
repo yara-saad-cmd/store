@@ -1,6 +1,6 @@
 // ProductLayout.jsx
 import React from 'react'
-import "./prodact.css"
+import "./product.css"
 
 function ProductLayout({ title, children }) {
   return (

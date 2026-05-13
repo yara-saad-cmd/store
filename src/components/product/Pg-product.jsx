@@ -1,22 +1,22 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
-import "./Pg-prodact.css";
+import "./Pg-product.css";
 import { IoIosStar } from "react-icons/io";
 import { TbShoppingCartPlus } from "react-icons/tb";
-import ProdactLayout from "../body/ProdatLayout";
-import Loding from "./loding-pg-prodact";
-import Prsdactloding from "../body/prodact-loding";
+import ProductLayout from "../body/ProductLayout";
+import Loding from "./loding-pg-product";
+import Prsdactloding from "../body/product-loading";
 import BtmHedar from "../heder/btmHedar";
 import TopHedar from "../heder/topHedar";
 import { ContxetCart } from "../context/contextcart";
 import { FaCheck } from "react-icons/fa6";
 import toast from "react-hot-toast";
-import ImgPgProdact from "./img-pg-prodact";
-import TitekPpgPprodact from "./titel-pg-prodact";
+import ImgPgproduct from "./img-pg-product";
+import TitekPpgPproduct from "./titel-pg-product";
 import PadgTranschan from "../padgTranschan";
 import Footertwo from "../footer/footer2";
 
-function Pgprodact() {
+function Pgproduct() {
   const { id } = useParams();
 
   const [prodact, setprodact] = useState(null);
@@ -72,20 +72,20 @@ function Pgprodact() {
         <div className="pg-prosact">
           <div className="continar">
             <div className="prdact-arya">
-            <ImgPgProdact key={prodact.id} prodact={prodact} />
+            <ImgPgproduct key={prodact.id} prodact={prodact} />
 
-              <TitekPpgPprodact prodact={prodact} />
+              <TitekPpgPproduct prodact={prodact} />
             </div>
           </div>
 
           <hr />
 {/* مزيد من المننجات */}
-          <div className="mor-prodact">
+          <div className="mor-product">
             {" "}
             {loadingreladProdact ? (
               <Prsdactloding />
             ) : (
-              <ProdactLayout title={"مقترحات من نفس الفئه"}>
+              <ProductLayout title={"مقترحات من نفس الفئه"}>
                 {reladProdact.slice(0, visibleCount)
                 .filter((item) => item.id !== prodact.id)
                 .map((item) => {
@@ -155,7 +155,7 @@ function Pgprodact() {
                   );
                 })}
                
-</ProdactLayout>
+</ProductLayout>
             )}
               
           </div>
@@ -172,4 +172,4 @@ function Pgprodact() {
   );
 }
 
-export default Pgprodact;
+export default Pgproduct;

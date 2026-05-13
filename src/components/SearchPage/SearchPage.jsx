@@ -1,6 +1,6 @@
 import React from 'react'
 import Search from '../heder/search'
-import "./SerachPage.css"
+import "./SearchPage.css"
 function SareshPaege() {
   return (
     <div className='search-page'>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Slider from '../components/body/slider'
-import Prodact from "../components/body/prodact"
-import Prsdactloding from '../components/body/prodact-loding'
+import Prodact from "../components/body/product"
+import Prsdactloding from '../components/body/product-loading'
 import PadgTranschan from '../components/padgTranschan'
 import Footertwo from '../components/footer/footer2'
 import TopHedar from '../components/heder/topHedar'
