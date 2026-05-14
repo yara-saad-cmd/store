@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import PageLocation from '../../components/pageLocation'
-import HedarTwo from '../../components/heder/heder-2'
+import HedarTwo from '../../components/header/header-2'
 import UserDataForm from "../../components/userdata/UsaerData"
 import Invoice from '../../components/invoice/invoice'
 import "./OrderDatails.css"
 import PadgTranschan from '../../components/padgTranschan'
-import CartItem from '../../components/cartItem/CartTtem'
+import CartItem from '../../components/cartItem/CartItem'
 import { ContxetCart } from '../../components/context/contextcart'
 import Footer from '../../components/footer/footer'
 function OrdarDetails() {

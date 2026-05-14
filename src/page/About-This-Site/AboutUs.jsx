@@ -1,13 +1,13 @@
 import React from 'react'
 import "./about-this-site.css"
-import TopHedar from '../../components/heder/topHedar'
-import BtmHedar from '../../components/heder/btmHedar'
+import TopHeader from '../../components/header/topHeader'
+import BtmHeader from '../../components/header/btmHeader'
 import Footertwo from "../../components/footer/footer2"
 function AboutUs() {
   return (
     <div className='pg-apoutus'>
-      <TopHedar />
-      <BtmHedar />
+      <TopHeader />
+      <BtmHeader />
 
       <div className="continar">
         <h1 className='titel-bedg'>قسم (من نحن)</h1>

@@ -1,5 +1,5 @@
 import React from 'react'
-import Search from '../heder/search'
+import Search from '../header/search'
 import "./SearchPage.css"
 function SareshPaege() {
   return (

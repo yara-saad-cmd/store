@@ -4,7 +4,7 @@ import { FiHeart } from 'react-icons/fi'
 import { ContxetCart } from '../context/contextcart'
 import { TbShoppingCart } from 'react-icons/tb'
 import toast from 'react-hot-toast'
-import CartItem from '../cartItem/CartTtem'
+import CartItem from '../cartItem/CartItem'
 
 function TitekPpgPprodact({prodact}) {
 

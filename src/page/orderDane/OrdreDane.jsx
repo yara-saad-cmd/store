@@ -2,7 +2,7 @@ import React from 'react'
 import "./orderDane.css"
 import { Link } from 'react-router-dom'
 import { AiFillCheckCircle } from 'react-icons/ai'
-import HedarTwo from '../../components/heder/heder-2'
+import HedarTwo from '../../components/header/header-2'
 import PadgTranschan from '../../components/padgTranschan'
 import Footer from '../../components/footer/footer'
 

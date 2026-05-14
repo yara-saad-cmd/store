@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import TopHedar from '../components/heder/topHedar'
-import BtmHedar from '../components/heder/btmHedar'
+import TopHeader from '../components/header/topHeader'
+import BtmHeader from '../components/header/btmHeader'
 import PadgTranschan from '../components/padgTranschan'
 import Prsdactloding from '../components/body/product-loading'
 import Prodact from '../components/body/product'
@@ -39,8 +39,8 @@ function Pgsearch() {
     },[query])
     return (
         <div>
-            <TopHedar />
-            <BtmHedar />
+            <TopHeader />
+            <BtmHeader />
     
             <PadgTranschan key={query}>
                 <div className="pg-search">

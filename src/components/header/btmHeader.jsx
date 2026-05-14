@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import LoadingBtmhedat from './LoadingBtmhedat';
 
-function BtmHedar() {
+function BtmHeader() {
   const [categorys, setCategorys] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -41,4 +41,4 @@ function BtmHedar() {
   );
 }
 
-export default BtmHedar;
+export default BtmHeader;

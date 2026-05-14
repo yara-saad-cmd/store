@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import TopHedar from '../../components/heder/topHedar';
-import BtmHedar from '../../components/heder/btmHedar';
+import TopHeader from '../../components/header/topHeader';
+import BtmHeader from '../../components/header/btmHeader';
 import { data, useParams } from 'react-router-dom';
 import Product from '../../components/body/product';
 import "./pg-categary.css"
@@ -33,8 +33,8 @@ console.log(gategotyprodact)
   return (
     <PadgTranschan>
        <div className="pg-search">
-      <TopHedar/>
-      <BtmHedar/>
+      <TopHeader/>
+      <BtmHeader/>
       <div className="pg-search">
         <>
          {Pgcategary ? (<Prsdactloding key={category}/>

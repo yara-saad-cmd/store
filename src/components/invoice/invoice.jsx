@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import { ContxetCart } from '../context/contextCart';
 import { Link } from 'react-router-dom';
-import "./inviocie.css"
-import CartItem from '../cartItem/CartTtem';
+import "./invoice.css"
+import CartItem from '../cartItem/CartItem';
 function Invoice({layout}) {
 
  

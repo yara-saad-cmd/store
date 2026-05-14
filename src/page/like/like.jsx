@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import TopHedar from '../../components/heder/topHedar'
-import BtmHedar from '../../components/heder/btmHedar'
+import TopHeader from '../../components/header/topHeader'
+import BtmHeader from '../../components/header/btmHeader'
 import { ContxetCart } from '../../components/context/contextcart'
 import PadgTranschan from '../../components/padgTranschan'
 import Product from '../../components/body/product'
@@ -14,8 +14,8 @@ function Like() {
   return (
     
     <div className="pg-like">
-      <TopHedar/>
-      <BtmHedar/>
+      <TopHeader/>
+      <BtmHeader/>
 
       <PadgTranschan>
         <div className="all-like">

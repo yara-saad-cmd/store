@@ -1,6 +1,6 @@
 import React from 'react'
-import TopHedar from '../../components/heder/topHedar'
-import BtmHedar from '../../components/heder/btmHedar'
+import TopHeader from '../../components/header/topHeader'
+import BtmHeader from '../../components/header/btmHeader'
 import "./UserAccunt.css"
 import PadgTranschan from "../../components/padgTranschan"
 import { FiHeart } from 'react-icons/fi'
@@ -14,8 +14,8 @@ import Footertwo from '../../components/footer/footer2'
 function UserAccount() {
   return (
     <div className='all-pg-account'>
-        <TopHedar/>
-        <BtmHedar/>
+        <TopHeader/>
+        <BtmHeader/>
        <PadgTranschan>
 
           <div className="pg-account">

@@ -4,8 +4,8 @@ import Prodact from "../components/body/product"
 import Prsdactloding from '../components/body/product-loading'
 import PadgTranschan from '../components/padgTranschan'
 import Footertwo from '../components/footer/footer2'
-import TopHedar from '../components/heder/topHedar'
-import BtmHedar from '../components/heder/btmHedar'
+import TopHeader from '../components/header/topHeader'
+import BtmHeader from '../components/header/btmHeader'
 
 const categories = [
   "beauty",
@@ -50,8 +50,8 @@ function Home() {
     <PadgTranschan>
 
      <header>
-        <TopHedar />
-        <BtmHedar />
+        <TopHeader />
+        <BtmHeader />
       </header>
 
       <Slider />

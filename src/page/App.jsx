@@ -1,6 +1,6 @@
 
- import TopHedar from "../components/heder/topHedar"
-import BtmHedar from "../components/heder/btmHedar"
+ import TopHeader from "../components/header/topHeader"
+import BtmHeader from "../components/header/btmHeader"
 import Home from "./Home"
 import PageProduct from "./pageProdact"
 import { Route, Routes } from "react-router-dom"
@@ -22,7 +22,7 @@ import Return from "../page/About-This-Site/Return"
 import Temsconditions from "../page/About-This-Site/tems-conditions"
 import Termsofuse from "../page/About-This-Site/Termsofuse"
  import SearchPage from "../components/SearchPage/SearchPage"
-import LoadingBtmhedat from "../components/heder/LoadingBtmhedat"
+import LoadingBtmhedat from "../components/header/LoadingBtmhedat"
 
  function App() {
  
@@ -32,8 +32,8 @@ import LoadingBtmhedat from "../components/heder/LoadingBtmhedat"
 
    
       {/* <header>
-      <TopHedar />
-      <BtmHedar />
+      <TopHeader />
+      <BtmHeader />
 </header> */}
 
 

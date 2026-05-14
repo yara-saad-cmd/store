@@ -1,6 +1,6 @@
 import React from 'react'
 import PageLocation from '../../components/pageLocation'
-import HedarTwo from '../../components/heder/heder-2'
+import HedarTwo from '../../components/header/header-2'
 import "./payment.css"
 
 import imgVISA from "../../img/1764260377009.png"

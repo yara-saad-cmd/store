@@ -1,14 +1,14 @@
 import React from 'react'
-import TopHedar from '../heder/topHedar'
-import BtmHedar from '../heder/btmHedar'
+import TopHeader from '../header/topHeader'
+import BtmHeader from '../header/btmHeader'
 
 function Loding() {
   return (
 
     <div className="loding-itm">
   <header>
-        <TopHedar />
-        <BtmHedar />
+        <TopHeader />
+        <BtmHeader />
       </header>
 
 

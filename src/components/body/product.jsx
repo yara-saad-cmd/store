@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
-// import TopHedar from "../heder/topHedar"
-// import BtmHedar from "../heder/btmHedar"
+// import TopHeader from "../header/topHeader"
+// import BtmHeader from "../header/btmHeader"
 import ProductLayout from './ProductLayout'
 import { IoIosStar } from "react-icons/io";
 import { TbShoppingCartPlus } from "react-icons/tb";
@@ -33,8 +33,8 @@ function Product({ products, title, isLikePage = false }){
     <div className="pag-prodacrs">
 
       {/* <header>
-        <TopHedar />
-        <BtmHedar />
+        <TopHeader />
+        <BtmHeader />
       </header> */}
 
       <ProductLayout title={title || "المنتجات"}>

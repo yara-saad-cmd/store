@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { FiHeart } from "react-icons/fi";
 import { TbShoppingCart } from "react-icons/tb";
 import { LuUserRound } from "react-icons/lu";
-import "./heder.css"
+import "./header.css"
 import {ContxetCart} from "../context/contextcart"
 import Search from './search';
 
@@ -12,7 +12,7 @@ import Search from './search';
 import { useNavigate } from "react-router-dom";
 import { IoSearch } from 'react-icons/io5';
 
-function TopHedar() {
+function TopHeader() {
 
   const {cartitems,liketitems} = useContext(ContxetCart)
 
@@ -72,4 +72,4 @@ function TopHedar() {
   )
 }
 
-export default TopHedar
+export default TopHeader

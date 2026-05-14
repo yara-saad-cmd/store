@@ -1,13 +1,13 @@
 import React from 'react'
-import TopHedar from '../../components/heder/topHedar'
-import BtmHedar from '../../components/heder/btmHedar'
+import TopHeader from '../../components/header/topHeader'
+import BtmHeader from '../../components/header/btmHeader'
 import Footertwo from '../../components/footer/footer2'
 
 function Temsconditions() {
   return (
     <div className='Temsconditions'>
-    <TopHedar/>
-    <BtmHedar/>
+    <TopHeader/>
+    <BtmHeader/>
     <div className="continar">
           <h1 className='titel-bedg'>قسم (الشروط و الاحكام)</h1>
     <p className='content'>محتوي الصفحه  نحن متجر إلكتروني متخصص في تقديم منتجات عالية الجودة تجمع بين الأناقة والعملية، ونسعى دائمًا لتلبية احتياجات عملائنا وتوفير تجربة تسوق سهلة، آمنة، وممتعة. انطلق متجرنا من إيماننا بأن التسوق عبر الإنترنت يجب أن يكون أكثر من مجرد شراء منتج، بل تجربة متكاملة يشعر فيها العميل بالثقة والراحة من لحظة تصفحه للموقع وحتى استلام طلبه.

@@ -6,8 +6,8 @@ import { TbShoppingCartPlus } from "react-icons/tb";
 import ProductLayout from "../body/ProductLayout";
 import Loding from "./loding-pg-product";
 import Prsdactloding from "../body/product-loading";
-import BtmHedar from "../heder/btmHedar";
-import TopHedar from "../heder/topHedar";
+import BtmHeader from "../header/btmHeader";
+import TopHeader from "../header/topHeader";
 import { ContxetCart } from "../context/contextcart";
 import { FaCheck } from "react-icons/fa6";
 import toast from "react-hot-toast";
@@ -65,8 +65,8 @@ function Pgproduct() {
   return (
     <div className="all-pag">
       <header>
-        <TopHedar />
-        <BtmHedar />
+        <TopHeader />
+        <BtmHeader />
       </header>
       <PadgTranschan key={id}>
         <div className="pg-prosact">
