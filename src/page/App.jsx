@@ -8,13 +8,13 @@ import { Route, Routes } from "react-router-dom"
 import { Toaster } from "react-hot-toast"
 import ScrolTop from "../components/ScrolTop"
  import { AnimatePresence } from "framer-motion"
-import Pgcategary from "../page/pg-categary/pg-categary"
+import Pgcategory from "../page/pg-category/pg-category"
  import Pgsearch from "../page/pg-search"
  import Like from "../page/like/like"
  import UserAccount from "../page/account/UserAccount"
- import OrdarDetails from "../page/OrderDetails/Ordar-details"
+ import OrdarDetails from "../page/OrderDetails/Order-details"
  import Payment from "../page/payment/payment"
- import OrdreDane from "../page/orderDane/OrdreDane"
+ import OrderDone from "../page/orderDone/OrderDone"
  import AboutUs from "../page/About-This-Site/AboutUs"
  import Privacypolicy from "../page/About-This-Site/privacy-policy"
 import Return from "../page/About-This-Site/Return"
@@ -58,13 +58,13 @@ import LoadingBtmhedat from "../components/header/LoadingBtmhedat"
         <Route path="/like" element={<Like/>}/>
              <Route path="/cart" element={<Cart/>}/>
           <Route path="/payment" element={<Payment/>}/>
-            <Route path="/OrdreDane" element={<OrdreDane/>}/>
+            <Route path="/OrderDone" element={<OrderDone/>}/>
          <Route path="/useraccount" element={<UserAccount/>}/>
          
            <Route path="/search" element={<Pgsearch/>}/>
           
            <Route path="/products/:id" element={<PageProduct/>}/>
-         <Route path="/category/:category" element={<Pgcategary/>}/>
+         <Route path="/category/:category" element={<Pgcategory/>}/>
 
 
            <Route path="/AboutUs" element={<AboutUs/>}/>

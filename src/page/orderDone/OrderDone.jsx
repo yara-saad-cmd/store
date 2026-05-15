@@ -1,19 +1,19 @@
 import React from 'react'
-import "./orderDane.css"
+import "./orderDone.css"
 import { Link } from 'react-router-dom'
 import { AiFillCheckCircle } from 'react-icons/ai'
 import HedarTwo from '../../components/header/header-2'
-import PadgTranschan from '../../components/padgTranschan'
+import PageTransaction from '../../components/pageTransaction'
 import Footer from '../../components/footer/footer'
 
 
 
-function OrdreDane() {
+function OrderDone() {
   return (
     <>
     <div className='pg-orderdane'>
         <HedarTwo/>
-        <PadgTranschan>
+        <PageTransaction>
 
            <div className="icon-and-content">
             <div className="icon">
@@ -28,7 +28,7 @@ function OrdreDane() {
             
         </div>
       
-        </PadgTranschan>
+        </PageTransaction>
        
         
     </div>
@@ -38,4 +38,4 @@ function OrdreDane() {
   )
 }
 
-export default OrdreDane
+export default OrderDone

@@ -3,18 +3,18 @@ import TopHeader from '../../components/header/topHeader';
 import BtmHeader from '../../components/header/btmHeader';
 import { data, useParams } from 'react-router-dom';
 import Product from '../../components/body/product';
-import "./pg-categary.css"
+import "./pg-category.css"
 import Prsdactloding from '../../components/body/product-loading';
-import PadgTranschan from '../../components/padgTranschan';
+import PageTransaction from '../../components/pageTransaction';
 import Footertwo from '../../components/footer/footer2';
 
-function Pgcategary() {
+function Pgcategory() {
 
   const {category} = useParams()
   
 
   const [gategotyprodact , setgategotyprodact] = useState([])
-  const [Pgcategary , setPgcategary] = useState(true)
+  const [Pgcategory , setPgcategory] = useState(true)
 
 
 
@@ -25,19 +25,19 @@ function Pgcategary() {
         setgategotyprodact(data.products)
       })
       .catch((error)=> console.error(error))
-      .finally(() => setPgcategary(false))
+      .finally(() => setPgcategory(false))
     } ,[category])
 console.log(gategotyprodact)
 
 
   return (
-    <PadgTranschan>
+    <PageTransaction>
        <div className="pg-search">
       <TopHeader/>
       <BtmHeader/>
       <div className="pg-search">
         <>
-         {Pgcategary ? (<Prsdactloding key={category}/>
+         {Pgcategory ? (<Prsdactloding key={category}/>
          ):(<div className="prodact">
              <Product products={gategotyprodact}  title={category} 
             />
@@ -56,9 +56,9 @@ console.log(gategotyprodact)
       </div>
     </div>
     <Footertwo/>
-    </PadgTranschan>
+    </PageTransaction>
    
   )
 }
 
-export default Pgcategary ;
+export default Pgcategory ;

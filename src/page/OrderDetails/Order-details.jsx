@@ -1,17 +1,17 @@
 import React, { useContext } from 'react'
 import PageLocation from '../../components/pageLocation'
 import HedarTwo from '../../components/header/header-2'
-import UserDataForm from "../../components/userdata/UsaerData"
+import UserDataForm from "../../components/userdata/UserData"
 import Invoice from '../../components/invoice/invoice'
-import "./OrderDatails.css"
-import PadgTranschan from '../../components/padgTranschan'
+import "./OrderDetails.css"
+import PageTransaction from '../../components/pageTransaction'
 import CartItem from '../../components/cartItem/CartItem'
 import { ContxetCart } from '../../components/context/contextcart'
 import Footer from '../../components/footer/footer'
 function OrdarDetails() {
   const { cartitems } = useContext(ContxetCart);
   return (
-    <PadgTranschan>
+    <PageTransaction>
 
       <div className="pg-ordar-detalis">
         <HedarTwo />
@@ -79,7 +79,7 @@ function OrdarDetails() {
         <Footer />
       </div>
 
-    </PadgTranschan>
+    </PageTransaction>
 
 
   )

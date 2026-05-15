@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 
 
-function PadgTranschan({children}) {
+function PageTransaction({children}) {
   return (
 
 <motion.div 
@@ -19,4 +19,4 @@ function PadgTranschan({children}) {
   )
 }
 
-export default PadgTranschan
+export default PageTransaction;

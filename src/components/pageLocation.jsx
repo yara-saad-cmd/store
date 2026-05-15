@@ -10,7 +10,7 @@ export default function PageLocation() {
     { name: "عربة المشتريات", path: "/cart" },
     { name: "تفاصيل الطلب", path: "/order-details" },
     { name: "الدفع", path: "/Payment" },
-    { name: "تم الطلب", path: "/OrdreDane" },
+    { name: "تم الطلب", path: "/OrderDone" },
   ];
 
   return (

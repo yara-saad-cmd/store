@@ -98,7 +98,7 @@ import "./userdata.css"
 import { FaPen } from "react-icons/fa";
 
 
-export default function UsaerData() {
+export default function UserData() {
   const [inModify, setInModify] = useState(false);
 
   

@@ -1,14 +1,14 @@
 import React from 'react'
 import TopHeader from '../../components/header/topHeader'
 import BtmHeader from '../../components/header/btmHeader'
-import "./UserAccunt.css"
-import PadgTranschan from "../../components/padgTranschan"
+import "./UserAccount.css"
+import PageTransaction from "../../components/pageTransaction"
 import { FiHeart } from 'react-icons/fi'
 import { TbShoppingCart } from 'react-icons/tb'
 import { LuUserRound } from 'react-icons/lu'
 import { Link } from 'react-router-dom'
 import { FaUserCircle, FaWhatsapp } from 'react-icons/fa'
-import UserDataForm from '../../components/userdata/UsaerData'
+import UserDataForm from '../../components/userdata/UserData'
 import Visa from "../../components/visa/visa"
 import Footertwo from '../../components/footer/footer2'
 function UserAccount() {
@@ -16,7 +16,7 @@ function UserAccount() {
     <div className='all-pg-account'>
         <TopHeader/>
         <BtmHeader/>
-       <PadgTranschan>
+       <PageTransaction>
 
           <div className="pg-account">
             <div className="continar">
@@ -74,7 +74,7 @@ function UserAccount() {
             </div>
         </div>
         <Footertwo/>
-       </PadgTranschan>
+       </PageTransaction>
       
 
     </div>

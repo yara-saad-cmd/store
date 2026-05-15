@@ -3,7 +3,7 @@ import HedarTwo from "../../components/header/header-2";
 import "./cart.css";
 import { ContxetCart } from "../../components//context/contextcart";
 import { FaRegHeart } from "react-icons/fa";import { FaHeart, FaRegTrashCan } from "react-icons/fa6";
-import PadgTranschan from "../../components/padgTranschan";
+import PageTransaction from "../../components/pageTransaction";
 import toast from "react-hot-toast"; 
 import PageLocation from "../../components/pageLocation"
 import Visa from "../../components/visa/visa";import { Link } from "react-router-dom";
@@ -49,7 +49,7 @@ function Cart() {
       <HedarTwo />
     </div>
 
-     <PadgTranschan>
+     <PageTransaction>
 
      
             {cartitems.length === 0 ? (
@@ -121,7 +121,7 @@ function Cart() {
         
       </div>
      )}
-    </PadgTranschan>
+    </PageTransaction>
     
   </div>
 

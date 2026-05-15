@@ -5,7 +5,7 @@ import "./payment.css"
 
 import imgVISA from "../../img/1764260377009.png"
 import { Link } from 'react-router-dom'
-import PadgTranschan from '../../components/padgTranschan'
+import PageTransaction from '../../components/pageTransaction'
 import Footer from '../../components/footer/footer'
 
 
@@ -13,7 +13,7 @@ function Payment() {
   return (
     <>
           <HedarTwo />
-          <PadgTranschan>
+          <PageTransaction>
               <div className="pg-cash">
                   <div className="all-paymemt">
                     <div className="continar">
@@ -78,7 +78,7 @@ function Payment() {
                               <button className='add'>تطبيق</button>
                           </div>
 
-                            <Link to="/OrdreDane"><button className='Order-Tracking'>متابعه</button></Link>
+                            <Link to="/OrderDone"><button className='Order-Tracking'>متابعه</button></Link>
                           
                     </div>
 
@@ -95,7 +95,7 @@ function Payment() {
 
             </div>
           
-          </PadgTranschan>
+          </PageTransaction>
            
        
     </>

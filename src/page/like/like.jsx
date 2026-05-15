@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import TopHeader from '../../components/header/topHeader'
 import BtmHeader from '../../components/header/btmHeader'
 import { ContxetCart } from '../../components/context/contextcart'
-import PadgTranschan from '../../components/padgTranschan'
+import PageTransaction from '../../components/pageTransaction'
 import Product from '../../components/body/product'
 import "./like.css"
 import likeimg from "../../img/like.png"
@@ -17,7 +17,7 @@ function Like() {
       <TopHeader/>
       <BtmHeader/>
 
-      <PadgTranschan>
+      <PageTransaction>
         <div className="all-like">
             <div className="like-pruda">
 
@@ -63,7 +63,7 @@ function Like() {
         </div>
       
 
-      </PadgTranschan>
+      </PageTransaction>
       <Footer/>
     </div>
    
