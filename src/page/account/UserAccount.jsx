@@ -19,7 +19,7 @@ function UserAccount() {
        <PageTransaction>
 
           <div className="pg-account">
-            <div className="continar">
+            <div className="container">
 
                       <div className="LogOut">
                         <button className='ptm-logout'>تسجيل الخروج</button>
@@ -40,7 +40,7 @@ function UserAccount() {
                       <Link to="/useraccount" className='pg-user'> <LuUserRound /> <span>الملف الشخصي</span></Link>
                       <Link to="/like" className='pg-favorite'>  <FiHeart /><span>قائمة المفضل</span></Link>
                       <Link to="/cart" className='pg-cart-icon'>  <TbShoppingCart /><span>سلة المشتريات</span></Link>
-                      <p className='masge'><FaWhatsapp/><span>الرسائل</span></p>
+                      <p className='msge'><FaWhatsapp/><span>الرسائل</span></p>
 
                       </div>
                      

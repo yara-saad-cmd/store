@@ -21,7 +21,7 @@ function BtmHeader() {
 
   return (
     <div className="btm-hedar">
-      <div className="continar">
+      <div className="container">
         <nav className='ptm-nav'>
           
           {loading ? (

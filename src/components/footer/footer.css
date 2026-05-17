@@ -89,7 +89,7 @@
 
 }
 @media (max-width: 768px) {
-  .footerTwo .continar{
+  .footerTwo .container{
     grid-auto-flow: row;      /* يخليهم تحت بعض */
   }
 

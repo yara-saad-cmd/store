@@ -51,7 +51,7 @@ function Pgsearch() {
                         <div className="prodact">
                             <Prodact products={resolt} title={"نتائج البحث"} />
                         </div>
-                    ) : <h3 className="on-tata continar">لا توجد منتجات</h3>}
+                    ) : <h3 className="on-tata container">لا توجد منتجات</h3>}
 
                 </div>
                 <Footertwo/>

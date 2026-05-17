@@ -5,18 +5,18 @@ import React from 'react'
 function Prsdactloding() {
   return (
 
-    <div className="loding-prodacr">
+    <div className="loading-product">
 
-      <div className="prodacr-contenr">
-        <div className="continar">
-          <h1 className='skiltone'></h1>
+      <div className="product-content">
+        <div className="container">
+          <h1 className='skeleton'></h1>
           <div className="cards">
-            <p className='skiltone a'></p>
-            <p className='skiltone b'></p>
-            <p className='skiltone c'></p>
-            <p className='skiltone d'></p>
-            <p className='skiltone e'></p>
-            <p className='skiltone f'></p>
+            <p className='skeleton a'></p>
+            <p className='skeleton b'></p>
+            <p className='skeleton c'></p>
+            <p className='skeleton d'></p>
+            <p className='skeleton e'></p>
+            <p className='skeleton f'></p>
           </div>
         </div>
 

@@ -1,10 +1,10 @@
-.pg-apoutus , .Privacypolicy , .return , .SnippingDelivery , .Temsconditions , .Termsofuse{
+.pg-apoutus , .Privacypolicy , .return , .ShippingDelivery , .Temsconditions , .Termsofuse{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
   
-  .continar {
+  .container {
     flex: 1;
   }
 .titel-bedg{

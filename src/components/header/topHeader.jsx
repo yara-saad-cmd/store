@@ -21,7 +21,7 @@ function TopHeader() {
 
   return (
     <div className='tophedar'>
-        <div className='continar'>
+        <div className='container'>
            <div className="logo-img">
             <Link to="/" className='logo'><img src={logo} alt='logo'/> </Link>
 

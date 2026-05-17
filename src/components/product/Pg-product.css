@@ -356,7 +356,7 @@ height: 450px;
 /* .mor-product .cards-wrapper{
  width: 100%;
 }
-.mor-product .card .conttnt .text h3{
+.mor-product .card .content .text h3{
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; 

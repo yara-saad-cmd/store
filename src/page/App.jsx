@@ -18,8 +18,8 @@ import Pgcategory from "../page/pg-category/pg-category"
  import AboutUs from "../page/About-This-Site/AboutUs"
  import Privacypolicy from "../page/About-This-Site/privacy-policy"
 import Return from "../page/About-This-Site/Return"
- import SnippingDelivery from "../page/About-This-Site/SnippingDelivery"
-import Temsconditions from "../page/About-This-Site/tems-conditions"
+ import ShippingDelivery from "../page/About-This-Site/ShippingDelivery"
+import Temsconditions from "./About-This-Site/terms-conditions"
 import Termsofuse from "../page/About-This-Site/Termsofuse"
  import SearchPage from "../components/SearchPage/SearchPage"
 import LoadingBtmhedat from "../components/header/LoadingBtmhedat"
@@ -70,7 +70,7 @@ import LoadingBtmhedat from "../components/header/LoadingBtmhedat"
            <Route path="/AboutUs" element={<AboutUs/>}/>
            <Route path="/Privacypolicy" element={<Privacypolicy/>}/>
           <Route path="/Return" element={<Return/>}/>
-           <Route path="/SnippingDelivery" element={<SnippingDelivery/>}/>
+           <Route path="/ShippingDelivery" element={<ShippingDelivery/>}/>
            <Route path="/Temsconditions" element={<Temsconditions/>}/>
            <Route path="/Termsofuse" element={<Termsofuse/>}/>
           <Route path="/search-page" element={<SearchPage />} />

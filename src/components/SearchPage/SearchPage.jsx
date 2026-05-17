@@ -4,7 +4,7 @@ import "./SearchPage.css"
 function SareshPaege() {
   return (
     <div className='search-page'>
-       <div className="continar">
+       <div className="container">
         <Search/>
        </div>
         

@@ -5,7 +5,7 @@ import "./product.css"
 function ProductLayout({ title, children }) {
   return (
     <div className="product">
-      <div className="continar">
+      <div className="container">
         <div className="txet-product">
           <h3>{title}</h3>
         </div>

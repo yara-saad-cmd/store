@@ -16,7 +16,7 @@ function Payment() {
           <PageTransaction>
               <div className="pg-cash">
                   <div className="all-paymemt">
-                    <div className="continar">
+                    <div className="container">
 
                     <div className="pg-titel">
                       <PageLocation/>

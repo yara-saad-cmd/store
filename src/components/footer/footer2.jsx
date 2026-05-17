@@ -9,7 +9,7 @@
     function Footertwo() {
     return (
         <div className='footerTwo'>
-            <div className="continar">
+            <div className="container">
                 <div className="logo-and-icon"> 
 
                 
@@ -47,7 +47,7 @@
 
                     <div className="links">
                     
-                        <Link to="/SnippingDelivery">سياسة الشحن و التوصيل</Link>
+                        <Link to="/ShippingDelivery">سياسة الشحن و التوصيل</Link>
                         <Link to="/Return">سياست الاسترجاع و الاستبدال</Link>
 
                     </div>

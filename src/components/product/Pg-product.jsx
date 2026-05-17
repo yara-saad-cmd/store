@@ -70,7 +70,7 @@ function Pgproduct() {
       </header>
       <PageTransaction key={id}>
         <div className="pg-prosact">
-          <div className="continar">
+          <div className="container">
             <div className="prdact-arya">
             <ImgPgproduct key={prodact.id} prodact={prodact} />
 
@@ -91,10 +91,10 @@ function Pgproduct() {
                 .map((item) => {
                   const incart = cartitems.some((i) => i.id === item.id);
 
-                  const handladdtocart = () => {
+                  const handleAddToCart = () => {
                     AddToCart(item);
                     toast.success(
-                      <div className="masg">
+                      <div className="msg">
                         <strong>{item.title}</strong>
                         تم الاضافه الي العربه
                       </div>,
@@ -112,7 +112,7 @@ function Pgproduct() {
                           <img src={item.images[0]} alt={item.title} />
                         </div>
 
-                        <div className="conttnt">
+                        <div className="content">
                           <div className="text">
                             <h3>{item.title}</h3>
                           </div>
@@ -135,9 +135,9 @@ function Pgproduct() {
                          
                         </div>
                       </Link>
-                          <div className="ptm-card">
+                          <div className="btm-card">
 
-                            <div className="cart-icon" onClick={handladdtocart}>
+                            <div className="cart-icon" onClick={handleAddToCart}>
                               <TbShoppingCartPlus />
                             </div>
 

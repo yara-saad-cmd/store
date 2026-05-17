@@ -19,7 +19,7 @@ function OrdarDetails() {
           <PageLocation />
         </div>
         <div className="all-content">
-          <div className="continar">
+          <div className="container">
             <div className="detalis">
 
               <div className="data-ordar-and-user">

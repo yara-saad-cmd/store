@@ -10,12 +10,12 @@ function TitekPpgPprodact({prodact}) {
 
   const { cartitems = [], AddToCart ,AddToLike ,liketitems ,removelike} = useContext(ContxetCart)
 
-  const Handladdtocart = () => {
+  const HandleAddToCart = () => {
 
   
     AddToCart(prodact)
     toast.success(
-      <div className="masg">
+      <div className="msg">
       <strong>{prodact.title}</strong>
 
       تم الاضافه الي العربه  
@@ -58,7 +58,7 @@ function TitekPpgPprodact({prodact}) {
                    item={prodact}
                    inlike={inlike}
                    encart={encart} // مرر حالة الوجود في العربة
-                   Handladdtocart={Handladdtocart} // مرر دالة الإضافة هنا ✅
+                   HandleAddToCart={HandleAddToCart} // مرر دالة الإضافة هنا ✅
                    onLike={HandelAddToLike}
                    onSizeChange={onSizeChange}
                    onColorChange={onColorChange}
@@ -138,7 +138,7 @@ function TitekPpgPprodact({prodact}) {
 
                 
                 
-                <button className= {`ptm ${encart ? "encart" : ""}`} onClick={Handladdtocart}> <span>{ encart ? "تم الاضافه الي العربه":"اضف الي العربه"}</span> <TbShoppingCart  /></button>
+                <button className= {`ptm ${encart ? "encart" : ""}`} onClick={HandleAddToCart}> <span>{ encart ? "تم الاضافه الي العربه":"اضف الي العربه"}</span> <TbShoppingCart  /></button>
                 
                 <div className="icon-hert">
                   <div className={`like ${inlike ? "inlike" : ""}`} onClick={HandelAddToLike}>

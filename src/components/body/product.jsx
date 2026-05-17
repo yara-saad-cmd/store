@@ -45,10 +45,10 @@ function Product({ products, title, isLikePage = false }){
 
             const incart = cartitems.some(i => i.id === item.id);
 
-            const handladdtocart = () => {
+            const handleAddToCart = () => {
               AddToCart(item);
               toast.success(
-                <div className="masg">
+                <div className="msg">
                   <strong>{`تم اضافه ${item.title}الي العربه`}</strong>
                   
                 </div>,
@@ -81,7 +81,7 @@ function Product({ products, title, isLikePage = false }){
                     <img src={item.images && item.images[0]} alt={item.title} />
                   </div>
 
-                  <div className="conttnt">
+                  <div className="content">
                     <div className="text">
                       <h3>{item.title}</h3>
                     </div>
@@ -98,9 +98,9 @@ function Product({ products, title, isLikePage = false }){
                   </div>
                 </Link>
 
-                <div className="ptm-card">
+                <div className="btm-card">
                   
-                  <div className="icon" onClick={handladdtocart}>
+                  <div className="icon" onClick={handleAddToCart}>
                     <TbShoppingCartPlus />
                   </div>
 

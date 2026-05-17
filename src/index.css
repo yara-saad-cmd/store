@@ -49,13 +49,13 @@ input,button,select,textarea{
 a{
   text-decoration: none;
 }
-.continar{
+.container{
   width: 90%;
   margin: 0 auto;
   max-width: 1350px;
 }
 /* loding */
-.skiltone {
+.skeleton {
   background-color: #e0e0e0;
   background-image: linear-gradient(
     90deg,

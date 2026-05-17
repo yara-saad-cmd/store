@@ -17,7 +17,7 @@
   padding: 0;
 }
 
-.prodacr-contenr{
+.product-content{
   margin-bottom: 30px;
 }
 
@@ -72,7 +72,7 @@
   }
 
 
-   .loding-prodacr .prodacr-contenr .cards .skiltone.a , .skiltone.b{
+   .loading-product .product-content .cards .skeleton.a , .skeleton.b{
     display: none;
   } 
 
@@ -84,7 +84,7 @@
     max-width: calc(50% - 8px);
   }
 
-  .loding-prodacr .prodacr-contenr .cards .skiltone.a , .skiltone.b , .skiltone.c ,.skiltone.d{
+  .loading-product .product-content .cards .skeleton.a , .skeleton.b , .skeleton.c ,.skeleton.d{
     display: none;
     
   } 
@@ -99,7 +99,7 @@
    
   }
 
-  .loding-prodacr .prodacr-contenr .cards .skiltone.a , .skiltone.b , .skiltone.c ,.skiltone.d{
+  .loading-product .product-content .cards .skeleton.a , .skeleton.b , .skeleton.c ,.skeleton.d{
     display: none;
     
   } 
@@ -112,7 +112,7 @@
     max-width:100%;
    
   }
-  .loding-prodacr .prodacr-contenr .cards .skiltone.a , .skiltone.b , .skiltone.c ,.skiltone.d , .skiltone.e{
+  .loading-product .product-content .cards .skeleton.a , .skeleton.b , .skeleton.c ,.skeleton.d , .skeleton.e{
     display: none;
     
   }
@@ -125,20 +125,20 @@
 
 
 
- .card .ptm-card{
+ .card .btm-card{
   
   display: flex;
   justify-content: space-between;
   margin: 5px;
  }
- .card .ptm-card .in-cart span{
+ .card .btm-card .in-cart span{
   color: var(--text-color-1);
   display: flex;
   align-items: center;
   padding: 3px;
  
 }
-.card .ptm-card .in-cart span svg{
+.card .btm-card .in-cart span svg{
   margin-right: 5px;
   width: 15px;
   height: 15px;
@@ -179,12 +179,12 @@
 }
 
 
-.card .conttnt {
+.card .content {
   padding: 8px 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
- 
+ margin: 0 !important;;
 }
 
 
@@ -217,13 +217,13 @@
 }
 
 
-.card .conttnt h5 {
+.card .content h5 {
   font-size: 17px;
   font-weight: bold;
   margin: 0;
 }
 
-.card .conttnt h5 span {
+.card .content h5 span {
   font-size: 13px;
 }
 
@@ -258,18 +258,18 @@
 
 /*loding*/
 
-.loding-prodacr .prodacr-contenr h1{
+.loading-product .product-content h1{
   height: 36px;
   width: 200px;
   margin-bottom: 10px;
   border-radius: 5px;
   margin-right: 4px;
 }
-.loding-prodacr .prodacr-contenr .cards{
+.loading-product .product-content .cards{
   display: flex;
   justify-content: center;
 }
-.loding-prodacr .prodacr-contenr .cards p{
+.loading-product .product-content .cards p{
   width: 25%;
   height: 300px;
   border-radius: 5px;
@@ -286,7 +286,7 @@
 @media only screen and (min-width: 441px) and (max-width: 768px) {
  
  
-  .loding-prodacr .prodacr-contenr .cards p{
+  .loading-product .product-content .cards p{
     width: 50%;
   }
  
@@ -294,14 +294,14 @@
 
 
 @media only screen and (min-width: 391px) and  (max-width: 440px){
-  .loding-prodacr .prodacr-contenr .cards p{
+  .loading-product .product-content .cards p{
     width: 50%;
   }
  
 }
 
 @media only screen and  (max-width: 390px){
-  .loding-prodacr .prodacr-contenr .cards p{
+  .loading-product .product-content .cards p{
     width: 100%;
   }
  
@@ -309,7 +309,7 @@
 /*loding*/
 
 
-.masg{
+.msg{
   z-index: 10000;
 }
 .card {

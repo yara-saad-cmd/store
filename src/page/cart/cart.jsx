@@ -65,7 +65,7 @@ function Cart() {
 
         <div className="all-content">
    
-        <div className="continar">
+        <div className="container">
            <div className="pg-titel">
                     <PageLocation />
                   </div>

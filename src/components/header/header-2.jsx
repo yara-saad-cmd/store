@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 function HedarTwo() {
   return (
     <div className='herdartwo'>
-      <div className="continar">
+      <div className="container">
       <Link to="/" className='logo'><img src={logo} alt='logo'/> </Link>
 
       </div>

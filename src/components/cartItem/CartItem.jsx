@@ -16,7 +16,7 @@ export default function CartItem({
   onSizeChange,
   onColorChange,
   encart,
-  Handladdtocart,
+  HandleAddToCart,
   removelike, // قادمة من الـ Props
   AddToLike,  // قادمة من الـ Props
   toast,
@@ -62,7 +62,7 @@ export default function CartItem({
       {/* ====== صورة المنتج + الاسم ====== */}
       <div className="img-name">
         {(layout === "cart" || layout === "detalis-ordar") && (
-          <Link key={item.id} to={`/prodacts/${item.id}`}>
+          <Link key={item.id} to={`/products/${item.id}`}>
             <img src={item.images?.[0]} alt={item.title} />
           </Link>
         )}
@@ -167,7 +167,7 @@ export default function CartItem({
           <div className="ptm-and-icon">
             {layout === "prodact" && (
               <div className="con">
-                <button className={`ptm ${encart ? "encart" : ""}`} onClick={Handladdtocart}>
+                <button className={`ptm ${encart ? "encart" : ""}`} onClick={HandleAddToCart}>
                   <span>{encart ? "تم الاضافه الي العربه" : "اضف الي العربه"}</span>
                   <TbShoppingCart />
                 </button>

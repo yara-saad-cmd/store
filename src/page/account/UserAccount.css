@@ -85,7 +85,7 @@
     font-size: 17px;
     font-weight: 500;
 }
-.pg-account .pagse .mor-pedges .pg-user , .pg-favorite , .pg-cart-icon , .masge{
+.pg-account .pagse .mor-pedges .pg-user , .pg-favorite , .pg-cart-icon , .msge{
    cursor: pointer;
     display: flex;
     align-items: center;
@@ -97,7 +97,7 @@
 .pg-user:hover,
 .pg-favorite:hover,
 .pg-cart-icon:hover,
-.masge:hover {
+.msge:hover {
     color:var(--min-color)
 }
 
@@ -112,7 +112,7 @@
         margin: 10px 0 10px 0;
     }
 
-    .continar
+    .container
         {
             display: flex;
                 flex-direction: column-reverse;  
