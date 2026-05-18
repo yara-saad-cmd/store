@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { ContxetCart } from '../context/contextCart';
+import { ContextCart } from '../context/contextCart';
 import { Link } from 'react-router-dom';
 import "./invoice.css"
 import CartItem from '../cartItem/CartItem';
@@ -9,7 +9,7 @@ function Invoice({layout}) {
    
 
 
-    const {cartitems} = useContext(ContxetCart);
+    const {cartitems} = useContext(ContextCart);
     const total = cartitems.reduce(
         (acc, itme) => acc + itme.price * itme.quantity,
         0

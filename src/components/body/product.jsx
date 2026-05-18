@@ -5,7 +5,7 @@ import ProductLayout from './ProductLayout'
 import { IoIosStar } from "react-icons/io";
 import { TbShoppingCartPlus } from "react-icons/tb";
 import { Link } from 'react-router-dom';
-import { ContxetCart } from "../context/contextcart"
+import { ContextCart } from "../context/contextcart"
 import { FaCheck } from "react-icons/fa6";
 import toast from 'react-hot-toast';
 
@@ -20,7 +20,7 @@ function Product({ products, title, isLikePage = false }){
 
   
 
-  const { cartitems = [], AddToCart ,removelike } = useContext(ContxetCart);
+  const { cartitems = [], AddToCart ,removelike } = useContext(ContextCart);
 
 
   const [visibleCount, setVisibleCount] = useState(20);

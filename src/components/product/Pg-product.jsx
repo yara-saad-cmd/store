@@ -8,7 +8,7 @@ import Loding from "./loding-pg-product";
 import Prsdactloding from "../body/product-loading";
 import BtmHeader from "../header/btmHeader";
 import TopHeader from "../header/topHeader";
-import { ContxetCart } from "../context/contextcart";
+import { ContextCart } from "../context/contextcart";
 import { FaCheck } from "react-icons/fa6";
 import toast from "react-hot-toast";
 import ImgPgproduct from "./img-pg-product";
@@ -27,9 +27,9 @@ function Pgproduct() {
   const [visibleCount, setVisibleCount] = useState(12);
 
   // const { cartitems = [], AddToCart } = useContext(
-  //   ContxetCart || "المنتج غير متوفر"
+  //   ContextCart || "المنتج غير متوفر"
   // );
-  const { cartitems, AddToCart } = useContext(ContxetCart);
+  const { cartitems, AddToCart } = useContext(ContextCart);
 
   useEffect(() => {
     const fetchProdact = async () => {

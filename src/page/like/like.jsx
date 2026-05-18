@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import TopHeader from '../../components/header/topHeader'
 import BtmHeader from '../../components/header/btmHeader'
-import { ContxetCart } from '../../components/context/contextcart'
+import { ContextCart } from '../../components/context/contextcart'
 import PageTransaction from '../../components/pageTransaction'
 import Product from '../../components/body/product'
 import "./like.css"
@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 import Footer from '../../components/footer/footer'
 function Like() {
 
-  const {liketitems} = useContext(ContxetCart)
+  const {likeItems} = useContext(ContextCart)
   return (
     
     <div className="pg-like">
@@ -25,7 +25,7 @@ function Like() {
           <div className="fivrt-prudact">  
 
 
-                {liketitems.length === 0 ? (
+                {likeItems.length === 0 ? (
                   <div className="ampty">
                     <img src={likeimg} alt='img nun'/>
                     <p>لم يتم اضافة منتجات الي قائمةالمفضل</p>
@@ -42,9 +42,9 @@ function Like() {
                      </div>
 
                        <Product 
-                  products={liketitems}
+                  products={likeItems}
                   isLikePage={true}
-                  title={`المنتجات (${liketitems.length})`}
+                  title={`المنتجات (${likeItems.length})`}
                 />
 
                 </div>

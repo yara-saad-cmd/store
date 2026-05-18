@@ -6,10 +6,10 @@ import Invoice from '../../components/invoice/invoice'
 import "./OrderDetails.css"
 import PageTransaction from '../../components/pageTransaction'
 import CartItem from '../../components/cartItem/CartItem'
-import { ContxetCart } from '../../components/context/contextcart'
+import { ContextCart } from '../../components/context/contextcart'
 import Footer from '../../components/footer/footer'
 function OrdarDetails() {
-  const { cartitems } = useContext(ContxetCart);
+  const { cartitems } = useContext(ContextCart);
   return (
     <PageTransaction>
 

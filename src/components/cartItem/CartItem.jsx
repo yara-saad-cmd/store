@@ -4,7 +4,7 @@ import { FaRegTrashCan } from "react-icons/fa6";
 import { FiHeart } from "react-icons/fi";
 import { TbShoppingCart } from "react-icons/tb"; // تم إضافة الأيقونة
 import { Link } from "react-router-dom";
-import { ContxetCart } from "../context/contextcart";
+import { ContextCart } from "../context/contextcart";
 
 export default function CartItem({
   item,
@@ -27,9 +27,9 @@ export default function CartItem({
     cartitems = [], 
     AddToCart, 
     AddToLike: AddToLikeCtx, 
-    liketitems, 
+    likeItems, 
     removelike: removelikeCtx 
-  } = useContext(ContxetCart);
+  } = useContext(ContextCart);
 
   // ====== الاختيار الافتراضي للمقاس واللون ======
   const defaultSize = item.size || item.availableSizes?.[0] || "S";
@@ -68,7 +68,7 @@ export default function CartItem({
         )}
       </div>
 
-      <div className="contnt">
+      <div className="Content">
         <div className="prudact-detalis">
           <h3 className="name-prudact">{item.title}</h3>
           

@@ -6,7 +6,7 @@ function ProductLayout({ title, children }) {
   return (
     <div className="product">
       <div className="container">
-        <div className="txet-product">
+        <div className="textproduct">
           <h3>{title}</h3>
         </div>
         <div className="cards-wrapper">
@@ -17,4 +17,4 @@ function ProductLayout({ title, children }) {
   )
 }
 
-export default ProductLayout
+export default ProductLayout;

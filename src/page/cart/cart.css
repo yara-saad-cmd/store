@@ -132,13 +132,13 @@
     position: absolute;
     background-color:var(--white-color);
 }
-.pg-cart .cart .item-cart .contnt{
+.pg-cart .cart .item-cart .Content{
     margin: 0 15px 0 15px;
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
-.pg-cart .cart .contnt .name-prudact{
+.pg-cart .cart .Content .name-prudact{
     max-width: 200px;
     white-space: nowrap;
     font-size: 20px;
@@ -147,7 +147,7 @@
     background-color:var(--white-color);
     
 }
- .pg-cart .cart .itme-cart .contnt .size select{
+ .pg-cart .cart .itme-cart .Content .size select{
     width: 80px;
     margin: 9px 0 ;
     padding: 3px 5px;
@@ -156,10 +156,10 @@
     border-radius: 20px;
     background-color: var(--background2)
 } 
-.pg-cart .cart .itme-cart .contnt .size option{
+.pg-cart .cart .itme-cart .Content .size option{
     background-color: var(--background);
 }
-.pg-cart .cart .item-cart .contnt .price{
+.pg-cart .cart .item-cart .Content .price{
     background-color:var(--white-color);
     padding: 3px 0;
     font-size: 16px;
@@ -281,7 +281,7 @@
  }
  /*no-prodact*/
  @media only screen and (min-width: 999px) and (max-width: 1200px){
-    .pg-cart .cart .contnt .name-prudact{
+    .pg-cart .cart .Content .name-prudact{
         max-width: 150px;
     }
  }  
@@ -302,7 +302,7 @@
         position: static; /* إلغاء التثبيت في الموبايل لسهولة التصفح */
         margin-top: 20px;
     }
-    .pg-cart .cart .contnt .name-prudact{
+    .pg-cart .cart .Content .name-prudact{
         max-width: 300px;
     }
 }
@@ -311,7 +311,7 @@
 
 
 @media (max-width: 700px){
-    .pg-cart .cart .contnt .name-prudact{
+    .pg-cart .cart .Content .name-prudact{
         max-width: 100px;
     }
     
@@ -319,7 +319,7 @@
 
 }
 @media (max-width: 535px){
-    .pg-cart .cart .item-cart .contnt{
+    .pg-cart .cart .item-cart .Content{
         flex-direction: column;
 
        margin: 0;

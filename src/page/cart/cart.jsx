@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import HedarTwo from "../../components/header/header-2";
 import "./cart.css";
-import { ContxetCart } from "../../components//context/contextcart";
+import { ContextCart } from "../../components//context/contextcart";
 import { FaRegHeart } from "react-icons/fa";import { FaHeart, FaRegTrashCan } from "react-icons/fa6";
 import PageTransaction from "../../components/pageTransaction";
 import toast from "react-hot-toast"; 
@@ -17,17 +17,17 @@ function Cart() {
     increassQuntity,
     dncreassQuntity,
     delet,
-    liketitems,
+    likeItems,
     AddToLike,
     removelike,
     onColorChange,
     onSizeChange,
-  } = useContext(ContxetCart);
+  } = useContext(ContextCart);
 
 
  
   const HandelAddToLike = (item) => {
-    const inlike = liketitems.some((i) => i.id === item.id);
+    const inlike = likeItems.some((i) => i.id === item.id);
 
     if (inlike) {
      
@@ -86,7 +86,7 @@ function Cart() {
   
                   <div className="prdact">
                     {cartitems.map((item) => {
-                       const inlike = liketitems.some((i) => i.id === item.id);
+                       const inlike = likeItems.some((i) => i.id === item.id);
                       return (
                         <CartItem
                           key={item.id}

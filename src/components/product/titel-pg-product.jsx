@@ -1,14 +1,14 @@
 import React, { useContext } from 'react'
 import { FaShare } from 'react-icons/fa'
 import { FiHeart } from 'react-icons/fi'
-import { ContxetCart } from '../context/contextcart'
+import { ContextCart } from '../context/contextcart'
 import { TbShoppingCart } from 'react-icons/tb'
 import toast from 'react-hot-toast'
 import CartItem from '../cartItem/CartItem'
 
 function TitekPpgPprodact({prodact}) {
 
-  const { cartitems = [], AddToCart ,AddToLike ,liketitems ,removelike} = useContext(ContxetCart)
+  const { cartitems = [], AddToCart ,AddToLike ,likeItems ,removelike} = useContext(ContextCart)
 
   const HandleAddToCart = () => {
 
@@ -28,7 +28,7 @@ function TitekPpgPprodact({prodact}) {
  
 
   const encart = cartitems.some(i => i.id === prodact.id)
-  const inlike = liketitems.some(i => i.id === prodact.id)
+  const inlike = likeItems.some(i => i.id === prodact.id)
 
 
   const HandelAddToLike = ()=>{
@@ -44,7 +44,7 @@ function TitekPpgPprodact({prodact}) {
   const {
     onColorChange,
     onSizeChange,
-  } = useContext(ContxetCart);
+  } = useContext(ContextCart);
 
  
   

@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 function Slider() {
   return (
 
-<div className="slidr">
+<div className="slider">
     
 
 
@@ -30,26 +30,26 @@ function Slider() {
     <SwiperSlide >
 
 
-      <div className="contnt">
+      <div className="Content">
 
       <h4>عروض و خصمات</h4>
       <p>عروض او خصمات او ترويج مننتج معين</p>
-      <Link to="/" className='ptmm'>تسوق الان</Link>
+      <Link to="/" className='btn'>تسوق الان</Link>
       </div>
-      <img src='/src/img/slayd1.jpg' alt='img non'/>
+      <img src='/src/img/slayd1.jpg' alt='slide image'/>
 
     </SwiperSlide>
 
     <SwiperSlide>
 
 
-      <div className="contnt">
+      <div className="Content">
 
       <h4>عروض و خصمات</h4>
       <p>عروض او خصمات او ترويج مننتج معين</p>
-      <Link to="/" className='ptmm'>تسوق الان</Link>
+      <Link to="/" className='btn'>تسوق الان</Link>
       </div>
-      <img src='/src/img/slayd2.jpg' alt='img non'/>
+      <img src='/src/img/slayd2.jpg' alt='slide image'/>
 
 
     </SwiperSlide>
@@ -57,13 +57,13 @@ function Slider() {
     <SwiperSlide>
 
 
-      <div className="contnt">
+      <div className="Content">
 
       <h4>عروض و خصمات</h4>
       <p>عروض او خصمات او ترويج مننتج معين</p>
-      <Link to="/" className='ptmm'>تسوق الان</Link>
+      <Link to="/" className='btn'>تسوق الان</Link>
       </div>
-     <img src='/src/img/slayd3.jpg' alt='img non'/>
+     <img src='/src/img/slayd3.jpg' alt='slide image'/>
 
     </SwiperSlide>
 

@@ -1,30 +1,30 @@
 import React , { createContext,useEffect,useState} from 'react'
 
-export const ContxetCart = createContext()
+export const ContextCart = createContext()
 
 
 export default function Cartprovider({children}) {
 
 //like ----------------------------------------
-const [liketitems ,setliketitems] = useState(()=>{
-    const savelike = localStorage.getItem("liketitems")
+const [likeItems ,setlikeItems] = useState(()=>{
+    const savelike = localStorage.getItem("likeItems")
     return savelike ? JSON.parse(savelike):[]
 })
 
 
 const AddToLike = (product) => {
-    setliketitems((prev) => {
+    setlikeItems((prev) => {
         if(prev.some((i)=> i.id === product.id)) return prev
         return[...prev, product]
    } )
 }
 useEffect(()=>{
-    localStorage.setItem("liketitems" , JSON.stringify(liketitems))
-},[liketitems])
+    localStorage.setItem("likeItems" , JSON.stringify(likeItems))
+},[likeItems])
 
 
 const removelike = (id) => {
-    setliketitems((prev) => prev.filter((i) => i.id !== id));
+    setlikeItems((prev) => prev.filter((i) => i.id !== id));
   };
 
 
@@ -99,9 +99,9 @@ const delet = (id) =>{
     /*اللون - و المقاس */
 
   return (
-    <ContxetCart.Provider value={{cartitems , AddToCart ,increassQuntity ,dncreassQuntity ,delet ,liketitems ,AddToLike,removelike,onSizeChange,onColorChange}}>
+    <ContextCart.Provider value={{cartitems , AddToCart ,increassQuntity ,dncreassQuntity ,delet ,likeItems ,AddToLike,removelike,onSizeChange,onColorChange}}>
         {children}
-    </ContxetCart.Provider>
+    </ContextCart.Provider>
   
   )
 }

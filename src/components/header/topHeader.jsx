@@ -5,7 +5,7 @@ import { FiHeart } from "react-icons/fi";
 import { TbShoppingCart } from "react-icons/tb";
 import { LuUserRound } from "react-icons/lu";
 import "./header.css"
-import {ContxetCart} from "../context/contextcart"
+import {ContextCart} from "../context/contextcart"
 import Search from './search';
 
 
@@ -14,7 +14,7 @@ import { IoSearch } from 'react-icons/io5';
 
 function TopHeader() {
 
-  const {cartitems,liketitems} = useContext(ContxetCart)
+  const {cartitems,likeItems} = useContext(ContextCart)
 
   const navigate = useNavigate();
 
@@ -42,7 +42,7 @@ function TopHeader() {
 
                <Link to="/like"> 
                <FiHeart />
-                <span className='count'>{liketitems.length}</span>
+                <span className='count'>{likeItems.length}</span>
               </Link>
               
               </div>
