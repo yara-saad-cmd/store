@@ -1,11 +1,11 @@
-import { hgroup } from 'framer-motion/client'
+
 import React, { useEffect, useState } from 'react'
 import { IoSearchOutline, IoTimeOutline } from 'react-icons/io5'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 function Search() {
     const [search, setsearch] = useState("")
-    const [suggesions, setsuggesions] = useState([]) // هنا هنخزن كلمات مش منتجات
+    const [suggestions, setsuggestions] = useState([]) // هنا هنخزن كلمات مش منتجات
     const [history, sethistory] = useState([])
     const [showDropdown, setShowDropdown] = useState(false)
 
@@ -38,7 +38,7 @@ const executeSearch = (term) => {
         navigat(`/search?query=${encodeURIComponent(trimmedTerm)}`);
     }
 };
-    const handlsubnt = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         executeSearch(search);
     }
@@ -58,10 +58,10 @@ const executeSearch = (term) => {
                         keywords.add(shortTitle.toLowerCase());
                     });
                     
-                    setsuggesions(Array.from(keywords).slice(0, 6));
+                    setsuggestions(Array.from(keywords).slice(0, 6));
                 }
             } catch (error) {
-                setsuggesions([]);
+                setsuggestions([]);
             }
         };
 
@@ -69,7 +69,7 @@ const executeSearch = (term) => {
             if (search.trim() !== "") {
                 fetchSuggestions();
             } else {
-                setsuggesions([]);
+                setsuggestions([]);
             }
         }, 300);
 
@@ -82,7 +82,7 @@ const executeSearch = (term) => {
 
     return (
         <div className='search desktop-search' onBlur={() => setTimeout(() => setShowDropdown(false), 200)}>
-            <form onSubmit={handlsubnt} className='search-pox'>
+            <form onSubmit={handleSubmit} className='search-box'>
                 <button type='submit'><IoSearchOutline /></button>
                 <input 
                     type='text' 
@@ -99,8 +99,8 @@ const executeSearch = (term) => {
                 />
             </form>
 
-            {showDropdown && (suggesions.length > 0 || (search === "" && history.length > 0)) && (
-                <ul className="suggesions">
+            {showDropdown && (suggestions.length > 0 || (search === "" && history.length > 0)) && (
+                <ul className="suggestions">
                     {/* سجل البحث الشخصي */}
                     {search === "" && history.map((item, index) => (
                         <li key={`hist-${index}`} onMouseDown={() => executeSearch(item)}>
@@ -109,7 +109,7 @@ const executeSearch = (term) => {
                     ))}
 
                     {/* مقترحات كلمات البحث الشائعة (مستخرجة من البيانات) */}
-                    {search !== "" && suggesions.map((word, index) => (
+                    {search !== "" && suggestions.map((word, index) => (
                         <li key={`word-${index}`} onMouseDown={() => executeSearch(word)}>
                             <IoSearchOutline style={{fontSize: '0.9em', opacity: 0.6}} /> {word}
                         </li>
@@ -137,14 +137,14 @@ export default Search;
 
 //     const [search ,setsearch] = useState("")
 
-//     const [suggesions ,setsuggesions] = useState([])
+//     const [suggestions ,setsuggestions] = useState([])
 
 //     const locachan = useLocation()
 
 //     const navigat = useNavigate()
 
 
-//     const handlsubnt = (e) => {
+//     const handleSubmit = (e) => {
 //         e.preventDefault()
 //         if (search.trim()){
 //              navigat(`/search?query=${encodeURIComponent(search.trim())}`)
@@ -157,10 +157,10 @@ export default Search;
 //         try {
 //           const res = await fetch(`https://dummyjson.com/produts/search?q=${search}`);
 //           const data = await res.json();
-//           setsuggesions(data.produts.slice(0, 5) || []);
+//           setsuggestions(data.produts.slice(0, 5) || []);
 //         } catch (error) {
 //           console.error("search error", error);
-//           setsuggesions([]);
+//           setsuggestions([]);
 //         }
 //       };
     
@@ -169,7 +169,7 @@ export default Search;
 //         if (search.trim() !== "") {
 //           fetchSuggestions();
 //         } else {
-//           setsuggesions([]);
+//           setsuggestions([]);
 //         }
 //       }, 300);
     
@@ -180,22 +180,22 @@ export default Search;
 
   
 //     useEffect(()=>{
-//       setsuggesions([]);
+//       setsuggestions([]);
 //     },[locachan])
 
 //   return (
 //     <div className='search'>
-//         <form onSubmit={handlsubnt} className='search-pox'>
+//         <form onSubmit={handleSubmit} className='search-box'>
 
 //             <button type='submit' ><IoSearchOutline /></button>
 //             <input type='text' name='search' id='search' placeholder='ما المنتج اللني تبحث' onChange={(e) => setsearch(e.target.value)} autoComplete='off'/>
 
 //         </form>
-//         {suggesions.length > 0 && (
+//         {suggestions.length > 0 && (
 
-//   <ul className="suggesions">
+//   <ul className="suggestions">
 
-//     {suggesions.map((item) => (
+//     {suggestions.map((item) => (
 
 //       <li key={item.id}>
 

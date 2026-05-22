@@ -11,7 +11,7 @@
     --text-white:white;
   }
    */
-.herdartwo {
+.header-two {
     background-color:var(--white-color);
     padding: 7px 0;
     position: fixed;
@@ -19,7 +19,7 @@
     width: 100%;
     z-index: 1000;
 }
-.herdartwo .logo{
+.header-two .logo{
     display: flex;
     align-items: center;
     width: 130px;

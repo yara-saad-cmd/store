@@ -22,7 +22,7 @@ import Return from "../page/About-This-Site/Return"
 import Temsconditions from "./About-This-Site/terms-conditions"
 import Termsofuse from "../page/About-This-Site/Termsofuse"
  import SearchPage from "../components/SearchPage/SearchPage"
-import LoadingBtmhedat from "../components/header/LoadingBtmhedat"
+import LoadingBtmHeader from "../components/header/LoadingBtmhader"
 
  function App() {
  
@@ -59,7 +59,7 @@ import LoadingBtmhedat from "../components/header/LoadingBtmhedat"
              <Route path="/cart" element={<Cart/>}/>
           <Route path="/payment" element={<Payment/>}/>
             <Route path="/OrderDone" element={<OrderDone/>}/>
-         <Route path="/useraccount" element={<UserAccount/>}/>
+         <Route path="/user-account" element={<UserAccount/>}/>
          
            <Route path="/search" element={<Pgsearch/>}/>
           
@@ -74,7 +74,7 @@ import LoadingBtmhedat from "../components/header/LoadingBtmhedat"
            <Route path="/Temsconditions" element={<Temsconditions/>}/>
            <Route path="/Termsofuse" element={<Termsofuse/>}/>
           <Route path="/search-page" element={<SearchPage />} />
-           <Route path="/LoadingBtmhedat" element={<LoadingBtmhedat />} />
+           <Route path="/LoadingBtmHeader" element={<LoadingBtmHeader />} />
            
          
          </Routes >

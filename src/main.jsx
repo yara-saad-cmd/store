@@ -5,14 +5,14 @@ import App from './page/App'
 import React from 'react'
 import ReactDOM from "react-dom/client"
 import { BrowserRouter } from 'react-router-dom'
-import Cartprovider from './components/context/contextcart'
+import CartProvider from './components/context/contextcart'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter basename='/'>
-   <Cartprovider>
+   <CartProvider>
     <App/>
-   </Cartprovider>
+   </CartProvider>
    </BrowserRouter>
     
   </React.StrictMode>

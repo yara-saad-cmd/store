@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import PageLocation from '../../components/pageLocation'
-import HedarTwo from '../../components/header/header-2'
+import HeaderTwo from '../../components/header/header-2'
 import UserDataForm from "../../components/userdata/UserData"
 import Invoice from '../../components/invoice/invoice'
 import "./OrderDetails.css"
@@ -14,7 +14,7 @@ function OrdarDetails() {
     <PageTransaction>
 
       <div className="pg-ordar-detalis">
-        <HedarTwo />
+        <HeaderTwo />
         <div className="pg-titel">
           <PageLocation />
         </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import PageLocation from '../../components/pageLocation'
-import HedarTwo from '../../components/header/header-2'
+import HeaderTwo from '../../components/header/header-2'
 import "./payment.css"
 
 import imgVISA from "../../img/1764260377009.png"
@@ -12,7 +12,7 @@ import Footer from '../../components/footer/footer'
 function Payment() {
   return (
     <>
-          <HedarTwo />
+          <HeaderTwo />
           <PageTransaction>
               <div className="pg-cash">
                   <div className="all-paymemt">

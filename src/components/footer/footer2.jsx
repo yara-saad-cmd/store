@@ -30,7 +30,7 @@
 
                      <div className="legal">
 
-                     <h4 className='titel'>القوانين</h4>
+                     <h4 className='title'>القوانين</h4>
 
                     <div className="links">
                         <Link to="/Privacypolicy">سياست الخصوصيه</Link>
@@ -41,9 +41,9 @@
 
                 </div>
 
-                <div className="snipping-and-ordars">
+                <div className="shipping-and-orders">
 
-                    <h4 className='titel'>الشحن و الطلبات</h4>
+                    <h4 className='title'>الشحن و الطلبات</h4>
 
                     <div className="links">
                     
@@ -56,7 +56,7 @@
 
                 <div className="more-Links">
 
-                    <h4 className='titel'>اخر</h4>
+                    <h4 className='title'>اخر</h4>
 
                     <div className="links">
                     

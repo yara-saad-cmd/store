@@ -2,7 +2,7 @@ import React from 'react'
 import "./orderDone.css"
 import { Link } from 'react-router-dom'
 import { AiFillCheckCircle } from 'react-icons/ai'
-import HedarTwo from '../../components/header/header-2'
+import HeaderTwo from '../../components/header/header-2'
 import PageTransaction from '../../components/pageTransaction'
 import Footer from '../../components/footer/footer'
 
@@ -12,7 +12,7 @@ function OrderDone() {
   return (
     <>
     <div className='pg-orderdane'>
-        <HedarTwo/>
+        <HeaderTwo/>
         <PageTransaction>
 
            <div className="icon-and-content">

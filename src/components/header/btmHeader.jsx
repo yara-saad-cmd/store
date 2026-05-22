@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import LoadingBtmhedat from './LoadingBtmhedat';
+import LoadingBtmHeader from './LoadingBtmhader';
 
 function BtmHeader() {
-  const [categorys, setCategorys] = useState([]);
+  const [categories, setCategorys] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -20,18 +20,24 @@ function BtmHeader() {
   }, []);
 
   return (
-    <div className="btm-hedar">
+    <div className="btm-header">
       <div className="container">
-        <nav className='ptm-nav'>
+        <nav className='btm-nav'>
           
           {loading ? (
-           <LoadingBtmhedat />
+           <LoadingBtmHeader />
           ) : (
             /* هنا شيلنا الـ <ul> ورجعنا الـ map مباشرة زي كودك القديم */
-            categorys.map((category) => (
-              <li key={category.slug}>
-                <Link to={`/category/${category.slug}`}> {category.name} </Link>
-              </li>
+            categories.map((category) => (
+
+             
+                
+             
+                <span  key={category.slug}>
+                     <Link to={`/category/${category.slug}`}> {category.name} </Link>
+                </span>
+             
+             
             ))
           )}
 

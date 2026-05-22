@@ -37,7 +37,7 @@ function UserAccount() {
 
                       <div className="mor-pedges">
 
-                      <Link to="/useraccount" className='pg-user'> <LuUserRound /> <span>الملف الشخصي</span></Link>
+                      <Link to="/user-account" className='pg-user'> <LuUserRound /> <span>الملف الشخصي</span></Link>
                       <Link to="/like" className='pg-favorite'>  <FiHeart /><span>قائمة المفضل</span></Link>
                       <Link to="/cart" className='pg-cart-icon'>  <TbShoppingCart /><span>سلة المشتريات</span></Link>
                       <p className='msge'><FaWhatsapp/><span>الرسائل</span></p>

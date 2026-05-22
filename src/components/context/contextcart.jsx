@@ -3,7 +3,7 @@ import React , { createContext,useEffect,useState} from 'react'
 export const ContextCart = createContext()
 
 
-export default function Cartprovider({children}) {
+export default function CartProvider({children}) {
 
 //like ----------------------------------------
 const [likeItems ,setlikeItems] = useState(()=>{
@@ -46,16 +46,16 @@ const removelike = (id) => {
 
     //+ item
 
-    const increassQuntity = (id) =>{
-        setcartitems(prevItme => prevItme.map(item =>
+    const increaseQuantity = (id) =>{
+        setcartitems(prevItems => prevItems.map(item =>
             item.id === id ? {...item ,quantity : item.quantity + 1} : item
         )) 
     }
 
 
 //-
-    const dncreassQuntity = (id) =>{
-        setcartitems(prevItme => prevItme.map(item =>
+    const decreaseQuantity = (id) =>{
+        setcartitems(prevItems => prevItems.map(item =>
             item.id === id  && item.quantity > 1 ? {...item ,quantity : item.quantity - 1} : item
         )) 
     }
@@ -63,7 +63,7 @@ const removelike = (id) => {
 //delet
 
 const delet = (id) =>{
-    setcartitems(priveitem => priveitem.filter(itme => itme.id !== id))
+    setcartitems(prevItems => prevItems.filter(itme => itme.id !== id))
 }
 
 
@@ -71,7 +71,7 @@ const delet = (id) =>{
 
 
     const AddToCart = (item)=>{
-        setcartitems ((priveitem)=>[...priveitem ,{...item , quantity : 1}])
+        setcartitems ((prevItems)=>[...prevItems ,{...item , quantity : 1}])
     }
 
     useEffect (()=>{
@@ -99,7 +99,7 @@ const delet = (id) =>{
     /*اللون - و المقاس */
 
   return (
-    <ContextCart.Provider value={{cartitems , AddToCart ,increassQuntity ,dncreassQuntity ,delet ,likeItems ,AddToLike,removelike,onSizeChange,onColorChange}}>
+    <ContextCart.Provider value={{cartitems , AddToCart ,increaseQuantity ,decreaseQuantity ,delet ,likeItems ,AddToLike,removelike,onSizeChange,onColorChange}}>
         {children}
     </ContextCart.Provider>
   

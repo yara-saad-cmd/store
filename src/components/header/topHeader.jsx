@@ -20,7 +20,7 @@ function TopHeader() {
 
 
   return (
-    <div className='tophedar'>
+    <div className='top-header'>
         <div className='container'>
            <div className="logo-img">
             <Link to="/" className='logo'><img src={logo} alt='logo'/> </Link>
@@ -30,7 +30,7 @@ function TopHeader() {
            <Search/>
            
 
-            <div className="icon-hedar">
+            <div className="icon-header">
 
               <div className="icon-1 mobile-search-icon" onClick={() => navigate("/search-page")}>
                 <IoSearch />
@@ -57,7 +57,7 @@ function TopHeader() {
               </div>
 
               <div className="icon-1">
-                <Link to="/useraccount" className='user-acount'>  <LuUserRound /> </Link>
+                <Link to="/user-account" className='user-account'>  <LuUserRound /> </Link>
              
                  
               </div>

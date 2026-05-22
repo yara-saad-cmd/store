@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import HedarTwo from "../../components/header/header-2";
+import HeaderTwo from "../../components/header/header-2";
 import "./cart.css";
 import { ContextCart } from "../../components//context/contextcart";
 import { FaRegHeart } from "react-icons/fa";import { FaHeart, FaRegTrashCan } from "react-icons/fa6";
@@ -14,8 +14,8 @@ function Cart() {
  
   const {
     cartitems,
-    increassQuntity,
-    dncreassQuntity,
+    increaseQuantity,
+    decreaseQuantity,
     delet,
     likeItems,
     AddToLike,
@@ -46,7 +46,7 @@ function Cart() {
     
     <div className="pg-cart">
     <div className="hedar">
-      <HedarTwo />
+      <HeaderTwo />
     </div>
 
      <PageTransaction>
@@ -94,8 +94,8 @@ function Cart() {
                           inlike={inlike}
                           onLike={HandelAddToLike}
                           onDelete={delet}
-                          onIncrease={increassQuntity}
-                          onDecrease={dncreassQuntity}
+                          onIncrease={increaseQuantity}
+                          onDecrease={decreaseQuantity}
                           onSizeChange={onSizeChange}
                           onColorChange={onColorChange}
                           layout="cart"

@@ -25,10 +25,10 @@ hedar{
   background-color: var(--white-color);
 
 }
-.tophedar{
+.top-header{
     background-color: var(--white-color);
 }
-.tophedar .container{
+.top-header .container{
     display: flex;
     align-items: center;
 
@@ -39,7 +39,7 @@ hedar{
     /* flex-direction: row-reverse; */
     
 }
-.tophedar .logo-img{
+.top-header .logo-img{
     height: 100%;
     display: flex;
     justify-content: center;
@@ -79,11 +79,11 @@ hedar{
 
 
 
-.tophedar .search{
+.top-header .search{
   width: 80%;
   margin: 0 10px 0 10px;
 }
-.tophedar .search-pox{
+.top-header .search-box{
     width: 100%;
     border-radius: 50px;
     background-color: var(--background);
@@ -91,7 +91,7 @@ hedar{
     align-items: center;
   
 }
-.tophedar .search-pox input{
+.top-header .search-box input{
     height: 33px;
     width: 100%;
     padding: 5px 15px 5px 20px;
@@ -104,7 +104,7 @@ hedar{
      align-items: center;
    
 }
-.tophedar .search-pox button{
+.top-header .search-box button{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -118,23 +118,23 @@ hedar{
   
 }
 
-.tophedar  .icon-hedar{
+.top-header  .icon-header{
     display: flex;
     gap: 30px;
     display: flex;
     align-items: center;
 }
-.tophedar  .icon-hedar .icon-1{
+.top-header  .icon-header .icon-1{
     position: relative;
     cursor: pointer;
 }
-.tophedar .icon-hedar .icon-1 svg{
+.top-header .icon-header .icon-1 svg{
    font-size: 20px;
    color: var(--text-color-2);
    
   
 }
-.tophedar .icon-hedar .icon-1 .count{
+.top-header .icon-header .icon-1 .count{
     position: absolute;
     bottom: 5px;
     background-color: var(--min-color);
@@ -176,15 +176,15 @@ hedar{
 /*top-hedar*/
 
 
-/*btm-hedar*/
+/*btm-header*/
 
-  .btm-hedar {
+  .btm-header {
     background-color: var(--white-color);
     border-top: 1px solid var(--border-color);
    
   }
   
-  .btm-hedar .container {
+  .btm-header .container {
     overflow-x: auto;       
     overflow-y: hidden;
     white-space: nowrap;
@@ -195,37 +195,37 @@ hedar{
     scrollbar-width: none; 
   }
   
-  .btm-hedar .container::-webkit-scrollbar {
+  .btm-header .container::-webkit-scrollbar {
     height: 6px;
     background: transparent; 
   }
   
-  .btm-hedar .container::-webkit-scrollbar-thumb {
+  .btm-header .container::-webkit-scrollbar-thumb {
     background-color: transparent; 
     border-radius: 3px;
     transition: background-color 0.3s;
   }
   
   
-  .btm-hedar .container:hover::-webkit-scrollbar-thumb,
-  .btm-hedar .container:hover::-webkit-scrollbar-track {
+  .btm-header .container:hover::-webkit-scrollbar-thumb,
+  .btm-header .container:hover::-webkit-scrollbar-track {
     background-color: #ffffff; 
    
   }
   
-  .btm-hedar .container:hover::-webkit-scrollbar-thumb {
+  .btm-header .container:hover::-webkit-scrollbar-thumb {
     background-color: #7a7a7a; 
   }
   
   
-  .btm-hedar .container:hover {
+  .btm-header .container:hover {
     scrollbar-width: thin;
     scrollbar-color: var(--border-color) var(--background2);
     
   }
   
  
-  .btm-hedar .container .ptm-nav {
+  .btm-header .container .btm-nav {
     display: inline-flex;
     gap: 20px;
     list-style: none;
@@ -233,11 +233,11 @@ hedar{
     margin: 0;
   }
   
-  .btm-hedar .container .ptm-nav li {
+  .btm-header .container .btm-nav span {
     flex-shrink: 0;
   }
-  
-  .btm-hedar .container .ptm-nav li a {
+ 
+  .btm-header .container .btm-nav span a {
     text-decoration: none;
     color: var(--text-color-2);
     background-color: var( --bottm-nav);
@@ -249,17 +249,17 @@ hedar{
     box-shadow: inset 2px 2px 5px rgba(73, 64, 64, 0.137);
   }
   
-  .btm-hedar .container .ptm-nav li a:hover {
+  .btm-header .container .btm-nav span a:hover {
     background: var(--min-color);
     color: var(--white-color);
   }
 
-  /*btm-hedar*/
+  /*btm-header*/
   /* search*/
   .search{
     position: relative;
   }
-  .suggesions{
+  .suggestions{
    position: absolute;
    background-color: var(--white-color); 
    width: 93%;
@@ -272,13 +272,13 @@ hedar{
  z-index: 10000;
 
   }
-  .suggesions li{
+  .suggestions li{
     padding: 3px;
     margin: 3px;
     color: var(--text-color-2);
     border-bottom: 1px solid rgb(221, 221, 221);
   }
-  .suggesions li:last-child{
+  .suggestions li:last-child{
     border: none;
   }
 
@@ -292,7 +292,7 @@ hedar{
     align-items: center;
     overflow: hidden; /* عشان لو المربعات كتير متبوظش الصفحة */
   
-    .Department {
+    .department {
       background: linear-gradient(90deg, #e4e4e4 25%, #d3d3d3 50%, #e4e4e4 75%);
       background-size: 200% 100%;
       animation: loading-shimmer 1.5s infinite;

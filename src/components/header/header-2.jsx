@@ -4,9 +4,9 @@ import "./header-2.css"
 import { Link } from 'react-router-dom'
 
 
-function HedarTwo() {
+function HeaderTwo() {
   return (
-    <div className='herdartwo'>
+    <div className='header-two'>
       <div className="container">
       <Link to="/" className='logo'><img src={logo} alt='logo'/> </Link>
 
@@ -16,4 +16,4 @@ function HedarTwo() {
   )
 }
 
-export default HedarTwo
+export default HeaderTwo
