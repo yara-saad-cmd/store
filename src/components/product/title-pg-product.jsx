@@ -6,9 +6,9 @@ import { TbShoppingCart } from 'react-icons/tb'
 import toast from 'react-hot-toast'
 import CartItem from '../cartItem/CartItem'
 
-function TitekPpgPprodact({prodact}) {
+function TitlePpgPprodact({prodact}) {
 
-  const { cartitems = [], AddToCart ,AddToLike ,likeItems ,removelike} = useContext(ContextCart)
+  const { cartItems = [], AddToCart ,AddToLike ,likeItems ,removelike} = useContext(ContextCart)
 
   const HandleAddToCart = () => {
 
@@ -18,7 +18,7 @@ function TitekPpgPprodact({prodact}) {
       <div className="msg">
       <strong>{prodact.title}</strong>
 
-      تم الاضافه الي العربه  
+      تمت الإضافة إلى العربة  
 
       </div>
       ,{duration : 3000}
@@ -27,7 +27,7 @@ function TitekPpgPprodact({prodact}) {
 
  
 
-  const encart = cartitems.some(i => i.id === prodact.id)
+  const encart = cartItems.some(i => i.id === prodact.id)
   const inlike = likeItems.some(i => i.id === prodact.id)
 
 
@@ -50,7 +50,7 @@ function TitekPpgPprodact({prodact}) {
   
 
   return (
-    <div className="titel-ietme">
+    <div className="title-items">
 
 
                   <CartItem
@@ -138,7 +138,7 @@ function TitekPpgPprodact({prodact}) {
 
                 
                 
-                <button className= {`ptm ${encart ? "encart" : ""}`} onClick={HandleAddToCart}> <span>{ encart ? "تم الاضافه الي العربه":"اضف الي العربه"}</span> <TbShoppingCart  /></button>
+                <button className= {`ptm ${encart ? "encart" : ""}`} onClick={HandleAddToCart}> <span>{ encart ? "تمت الإضافة إلى العربة":"اضف الي العربه"}</span> <TbShoppingCart  /></button>
                 
                 <div className="icon-hert">
                   <div className={`like ${inlike ? "inlike" : ""}`} onClick={HandelAddToLike}>
@@ -165,4 +165,4 @@ function TitekPpgPprodact({prodact}) {
   )
 }
 
-export default TitekPpgPprodact;
+export default TitlePpgPprodact;

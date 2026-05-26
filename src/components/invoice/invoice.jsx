@@ -9,21 +9,21 @@ function Invoice({layout}) {
    
 
 
-    const {cartitems} = useContext(ContextCart);
-    const total = cartitems.reduce(
-        (acc, itme) => acc + itme.price * itme.quantity,
+    const {cartItems} = useContext(ContextCart);
+    const total = cartItems.reduce(
+        (acc, item) => acc + item.price * item.quantity,
         0
       );
 
     const discount = 10;
-    const opponent = (total * discount) / 100;
-    const subtotal = total - opponent;
+    const discountAmount = (total * discount) / 100;
+    const subtotal = total - discountAmount;
     const shipping = 60;
-    const totalprice = subtotal + shipping;
+    const totalPrice = subtotal + shipping;
   return (
     <div className="invoice">
-         <p className="titel">الفاتوره</p>
-              <div className="theInvoice">
+         <p className="title">الفاتوره</p>
+              <div className="the-invoice">
                 <h4>
                   اجمالي المنتجات:<span>{total.toFixed(2)}</span>
                 </h4>
@@ -38,15 +38,15 @@ function Invoice({layout}) {
                   الشحن:<span>{shipping}</span>
                 </h4>
                 <h4>
-                  السعر الكلي:<span>{totalprice.toFixed(2)}</span>
+                  السعر الكلي:<span>{totalPrice.toFixed(2)}</span>
                 </h4>
                 
                 <div className="button">
-          <Link to={layout === "cart" ? "/order-details" : "/Payment"}>
+          <Link to={layout === "cart" ? "/order-details" : "/payment"}>
           
             <button>
               {layout === "cart" ? "تابع الشراء" :  "تابع الشراء" } (
-              <span>{cartitems.length}</span>)
+              <span>{cartItems.length}</span>)
             </button>
 
 

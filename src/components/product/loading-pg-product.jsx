@@ -2,10 +2,10 @@ import React from 'react'
 import TopHeader from '../header/topHeader'
 import BtmHeader from '../header/btmHeader'
 
-function Loding() {
+function Loading() {
   return (
 
-    <div className="loding-itm">
+    <div className="loading-itm">
   <header>
         <TopHeader />
         <BtmHeader />
@@ -15,13 +15,13 @@ function Loding() {
 
     <div className='pg-prosact'>
         <div className="container">
-            <div className="prdact-arya">
+            <div className="prdact-area">
                 
        <div className="imegs skeleton"></div>
 
 
 
-                <div className="titel-ietme ">
+                <div className="title-items ">
 
                 <h1 className="loading-text-item skeleton"></h1>
                 <h2 className="loading-text-item1 skeleton"></h2>
@@ -41,4 +41,4 @@ function Loding() {
   )
 }
 
-export default Loding ;
+export default Loading ;

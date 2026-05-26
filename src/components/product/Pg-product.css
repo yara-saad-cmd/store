@@ -16,7 +16,7 @@
     
 
 }
-.pg-prosact .prdact-arya{
+.pg-prosact .prdact-area{
     display: flex;
     justify-content: space-between;
    align-items: flex-start;
@@ -30,16 +30,16 @@
     align-items: flex-start;
     
 }
-.pg-prosact .imegs .peg-img{
+.pg-prosact .imegs .big-image{
   width: 83%;
  
 
 }
-.pg-prosact .imegs .peg-img img{
+.pg-prosact .imegs .big-image img{
   width: 100%;
  
 }
-.pg-prosact .imegs .smol-img{
+.pg-prosact .imegs .small-images{
   width: 15%;
     flex-direction: column;
     gap: 10px;
@@ -52,34 +52,34 @@
       border: 1px solid var(--border-color);
   }
 }
-.pg-prosact .imegs .smol-img img{
+.pg-prosact .imegs .small-images img{
   width: 100%;
   cursor: pointer;
   transition: transform 0.2s ease, boder 0.2 ease;
 
   
 }
-.pg-prosact .imegs .smol-img img:hover{
+.pg-prosact .imegs .small-images img:hover{
   transform: scale(1.05);
   border: 1px solid var(--border-color); 
 }
-/*titel*/
-.pg-prosact .titel-ietme{
+/*title*/
+.pg-prosact .title-items{
     width: 58%;
     padding: 10px;
     
 }
-.titel-ietme{
+.title-items{
  
   width: 58%;
 }
-.pg-prosact .titel-ietme .prudact-detalis .name-prudact{
+.pg-prosact .title-items .prudact-detalis .name-prudact{
     color: var(--min-color);
     font-size: 30px;
     font-weight: bold;
   
 }
-.pg-prosact .titel-ietme .prudact-detalis p{
+.pg-prosact .title-items .prudact-detalis p{
     color: var(--text-color-2);
     font-size: 18px;
     padding: 5px 0px 5px 5px;
@@ -87,7 +87,7 @@
 }
 /*stsrs*/
 
-.pg-prosact .titel-ietme .stars{
+.pg-prosact .title-items .stars{
     display: flex;
     color: gold;
     font-size: 20px;
@@ -95,46 +95,46 @@
    
     
 }
-.pg-prosact .titel-ietme .stars p{
+.pg-prosact .title-items .stars p{
     margin-right: 5px;
     font-size: 18px;
 }
 /*stsrs*/
 
 
-.pg-prosact .titel-ietme .prudact-detalis  .price{
+.pg-prosact .title-items .prudact-detalis  .price{
    color: var(--text-color-2);
     font-size: 25px;
 }
-.pg-prosact .titel-ietme .prudact-detalis .price span{
+.pg-prosact .title-items .prudact-detalis .price span{
    color: var(--text-color-2);
     font-size: 18px;
     padding: 0;
     margin: 3px;
 }
-.pg-prosact .titel-ietme h4{
+.pg-prosact .title-items h4{
     font-size: 16px;
     margin: 5px 0 5px 0;
     
 }
-.pg-prosact .titel-ietme .prudact-detalis h4 .stock{
+.pg-prosact .title-items .prudact-detalis h4 .stock{
     margin-right: 5px;
     color: blue;
 }
-.pg-prosact .titel-ietme .prudact-detalis h4 .no-stock{
+.pg-prosact .title-items .prudact-detalis h4 .no-stock{
     color: rgb(255, 0, 0);
     margin-right: 5px;
 }
-.pg-prosact .titel-ietme .colors,
-.pg-prosact .titel-ietme .size{
+.pg-prosact .title-items .colors,
+.pg-prosact .title-items .size{
     cursor: pointer;
     position: relative;
     margin-top: 10px;
     text-align: right;
     max-width: 400px;
 }
-.pg-prosact .titel-ietme .prudact-detalis .colors-box h3 span,
-.pg-prosact .titel-ietme .prudact-detalis .size-options h3 span{
+.pg-prosact .title-items .prudact-detalis .colors-box h3 span,
+.pg-prosact .title-items .prudact-detalis .size-options h3 span{
     font-size: 13px;
     font-weight: 400;
     color: var(--text-color-1);
@@ -147,15 +147,15 @@
 /* //-------------------------- */
 
 
-.pg-prosact .titel-ietme .prudact-detalis .colors-box h3,
-.pg-prosact .titel-ietme .prudact-detalis .size-options h3 {
+.pg-prosact .title-items .prudact-detalis .colors-box h3,
+.pg-prosact .title-items .prudact-detalis .size-options h3 {
   font-size: 13px;
   margin-bottom: 5px;
   color: var(--text-color-1);
 }
 
-.pg-prosact .titel-ietme .prudact-detalis .colors-box label,
-.pg-prosact .titel-ietme .prudact-detalis .size-options label {
+.pg-prosact .title-items .prudact-detalis .colors-box label,
+.pg-prosact .title-items .prudact-detalis .size-options label {
   width: 35px;
   height: 25px;
   margin-left: 6px;
@@ -164,12 +164,12 @@
   border: 1px solid var(--border-color);
 }
 
-.pg-prosact .titel-ietme .prudact-detalis .colors-box .colors,
-.pg-prosact .titel-ietme .prudact-detalis .size-options .sizes{
+.pg-prosact .title-items .prudact-detalis .colors-box .colors,
+.pg-prosact .title-items .prudact-detalis .size-options .sizes{
   display: flex;
 }
-.pg-prosact .titel-ietme .prudact-detalis .colors-box .colors .color-square,
-.pg-prosact .titel-ietme .prudact-detalis .size-options .sizes .span-size{
+.pg-prosact .title-items .prudact-detalis .colors-box .colors .color-square,
+.pg-prosact .title-items .prudact-detalis .size-options .sizes .span-size{
   width: 100%;
   height: 100%;
   border-radius: 5px;
@@ -181,13 +181,13 @@
 
 
 }
-.pg-prosact .titel-ietme .prudact-detalis .colors-box input,
-.pg-prosact .titel-ietme .prudact-detalis .size-options input {
+.pg-prosact .title-items .prudact-detalis .colors-box input,
+.pg-prosact .title-items .prudact-detalis .size-options input {
   display: none; 
 }
 
 /*اللون او المقاس المختار*/
-/* .pg-prosact .titel-ietme .circle {
+/* .pg-prosact .title-items .circle {
   display: inline-block;
   width: 28px;
   height: 28px;
@@ -198,7 +198,7 @@
 } */
 
 /*المقاس غير المختار غير مهم تم تنسيقه*/
-/* .pg-prosact .titel-ietme .size-box {
+/* .pg-prosact .title-items .size-box {
   background: var(--white-color);
   color: var(--text-color-1);
   border-radius: 20%;
@@ -212,12 +212,12 @@
 
 
 /*لما يتم الصغط علي العنصر المختار*/
-/* .pg-prosact .titel-ietme input:checked + .circle {
+/* .pg-prosact .title-items input:checked + .circle {
   border: 1px solid var(--text-color-1);
   transform: scale(1.1);
   box-shadow: 0 0 5px rgba(153, 153, 153, 0.932);
 } */
-.pg-prosact .titel-ietme .ptm-and-icon{
+.pg-prosact .title-items .ptm-and-icon{
   display: flex;
   align-items: center;
   margin-top: 20px;
@@ -226,10 +226,10 @@
   display: flex;
 }
 
-.pg-prosact .titel-ietme .ptm-and-icon .icon-hert{
+.pg-prosact .title-items .ptm-and-icon .icon-hert{
 display: flex;
 }
-.pg-prosact .titel-ietme .ptm-and-icon .icon-hert svg{
+.pg-prosact .title-items .ptm-and-icon .icon-hert svg{
   border-radius: 50px;
   border:  solid 1px var(--border-color);
   width: 38px;
@@ -242,13 +242,13 @@ display: flex;
   background-color: var(--min-color);
   color: var(--white-color);
 }
-.pg-prosact .titel-ietme .ptm-and-icon .icon-hert svg:hover{
+.pg-prosact .title-items .ptm-and-icon .icon-hert svg:hover{
   background-color: var(--white-color);
   color: var(--min-color);
   
   
 }
-.pg-prosact .titel-ietme .ptm{
+.pg-prosact .title-items .ptm{
   background-color: var(--min-color);
   width: 220px;
   height: 40px;
@@ -262,10 +262,10 @@ display: flex;
   align-items: center;
   
 }
-.pg-prosact .titel-ietme .ptm span{
+.pg-prosact .title-items .ptm span{
   margin-left: 10px;
 }
-.pg-prosact .titel-ietme .ptm.encart{
+.pg-prosact .title-items .ptm.encart{
   background-color: var(--white-color);
   color: var(--min-color);
   border: solid 1px var(--border-color);
@@ -273,21 +273,21 @@ display: flex;
   pointer-events: none;
 }
 
-.pg-prosact .titel-ietme .like svg{
+.pg-prosact .title-items .like svg{
   margin-left: 10px;
   font-size: 22px;
  
 }
 
-.pg-prosact .titel-ietme .like.inlike svg{
+.pg-prosact .title-items .like.inlike svg{
  background-color: var(--white-color);
  color: var(--min-color);
 }
-.pg-prosact .titel-ietme .share svg{
+.pg-prosact .title-items .share svg{
   margin-left: 10px;
   font-size: 22px;
 }
-.pg-prosact .titel-ietme .ptm:hover{
+.pg-prosact .title-items .ptm:hover{
     transform: scale(1.1);
     background-color: var(--white-color);
     color: var(--min-color);
@@ -344,12 +344,12 @@ hr{
 
 
 /*lodeng...*/
-.loding-itm .pg-prosact .imegs{
+.loading-itm .pg-prosact .imegs{
 width: 40%;
 height: 450px;
 }
 @media screen and (max-width:970px) {
-  .loding-itm .pg-prosact .imegs{
+  .loading-itm .pg-prosact .imegs{
     width: 100%;
   }
 }
@@ -363,27 +363,27 @@ height: 450px;
   color: #6e3f1f;
 } */
 
-.loding-itm .pg-prosact .titel-ietme {
+.loading-itm .pg-prosact .title-items {
   height:450px ;
   width: 58%;
   margin-top: 30px;
 }
-.loding-itm .pg-prosact .titel-ietme h1{
+.loading-itm .pg-prosact .title-items h1{
    height: 20px;
   margin-bottom: 30px;
   width:250px ;
 }
-.loding-itm .pg-prosact .titel-ietme h2{
+.loading-itm .pg-prosact .title-items h2{
    height: 20px;
   margin-bottom: 30px;
   width: 500px;
 }
-.loding-itm .pg-prosact .titel-ietme h3{
+.loading-itm .pg-prosact .title-items h3{
    height: 20px;
   margin-bottom: 30px;
   width: 300px;
 }
-.loding-itm .pg-prosact .titel-ietme h4{
+.loading-itm .pg-prosact .title-items h4{
    height: 20px;
   margin-bottom: 30px;
   width: 200px;
@@ -414,18 +414,18 @@ height: 450px;
 
 
 @media only screen and (max-width: 968px) {
- .prdact-arya {
+ .prdact-area {
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
   }
-  .prdact-arya .imegs {
+  .prdact-area .imegs {
     width: 100%;
     display: flex;
     justify-content: space-between;
 
-    .peg-img{
+    .big-image{
       width: 80%;
 
       img{
@@ -433,13 +433,13 @@ height: 450px;
       }
     }
 
-    .smol-img{
+    .small-images{
       width: 12%;
     }
       }
 
 
-    .prdact-arya .titel-ietme{
+    .prdact-area .title-items{
       width: 100%;
       
      .prudact-detalis{
@@ -481,18 +481,18 @@ height: 450px;
 }
 
 @media only screen and (max-width: 640px) {
-  .prdact-arya .imegs{
+  .prdact-area .imegs{
     justify-content: center;
     flex-direction: column-reverse;
     align-items: center; 
     margin-bottom: 20px;
 
-   .peg-img {
+   .big-image {
     display: flex;
     justify-content: center;
    }
 
-   .smol-img{
+   .small-images{
     flex-direction: row;
     width: 18%;
  
@@ -506,7 +506,7 @@ height: 450px;
 
 @media only screen and  (max-width: 440px){
 
-  .pg-prosact .titel-ietme{
+  .pg-prosact .title-items{
 
     .prudact-detalis{
 

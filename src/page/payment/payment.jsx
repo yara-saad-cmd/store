@@ -18,7 +18,7 @@ function Payment() {
                   <div className="all-paymemt">
                     <div className="container">
 
-                    <div className="pg-titel">
+                    <div className="pg-title">
                       <PageLocation/>
                     </div>
 
@@ -27,7 +27,7 @@ function Payment() {
                       <div className="Payment-Methods">
 
                       <div className="radio-group">
-                        <h3 className='text-titel'>اختر طريقة الدفع</h3>
+                        <h3 className='text-title'>اختر طريقة الدفع</h3>
                         <label className="radio-card">
                           <input type="radio" name="pay" />
                           <span className="custom-radio"></span>

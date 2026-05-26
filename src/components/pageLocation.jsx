@@ -9,7 +9,7 @@ export default function PageLocation() {
   const steps = [
     { name: "عربة المشتريات", path: "/cart" },
     { name: "تفاصيل الطلب", path: "/order-details" },
-    { name: "الدفع", path: "/Payment" },
+    { name: "الدفع", path: "/payment" },
     { name: "تم الطلب", path: "/OrderDone" },
   ];
 

@@ -14,7 +14,7 @@ import { IoSearch } from 'react-icons/io5';
 
 function TopHeader() {
 
-  const {cartitems,likeItems} = useContext(ContextCart)
+  const {cartItems,likeItems} = useContext(ContextCart)
 
   const navigate = useNavigate();
 
@@ -51,7 +51,7 @@ function TopHeader() {
 
               <Link to="/cart">
               <TbShoppingCart />
-                  <span className='count'>{cartitems.length}</span>
+                  <span className='count'>{cartItems.length}</span>
               </Link>
 
               </div>

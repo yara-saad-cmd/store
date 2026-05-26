@@ -24,7 +24,7 @@ export default function CartItem({
 }) {
   // استخراج القيم من الـ Context مع تغيير اسم الوظائف محلياً لتجنب التصادم مع الـ Props
   const { 
-    cartitems = [], 
+    cartItems = [], 
     AddToCart, 
     AddToLike: AddToLikeCtx, 
     likeItems, 
@@ -168,7 +168,7 @@ export default function CartItem({
             {layout === "prodact" && (
               <div className="con">
                 <button className={`ptm ${encart ? "encart" : ""}`} onClick={HandleAddToCart}>
-                  <span>{encart ? "تم الاضافه الي العربه" : "اضف الي العربه"}</span>
+                  <span>{encart ? "تمت الإضافة إلى العربة" : "اضف الي العربه"}</span>
                   <TbShoppingCart />
                 </button>
 

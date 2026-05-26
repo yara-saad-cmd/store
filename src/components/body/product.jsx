@@ -20,7 +20,7 @@ function Product({ products, title, isLikePage = false }){
 
   
 
-  const { cartitems = [], AddToCart ,removelike } = useContext(ContextCart);
+  const { cartItems = [], AddToCart ,removelike } = useContext(ContextCart);
 
 
   const [visibleCount, setVisibleCount] = useState(20);
@@ -43,7 +43,7 @@ function Product({ products, title, isLikePage = false }){
           allProducts.slice(0, visibleCount)
           .map((item) => {
 
-            const incart = cartitems.some(i => i.id === item.id);
+            const incart = cartItems.some(i => i.id === item.id);
 
             const handleAddToCart = () => {
               AddToCart(item);

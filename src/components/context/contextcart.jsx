@@ -39,15 +39,15 @@ const removelike = (id) => {
 // cart -------------------------------------------
 
 
-    const [cartitems ,setcartitems] = useState(()=>{
-        const savecard = localStorage.getItem("cartitems")
+    const [cartItems ,setcartItems] = useState(()=>{
+        const savecard = localStorage.getItem("cartItems")
         return savecard ? JSON.parse(savecard):[]
     })
 
     //+ item
 
     const increaseQuantity = (id) =>{
-        setcartitems(prevItems => prevItems.map(item =>
+        setcartItems(prevItems => prevItems.map(item =>
             item.id === id ? {...item ,quantity : item.quantity + 1} : item
         )) 
     }
@@ -55,7 +55,7 @@ const removelike = (id) => {
 
 //-
     const decreaseQuantity = (id) =>{
-        setcartitems(prevItems => prevItems.map(item =>
+        setcartItems(prevItems => prevItems.map(item =>
             item.id === id  && item.quantity > 1 ? {...item ,quantity : item.quantity - 1} : item
         )) 
     }
@@ -63,7 +63,7 @@ const removelike = (id) => {
 //delet
 
 const delet = (id) =>{
-    setcartitems(prevItems => prevItems.filter(itme => itme.id !== id))
+    setcartItems(prevItems => prevItems.filter(item => item.id !== id))
 }
 
 
@@ -71,17 +71,17 @@ const delet = (id) =>{
 
 
     const AddToCart = (item)=>{
-        setcartitems ((prevItems)=>[...prevItems ,{...item , quantity : 1}])
+        setcartItems ((prevItems)=>[...prevItems ,{...item , quantity : 1}])
     }
 
     useEffect (()=>{
-        localStorage.setItem("cartitems",JSON.stringify(cartitems))
-    }, [cartitems])
+        localStorage.setItem("cartItems",JSON.stringify(cartItems))
+    }, [cartItems])
 
 
     /*اللون - و المقاس */
     const onSizeChange = (id, newSize) => {
-        setcartitems(prev =>
+        setcartItems(prev =>
           prev.map(item =>
             item.id === id ? { ...item, size: newSize } : item
           )
@@ -89,7 +89,7 @@ const delet = (id) =>{
       };
       
       const onColorChange = (id, newColor) => {
-        setcartitems(prev =>
+        setcartItems(prev =>
           prev.map(item =>
             item.id === id ? { ...item, color: newColor } : item
           )
@@ -99,7 +99,7 @@ const delet = (id) =>{
     /*اللون - و المقاس */
 
   return (
-    <ContextCart.Provider value={{cartitems , AddToCart ,increaseQuantity ,decreaseQuantity ,delet ,likeItems ,AddToLike,removelike,onSizeChange,onColorChange}}>
+    <ContextCart.Provider value={{cartItems , AddToCart ,increaseQuantity ,decreaseQuantity ,delet ,likeItems ,AddToLike,removelike,onSizeChange,onColorChange}}>
         {children}
     </ContextCart.Provider>
   

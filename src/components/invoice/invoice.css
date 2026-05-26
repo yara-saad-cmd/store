@@ -4,7 +4,7 @@
 }   
 
  
- .invoice .titel{
+ .invoice .title{
     height: 10%;
     padding: 15px 20px;
     font-size: 18px;
@@ -12,7 +12,7 @@
     display: flex;
     align-items: center;
 }
- .invoice .theInvoice h4{
+ .invoice .the-invoice h4{
    
     padding: 15px 0;
     margin: 0 15px;
@@ -21,14 +21,14 @@
     display: flex;
     justify-content: space-between;
 }
- .invoice .theInvoice .pordr{
+ .invoice .the-invoice .pordr{
     border-bottom: solid 1px var(--border-color);
 }
- .invoice .theInvoice .button{
+ .invoice .the-invoice .button{
     width: 100%;
     text-align: center;
 }
- .invoice .theInvoice .button button{
+ .invoice .the-invoice .button button{
     height: 35px;
     font-size: 15px;
     width: 90%;
@@ -39,7 +39,7 @@
     cursor: pointer;
     transition: 0.3s;
 }
- .invoice .theInvoice .button button:hover{
+ .invoice .the-invoice .button button:hover{
     transform: scale(1.1);
 }
 

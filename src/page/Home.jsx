@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Slider from '../components/body/slider'
 import Prodact from "../components/body/product"
-import Prsdactloding from '../components/body/product-loading'
+import Prsdactloading from '../components/body/product-loading'
 import PageTransaction from '../components/pageTransaction'
 import Footertwo from '../components/footer/footer2'
 import TopHeader from '../components/header/topHeader'
@@ -21,7 +21,7 @@ const categories = [
 
 function Home() {
   const [product, setProduct] = useState({})
-  const [loding, setloding] = useState(true)
+  const [loading, setloading] = useState(true)
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -32,7 +32,7 @@ function Home() {
             const data = await res.json()
             return { [category]: data.products }
           })
-        ).finally(()=>setloding(false))
+        ).finally(()=>setloading(false))
 
         const productData = Object.assign({}, ...results)
         setProduct(productData)
@@ -56,8 +56,8 @@ function Home() {
 
       <Slider />
   
-      {loding ?(
-       <Prsdactloding/>
+      {loading ?(
+       <Prsdactloading/>
       ):(
        
         <Prodact products={product} />

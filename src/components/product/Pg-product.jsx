@@ -4,15 +4,15 @@ import "./Pg-product.css";
 import { IoIosStar } from "react-icons/io";
 import { TbShoppingCartPlus } from "react-icons/tb";
 import ProductLayout from "../body/ProductLayout";
-import Loding from "./loding-pg-product";
-import Prsdactloding from "../body/product-loading";
+import Loading from "./loading-pg-product";
+import Prsdactloading from "../body/product-loading";
 import BtmHeader from "../header/btmHeader";
 import TopHeader from "../header/topHeader";
 import { ContextCart } from "../context/contextcart";
 import { FaCheck } from "react-icons/fa6";
 import toast from "react-hot-toast";
 import ImgPgproduct from "./img-pg-product";
-import TitekPpgPproduct from "./titel-pg-product";
+import TitlePpgPproduct from "./title-pg-product";
 import PageTransaction from "../pageTransaction";
 import Footertwo from "../footer/footer2";
 
@@ -21,15 +21,15 @@ function Pgproduct() {
 
   const [prodact, setprodact] = useState(null);
   const [loading, setloading] = useState(true);
-  const [reladProdact, setreladProdact] = useState([]);
-  const [loadingreladProdact, setloadingreladProdact] = useState(true);
+  const [relatedProducts, setrelatedProducts] = useState([]);
+  const [loadingrelatedProducts, setloadingrelatedProducts] = useState(true);
 
   const [visibleCount, setVisibleCount] = useState(12);
 
-  // const { cartitems = [], AddToCart } = useContext(
+  // const { cartItems = [], AddToCart } = useContext(
   //   ContextCart || "المنتج غير متوفر"
   // );
-  const { cartitems, AddToCart } = useContext(ContextCart);
+  const { cartItems, AddToCart } = useContext(ContextCart);
 
   useEffect(() => {
     const fetchProdact = async () => {
@@ -53,17 +53,17 @@ function Pgproduct() {
     fetch(`https://dummyjson.com/products/category/${prodact.category}`)
       .then((res) => res.json())
       .then((data) => {
-        setreladProdact(data.products);
+        setrelatedProducts(data.products);
       })
       .catch((error) => console.error(error))
-      .finally(() => setloadingreladProdact(false));
+      .finally(() => setloadingrelatedProducts(false));
   }, [prodact?.category]);
 
-  if (loading) return <Loding />;
-  if (!prodact) return <p>prodact not faunde</p>;
+  if (loading) return <Loading />;
+  if (!prodact) return <p>prodact not found</p>;
 
   return (
-    <div className="all-pag">
+    <div className="all-page">
       <header>
         <TopHeader />
         <BtmHeader />
@@ -71,10 +71,10 @@ function Pgproduct() {
       <PageTransaction key={id}>
         <div className="pg-prosact">
           <div className="container">
-            <div className="prdact-arya">
+            <div className="prdact-area">
             <ImgPgproduct key={prodact.id} prodact={prodact} />
 
-              <TitekPpgPproduct prodact={prodact} />
+              <TitlePpgPproduct prodact={prodact} />
             </div>
           </div>
 
@@ -82,21 +82,21 @@ function Pgproduct() {
 {/* مزيد من المننجات */}
           <div className="mor-product">
             {" "}
-            {loadingreladProdact ? (
-              <Prsdactloding />
+            {loadingrelatedProducts ? (
+              <Prsdactloading />
             ) : (
-              <ProductLayout title={"مقترحات من نفس الفئه"}>
-                {reladProdact.slice(0, visibleCount)
+              <ProductLayout title={"مقترحات من نفس الفئة"}>
+                {relatedProducts.slice(0, visibleCount)
                 .filter((item) => item.id !== prodact.id)
                 .map((item) => {
-                  const incart = cartitems.some((i) => i.id === item.id);
+                  const incart = cartItems.some((i) => i.id === item.id);
 
                   const handleAddToCart = () => {
                     AddToCart(item);
                     toast.success(
                       <div className="msg">
                         <strong>{item.title}</strong>
-                        تم الاضافه الي العربه
+                        تمت الإضافة إلى العربة
                       </div>,
                       { duration: 3000 }
                     );
@@ -161,7 +161,7 @@ function Pgproduct() {
           </div>
           
         </div>
-         {visibleCount < reladProdact.length && (
+         {visibleCount < relatedProducts.length && (
                   <button className="load-more" onClick={() => setVisibleCount(prev => prev + 12)}>
                     ... عرض المزيد 
                   </button>

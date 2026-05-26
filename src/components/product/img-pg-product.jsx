@@ -11,7 +11,7 @@
 
 //   return (
 //     <div className="imegs">
-//       <div className="smol-img">
+//       <div className="small-images">
 //         {prodact.images.map((img, index) => (
 //           <img
 //             key={index}
@@ -23,7 +23,7 @@
 //         ))}
 //       </div>
 
-//       <div className="peg-img">
+//       <div className="big-image">
 //         <img src={activeImg} alt={prodact.title} />
 //       </div>
 //     </div>
@@ -65,7 +65,7 @@ function ImgPgProdact({ prodact }) {
 
   return (
     <div className="imegs">
-      <div className="smol-img">
+      <div className="small-images">
         {prodact.images.map((img, index) => (
           <img
             key={index}
@@ -77,7 +77,7 @@ function ImgPgProdact({ prodact }) {
         ))}
       </div>
 
-      <div className="peg-img">
+      <div className="big-image">
         <img key={activeImg} src={activeImg} alt={prodact.title} />
       </div>
     </div>

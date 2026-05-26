@@ -3,13 +3,13 @@ import { useLocation } from 'react-router-dom'
 import TopHeader from '../components/header/topHeader'
 import BtmHeader from '../components/header/btmHeader'
 import PageTransaction from '../components/pageTransaction'
-import Prsdactloding from '../components/body/product-loading'
+import Prsdactloading from '../components/body/product-loading'
 import Prodact from '../components/body/product'
 import Footertwo from '../components/footer/footer2'
 
 function Pgsearch() {
 
-    const [loding , setloding] =useState(true)
+    const [loading , setloading] =useState(true)
     const [resolt , setresolt] =useState([])
     const query = new URLSearchParams(useLocation().search).get("query")
  
@@ -29,7 +29,7 @@ function Pgsearch() {
 
                 
             }finally{
-                setloding(false)
+                setloading(false)
             }
              
         } 
@@ -45,8 +45,8 @@ function Pgsearch() {
             <PageTransaction key={query}>
                 <div className="pg-search">
 
-                    {loding ? (
-                        <Prsdactloding key={query} />
+                    {loading ? (
+                        <Prsdactloading key={query} />
                     ) : resolt.length > 0 ? (
                         <div className="prodact">
                             <Prodact products={resolt} title={"نتائج البحث"} />

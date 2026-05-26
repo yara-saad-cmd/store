@@ -11,14 +11,14 @@
     --text-white:white;
   } */
 /*البيانات بدون تعديل*/
-.data-arya {
+.data-area {
     
      margin: 15px;
     
      
 
 }
-.data-arya .titel-data-user{
+.data-area .title-data-user{
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 10px;
@@ -26,7 +26,7 @@
   
     border-bottom: 1px solid var(--border-color);
 }
-.data-arya .data{
+.data-area .data{
     margin-bottom: 8px;
     font-size: 16px;
     font-weight: 400;
@@ -36,7 +36,7 @@
     white-space: normal;
   
 }
-.data-arya .ptm-add-arya{
+.data-area .ptm-add-area{
   
     width: 100%;
     display: flex;
@@ -44,7 +44,7 @@
     
 
 }
-.data-arya .ptm-amendment{
+.data-area .ptm-amendment{
     width: 100px;
     height: 25px;
     font-size: 13px;
@@ -61,7 +61,7 @@
 
    
 }
-.data-arya .ptm-amendment svg {
+.data-area .ptm-amendment svg {
     margin-right:5px ;
 }
 /*البيانات بدون تعديل*/
@@ -101,7 +101,7 @@
     align-items: center;
     
 }
-.modify-data .titel-data-user{
+.modify-data .title-data-user{
     margin-bottom: 5px 0px;
     
 }

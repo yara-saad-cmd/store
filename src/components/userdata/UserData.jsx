@@ -192,15 +192,15 @@ export default function UserData() {
     <>
       {!inModify ? (
         hasData ? (
-          <div className="data-arya">
-            <h3 className="titel-data-user">بيانات الشحن</h3>
+          <div className="data-area">
+            <h3 className="title-data-user">بيانات الشحن</h3>
 
             <p className="data">{userData.name}</p>
             <p className="data">{userData.phone}</p>
             <p className="data">{userData.phone2}</p>
             <p className="data">{userData.governorate}</p>
             <p className="data">{userData.address}</p>
-            <div className="ptm-add-arya">
+            <div className="ptm-add-area">
                <button
             className="ptm-amendment"
               onClick={() => {
@@ -231,7 +231,7 @@ export default function UserData() {
         )
       ) : (
         <div className="modify-data">
-          <h3 className="titel-data-user">بيانات الشحن</h3>
+          <h3 className="title-data-user">بيانات الشحن</h3>
 
             {errors.name && <p className="error">{errors.name}</p>}
           <input

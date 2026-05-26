@@ -4,7 +4,7 @@ import BtmHeader from '../../components/header/btmHeader';
 import { data, useParams } from 'react-router-dom';
 import Product from '../../components/body/product';
 import "./pg-category.css"
-import Prsdactloding from '../../components/body/product-loading';
+import Prsdactloading from '../../components/body/product-loading';
 import PageTransaction from '../../components/pageTransaction';
 import Footertwo from '../../components/footer/footer2';
 
@@ -37,7 +37,7 @@ console.log(gategotyprodact)
       <BtmHeader/>
       <div className="pg-search">
         <>
-         {Pgcategory ? (<Prsdactloding key={category}/>
+         {Pgcategory ? (<Prsdactloading key={category}/>
          ):(<div className="prodact">
              <Product products={gategotyprodact}  title={category} 
             />

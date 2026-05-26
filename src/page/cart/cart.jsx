@@ -13,7 +13,7 @@ import ImgCartAmpty from "../../img/img-cart-ampty.png"
 function Cart() {
  
   const {
-    cartitems,
+    cartItems,
     increaseQuantity,
     decreaseQuantity,
     delet,
@@ -52,7 +52,7 @@ function Cart() {
      <PageTransaction>
 
      
-            {cartitems.length === 0 ? (
+            {cartItems.length === 0 ? (
               // حالة العربة فارغة
               <div className="no-prodact">
                 <img src={ImgCartAmpty} alt="img"/>
@@ -66,7 +66,7 @@ function Cart() {
         <div className="all-content">
    
         <div className="container">
-           <div className="pg-titel">
+           <div className="pg-title">
                     <PageLocation />
                   </div>
           <div className="cart">
@@ -78,14 +78,14 @@ function Cart() {
 
                  
    
-                 <div className="titel">
+                 <div className="title">
                     <p>
-                      المنتجات (<span>{cartitems.length}</span>)
+                      المنتجات (<span>{cartItems.length}</span>)
                    </p>
                   </div>
   
                   <div className="prdact">
-                    {cartitems.map((item) => {
+                    {cartItems.map((item) => {
                        const inlike = likeItems.some((i) => i.id === item.id);
                       return (
                         <CartItem
@@ -105,11 +105,11 @@ function Cart() {
                   </div>
                 </div>
   
-                <div className="invoice-arya">
+                <div className="invoice-area">
                   <div className="invoice">
                     <Invoice layout="cart" />
                   </div>
-                  <div className="cach-arya">
+                  <div className="cach-area">
                     <Visa />
                   </div>
                 </div>

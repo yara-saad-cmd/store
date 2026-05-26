@@ -9,13 +9,13 @@ import CartItem from '../../components/cartItem/CartItem'
 import { ContextCart } from '../../components/context/contextcart'
 import Footer from '../../components/footer/footer'
 function OrdarDetails() {
-  const { cartitems } = useContext(ContextCart);
+  const { cartItems } = useContext(ContextCart);
   return (
     <PageTransaction>
 
       <div className="pg-ordar-detalis">
         <HeaderTwo />
-        <div className="pg-titel">
+        <div className="pg-title">
           <PageLocation />
         </div>
         <div className="all-content">
@@ -24,7 +24,7 @@ function OrdarDetails() {
 
               <div className="data-ordar-and-user">
                 <div className="detalis-ordar">
-                  {cartitems.map(item => {
+                  {cartItems.map(item => {
 
 
                     return (
