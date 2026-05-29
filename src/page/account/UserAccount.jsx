@@ -22,7 +22,7 @@ function UserAccount() {
             <div className="container">
 
                       <div className="LogOut">
-                        <button className='ptm-logout'>تسجيل الخروج</button>
+                        <button className='btn-logout'>تسجيل الخروج</button>
                       </div>   
 
                 <div className="pg-body">

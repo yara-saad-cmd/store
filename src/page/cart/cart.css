@@ -105,7 +105,7 @@
 .pg-cart .cart .cart-prodact .item-cart{
     background-color:var(--white-color);
     margin-top: 10px;
-    height: 140px;
+    height: fit-content;
     padding: 15px;
     position: relative;
     display: flex;

@@ -6,7 +6,7 @@ import { TbShoppingCart } from 'react-icons/tb'
 import toast from 'react-hot-toast'
 import CartItem from '../cartItem/CartItem'
 
-function TitlePpgPprodact({prodact}) {
+function TitleProductPage({prodact}) {
 
   const { cartItems = [], AddToCart ,AddToLike ,likeItems ,removelike} = useContext(ContextCart)
 
@@ -31,7 +31,7 @@ function TitlePpgPprodact({prodact}) {
   const inlike = likeItems.some(i => i.id === prodact.id)
 
 
-  const HandelAddToLike = ()=>{
+  const HandleAddToLike = ()=>{
     if(inlike){
       removelike(prodact.id)
       toast.error(`تم حذف${prodact.title}من المفضل `)
@@ -59,7 +59,7 @@ function TitlePpgPprodact({prodact}) {
                    inlike={inlike}
                    encart={encart} // مرر حالة الوجود في العربة
                    HandleAddToCart={HandleAddToCart} // مرر دالة الإضافة هنا ✅
-                   onLike={HandelAddToLike}
+                   onLike={HandleAddToLike}
                    onSizeChange={onSizeChange}
                    onColorChange={onColorChange}
                    toast={toast} // تأكد من تمرير الـ toast أيضاً
@@ -134,14 +134,14 @@ function TitlePpgPprodact({prodact}) {
                 </label>
            </div> */}
             
-           {/* <div className='ptm-and-icon'>
+           {/* <div className='btn-and-icon'>
 
                 
                 
-                <button className= {`ptm ${encart ? "encart" : ""}`} onClick={HandleAddToCart}> <span>{ encart ? "تمت الإضافة إلى العربة":"اضف الي العربه"}</span> <TbShoppingCart  /></button>
+                <button className= {`btn ${inCart ? "inCart" : ""}`} onClick={HandleAddToCart}> <span>{ inCart ? "تمت الإضافة إلى العربة":"اضف الي العربه"}</span> <TbShoppingCart  /></button>
                 
                 <div className="icon-hert">
-                  <div className={`like ${inlike ? "inlike" : ""}`} onClick={HandelAddToLike}>
+                  <div className={`like ${inlike ? "inlike" : ""}`} onClick={HandleAddToLike}>
                      <FiHeart/>
                   </div> */}
 
@@ -165,4 +165,4 @@ function TitlePpgPprodact({prodact}) {
   )
 }
 
-export default TitlePpgPprodact;
+export default TitleProductPage;

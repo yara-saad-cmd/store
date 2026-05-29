@@ -1,7 +1,7 @@
 import React from 'react'
 import Search from '../header/search'
 import "./SearchPage.css"
-function SareshPaege() {
+function SearchPage() {
   return (
     <div className='search-page'>
        <div className="container">
@@ -12,4 +12,4 @@ function SareshPaege() {
   )
 }
 
-export default SareshPaege
+export default SearchPage

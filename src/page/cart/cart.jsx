@@ -26,7 +26,7 @@ function Cart() {
 
 
  
-  const HandelAddToLike = (item) => {
+  const HandleAddToLike = (item) => {
     const inlike = likeItems.some((i) => i.id === item.id);
 
     if (inlike) {
@@ -92,7 +92,7 @@ function Cart() {
                           key={item.id}
                           item={item}
                           inlike={inlike}
-                          onLike={HandelAddToLike}
+                          onLike={HandleAddToLike}
                           onDelete={delet}
                           onIncrease={increaseQuantity}
                           onDecrease={decreaseQuantity}

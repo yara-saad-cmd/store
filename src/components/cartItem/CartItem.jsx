@@ -42,7 +42,7 @@ export default function CartItem({
     color4: "white"
   });
 
-  const HandelAddToLike = () => {
+  const HandleAddToLike = () => {
     const prodact = item; 
     // نتحقق أولاً إذا كانت الوظيفة قادمة من الـ Props، وإذا لم توجد نستخدم التي في الـ Context
     const finalRemoveLike = removelike || removelikeCtx;
@@ -164,16 +164,16 @@ export default function CartItem({
             </div>
           )}
 
-          <div className="ptm-and-icon">
+          <div className="btn-and-icon">
             {layout === "prodact" && (
               <div className="con">
-                <button className={`ptm ${encart ? "encart" : ""}`} onClick={HandleAddToCart}>
+                <button className={`btn ${encart ? "encart" : ""}`} onClick={HandleAddToCart}>
                   <span>{encart ? "تمت الإضافة إلى العربة" : "اضف الي العربه"}</span>
                   <TbShoppingCart />
                 </button>
 
                 <div className="icon-hert">
-                  <div className={`like ${inlike ? "inlike" : ""}`} onClick={HandelAddToLike}>
+                  <div className={`like ${inlike ? "inlike" : ""}`} onClick={HandleAddToLike}>
                     <FiHeart />
                   </div>
                 </div>

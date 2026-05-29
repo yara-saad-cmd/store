@@ -174,7 +174,7 @@ export default function UserData() {
   }
 
   
-  function UpdateData() {
+  function handleUpdateData() {
     if (!validateOnSave()) return;
 
     localStorage.setItem("userData", JSON.stringify(userData));
@@ -182,7 +182,7 @@ export default function UserData() {
     setErrors({});
   }
 
-  function cancel() {
+  function handleCancel() {
     setUserData(oldData);
     setInModify(false);
     setErrors({});
@@ -200,9 +200,9 @@ export default function UserData() {
             <p className="data">{userData.phone2}</p>
             <p className="data">{userData.governorate}</p>
             <p className="data">{userData.address}</p>
-            <div className="ptm-add-area">
+            <div className="btn-add-area">
                <button
-            className="ptm-amendment"
+            className="btn-amendment"
               onClick={() => {
                 setOldData(userData);
                 setInModify(true);
@@ -219,7 +219,7 @@ export default function UserData() {
             <p className="no-data-text">لا توجد بيانات</p>
            
             <button
-            className="ptm-add-data"
+            className="btn-add-data"
               onClick={() => {
                 setOldData(userData);
                 setInModify(true);
@@ -280,10 +280,10 @@ export default function UserData() {
             placeholder="العنوان"
           />
        
-          <div className="ptums-add-and-cancel">
+          <div className="btns-add-and-handleCancel">
 
-          <button className="ptm-updat"  onClick={UpdateData}>حفظ</button>
-          <button className="ptm-cancel" onClick={cancel}>إلغاء</button>
+          <button className="btn-updat"  onClick={handleUpdateData}>حفظ</button>
+          <button className="btn-handleCancel" onClick={handleCancel}>إلغاء</button>
 
           </div>
          

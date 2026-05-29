@@ -36,7 +36,7 @@
     white-space: normal;
   
 }
-.data-area .ptm-add-area{
+.data-area .btn-add-area{
   
     width: 100%;
     display: flex;
@@ -44,7 +44,7 @@
     
 
 }
-.data-area .ptm-amendment{
+.data-area .btn-amendment{
     width: 100px;
     height: 25px;
     font-size: 13px;
@@ -61,7 +61,7 @@
 
    
 }
-.data-area .ptm-amendment svg {
+.data-area .btn-amendment svg {
     margin-right:5px ;
 }
 /*البيانات بدون تعديل*/
@@ -83,7 +83,7 @@
     font-weight: 800;
    
 }
-.no-data .ptm-add-data{
+.no-data .btn-add-data{
     text-align: center;
     width: 100px;
     color: var(--white-color);
@@ -119,17 +119,17 @@
     color: red;
     margin: 2px 5px;
 }
-.ptm-updat, .ptm-cancel{
+.btn-updat, .btn-handleCancel{
     width: 100px;
     font-weight: 700;
     border-radius: 10px;
     margin: 5px;
     color: var(--white-color);
 }
-.modify-data .ptm-updat{
+.modify-data .btn-updat{
     background-color:var(--bottms-color) ;
 }
-.modify-data .ptm-cancel{
+.modify-data .btn-handleCancel{
     background-color:rgb(231, 46, 39) ;
 }
 /*وضع تعديل البيانات*/
