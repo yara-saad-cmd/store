@@ -31,7 +31,7 @@ function TitleProductPage({prodact}) {
   const inlike = likeItems.some(i => i.id === prodact.id)
 
 
-  const HandleAddToLike = ()=>{
+  const handleAddToLike = ()=>{
     if(inlike){
       removelike(prodact.id)
       toast.error(`تم حذف${prodact.title}من المفضل `)
@@ -59,7 +59,7 @@ function TitleProductPage({prodact}) {
                    inlike={inlike}
                    encart={encart} // مرر حالة الوجود في العربة
                    HandleAddToCart={HandleAddToCart} // مرر دالة الإضافة هنا ✅
-                   onLike={HandleAddToLike}
+                   onLike={handleAddToLike}
                    onSizeChange={onSizeChange}
                    onColorChange={onColorChange}
                    toast={toast} // تأكد من تمرير الـ toast أيضاً
@@ -141,7 +141,7 @@ function TitleProductPage({prodact}) {
                 <button className= {`btn ${inCart ? "inCart" : ""}`} onClick={HandleAddToCart}> <span>{ inCart ? "تمت الإضافة إلى العربة":"اضف الي العربه"}</span> <TbShoppingCart  /></button>
                 
                 <div className="icon-hert">
-                  <div className={`like ${inlike ? "inlike" : ""}`} onClick={HandleAddToLike}>
+                  <div className={`like ${inlike ? "inlike" : ""}`} onClick={handleAddToLike}>
                      <FiHeart/>
                   </div> */}
 

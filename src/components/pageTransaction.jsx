@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 
 
-function PageTransaction({children}) {
+function PageTransition({children}) {
   return (
 
 <motion.div 
@@ -19,4 +19,4 @@ function PageTransaction({children}) {
   )
 }
 
-export default PageTransaction;
+export default PageTransition;

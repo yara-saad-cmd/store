@@ -10,21 +10,21 @@
   --text-color-2:#1d1d1d;
   --text-white:white;
 } */
-.pg-ordar-detalis{
+.pg-ordar-details{
     min-height: 100vh;   /* تملى الشاشة لو المحتوى قليل */
     background-color:var(--background2);
     display: flex;
     flex-direction: column;
     
 }
-.pg-ordar-detalis .detalis{
+.pg-ordar-details .details{
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
     margin-bottom: 40px;
 
 }
-.pg-ordar-detalis.all-content{
+.pg-ordar-details.all-content{
     flex: 1; 
 }
 .data-ordar-and-user{
@@ -33,7 +33,7 @@
     width: 100%;
     flex: 2;
 }
-.pg-ordar-detalis .detalis .data-ordar-and-user .detalis-ordar{
+.pg-ordar-details .details .data-ordar-and-user .details-ordar{
     background-color:var(--white-color);
     height: auto;
 
@@ -49,20 +49,20 @@
     /* تحسين شكل السكرول (اختياري) */
     scrollbar-width: thin;
 }
-.pg-ordar-detalis .detalis .data-ordar-and-user .user-data{
+.pg-ordar-details .details .data-ordar-and-user .user-data{
     background-color:var(--white-color);
    
     padding: 5px;
     margin-top: 10px;
 }
-.pg-ordar-detalis .detalis .invoice{
+.pg-ordar-details .details .invoice{
     background-color:var(--white-color);
     flex: 1;
     height: fit-content;
     padding: 10px 0;
 }
 /*prudacts*/
-.pg-ordar-detalis .detalis-ordar{
+.pg-ordar-details .details-ordar{
     display: flex;
     max-width: 100%;
    
@@ -74,7 +74,7 @@
 
 
 }
-.pg-ordar-detalis .item-cart{
+.pg-ordar-details .item-cart{
     padding: 5px;
     border:  1px solid var(--border-color);
     border-radius: 10px;
@@ -82,25 +82,25 @@
     width: 120px;
 
 }
-.pg-ordar-detalis .detalis-ordar .img-name img{
+.pg-ordar-details .details-ordar .img-name img{
     width: 100px;
     pointer-events: none;
     
 }
-.pg-ordar-detalis .detalis-ordar .name-prudact{
+.pg-ordar-details .details-ordar .name-prudact{
     font-size: 13px;
     max-width: 100px;
     white-space: nowrap;      
     overflow: hidden;         
     text-overflow: ellipsis; 
 }
-.pg-ordar-detalis .detalis-ordar .prodat-details .size{
+.pg-ordar-details .details-ordar .prodat-details .size{
     font-size: 11px;
     white-space: nowrap;      
     overflow: hidden;         
     text-overflow: ellipsis; 
 }
-.pg-ordar-detalis .color-item {
+.pg-ordar-details .color-item {
     display: inline-block;
     font-size: 13px;
     max-width: 80px;
@@ -109,14 +109,14 @@
     text-overflow: ellipsis; 
 }
 
-.pg-ordar-detalis .price{
+.pg-ordar-details .price{
     font-size: 14px;
 }
 
 /*prudacts*/
 
 /*quantity*/
-.detalis-ordar .quantity{
+.details-ordar .quantity{
     
     font-size: 11px;
 
@@ -124,13 +124,13 @@
 
 /*quantity*/
 @media (max-width: 930px){
-    .pg-ordar-detalis .detalis {
+    .pg-ordar-details .details {
         flex-direction: column;
     }
-    .pg-ordar-detalis .detalis .invoice{
+    .pg-ordar-details .details .invoice{
         margin-top: 10px;
     }
-    .pg-ordar-detalis .item-cart{
+    .pg-ordar-details .item-cart{
         width: 100px;
     }
 

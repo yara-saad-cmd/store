@@ -42,7 +42,7 @@ export default function CartItem({
     color4: "white"
   });
 
-  const HandleAddToLike = () => {
+  const handleAddToLike = () => {
     const prodact = item; 
     // نتحقق أولاً إذا كانت الوظيفة قادمة من الـ Props، وإذا لم توجد نستخدم التي في الـ Context
     const finalRemoveLike = removelike || removelikeCtx;
@@ -61,7 +61,7 @@ export default function CartItem({
     <div className="item-cart" key={item.id}>
       {/* ====== صورة المنتج + الاسم ====== */}
       <div className="img-name">
-        {(layout === "cart" || layout === "detalis-ordar") && (
+        {(layout === "cart" || layout === "details-ordar") && (
           <Link key={item.id} to={`/products/${item.id}`}>
             <img src={item.images?.[0]} alt={item.title} />
           </Link>
@@ -69,7 +69,7 @@ export default function CartItem({
       </div>
 
       <div className="Content">
-        <div className="prudact-detalis">
+        <div className="prudact-details">
           <h3 className="name-prudact">{item.title}</h3>
           
           {layout === "prodact" && (
@@ -139,7 +139,7 @@ export default function CartItem({
             </div>
           )}
 
-          {layout === "detalis-ordar" && (
+          {layout === "details-ordar" && (
             <div className="prodact-details">
               <p className="size">
                 المقاس: <strong>{item.size || defaultSize}</strong>
@@ -173,7 +173,7 @@ export default function CartItem({
                 </button>
 
                 <div className="icon-hert">
-                  <div className={`like ${inlike ? "inlike" : ""}`} onClick={HandleAddToLike}>
+                  <div className={`like ${inlike ? "inlike" : ""}`} onClick={handleAddToLike}>
                     <FiHeart />
                   </div>
                 </div>

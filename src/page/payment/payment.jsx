@@ -5,7 +5,7 @@ import "./payment.css"
 
 import imgVISA from "../../img/1764260377009.png"
 import { Link } from 'react-router-dom'
-import PageTransaction from '../../components/pageTransaction'
+import PageTransition from '../../components/pageTransaction'
 import Footer from '../../components/footer/footer'
 
 
@@ -13,9 +13,9 @@ function Payment() {
   return (
     <>
           <HeaderTwo />
-          <PageTransaction>
+          <PageTransition>
               <div className="pg-cash">
-                  <div className="all-paymemt">
+                  <div className="all-payment">
                     <div className="container">
 
                     <div className="pg-title">
@@ -24,7 +24,7 @@ function Payment() {
 
                     <div className="all-content">
 
-                      <div className="Payment-Methods">
+                      <div className="payment-methods">
 
                       <div className="radio-group">
                         <h3 className='text-title'>اختر طريقة الدفع</h3>
@@ -46,13 +46,13 @@ function Payment() {
                           <div className="radio-content">
                             <span className="text">الدفع بالفيزا</span>
                             <p className="desc">معلومات حول الدفع باستخدام البطاقة البنكية </p>
-                            <div className="mor-detals">
+                            <div className="more-details">
 
                               <button>اضف بطاقه بنكيه</button>
 
                               <div className="visa">
 
-                              <p>طرق الدفع المتاحه</p>
+                              <p>طرق الدفع المتاحة</p>
                               <span><img src={imgVISA} alt='img'/></span>
                               <span><img src={imgVISA} alt='img'/></span>
                               <span><img src={imgVISA} alt='img'/></span>
@@ -73,12 +73,12 @@ function Payment() {
 
                           <p className='text'>كود الخصم الخاص بك</p>
 
-                          <div className="Coupon-inpt">
+                          <div className="coupon-input">
                               <input  placeholder='كود الخصم'/>
                               <button className='add'>تطبيق</button>
                           </div>
 
-                            <Link to="/OrderDone"><button className='Order-Tracking'>متابعه</button></Link>
+                            <Link to="/order-done"><button className='btn-submit-order'>متابعة</button></Link>
                           
                     </div>
 
@@ -95,7 +95,7 @@ function Payment() {
 
             </div>
           
-          </PageTransaction>
+          </PageTransition>
            
        
     </>

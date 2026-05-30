@@ -5,7 +5,7 @@ import { data, useParams } from 'react-router-dom';
 import Product from '../../components/body/product';
 import "./pg-category.css"
 import Prsdactloading from '../../components/body/product-loading';
-import PageTransaction from '../../components/pageTransaction';
+import PageTransition from '../../components/pageTransaction';
 import Footertwo from '../../components/footer/footer2';
 
 function Pgcategory() {
@@ -31,7 +31,7 @@ console.log(gategotyprodact)
 
 
   return (
-    <PageTransaction>
+    <PageTransition>
        <div className="pg-search">
       <TopHeader/>
       <BtmHeader/>
@@ -56,7 +56,7 @@ console.log(gategotyprodact)
       </div>
     </div>
     <Footertwo/>
-    </PageTransaction>
+    </PageTransition>
    
   )
 }

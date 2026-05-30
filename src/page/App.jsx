@@ -6,13 +6,13 @@ import PageProduct from "./pageProdact"
 import { Route, Routes } from "react-router-dom"
  import Cart from "../page/cart/cart"
 import { Toaster } from "react-hot-toast"
-import ScrolTop from "../components/ScrolTop"
+import ScrollToTop from "../components/ScrollToTop"
  import { AnimatePresence } from "framer-motion"
 import Pgcategory from "../page/pg-category/pg-category"
  import Pgsearch from "../page/pg-search"
  import Like from "../page/like/like"
  import UserAccount from "../page/account/UserAccount"
- import OrdarDetails from "../page/OrderDetails/Order-details"
+ import OrderDetails from "../page/OrderDetails/Order-details"
  import Payment from "../page/payment/payment"
  import OrderDone from "../page/orderDone/OrderDone"
  import AboutUs from "../page/About-This-Site/AboutUs"
@@ -46,7 +46,7 @@ import LoadingBtmHeader from "../components/header/LoadingBtmhader"
       }
 
        /> 
-      <ScrolTop />
+      <ScrollToTop />
 
 
        <AnimatePresence mode="wait">
@@ -54,11 +54,11 @@ import LoadingBtmHeader from "../components/header/LoadingBtmhader"
 
 
           <Route path="/" element={<Home/>}/>
-        <Route path="/order-details" element={<OrdarDetails/>}/>
+        <Route path="/order-details" element={<OrderDetails/>}/>
         <Route path="/like" element={<Like/>}/>
              <Route path="/cart" element={<Cart/>}/>
           <Route path="/payment" element={<Payment/>}/>
-            <Route path="/OrderDone" element={<OrderDone/>}/>
+            <Route path="/order-done" element={<OrderDone/>}/>
          <Route path="/user-account" element={<UserAccount/>}/>
          
            <Route path="/search" element={<Pgsearch/>}/>

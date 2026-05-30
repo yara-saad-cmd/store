@@ -4,26 +4,26 @@ import HeaderTwo from '../../components/header/header-2'
 import UserDataForm from "../../components/userdata/UserData"
 import Invoice from '../../components/invoice/invoice'
 import "./OrderDetails.css"
-import PageTransaction from '../../components/pageTransaction'
+import PageTransition from '../../components/pageTransaction'
 import CartItem from '../../components/cartItem/CartItem'
 import { ContextCart } from '../../components/context/contextcart'
 import Footer from '../../components/footer/footer'
-function OrdarDetails() {
+function OrderDetails() {
   const { cartItems } = useContext(ContextCart);
   return (
-    <PageTransaction>
+    <PageTransition>
 
-      <div className="pg-ordar-detalis">
+      <div className="pg-ordar-details">
         <HeaderTwo />
         <div className="pg-title">
           <PageLocation />
         </div>
         <div className="all-content">
           <div className="container">
-            <div className="detalis">
+            <div className="details">
 
               <div className="data-ordar-and-user">
-                <div className="detalis-ordar">
+                <div className="details-ordar">
                   {cartItems.map(item => {
 
 
@@ -31,7 +31,7 @@ function OrdarDetails() {
                       <CartItem
                         key={item.id}
                         item={item}
-                        layout="detalis-ordar"
+                        layout="details-ordar"
                       />
                     );
                   })}
@@ -59,7 +59,7 @@ function OrdarDetails() {
                       </div>
                     </div>
                  
-                  <textarea className='masegs' placeholder='ملاحظه للبائع (اختياري)' ></textarea>
+                  <textarea className='masegs' placeholder='ملاحظة للبائع (اختياري)' ></textarea>
                 </div>
               </div>
 
@@ -79,10 +79,10 @@ function OrdarDetails() {
         <Footer />
       </div>
 
-    </PageTransaction>
+    </PageTransition>
 
 
   )
 }
 
-export default OrdarDetails
+export default OrderDetails

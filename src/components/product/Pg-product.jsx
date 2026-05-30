@@ -13,7 +13,7 @@ import { FaCheck } from "react-icons/fa6";
 import toast from "react-hot-toast";
 import ImgPgproduct from "./img-pg-product";
 import TitlePpgPproduct from "./title-pg-product";
-import PageTransaction from "../pageTransaction";
+import PageTransition from "../pageTransaction";
 import Footertwo from "../footer/footer2";
 
 function Pgproduct() {
@@ -68,7 +68,7 @@ function Pgproduct() {
         <TopHeader />
         <BtmHeader />
       </header>
-      <PageTransaction key={id}>
+      <PageTransition key={id}>
         <div className="pg-prosact">
           <div className="container">
             <div className="prdact-area">
@@ -167,7 +167,7 @@ function Pgproduct() {
                   </button>
                 )}
         <Footertwo />
-      </PageTransaction>
+      </PageTransition>
     </div>
   );
 }

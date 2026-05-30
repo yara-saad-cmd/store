@@ -10,11 +10,11 @@ export default function PageLocation() {
     { name: "عربة المشتريات", path: "/cart" },
     { name: "تفاصيل الطلب", path: "/order-details" },
     { name: "الدفع", path: "/payment" },
-    { name: "تم الطلب", path: "/OrderDone" },
+    { name: "تم الطلب", path: "/order-done" },
   ];
 
   return (
-    <div className="pg-locarion">
+    <div className="page-location">
       {steps.map((step, index) => {
         const isActive = currentPath === step.path;
 

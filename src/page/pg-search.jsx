@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import TopHeader from '../components/header/topHeader'
 import BtmHeader from '../components/header/btmHeader'
-import PageTransaction from '../components/pageTransaction'
+import PageTransition from '../components/pageTransaction'
 import Prsdactloading from '../components/body/product-loading'
 import Prodact from '../components/body/product'
 import Footertwo from '../components/footer/footer2'
@@ -42,7 +42,7 @@ function Pgsearch() {
             <TopHeader />
             <BtmHeader />
     
-            <PageTransaction key={query}>
+            <PageTransition key={query}>
                 <div className="pg-search">
 
                     {loading ? (
@@ -55,7 +55,7 @@ function Pgsearch() {
 
                 </div>
                 <Footertwo/>
-            </PageTransaction>
+            </PageTransition>
         </div>
     )
     

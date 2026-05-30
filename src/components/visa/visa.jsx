@@ -2,9 +2,9 @@ import React from 'react'
 import "./visa.css"
 function Visa() {
   return (
-    <div className='componnt-visa'>
+    <div className='component-visa'>
         <div className="visa">
-           <p>وسائل الدفع اولاين</p>
+           <p>وسائل الدفع أونلاين</p>
                 <button>visa</button>
                 <button>paypal</button>
                 <button>credit</button>

@@ -3,7 +3,7 @@ import "./orderDone.css"
 import { Link } from 'react-router-dom'
 import { AiFillCheckCircle } from 'react-icons/ai'
 import HeaderTwo from '../../components/header/header-2'
-import PageTransaction from '../../components/pageTransaction'
+import PageTransition from '../../components/pageTransaction'
 import Footer from '../../components/footer/footer'
 
 
@@ -11,9 +11,9 @@ import Footer from '../../components/footer/footer'
 function OrderDone() {
   return (
     <>
-    <div className='pg-orderdane'>
+    <div className='page-order-done'>
         <HeaderTwo/>
-        <PageTransaction>
+        <PageTransition>
 
            <div className="icon-and-content">
             <div className="icon">
@@ -23,12 +23,12 @@ function OrderDone() {
             <h4>تم الطلب</h4>
 
             <Link to="/">
-            <button>الذهاب للصفحه الرسية</button>
+            <button>الذهاب للصفحة الرئيسية</button>
             </Link>
             
         </div>
       
-        </PageTransaction>
+        </PageTransition>
        
         
     </div>

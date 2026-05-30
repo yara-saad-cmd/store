@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import TopHeader from '../../components/header/topHeader'
 import BtmHeader from '../../components/header/btmHeader'
 import { ContextCart } from '../../components/context/contextcart'
-import PageTransaction from '../../components/pageTransaction'
+import PageTransition from '../../components/pageTransaction'
 import Product from '../../components/body/product'
 import "./like.css"
 import likeimg from "../../img/like.png"
@@ -17,7 +17,7 @@ function Like() {
       <TopHeader/>
       <BtmHeader/>
 
-      <PageTransaction>
+      <PageTransition>
         <div className="all-like">
             <div className="like-pruda">
 
@@ -26,11 +26,11 @@ function Like() {
 
 
                 {likeItems.length === 0 ? (
-                  <div className="ampty">
-                    <img src={likeimg} alt='img nun'/>
-                    <p>لم يتم اضافة منتجات الي قائمةالمفضل</p>
+                  <div className="empty-state">
+                    <img src={likeimg} alt='قائمة المفضلات'/>
+                    <p>لم يتم اضافة منتجات الي قائمة المفضلات</p>
 
-                    <Link to="/"> <button className='shop-naw'> تصوق الان </button> </Link>
+                    <Link to="/"> <button className='btn-shop-now'> تصوق الان </button> </Link>
                    
                   </div>
                   
@@ -63,7 +63,7 @@ function Like() {
         </div>
       
 
-      </PageTransaction>
+      </PageTransition>
       <Footer/>
     </div>
    

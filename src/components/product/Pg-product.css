@@ -73,13 +73,13 @@
  
   width: 58%;
 }
-.pg-prosact .title-items .prudact-detalis .name-prudact{
+.pg-prosact .title-items .prudact-details .name-prudact{
     color: var(--min-color);
     font-size: 30px;
     font-weight: bold;
   
 }
-.pg-prosact .title-items .prudact-detalis p{
+.pg-prosact .title-items .prudact-details p{
     color: var(--text-color-2);
     font-size: 18px;
     padding: 5px 0px 5px 5px;
@@ -102,11 +102,11 @@
 /*stsrs*/
 
 
-.pg-prosact .title-items .prudact-detalis  .price{
+.pg-prosact .title-items .prudact-details  .price{
    color: var(--text-color-2);
     font-size: 25px;
 }
-.pg-prosact .title-items .prudact-detalis .price span{
+.pg-prosact .title-items .prudact-details .price span{
    color: var(--text-color-2);
     font-size: 18px;
     padding: 0;
@@ -117,11 +117,11 @@
     margin: 5px 0 5px 0;
     
 }
-.pg-prosact .title-items .prudact-detalis h4 .stock{
+.pg-prosact .title-items .prudact-details h4 .stock{
     margin-right: 5px;
     color: blue;
 }
-.pg-prosact .title-items .prudact-detalis h4 .no-stock{
+.pg-prosact .title-items .prudact-details h4 .no-stock{
     color: rgb(255, 0, 0);
     margin-right: 5px;
 }
@@ -133,8 +133,8 @@
     text-align: right;
     max-width: 400px;
 }
-.pg-prosact .title-items .prudact-detalis .colors-box h3 span,
-.pg-prosact .title-items .prudact-detalis .size-options h3 span{
+.pg-prosact .title-items .prudact-details .colors-box h3 span,
+.pg-prosact .title-items .prudact-details .size-options h3 span{
     font-size: 13px;
     font-weight: 400;
     color: var(--text-color-1);
@@ -147,15 +147,15 @@
 /* //-------------------------- */
 
 
-.pg-prosact .title-items .prudact-detalis .colors-box h3,
-.pg-prosact .title-items .prudact-detalis .size-options h3 {
+.pg-prosact .title-items .prudact-details .colors-box h3,
+.pg-prosact .title-items .prudact-details .size-options h3 {
   font-size: 13px;
   margin-bottom: 5px;
   color: var(--text-color-1);
 }
 
-.pg-prosact .title-items .prudact-detalis .colors-box label,
-.pg-prosact .title-items .prudact-detalis .size-options label {
+.pg-prosact .title-items .prudact-details .colors-box label,
+.pg-prosact .title-items .prudact-details .size-options label {
   width: 35px;
   height: 25px;
   margin-left: 6px;
@@ -164,12 +164,12 @@
   border: 1px solid var(--border-color);
 }
 
-.pg-prosact .title-items .prudact-detalis .colors-box .colors,
-.pg-prosact .title-items .prudact-detalis .size-options .sizes{
+.pg-prosact .title-items .prudact-details .colors-box .colors,
+.pg-prosact .title-items .prudact-details .size-options .sizes{
   display: flex;
 }
-.pg-prosact .title-items .prudact-detalis .colors-box .colors .color-square,
-.pg-prosact .title-items .prudact-detalis .size-options .sizes .span-size{
+.pg-prosact .title-items .prudact-details .colors-box .colors .color-square,
+.pg-prosact .title-items .prudact-details .size-options .sizes .span-size{
   width: 100%;
   height: 100%;
   border-radius: 5px;
@@ -181,8 +181,8 @@
 
 
 }
-.pg-prosact .title-items .prudact-detalis .colors-box input,
-.pg-prosact .title-items .prudact-detalis .size-options input {
+.pg-prosact .title-items .prudact-details .colors-box input,
+.pg-prosact .title-items .prudact-details .size-options input {
   display: none; 
 }
 
@@ -442,7 +442,7 @@ height: 450px;
     .prdact-area .title-items{
       width: 100%;
       
-     .prudact-detalis{
+     .prudact-details{
 
       .name-prudact {
         font-size: 35px;
@@ -508,7 +508,7 @@ height: 450px;
 
   .pg-prosact .title-items{
 
-    .prudact-detalis{
+    .prudact-details{
 
 
       .name-prudact{

@@ -17,7 +17,7 @@
   flex-direction: column;
    
 }
-.all-paymemt{
+.all-payment{
   flex: 1;
 }
 .pg-cash .all-content{
@@ -26,7 +26,7 @@
     align-items: flex-start;
     margin-top: 60px;
 
-    .Payment-Methods{
+    .payment-methods{
       width: 65%;
     }
 
@@ -121,14 +121,14 @@
   }
   
   
-  .radio-card .mor-detals{
+  .radio-card .more-details{
     display: flex;
     justify-content: space-between;
   }
   .radio-content .visa {
     text-align: center;
   }
-  .radio-content .mor-detals{
+  .radio-content .more-details{
     display: flex;
     align-items: flex-end;
     margin: 15px 0 5px 0;
@@ -173,12 +173,12 @@
       margin-bottom: 15px;
     }
 
-    .Coupon-inpt{
+    .coupon-input{
       display: flex; 
       justify-content: space-between;
     }
 
-    .Coupon-inpt input{
+    .coupon-input input{
       border: 1px solid var(--border-color);
       border-radius: 10px;
       padding: 3px;
@@ -186,7 +186,7 @@
       width: 80%; 
     }
 
-    .Coupon-inpt .add{
+    .coupon-input .add{
       background-color: var(--min-color);
       color: var(--white-color);
       padding: 3px;
@@ -194,7 +194,7 @@
       width: 30%;
       cursor: pointer;
     }
-    .Order-Tracking{
+    .btn-submit-order{
       background-color: var(--min-color);
       width: 100%;
       padding: 3px;
@@ -211,7 +211,7 @@
       width: 100%;
 
 
-      .Payment-Methods , .Coupon{
+      .payment-methods , .Coupon{
         width: 100%;
       }
     

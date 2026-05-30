@@ -19,7 +19,7 @@
     
     
 }
-.pg-account  .LogOut{
+.pg-account  .log-out{
     margin: 10px 20px;
     .btn-logout{
         background-color: rgba(255, 255, 255, 0);
@@ -43,18 +43,18 @@
     margin-bottom: 30px;
 }
 
-.cash-visa , .pagse ,.usar-data{   
+.cash-visa , .pages-sidebar ,.usar-data{   
     border-radius: 20px;
     margin: 10px ;
     padding: 5px;
     background-color: var(--background);
     box-shadow: 3px 7px 15px rgba(0, 0, 0, 0.25);
 }
-.pg-account .pagse {
+.pg-account .pages-sidebar {
     flex: 1;
    
 }
-.pg-account .pagse .user-name h3{
+.pg-account .pages-sidebar .user-name h3{
     display: flex;
     gap: 10px;
     align-items: center;
@@ -67,7 +67,7 @@
         font-size: 30px;
     }
 }
-.pg-account .pagse .mor-pedges{
+.pg-account .pages-sidebar .more-pages{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -75,29 +75,29 @@
     margin: 20px;
 
 }
-.pg-account .pagse .mor-pedges svg{
+.pg-account .pages-sidebar .more-pages svg{
     font-size: 21px;
     margin-left: 10px;
    
 }
-.pg-account .pagse .mor-pedges span{
+.pg-account .pages-sidebar .more-pages span{
   
     font-size: 17px;
     font-weight: 500;
 }
-.pg-account .pagse .mor-pedges .pg-user , .pg-favorite , .pg-cart-icon , .msge{
+.pg-account .pages-sidebar .more-pages .pg-user , .pg-favorite , .pg-cart-icon , .message{
    cursor: pointer;
     display: flex;
     align-items: center;
     color: var(--text-color-1);
 }
-.pg-account .pagse .mor-pedges .pg-user {
+.pg-account .pages-sidebar .more-pages .pg-user {
     color:var(--min-color);
 }
 .pg-user:hover,
 .pg-favorite:hover,
 .pg-cart-icon:hover,
-.msge:hover {
+.message:hover {
     color:var(--min-color)
 }
 
@@ -118,7 +118,7 @@
                 flex-direction: column-reverse;  
 
 
-            .LogOut {
+            .log-out {
                 text-align: center;
 
 
@@ -140,7 +140,7 @@
             display: flex;
             flex-direction: column;
 
-            .mor-pedges{
+            .more-pages{
                 flex-direction: row;
                
             }
@@ -155,7 +155,7 @@
   }
 
   @media only screen and (max-width: 760px){
-    .pg-account  .pg-body  .mor-pedges{
+    .pg-account  .pg-body  .more-pages{
          gap: 0;
                 justify-content: space-around;
 

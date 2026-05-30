@@ -2,7 +2,7 @@ import React from 'react'
 import TopHeader from '../../components/header/topHeader'
 import BtmHeader from '../../components/header/btmHeader'
 import "./UserAccount.css"
-import PageTransaction from "../../components/pageTransaction"
+import PageTransition from "../../components/pageTransaction"
 import { FiHeart } from 'react-icons/fi'
 import { TbShoppingCart } from 'react-icons/tb'
 import { LuUserRound } from 'react-icons/lu'
@@ -16,18 +16,18 @@ function UserAccount() {
     <div className='all-pg-account'>
         <TopHeader/>
         <BtmHeader/>
-       <PageTransaction>
+       <PageTransition>
 
           <div className="pg-account">
             <div className="container">
 
-                      <div className="LogOut">
+                      <div className="log-out">
                         <button className='btn-logout'>تسجيل الخروج</button>
                       </div>   
 
                 <div className="pg-body">
 
-                    <div className="pagse">
+                    <div className="pages-sidebar">
                       
                       <div className="user-name">
                     
@@ -35,12 +35,12 @@ function UserAccount() {
                       <h3> <FaUserCircle /> user name</h3>
                       </div>
 
-                      <div className="mor-pedges">
+                      <div className="more-pages">
 
                       <Link to="/user-account" className='pg-user'> <LuUserRound /> <span>الملف الشخصي</span></Link>
                       <Link to="/like" className='pg-favorite'>  <FiHeart /><span>قائمة المفضل</span></Link>
                       <Link to="/cart" className='pg-cart-icon'>  <TbShoppingCart /><span>سلة المشتريات</span></Link>
-                      <p className='msge'><FaWhatsapp/><span>الرسائل</span></p>
+                      <p className='message'><FaWhatsapp/><span>الرسائل</span></p>
 
                       </div>
                      
@@ -74,7 +74,7 @@ function UserAccount() {
             </div>
         </div>
         <Footertwo/>
-       </PageTransaction>
+       </PageTransition>
       
 
     </div>

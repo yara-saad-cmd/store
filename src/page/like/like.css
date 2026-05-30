@@ -29,23 +29,23 @@
     margin: 10px;
 
 }
-.fivrt-prudact .ampty{
+.fivrt-prudact .empty-state{
    text-align: center;
    margin: 50px;
 }
-.fivrt-prudact .ampty img{
+.fivrt-prudact .empty-state img{
     width: 250px;
    
     
 }
-.fivrt-prudact .ampty p{
+.fivrt-prudact .empty-state p{
     font-size: 30px;
     font-weight: 500;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.ampty .shop-naw{
+.empty-state .btn-shop-now{
     background-color: var(--min-color);
     width: 140px;
     height: 32px;
@@ -57,6 +57,6 @@
     transition:transform 320ms ease;
 
 }
-.ampty .shop-naw:hover{
+.empty-state .btn-shop-now:hover{
     transform: scale(1.1);
 }

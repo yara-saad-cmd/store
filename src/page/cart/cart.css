@@ -39,7 +39,7 @@
 /*------------------------------*/
 /*location*/
 
-.pg-locarion {
+.page-location {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -48,7 +48,7 @@
     cursor: default;
   }
   @media (max-width: 550px){
-    .pg-locarion{
+    .page-location{
        display: none;
     } 
   }
@@ -267,7 +267,7 @@
        font-weight: bold;
        
     }
-    .butm-go-home{
+    .btn-go-home{
     
     background-color: var(--min-color);
         color: var(--white-color);

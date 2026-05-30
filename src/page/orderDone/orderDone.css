@@ -1,9 +1,9 @@
-.pg-orderdane {
+.page-order-done {
     display: flex;
     justify-content: center;
     align-items: center;
     height: calc(100vh - 45px);
-
+ background-color: var(--background2);
 
     .icon-and-content{
         display: flex;

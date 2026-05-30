@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 import HeaderTwo from "../../components/header/header-2";
 import "./cart.css";
-import { ContextCart } from "../../components//context/contextcart";
+import { ContextCart } from "../../components/context/contextcart";
 import { FaRegHeart } from "react-icons/fa";import { FaHeart, FaRegTrashCan } from "react-icons/fa6";
-import PageTransaction from "../../components/pageTransaction";
+import PageTransition from "../../components/pageTransaction";
 import toast from "react-hot-toast"; 
 import PageLocation from "../../components/pageLocation"
 import Visa from "../../components/visa/visa";import { Link } from "react-router-dom";
 import Invoice from "../../components/invoice/invoice";
 import CartItem from "../../components/cartItem/CartItem";
-import ImgCartAmpty from "../../img/img-cart-ampty.png"
+import ImgCartEmpty from "../../img/img-cart-ampty.png"
 function Cart() {
  
   const {
@@ -26,7 +26,7 @@ function Cart() {
 
 
  
-  const HandleAddToLike = (item) => {
+  const handleAddToLike = (item) => {
     const inlike = likeItems.some((i) => i.id === item.id);
 
     if (inlike) {
@@ -49,15 +49,15 @@ function Cart() {
       <HeaderTwo />
     </div>
 
-     <PageTransaction>
+     <PageTransition>
 
      
             {cartItems.length === 0 ? (
               // حالة العربة فارغة
               <div className="no-prodact">
-                <img src={ImgCartAmpty} alt="img"/>
+                <img src={ImgCartEmpty} alt="img"/>
                 <h2>لم يتم إضافة أي منتجات إلى العربة</h2>
-                <Link to="/"> <button className="butm-go-home">تسوق الان</button></Link>
+                <Link to="/"> <button className="btn-go-home">تسوق الآن</button></Link>
               
               </div>
 
@@ -92,7 +92,7 @@ function Cart() {
                           key={item.id}
                           item={item}
                           inlike={inlike}
-                          onLike={HandleAddToLike}
+                          onLike={handleAddToLike}
                           onDelete={delet}
                           onIncrease={increaseQuantity}
                           onDecrease={decreaseQuantity}
@@ -121,7 +121,7 @@ function Cart() {
         
       </div>
      )}
-    </PageTransaction>
+    </PageTransition>
     
   </div>
 
