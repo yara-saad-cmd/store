@@ -4,7 +4,7 @@ import BtmHeader from '../../components/header/btmHeader';
 import { data, useParams } from 'react-router-dom';
 import Product from '../../components/body/product';
 import "./pg-category.css"
-import Prsdactloading from '../../components/body/product-loading';
+import ProductLoading from '../../components/body/product-loading';
 import PageTransition from '../../components/pageTransaction';
 import Footertwo from '../../components/footer/footer2';
 
@@ -13,8 +13,8 @@ function Pgcategory() {
   const {category} = useParams()
   
 
-  const [gategotyprodact , setgategotyprodact] = useState([])
-  const [Pgcategory , setPgcategory] = useState(true)
+  const [categoryprodact , setcategoryprodact] = useState([])
+  const [isLoading , setisLoading] = useState(true)
 
 
 
@@ -22,24 +22,24 @@ function Pgcategory() {
       fetch(`https://dummyjson.com/products/category/${category}`)
       .then((res) => res.json())
       .then((data) => {
-        setgategotyprodact(data.products)
+        setcategoryprodact(data.products)
       })
       .catch((error)=> console.error(error))
-      .finally(() => setPgcategory(false))
+      .finally(() => setisLoading(false))
     } ,[category])
-console.log(gategotyprodact)
+console.log(categoryprodact)
 
 
   return (
     <PageTransition>
-       <div className="pg-search">
+       <div className="page-category">
       <TopHeader/>
       <BtmHeader/>
-      <div className="pg-search">
+      <div className="page-category-two">
         <>
-         {Pgcategory ? (<Prsdactloading key={category}/>
+         {isLoading ? (<ProductLoading key={category}/>
          ):(<div className="prodact">
-             <Product products={gategotyprodact}  title={category} 
+             <Product products={categoryprodact}  title={category} 
             />
 
             

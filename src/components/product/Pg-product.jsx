@@ -5,7 +5,7 @@ import { IoIosStar } from "react-icons/io";
 import { TbShoppingCartPlus } from "react-icons/tb";
 import ProductLayout from "../body/ProductLayout";
 import Loading from "./loading-pg-product";
-import Prsdactloading from "../body/product-loading";
+import ProductLoading from "../body/product-loading";
 import BtmHeader from "../header/btmHeader";
 import TopHeader from "../header/topHeader";
 import { ContextCart } from "../context/contextcart";
@@ -83,7 +83,7 @@ function Pgproduct() {
           <div className="mor-product">
             {" "}
             {loadingrelatedProducts ? (
-              <Prsdactloading />
+              <ProductLoading />
             ) : (
               <ProductLayout title={"مقترحات من نفس الفئة"}>
                 {relatedProducts.slice(0, visibleCount)

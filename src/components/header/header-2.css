@@ -32,8 +32,8 @@
  z-index: 1100;
 } */
  /*sersh*/
- .pg-search .on-tata{
-    height: calc(100vh - 367px);
+ .pg-search .no-data-text{
+    height: calc(100vh - 514px);
     padding: 10px;
     
  }

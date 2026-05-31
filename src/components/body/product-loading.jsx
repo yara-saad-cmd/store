@@ -2,7 +2,7 @@ import React from 'react'
 
 
 
-function Prsdactloading() {
+function ProductLoading() {
   return (
 
     <div className="loading-product">
@@ -32,4 +32,4 @@ function Prsdactloading() {
   )
 }
 
-export default Prsdactloading
+export default ProductLoading

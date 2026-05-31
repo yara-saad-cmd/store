@@ -3,26 +3,27 @@ import { useLocation } from 'react-router-dom'
 import TopHeader from '../components/header/topHeader'
 import BtmHeader from '../components/header/btmHeader'
 import PageTransition from '../components/pageTransaction'
-import Prsdactloading from '../components/body/product-loading'
+import ProductLoading from '../components/body/product-loading'
 import Prodact from '../components/body/product'
 import Footertwo from '../components/footer/footer2'
 
 function Pgsearch() {
 
     const [loading , setloading] =useState(true)
-    const [resolt , setresolt] =useState([])
+    const [results , setresults] =useState([])
     const query = new URLSearchParams(useLocation().search).get("query")
  
-    console.log(resolt)
+    console.log(results)
 
     useEffect(()=>{
-        const futchresilt = async ()=>{
+        const fetchResults = async ()=>{
+            setloading(true)
             try{
                 const res= await fetch(
                     `https://dummyjson.com/products/search?q=${query}`
                 )
                 const data = await res.json()
-                setresolt(data.products || [])
+                setresults(data.products || [])
 
             }catch (error){
                 console.error("search error",error)
@@ -33,7 +34,7 @@ function Pgsearch() {
             }
              
         } 
-        if(query) futchresilt()
+        if(query) fetchResults()
             
         
     },[query])
@@ -46,12 +47,12 @@ function Pgsearch() {
                 <div className="pg-search">
 
                     {loading ? (
-                        <Prsdactloading key={query} />
-                    ) : resolt.length > 0 ? (
+                        <ProductLoading key={query} />
+                    ) : results.length > 0 ? (
                         <div className="prodact">
-                            <Prodact products={resolt} title={"نتائج البحث"} />
+                            <Prodact products={results} title={"نتائج البحث"} />
                         </div>
-                    ) : <h3 className="on-tata container">لا توجد منتجات</h3>}
+                    ) : <h3 className="no-data-text container">لا توجد منتجات</h3>}
 
                 </div>
                 <Footertwo/>

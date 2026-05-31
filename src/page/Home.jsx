@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Slider from '../components/body/slider'
 import Prodact from "../components/body/product"
-import Prsdactloading from '../components/body/product-loading'
+import ProductLoading from '../components/body/product-loading'
 import PageTransition from '../components/pageTransaction'
 import Footertwo from '../components/footer/footer2'
 import TopHeader from '../components/header/topHeader'
@@ -57,7 +57,7 @@ function Home() {
       <Slider />
   
       {loading ?(
-       <Prsdactloading/>
+       <ProductLoading/>
       ):(
        
         <Prodact products={product} />
