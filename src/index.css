@@ -9,8 +9,8 @@
 }
 :root{
   --min-color:#6e3f1f;
-  --background:#f1f1f1;
-  --background2:#ffdede;
+  --min-pg:#f0f0f0;
+  --min-pg2:#ffdede;
   --bottms-color:#444444;
   --border-color:#BABABA;
   --white-color:rgb(255, 255, 255);
@@ -21,9 +21,9 @@
 }
 
 body{
-background-color: var(--background);
-font-family: "Tajawal", sans-serif;
-direction: rtl;
+  background-color: var(--min-pg);
+  font-family: "Tajawal", sans-serif;
+  direction: rtl;
 
 
 }

@@ -1,8 +1,8 @@
 
 /* :root{
   --min-color:#01c0fa;
-  --background:#FFF9F9;
-  --background2:#E6E6E6;
+   --min-pg:#FFF9F9;
+   --min-pg2:#E6E6E6;
   --bottms-color:#444444;
   --border-color:#BABABA;
   --white-color:rgb(255, 255, 255);
@@ -86,7 +86,7 @@ hedar{
 .top-header .search-box{
     width: 100%;
     border-radius: 50px;
-    background-color: var(--background);
+    background-color: var( --min-pg);
     display: flex;
     align-items: center;
   
@@ -220,7 +220,7 @@ hedar{
   
   .btm-header .container:hover {
     scrollbar-width: thin;
-    scrollbar-color: var(--border-color) var(--background2);
+    scrollbar-color: var(--border-color) var( --min-pg2);
     
   }
   

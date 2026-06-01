@@ -1,7 +1,7 @@
 /* :root{
     --min-color:#6e3f1f;
-    --background:#FFF9F9;
-    --background2:#dddddd;
+     --min-pg:#FFF9F9;
+     --min-pg2:#dddddd;
     --bottms-color:#444444;
     --border-color:#BABABA;
     --white-color:rgb(255, 255, 255);
@@ -12,7 +12,7 @@
   } */
 .pg-cart{
     min-height: 100vh;   /* تملى الشاشة لو المحتوى قليل */
-  background-color:var(--background2);
+  background-color:var( --min-pg2);
   display: flex;
   flex-direction: column;
  }
@@ -153,10 +153,10 @@
     padding: 3px 5px;
     height: 20px;
     border-radius: 20px;
-    background-color: var(--background2)
+    background-color: var( --min-pg2)
 } 
 .pg-cart .cart .item-cart .Content .size option{
-    background-color: var(--background);
+    background-color: var( --min-pg);
 }
 .pg-cart .cart .item-cart .Content .price{
     background-color:var(--white-color);
