@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { FiHeart } from "react-icons/fi";
 import { TbShoppingCart } from "react-icons/tb";
 import { LuUserRound } from "react-icons/lu";
-import "./header.css"
+import "./TopHeader.css"
 import {ContextCart} from "../context/contextcart"
 import Search from './search';
 

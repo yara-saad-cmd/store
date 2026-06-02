@@ -5,6 +5,9 @@ import { ContextCart } from '../context/contextcart'
 import { TbShoppingCart } from 'react-icons/tb'
 import toast from 'react-hot-toast'
 import CartItem from '../cartItem/CartItem'
+import "./titel-pg-product.css"
+
+
 
 function TitleProductPage({prodact}) {
 

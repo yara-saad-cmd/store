@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import LoadingBtmHeader from './LoadingBtmhader';
-
+import "./BtmHeader.css"
 function BtmHeader() {
   const [categories, setCategorys] = useState([]);
   const [loading, setLoading] = useState(true);

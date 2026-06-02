@@ -1,7 +1,7 @@
 import React from 'react'
 import TopHeader from '../header/topHeader'
 import BtmHeader from '../header/btmHeader'
-
+import "./loading-pg-product.css"
 function Loading() {
   return (
 

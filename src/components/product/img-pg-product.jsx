@@ -39,6 +39,9 @@
 
 
 import React, { useState, useEffect } from 'react'
+import "./img-pg-product.css"
+
+
 
 function ImgPgProdact({ prodact }) {
   // 1. نجعل الحالة الابتدائية فارغة تماماً

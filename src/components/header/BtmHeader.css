@@ -1,0 +1,112 @@
+/*btm-header*/
+
+.btm-header {
+    background-color: var(--white-color);
+    border-top: 1px solid var(--border-color);
+   
+  }
+  
+  .btm-header .container {
+    overflow-x: auto;       
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+    box-sizing: border-box;
+  
+   
+    scrollbar-width: none; 
+  }
+  
+  .btm-header .container::-webkit-scrollbar {
+    height: 6px;
+    background: transparent; 
+  }
+  
+  .btm-header .container::-webkit-scrollbar-thumb {
+    background-color: transparent; 
+    border-radius: 3px;
+    transition: background-color 0.3s;
+  }
+  
+  
+  .btm-header .container:hover::-webkit-scrollbar-thumb,
+  .btm-header .container:hover::-webkit-scrollbar-track {
+    background-color: #ffffff; 
+   
+  }
+  
+  .btm-header .container:hover::-webkit-scrollbar-thumb {
+    background-color: #7a7a7a; 
+  }
+  
+  
+  .btm-header .container:hover {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) var( --min-pg2);
+    
+  }
+  
+ 
+  .btm-header .container .btm-nav {
+    display: inline-flex;
+    gap: 20px;
+    list-style: none;
+    padding: 5px;
+    margin: 0;
+  }
+  
+  .btm-header .container .btm-nav span {
+    flex-shrink: 0;
+  }
+ 
+  .btm-header .container .btm-nav span a {
+    text-decoration: none;
+    color: var(--text-color-2);
+    background-color: var( --bottm-nav);
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 25px;
+    transition: 0.2s;
+    white-space: nowrap;
+    box-shadow: inset 2px 2px 5px rgba(73, 64, 64, 0.137);
+  }
+  
+  .btm-header .container .btm-nav span a:hover {
+    background: var(--min-color);
+    color: var(--white-color);
+  }
+
+  /*btm-header*/
+
+
+  
+   /* loading btm hedar */
+   .btmhedar-loading {
+    height: 30px; /* ظبط الطول حسب احتياجك */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* عشان لو المربعات كتير متبوظش الصفحة */
+  
+    .department {
+      background: linear-gradient(90deg, #e4e4e4 25%, #d3d3d3 50%, #e4e4e4 75%);
+      background-size: 200% 100%;
+      animation: loading-shimmer 1.5s infinite;
+      width: 140px;
+      height: 30px;
+      margin: 0 10px;
+      border-radius: 20px;
+    }
+  }
+  
+  /* حركة الإضاءة */
+  @keyframes loading-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+
+
+
+  /* loading btm hedar */

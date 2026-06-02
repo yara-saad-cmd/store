@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react'
 import { IoSearchOutline, IoTimeOutline } from 'react-icons/io5'
 import { useLocation, useNavigate } from 'react-router-dom'
+import "./Search.css"
+
 
 function Search() {
     const [search, setsearch] = useState("")

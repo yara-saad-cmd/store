@@ -1,0 +1,318 @@
+.pg-prosact .title-items{
+    width: 58%;
+    padding: 10px;
+    
+}
+.title-items{
+ 
+  width: 58%;
+}
+.pg-prosact .title-items .prudact-details .name-prudact{
+    color: var(--min-color);
+    font-size: 30px;
+    font-weight: bold;
+  
+}
+.pg-prosact .title-items .prudact-details p{
+    color: var(--text-color-2);
+    font-size: 18px;
+    padding: 5px 0px 5px 5px;
+    font-weight: 400;
+}
+/*stsrs*/
+
+.pg-prosact .title-items .stars{
+    display: flex;
+    color: gold;
+    font-size: 20px;
+    align-items: center;
+   
+    
+}
+.pg-prosact .title-items .stars p{
+    margin-right: 5px;
+    font-size: 18px;
+}
+/*stsrs*/
+
+
+.pg-prosact .title-items .prudact-details  .price{
+   color: var(--text-color-2);
+    font-size: 25px;
+}
+.pg-prosact .title-items .prudact-details .price span{
+   color: var(--text-color-2);
+    font-size: 18px;
+    padding: 0;
+    margin: 3px;
+}
+.pg-prosact .title-items h4{
+    font-size: 16px;
+    margin: 5px 0 5px 0;
+    
+}
+.pg-prosact .title-items .prudact-details h4 .stock{
+    margin-right: 5px;
+    color: blue;
+}
+.pg-prosact .title-items .prudact-details h4 .no-stock{
+    color: rgb(255, 0, 0);
+    margin-right: 5px;
+}
+.pg-prosact .title-items .colors,
+.pg-prosact .title-items .size{
+    cursor: pointer;
+    position: relative;
+    margin-top: 10px;
+    text-align: right;
+    max-width: 400px;
+}
+.pg-prosact .title-items .prudact-details .colors-box h3 span,
+.pg-prosact .title-items .prudact-details .size-options h3 span{
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-color-1);
+    font-weight: bold;
+    margin: 3px 0px 0px 0px;
+}
+
+
+
+/* //-------------------------- */
+
+
+.pg-prosact .title-items .prudact-details .colors-box h3,
+.pg-prosact .title-items .prudact-details .size-options h3 {
+  font-size: 13px;
+  margin-bottom: 5px;
+  color: var(--text-color-1);
+}
+
+.pg-prosact .title-items .prudact-details .colors-box label,
+.pg-prosact .title-items .prudact-details .size-options label {
+  width: 35px;
+  height: 25px;
+  margin-left: 6px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+}
+
+.pg-prosact .title-items .prudact-details .colors-box .colors,
+.pg-prosact .title-items .prudact-details .size-options .sizes{
+  display: flex;
+}
+.pg-prosact .title-items .prudact-details .colors-box .colors .color-square,
+.pg-prosact .title-items .prudact-details .size-options .sizes .span-size{
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  display:flex;
+  font-size: 13px;
+  font-weight: 500;
+  justify-content: center;
+  align-items: center;
+
+
+}
+.pg-prosact .title-items .prudact-details .colors-box input,
+.pg-prosact .title-items .prudact-details .size-options input {
+  display: none; 
+}
+
+/*اللون او المقاس المختار*/
+/* .pg-prosact .title-items .circle {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+} */
+
+/*المقاس غير المختار غير مهم تم تنسيقه*/
+/* .pg-prosact .title-items .size-box {
+  background: var(--white-color);
+  color: var(--text-color-1);
+  border-radius: 20%;
+  width: 40px;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+
+/*لما يتم الصغط علي العنصر المختار*/
+/* .pg-prosact .title-items input:checked + .circle {
+  border: 1px solid var(--text-color-1);
+  transform: scale(1.1);
+  box-shadow: 0 0 5px rgba(153, 153, 153, 0.932);
+} */
+.pg-prosact .title-items .btn-and-icon{
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+.btn-and-icon .con {
+  display: flex;
+}
+
+.pg-prosact .title-items .btn-and-icon .icon-hert{
+display: flex;
+}
+.pg-prosact .title-items .btn-and-icon .icon-hert svg{
+  border-radius: 50px;
+  border:  solid 1px var(--border-color);
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  padding:7px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  background-color: var(--min-color);
+  color: var(--white-color);
+}
+.pg-prosact .title-items .btn-and-icon .icon-hert svg:hover{
+  background-color: var(--white-color);
+  color: var(--min-color);
+  
+  
+}
+.pg-prosact .title-items .btn{
+  background-color: var(--min-color);
+  width: fit-content ;
+  padding: 8px;
+  font-size: 18px;
+  border-radius: 2px;
+  color: var(--white-color);
+  font-weight: bold;
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.pg-prosact .title-items .btn span{
+  margin-left: 10px;
+}
+.pg-prosact .title-items .btn.encart{
+  background-color: var(--white-color);
+  color: var(--min-color);
+  border: solid 1px var(--border-color);
+  transition:  0.3 ease-in-out;
+  pointer-events: none;
+}
+
+.pg-prosact .title-items .like svg{
+  margin-left: 10px;
+  font-size: 22px;
+ 
+}
+
+.pg-prosact .title-items .like.inlike svg{
+ background-color: var(--white-color);
+ color: var(--min-color);
+}
+.pg-prosact .title-items .share svg{
+  margin-left: 10px;
+  font-size: 22px;
+}
+.pg-prosact .title-items .btn:hover{
+    transform: scale(1.1);
+    background-color: var(--white-color);
+    color: var(--min-color);
+    border:  solid 1px var(--border-color);
+   
+}
+
+/*@media*/
+
+
+@media only screen and (max-width: 968px) {
+    .prdact-area {
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     margin-bottom: 20px;
+     }
+   
+    
+   
+   
+       .prdact-area .title-items{
+         width: 100%;
+         
+        .prudact-details{
+   
+         .name-prudact {
+           font-size: 35px;
+         }
+         p {
+           font-size: 20px;
+           margin: 10px 0 10px 0;
+         }
+         h4 , .colors-box h3 , .size-options h3 {
+           font-size: 18px;
+           margin: 10px 0 10px 0;
+   
+           span {
+             font-size: 20px;
+           }
+         }
+         .colors .color-square-option , .sizes .size-box {
+           width: 45px;
+           height: 35px;
+         }
+   
+         .colors-box .colors .color-square,.size-options .sizes .span-size {
+           font-size: 18px;
+         }
+   
+         .price{
+           font-size: 30px;
+         }
+          
+   
+   
+         }
+         
+   
+   }
+   }
+   
+   
+    
+   
+   
+
+@media only screen and  (max-width: 440px){
+
+    .pg-prosact .title-items{
+  
+      .prudact-details{
+  
+  
+        .name-prudact{
+          font-size: 28px;
+        }
+        p{
+          font-size: 18px;
+        }
+      
+      }
+  
+  
+  
+      .btn{
+          font-size: 4cqw;
+        }
+  
+  
+  
+    }
+  }
+  
