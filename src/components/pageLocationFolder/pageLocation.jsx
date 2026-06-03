@@ -1,6 +1,9 @@
 
 import { IoMdArrowBack } from "react-icons/io";
 import { Link, useLocation } from "react-router-dom";
+import "./pageLocation.css"
+
+
 
 export default function PageLocation() {
   const location = useLocation();

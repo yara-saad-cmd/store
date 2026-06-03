@@ -1,5 +1,5 @@
 import React from 'react'
-import PageLocation from '../../components/pageLocation'
+import PageLocation from '../../components/pageLocationFolder/pageLocation'
 import HeaderTwo from '../../components/header/header-2'
 import "./payment.css"
 

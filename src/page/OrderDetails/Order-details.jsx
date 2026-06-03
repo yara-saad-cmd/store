@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import PageLocation from '../../components/pageLocation'
+import PageLocation from '../../components/pageLocationFolder/pageLocation'
 import HeaderTwo from '../../components/header/header-2'
 import UserDataForm from "../../components/userdata/UserData"
 import Invoice from '../../components/invoice/invoice'

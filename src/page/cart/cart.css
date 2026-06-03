@@ -36,46 +36,7 @@
     font-weight: 600;
     
 }
-/*------------------------------*/
-/*location*/
 
-.page-location {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    font-size: 16px;
-    pointer-events: none;
-    cursor: default;
-  }
-  @media (max-width: 550px){
-    .page-location{
-       display: none;
-    } 
-  }
- 
-  
-  .step-container {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .step-label {
-    color: #949494;
-    transition: 0.3s;
-    text-decoration: none;
-  }
-  .step-active .step-label {
-    color:var(--text-color-1);
-    font-weight: bold;
-  }
-  
-  .checkout-arrow {
-    display: flex;
-    align-items: center;
-    color: #aaa;
-    font-size: 20px;
-  }
-/*-------------------------------*/
 .pg-cart .cart {
     display: flex;
    
