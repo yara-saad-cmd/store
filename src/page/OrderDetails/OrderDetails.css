@@ -1,6 +1,6 @@
 
 .pg-ordar-details{
-    min-height: 100vh;   /* تملى الشاشة لو المحتوى قليل */
+    min-height: 100vh;  
     background-color:var( --min-pg2);
     display: flex;
     flex-direction: column;
