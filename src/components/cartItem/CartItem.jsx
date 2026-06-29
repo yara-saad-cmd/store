@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { FiHeart } from "react-icons/fi";
-import { TbShoppingCart } from "react-icons/tb"; // تم إضافة الأيقونة
+import { TbShoppingCart } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import { ContextCart } from "../context/contextcart";
 
@@ -17,133 +17,142 @@ export default function CartItem({
   onColorChange,
   encart,
   HandleAddToCart,
-  removelike, // قادمة من الـ Props
-  AddToLike,  // قادمة من الـ Props
+  removelike, 
+  AddToLike,  
   toast,
   layout = "cart",
 }) {
-  // استخراج القيم من الـ Context مع تغيير اسم الوظائف محلياً لتجنب التصادم مع الـ Props
   const { 
-    cartItems = [], 
-    AddToCart, 
     AddToLike: AddToLikeCtx, 
-    likeItems, 
     removelike: removelikeCtx 
   } = useContext(ContextCart);
 
-  // ====== الاختيار الافتراضي للمقاس واللون ======
-  const defaultSize = item.size || item.availableSizes?.[0] || "S";
-  const selectedColor = item.color || item.availableColors?.[0] || "Default Color";
+  // ====== الـ State المحلية لمزامنة الاختيار الفوري ======
+  const [localColor, setLocalColor] = useState(item.color || "");
+  const [localSize, setLocalSize] = useState(item.size || "");
 
-  const [color, setcolor] = useState({
-    color1: "red",
-    color2: "green",
-    color3: "pink",
-    color4: "white"
-  });
+  // الـ Fallbacks الافتراضية
+  const defaultSize = localSize || item.availableSizes?.[0] || "";
+  const selectedColor = localColor || item.availableColors?.[0] || "";
+
+  const hasColors = item.colors && item.colors.length > 0;
+  const hasSizes = item.sizes && item.sizes.length > 0;
+
+  const handleColorClick = (color) => {
+    setLocalColor(color);
+    if (onColorChange) onColorChange(item.id, color);
+  };
+
+  const handleSizeClick = (size) => {
+    setLocalSize(size);
+    if (onSizeChange) onSizeChange(item.id, size);
+  };
 
   const handleAddToLike = () => {
-    const prodact = item; 
-    // نتحقق أولاً إذا كانت الوظيفة قادمة من الـ Props، وإذا لم توجد نستخدم التي في الـ Context
+    const product = item; 
     const finalRemoveLike = removelike || removelikeCtx;
     const finalAddToLike = AddToLike || AddToLikeCtx;
 
     if (inlike) {
-      if (finalRemoveLike) finalRemoveLike(prodact.id);
-      toast.error(`تم حذف ${prodact.title} من المفضل `);
+      if (finalRemoveLike) finalRemoveLike(product.id);
+      toast.error(`تم حذف ${product.title} من المفضل `);
     } else {
-      if (finalAddToLike) finalAddToLike(prodact);
-      toast.success(` تم اضافة ${prodact.title} الي المفضل`);
+      if (finalAddToLike) finalAddToLike(product);
+      toast.success(` تم اضافة ${product.title} الي المفضل`);
     }
   };
 
   return (
     <div className="item-cart" key={item.id}>
-      {/* ====== صورة المنتج + الاسم ====== */}
+      {/* ====== صورة المنتج ====== */}
       <div className="img-name">
-        {(layout === "cart" || layout === "details-ordar") && (
-          <Link key={item.id} to={`/products/${item.id}`}>
-            <img src={item.images?.[0]} alt={item.title} />
-          </Link>
-        )}
+        <Link to={`/products/${item.id}`}>
+          {/* كود الصورة يدار من الملف الخارجي لديكِ */}
+        </Link>
       </div>
 
       <div className="Content">
         <div className="prudact-details">
           <h3 className="name-prudact">{item.title}</h3>
           
-          {layout === "prodact" && (
-            <p>{item.description}</p>
+          {layout === "prodact" && item.description && <p>{item.description}</p>}
+          {layout === "prodact" && item.availability && (
+            <h4>الحاله:<span className="stock">{item.availability}</span></h4>
           )}
 
-          {layout === "prodact" && (
-            <h4>الحاله:<span className="stock">{item.availabilityStatus}</span></h4>
-          )}
-
-          {/* ====== اللون ====== */}
-          {layout === "prodact" ? (
+          {/* ====== قسم الألوان ====== */}
+          {layout === "prodact" && hasColors && (
             <div className="colors-box">
-              <h3>اللون : <span>red</span></h3>
+              <h3>اللون : <span>{selectedColor || "اختر لوناً"}</span></h3>
               <div className="colors">
-                {["gren", "red", "plie"]?.map((color) => (
-                  <label key={color} className="color-square-option">
-                    <input
-                      type="radio"
-                      name={`color_${item.id}`}
-                      value={color}
-                      checked={selectedColor === color}
-                      onChange={(e) => onColorChange(item.id, e.target.value)}
-                    />
-                    <span
-                      className="color-square"
-                      style={{ backgroundColor: color }}
-                    >red</span>
-                  </label>
-                ))}
+                {item.colors.map((color) => {
+                  const isColorActive = selectedColor === color;
+                  return (
+                    <label 
+                      key={color} 
+                      className={`color-square-option ${isColorActive ? "active" : ""}`}
+                      onClick={() => handleColorClick(color)}
+                    >
+                      <span className="color-square" >
+                        {color}
+                      </span>
+                    </label>
+                  );
+                })}
               </div>
             </div>
-          ) : (
+          )}
+
+          {(layout === "cart" || layout === "details-ordar") && hasColors && selectedColor && (
             <p className="color-item">اللون: <strong>{selectedColor}</strong></p>
           )}
 
-          {/* ====== المقاس ====== */}
-          {layout === "prodact" && (
+          {/* ====== قسم المقاسات لصفحة المنتج ====== */}
+          {layout === "prodact" && hasSizes && (
             <div className="size-options">
-              <h3>المقاسات : <span>M</span></h3>
+              <h3>المقاس : <span>{defaultSize || "اختر مقاساً"}</span></h3>
               <div className="sizes">
-                {["S", "M", "L", "XL"].map((size) => (
-                  <label key={size} className="size-box">
-                    <input
-                      type="checkbox"
-                      checked={item.size ? item.size === size : defaultSize === size}
-                      onChange={() => onSizeChange(item.id, size)}
-                    />
-                    <span className="span-size">{size}</span>
-                  </label>
-                ))}
+                {item.sizes.map((size) => {
+                  const isSizeActive = defaultSize === size;
+                  return (
+                    <label 
+                      key={size} 
+                      className={`size-box ${isSizeActive ? "active" : ""}`}
+                      onClick={() => handleSizeClick(size)}
+                    >
+                      <span className="span-size">{size}</span>
+                    </label>
+                  );
+                })}
               </div>
             </div>
           )}
 
-          {layout === "cart" && (
+          {/* ====== قسم المقاسات داخل العربة (تم التعديل ليقرأ من الباك إند) ====== */}
+          {layout === "cart" && hasSizes && (
             <div className="size">
               <select
-                value={item.size || defaultSize}
-                onChange={(e) => onSizeChange(item.id, e.target.value)}
+                value={defaultSize}
+                onChange={(e) => handleSizeClick(e.target.value)}
               >
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
+                {/* هنا نقوم بعمل الخيارات بناءً على مصفوفة المقاسات القادمة من السيرفر حظراً */}
+                {item.sizes.map((size) => (
+                  <option key={size} value={size}>
+                    {size}
+                  </option>
+                ))}
               </select>
             </div>
           )}
 
+          {/* تفاصيل الطلب */}
           {layout === "details-ordar" && (
-            <div className="prodact-details">
-              <p className="size">
-                المقاس: <strong>{item.size || defaultSize}</strong>
-              </p>
+            <div className="size-and-num">
+              {hasSizes && (
+                <p className="size">
+                  المقاس: <strong>{defaultSize}</strong>
+                </p>
+              )}
               <p className="quantity">
                 <span className="num">عدد : {item.quantity}</span>
               </p>
@@ -151,10 +160,9 @@ export default function CartItem({
           )}
 
           <p className="price"><span>EGP</span>{item.price}</p>
-
-          
         </div>
 
+        {/* ====== أزرار التحكم والعدد ====== */}
         <div className="plus-and-mynas">
           {(layout === "prodact" || layout === "cart") && (
             <div className="quantity">
@@ -171,7 +179,6 @@ export default function CartItem({
                   <span>{encart ? "تمت الإضافة إلى العربة" : "اضف الي العربه"}</span>
                   <TbShoppingCart />
                 </button>
-
                 <div className="icon-hert">
                   <div className={`like ${inlike ? "inlike" : ""}`} onClick={handleAddToLike}>
                     <FiHeart />

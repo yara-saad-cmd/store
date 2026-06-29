@@ -1,86 +1,122 @@
- 
- .pg-prosact .imegs{
-    width: 40%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    
+.pg-prosact .imegs {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
-.pg-prosact .imegs .big-image{
+
+.pg-prosact .imegs .big-image {
   width: 83%;
- 
+}
 
-}
-.pg-prosact .imegs .big-image img{
+.pg-prosact .imegs .big-image img {
   width: 100%;
- 
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
 }
-.pg-prosact .imegs .small-images{
+
+.pg-prosact .imegs .small-images {
   width: 15%;
-    flex-direction: column;
-    gap: 10px;
-    display: flex;
-    align-items: center;
-     max-height: 450px;
-     
-     
-    .active-thumb{
-      border: 1px solid var(--border-color);
-  }
+  flex-direction: column;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  max-height: 400px;
+  
+  overflow-y: auto;
+  overflow-x: hidden;
+  
+  user-select: none; 
+  cursor: grab;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
-.pg-prosact .imegs .small-images img{
+
+.pg-prosact .imegs .small-images::-webkit-scrollbar {
+  display: none;
+}
+
+.pg-prosact .imegs .small-images:active {
+  cursor: grabbing;
+}
+
+/* التنسيق الافتراضي للصور الصغيرة (إطار شفاف لحجز المساحة) */
+.pg-prosact .imegs .small-images img {
   width: 100%;
+  height: 60px;
+  object-fit: cover;
+  object-position: center;
   cursor: pointer;
-  transition: transform 0.2s ease, boder 0.2 ease;
-
+  border: 3px solid white; 
   
 }
-.pg-prosact .imegs .small-images img:hover{
+
+/* إطار الصورة النشطة الحالي (ثابت ومستحيل يتحرك لغيرها) */
+.pg-prosact .imegs .small-images img.active-thumb {
+  border-color: var(--min-color) !important; 
+  
+}
+
+/* تأثير الـ Hover الطبيعي (يعمل فقط إذا لم تكوني في وضع السحب) */
+.pg-prosact .imegs .small-images:not(.dragging) img:not(.active-thumb):hover {
   transform: scale(1.05);
-  border: 1px solid var(--border-color); 
+  
 }
 
- /*img*/
- .prdact-area .imegs {
-    width: 60%;
-    display: flex;
-    justify-content: space-between;
+/* 🔥 الحل السحري: وقت السحب، بنلغي إحساس الصور بالماوس تماماً عشان الـ Hover ميتجننش ويختفي فوراً */
+.pg-prosact .imegs .small-images.dragging img {
+  pointer-events: none; /* الماوس يمر عبر الصور بدون تفعيل أي تأثيرات حواف */
+}
 
-    .big-image{
-      width: 80%;
 
-      img{
-        width: 88%;
-      }
-    }
+/* الأجزاء الأخرى المتبقية من ملفك */
+.prdact-area .imegs {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
 
-    .small-images{
-      width: 12%;
-    }
-      }
+.prdact-area .imegs .big-image {
+  width: 80%;
+}
 
- /*img*/
+.prdact-area .imegs .big-image img {
+  width: 88%;
+}
 
- /*img loding*/
-@media only screen and (max-width: 640px) {
-    .prdact-area .imegs{
-      justify-content: center;
-      flex-direction: column-reverse;
-      align-items: center; 
-      margin-bottom: 20px;
-  
-     .big-image {
-      display: flex;
-      justify-content: center;
-     }
-  
-     .small-images{
-      flex-direction: row;
-      width: 18%;
-   
-     }
-    }
-  
-    
+.prdact-area .imegs .small-images {
+  width: 12%;
+}
+
+@media only screen and (max-width: 966px) {
+  .prdact-area .imegs {
+    justify-content: center;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
   }
-  /*img loding*/
+
+  .prdact-area .imegs .big-image {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .prdact-area .imegs .small-images {
+    flex-direction: row; 
+    justify-content: flex-start; 
+    width: 100%; 
+    max-width: 400px; 
+    height: auto;
+    margin-top: 20px;
+    overflow-x: auto; 
+    overflow-y: hidden;
+  }
+
+  .prdact-area .imegs .small-images img {
+    width: 60px; 
+    flex-shrink: 0; 
+  }
+}

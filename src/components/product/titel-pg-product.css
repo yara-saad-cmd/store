@@ -316,3 +316,20 @@ display: flex;
     }
   }
   
+
+  /*نشط*/
+  /* تنسيق مربع اللون النشط */
+.color-square-option.active .color-square {
+  background-color: var(--min-color) !important; /* تلوين خلفية المقاس المختار */
+  color: #fff !important; /* تحويل النص للون الأبيض */
+
+ 
+}
+
+/* تنسيق مربع المقاس النشط */
+.size-box.active {
+  background-color: var(--min-color) !important; /* تلوين خلفية المقاس المختار */
+  color: #fff !important; /* تحويل النص للون الأبيض */
+  
+}
+  /*نشط*/

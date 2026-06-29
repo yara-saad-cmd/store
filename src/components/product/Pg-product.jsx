@@ -10,12 +10,17 @@ import ImgPgproduct from "./img-pg-product";
 import TitlePpgPproduct from "./title-pg-product";
 import PageTransition from "../pageTransaction";
 import Footertwo from "../footer/footer2";
+import { supabase } from '../../supabaseClient' 
 
 // استيراد الكمبوننت الجديد هنا
 import RelatedProducts from "./RelatedProducts"; 
 
 function Pgproduct() {
   const { id } = useParams();
+
+
+  
+
 
   const [prodact, setprodact] = useState(null);
   const [loading, setloading] = useState(true);
@@ -26,21 +31,48 @@ function Pgproduct() {
 
   const { cartItems, AddToCart } = useContext(ContextCart);
 
+
+
+
   useEffect(() => {
-    const fetchProdact = async () => {
+    const getProductsData = async () => {
       setprodact(null);     // يمسح بيانات المنتج القديم فوراً
       setloading(true);     // يظهر شاشة التحميل (Loading)
       try {
-        const res = await fetch(`https://dummyjson.com/products/${id}`);
-        const data = await res.json();
-        setprodact(data);
+        const {data,error} = await supabase
+        .from('products')
+        .select('*')
+        .eq('id', id)      // الفلتر السحري: بقوله هات المنتج اللي الـ id بتاعه بيساوي الـ id اللي فوق في رابط الصفحة
+        .single();         // بقول لسوبابيز: أنا عايز كائن (Object) واحد بس مش مصفوفة، لأن ده منتج واحد
+
+
+        if (error) {
+          console.error("حصلت مشكلة وإحنا بنجيب البيانات:", error);
+        } else {
+          
+          // 5. التعديل السحري: لو الداتا رجعت تمام، بنخزنها جوه الـ State
+          // وغلفناها في { all: data } عشان كود الـ Product القديم بتاعك يفهمها
+          setprodact(data);
+          console.log("المنتج اللي جاي من سوبابيز هو:", data);
+        }
+  
+      } catch (err) {
+        // 6. لو حصل أي خطأ مفاجئ في الكود بره سوبابيز، بنطبعه هنا
+        console.error("خطأ غير متوقع:", err);
+      }finally {
+        // 5. في كل الأحوال (سواء نجحنا أو حصل خطأ) بنقفل شاشة التحميل
         setloading(false);
-      } catch (error) {
-        console.log(error);
       }
     };
-    fetchProdact();
-  }, [id]);
+  
+    // 7. إوعي تنسي! إحنا فوق جهزنا الدالة بس، السطر ده هو اللي بيديها أمر "اشتغلي"
+    getProductsData();
+  
+  }, [id]); // 8. القوسين الفاضيين المربعين دول معناهم: نفذ الكود ده "مرة واحدة بس" أول ما الصفحة تفتح
+
+
+
+
 
   useEffect(() => {
     if (!prodact) return;

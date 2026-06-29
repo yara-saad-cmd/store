@@ -35,47 +35,129 @@
 
 
 // حوات u الي   a   في product
-
-
-
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import "./img-pg-product.css"
 
-
-
 function ImgPgProdact({ prodact }) {
-  // 1. نجعل الحالة الابتدائية فارغة تماماً
   const [activeImg, setActiveImg] = useState(null);
+  const containerRef = useRef(null);
+  
+  // حفظ بيانات السحب بالكامل
+  const dragStart = useRef({ isDown: false, startY: 0, startX: 0, scrollTop: 0, scrollLeft: 0, moved: false });
+
+  const allImages = prodact && prodact.images && prodact.images.length > 0 ? prodact.images : [];
 
   useEffect(() => {
-    // 2. بمجرد تغير المنتج، نمسح الصورة النشطة القديمة أولاً
     setActiveImg(null);
-
-    // 3. نضع الصورة الجديدة بعد "تأخير" بسيط جداً لضمان المسح
     const timeout = setTimeout(() => {
-      if (prodact && prodact.images) {
-        setActiveImg(prodact.images[0]);
+      if (allImages.length > 0) {
+        setActiveImg(allImages[0]);
       }
     }, 0);
-
     return () => clearTimeout(timeout);
   }, [prodact]);
 
-  // 4. إذا كانت الصورة النشطة لا تنتمي للمنتج الحالي، لا تعرض شيئاً (اترك المكان فارغاً)
-  if (!activeImg || !prodact.images.includes(activeImg)) {
+  // دالة السنتر الدقيقة جداً بالملّي
+  const centerImage = (imgElement) => {
+    const container = containerRef.current;
+    if (!container || !imgElement) return;
+
+    const isMobile = window.innerWidth <= 966;
+    const containerRect = container.getBoundingClientRect();
+    const imgRect = imgElement.getBoundingClientRect();
+
+    if (isMobile) {
+      const currentScrollLeft = container.scrollLeft;
+      const relativeLeft = imgRect.left - containerRect.left;
+      const targetLeft = currentScrollLeft + relativeLeft - (containerRect.width / 2) + (imgRect.width / 2);
+      container.scrollTo({ left: targetLeft, behavior: 'smooth' });
+    } else {
+      const currentScrollTop = container.scrollTop;
+      const relativeTop = imgRect.top - containerRect.top;
+      const targetTop = currentScrollTop + relativeTop - (containerRect.height / 2) + (imgRect.height / 2);
+      container.scrollTo({ top: targetTop, behavior: 'smooth' });
+    }
+  };
+
+  const handleMouseDown = (e) => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    dragStart.current = {
+      isDown: true,
+      startY: e.pageY - container.offsetTop,
+      startX: e.pageX - container.offsetLeft,
+      scrollTop: container.scrollTop,
+      scrollLeft: container.scrollLeft,
+      moved: false
+    };
+  };
+
+  const handleMouseMove = (e) => {
+    if (!dragStart.current.isDown) return;
+    
+    const container = containerRef.current;
+    if (!container) return;
+
+    const isMobile = window.innerWidth <= 966;
+
+    if (isMobile) {
+      const x = e.pageX - container.offsetLeft;
+      const walkX = (x - dragStart.current.startX) * 1.5;
+      if (Math.abs(walkX) > 4) {
+        dragStart.current.moved = true; 
+        container.classList.add('dragging'); // إضافة الكلاس لمنع الـ Hover
+        container.scrollLeft = dragStart.current.scrollLeft - walkX;
+      }
+    } else {
+      const y = e.pageY - container.offsetTop;
+      const walkY = (y - dragStart.current.startY) * 1.5;
+      if (Math.abs(walkY) > 4) {
+        dragStart.current.moved = true; 
+        container.classList.add('dragging'); // إضافة الكلاس لمنع الـ Hover
+        container.scrollTop = dragStart.current.scrollTop - walkY;
+      }
+    }
+  };
+
+  const handleMouseUpOrLeave = (e, img) => {
+    if (!dragStart.current.isDown) return;
+
+    const container = containerRef.current;
+    if (container) {
+      container.classList.remove('dragging'); // إزالة كلاس السحب فوراً
+    }
+
+    // كليك حقيقي (المستخدم لم يقم بالسحب)
+    if (!dragStart.current.moved && img) {
+      setActiveImg(img);
+      centerImage(e.currentTarget);
+    }
+
+    dragStart.current.isDown = false;
+  };
+
+  if (!activeImg) {
     return <div className="imegs" style={{ minHeight: '500px' }}></div>;
   }
 
   return (
     <div className="imegs">
-      <div className="small-images">
-        {prodact.images.map((img, index) => (
+      <div 
+        className="small-images"
+        ref={containerRef}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={(e) => handleMouseUpOrLeave(e, null)}
+      >
+        {allImages.map((img) => (
           <img
-            key={index}
+            key={img}
             src={img}
             alt={prodact.title}
             className={img === activeImg ? "active-thumb" : ""}
-            onClick={() => setActiveImg(img)}
+            onMouseUp={(e) => handleMouseUpOrLeave(e, img)}
+            onDragStart={(e) => e.preventDefault()} 
           />
         ))}
       </div>
