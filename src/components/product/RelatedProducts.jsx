@@ -11,20 +11,23 @@ function RelatedProducts({
   loadingrelatedProducts, 
   relatedProducts, 
   visibleCount, 
+  setVisibleCount, // 👈 استلام الدالة بنجاح
   prodact, 
   cartItems, 
   AddToCart 
 }) {
+  
+  // تصفية المصفوفة أولاً لاستبعاد المنتج المفتوح حالياً قبل حساب الطول أو التقطيع
+  const filteredProducts = relatedProducts.filter((item) => item.id !== prodact.id);
+
   return (
     <div className="mor-product">
       {loadingrelatedProducts ? (
         <ProductLoading />
       ) : (
-        <ProductLayout title={"مقترحات من نفس الفئة"}>
-          {relatedProducts
-            .slice(0, visibleCount)
-            .filter((item) => item.id !== prodact.id)
-            .map((item) => {
+        <>
+          <ProductLayout title={"مقترحات من نفس الفئة"}>
+            {filteredProducts.slice(0, visibleCount).map((item) => {
               const incart = cartItems.some((i) => i.id === item.id);
 
               const handleAddToCart = () => {
@@ -39,13 +42,10 @@ function RelatedProducts({
               };
 
               return (
-                <div
-                  className={`card ${incart ? "incart" : ""}`}
-                  key={item.id}
-                >
-                  <Link key={item.id} to={`/products/${item.id}`}>
+                <div className={`card ${incart ? "incart" : ""}`} key={item.id}>
+                  <Link to={`/products/${item.id}`}>
                     <div className="img">
-                      <img src={item.images[0]} alt={item.title} />
+                      <img src={item.images && item.images[0] ? item.images[0] : ""} alt={item.title} />
                     </div>
 
                     <div className="content">
@@ -55,7 +55,7 @@ function RelatedProducts({
 
                       <div className="StarsAndPrice">
                         <div className="stars">
-                          <span>{item.rating.toFixed(1)}</span>{" "}
+                          <span>{item.rating != null ? Number(item.rating).toFixed(1) : "0.0"}</span>{" "}
                           <IoIosStar />
                         </div>
                         <h5 className="price">
@@ -81,7 +81,17 @@ function RelatedProducts({
                 </div>
               );
             })}
-        </ProductLayout>
+          </ProductLayout>
+
+          {/* 🌟 مكان زر "عرض المزيد" النظيف والصحيح تماماً هنا 🌟 */}
+          {visibleCount < filteredProducts.length && (
+            <div style={{ textAlign: "center", marginTop: "20px", width: "100%" }}>
+              <button className="load-more" onClick={() => setVisibleCount(prev => prev + 12)}>
+                ... عرض المزيد 
+              </button>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

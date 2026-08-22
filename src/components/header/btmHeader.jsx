@@ -1,22 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import LoadingBtmHeader from './LoadingBtmhader';
-import "./BtmHeader.css"
+import { supabase } from '../../supabaseClient'; 
+import "./BtmHeader.css";
+
 function BtmHeader() {
-  const [categories, setCategorys] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://dummyjson.com/products/categories`)
-      .then((res) => res.json())
-      .then((data) => {
-        setCategorys(data);
+    // دالة جلب الأقسام مباشرة من جدول categories في سوبابيز
+    const fetchCategories = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('categories')
+          .select('*'); // جلب كل الأعمدة (id, name, slug)
+
+        if (error) {
+          throw error;
+        }
+
+        if (data) {
+          setCategories(data);
+        }
+      } catch (err) {
+        console.error("Error fetching categories from Supabase:", err);
+      } finally {
         setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error:", err);
-        setLoading(false);
-      });
+      }
+    };
+
+    fetchCategories();
   }, []);
 
   return (
@@ -27,17 +41,10 @@ function BtmHeader() {
           {loading ? (
            <LoadingBtmHeader />
           ) : (
-            /* هنا شيلنا الـ <ul> ورجعنا الـ map مباشرة زي كودك القديم */
             categories.map((category) => (
-
-             
-                
-             
-                <span  key={category.slug}>
-                     <Link to={`/category/${category.slug}`}> {category.name} </Link>
-                </span>
-             
-             
+              <span key={category.id}> {/* استخدام الـ id الفرعي كـ key */}
+                <Link to={`/category/${category.slug}`}> {category.name} </Link>
+              </span>
             ))
           )}
 
