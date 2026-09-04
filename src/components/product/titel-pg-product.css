@@ -1,157 +1,160 @@
-.pg-prosact .title-items{
-    width: 58%;
-    padding: 10px;
-    
+.pg-prosact .title-items {
+  width: 58%;
+  padding: 10px;
 }
-.title-items{
- 
+.title-items {
   width: 58%;
 }
-.pg-prosact .title-items .prudact-details .name-prudact{
-    color: var(--min-color);
-    font-size: 30px;
-    font-weight: bold;
-  
+.pg-prosact .title-items .prudact-details .name-prudact {
+  color: var(--min-color);
+  font-size: 30px;
+  font-weight: bold;
 }
-.pg-prosact .title-items .prudact-details p{
-    color: var(--text-color-2);
-    font-size: 18px;
-    padding: 5px 0px 5px 5px;
-    font-weight: 400;
-}
-/*stsrs*/
-
-.pg-prosact .title-items .stars{
-    display: flex;
-    color: gold;
-    font-size: 20px;
-    align-items: center;
-   
-    
-}
-.pg-prosact .title-items .stars p{
-    margin-right: 5px;
-    font-size: 18px;
+.pg-prosact .title-items .prudact-details p {
+  color: var(--text-color-2);
+  font-size: 18px;
+  padding: 5px 0px 5px 5px;
+  font-weight: 400;
 }
 /*stsrs*/
 
+.pg-prosact .title-items .stars {
+  display: flex;
+  color: gold;
+  font-size: 20px;
+  align-items: center;
+}
+.pg-prosact .title-items .stars p {
+  margin-right: 5px;
+  font-size: 18px;
+}
+/*stsrs*/
 
-.pg-prosact .title-items .prudact-details  .price{
-   color: var(--text-color-2);
-    font-size: 25px;
+.pg-prosact .title-items .prudact-details .price {
+  color: var(--text-color-2);
+  font-size: 25px;
 }
-.pg-prosact .title-items .prudact-details .price span{
-   color: var(--text-color-2);
-    font-size: 18px;
-    padding: 0;
-    margin: 3px;
+.pg-prosact .title-items .prudact-details .price span {
+  color: var(--text-color-2);
+  font-size: 18px;
+  padding: 0;
+  margin: 3px;
 }
-.pg-prosact .title-items h4{
-    font-size: 16px;
-    margin: 5px 0 5px 0;
-    
+.pg-prosact .title-items h4 {
+  font-size: 16px;
+  margin: 5px 0 5px 0;
 }
-.pg-prosact .title-items .prudact-details h4 .stock{
-    margin-right: 5px;
-    color: blue;
+.pg-prosact .title-items .prudact-details h4 .stock {
+  margin-right: 5px;
+  color: blue;
 }
-.pg-prosact .title-items .prudact-details h4 .no-stock{
-    color: rgb(255, 0, 0);
-    margin-right: 5px;
+.pg-prosact .title-items .prudact-details h4 .no-stock {
+  color: rgb(255, 0, 0);
+  margin-right: 5px;
 }
 .pg-prosact .title-items .colors,
-.pg-prosact .title-items .size{
-    cursor: pointer;
-    position: relative;
-    margin-top: 10px;
-    text-align: right;
-    max-width: 400px;
+.pg-prosact .title-items .size {
+  cursor: pointer;
+  position: relative;
+  margin-top: 10px;
+  text-align: right;
+  max-width: 400px;
 }
-.pg-prosact .title-items .prudact-details .colors-box h3 span,
-.pg-prosact .title-items .prudact-details .size-options h3 span{
-    font-size: 13px;
-    font-weight: 400;
-    color: var(--text-color-1);
-    font-weight: bold;
-    margin: 3px 0px 0px 0px;
+/* ===========================
+   Colors & Sizes
+=========================== */
+
+.pg-prosact .title-items .prudact-details .colors-box,
+.pg-prosact .title-items .prudact-details .size-options {
+  margin-top: 15px;
 }
-
-
-
-/* //-------------------------- */
-
 
 .pg-prosact .title-items .prudact-details .colors-box h3,
 .pg-prosact .title-items .prudact-details .size-options h3 {
-  font-size: 13px;
-  margin-bottom: 5px;
+  font-size: 16px;
+  margin-bottom: 10px;
   color: var(--text-color-1);
-}
-
-.pg-prosact .title-items .prudact-details .colors-box label,
-.pg-prosact .title-items .prudact-details .size-options label {
-  width: 35px;
-  height: 25px;
-  margin-left: 6px;
-  border-radius: 5px;
-  cursor: pointer;
-  border: 1px solid var(--border-color);
 }
 
 .pg-prosact .title-items .prudact-details .colors-box .colors,
-.pg-prosact .title-items .prudact-details .size-options .sizes{
+.pg-prosact .title-items .prudact-details .size-options .sizes {
   display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
-.pg-prosact .title-items .prudact-details .colors-box .colors .color-square,
-.pg-prosact .title-items .prudact-details .size-options .sizes .span-size{
+
+.pg-prosact .title-items .prudact-details .colors-box .color-square-option,
+.pg-prosact .title-items .prudact-details .size-options .size-box {
+  width: fit-content;
+  min-width: 45px;
+  height: 29px;
+  padding: 5px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+  background: var(--white-color);
+}
+
+.pg-prosact
+  .title-items
+  .prudact-details
+  .colors-box
+  .color-square-option:hover,
+.pg-prosact .title-items .prudact-details .size-options .size-box:hover {
+  border-color: var(--min-color);
+}
+
+.pg-prosact .title-items .prudact-details .colors-box .color-square,
+.pg-prosact .title-items .prudact-details .size-options .span-size {
   width: 100%;
   height: 100%;
-  border-radius: 5px;
-  display:flex;
-  font-size: 13px;
-  font-weight: 500;
-  justify-content: center;
-  align-items: center;
-
-
-}
-.pg-prosact .title-items .prudact-details .colors-box input,
-.pg-prosact .title-items .prudact-details .size-options input {
-  display: none; 
-}
-
-/*اللون او المقاس المختار*/
-/* .pg-prosact .title-items .circle {
-  display: inline-block;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 1px solid var(--border-color);
-  transition: all 0.2s ease;
-  box-sizing: border-box;
-} */
-
-/*المقاس غير المختار غير مهم تم تنسيقه*/
-/* .pg-prosact .title-items .size-box {
-  background: var(--white-color);
-  color: var(--text-color-1);
-  border-radius: 20%;
-  width: 40px;
-  font-weight: bold;
-  font-size: 14px;
   display: flex;
   justify-content: center;
   align-items: center;
-} */
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-color-1);
+}
 
+/* اللون المختار */
+.pg-prosact
+  .title-items
+  .prudact-details
+  .colors-box
+  .color-square-option.active {
+  background: var(--min-color);
+  border-color: var(--min-color);
+}
 
-/*لما يتم الصغط علي العنصر المختار*/
-/* .pg-prosact .title-items input:checked + .circle {
-  border: 1px solid var(--text-color-1);
-  transform: scale(1.1);
-  box-shadow: 0 0 5px rgba(153, 153, 153, 0.932);
-} */
-.pg-prosact .title-items .btn-and-icon{
+.pg-prosact
+  .title-items
+  .prudact-details
+  .colors-box
+  .color-square-option.active
+  .color-square {
+  color: #fff;
+}
+
+/* المقاس المختار */
+.pg-prosact .title-items .prudact-details .size-options .size-box.active {
+  background: var(--min-color);
+  border-color: var(--min-color);
+}
+
+.pg-prosact
+  .title-items
+  .prudact-details
+  .size-options
+  .size-box.active
+  .span-size {
+  color: #fff;
+}
+
+.pg-prosact .title-items .btn-and-icon {
   display: flex;
   align-items: center;
   margin-top: 20px;
@@ -160,31 +163,29 @@
   display: flex;
 }
 
-.pg-prosact .title-items .btn-and-icon .icon-hert{
-display: flex;
+.pg-prosact .title-items .btn-and-icon .icon-hert {
+  display: flex;
 }
-.pg-prosact .title-items .btn-and-icon .icon-hert svg{
+.pg-prosact .title-items .btn-and-icon .icon-hert svg {
   border-radius: 50px;
-  border:  solid 1px var(--border-color);
+  border: solid 1px var(--border-color);
   width: 38px;
   height: 38px;
   cursor: pointer;
-  padding:7px;
+  padding: 7px;
   margin-right: 20px;
   display: flex;
   align-items: center;
   background-color: var(--min-color);
   color: var(--white-color);
 }
-.pg-prosact .title-items .btn-and-icon .icon-hert svg:hover{
+.pg-prosact .title-items .btn-and-icon .icon-hert svg:hover {
   background-color: var(--white-color);
   color: var(--min-color);
-  
-  
 }
-.pg-prosact .title-items .btn{
+.pg-prosact .title-items .btn {
   background-color: var(--min-color);
-  width: fit-content ;
+  width: fit-content;
   padding: 8px;
   font-size: 18px;
   border-radius: 2px;
@@ -194,142 +195,193 @@ display: flex;
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
-.pg-prosact .title-items .btn span{
+.pg-prosact .title-items .btn span {
   margin-left: 10px;
 }
-.pg-prosact .title-items .btn.encart{
+.pg-prosact .title-items .btn.encart {
   background-color: var(--white-color);
   color: var(--min-color);
   border: solid 1px var(--border-color);
-  transition:  0.3 ease-in-out;
+  transition: 0.3 ease-in-out;
   pointer-events: none;
 }
 
-.pg-prosact .title-items .like svg{
+.pg-prosact .title-items .like svg {
   margin-left: 10px;
   font-size: 22px;
- 
 }
 
-.pg-prosact .title-items .like.inlike svg{
- background-color: var(--white-color);
- color: var(--min-color);
+.pg-prosact .title-items .like.inlike svg {
+  background-color: var(--white-color);
+  color: var(--min-color);
 }
-.pg-prosact .title-items .share svg{
+.pg-prosact .title-items .share svg {
   margin-left: 10px;
   font-size: 22px;
 }
-.pg-prosact .title-items .btn:hover{
-    transform: scale(1.1);
-    background-color: var(--white-color);
-    color: var(--min-color);
-    border:  solid 1px var(--border-color);
-   
+.pg-prosact .title-items .btn:hover {
+  transform: scale(1.1);
+  background-color: var(--white-color);
+  color: var(--min-color);
+  border: solid 1px var(--border-color);
+}
+.pg-prosact .plus-and-mynas .quantity{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin: 8px 0px;
+  
+}
+
+.pg-prosact .plus-and-mynas .quantity button{
+  width: 25px;
+  height: 26px;
+  border: 1px solid var(--text-color-1);
+  background: var(--white-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0;
+}
+
+.pg-prosact .plus-and-mynas .quantity span{
+  width: 25px;
+  height: 26px;
+  border-top: 1px solid var(--text-color-1);
+  border-bottom: 1px solid var(--text-color-1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--white-color);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 0;
+}
+
+.pg-prosact .plus-and-mynas .quantity .minus{
+  border-radius: 0 20px 20px 0;
+}
+
+.pg-prosact .plus-and-mynas .quantity .plus{
+  border-radius: 20px 0 0 20px;
 }
 
 /*@media*/
 
+@media only screen and (max-width: 968px) and (min-width: 440px) {
+  .prdact-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
 
-@media only screen and (max-width: 968px) {
-    .prdact-area {
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     margin-bottom: 20px;
-     }
-   
-    
-   
-   
-       .prdact-area .title-items{
-         width: 100%;
-         
-        .prudact-details{
-   
-         .name-prudact {
-           font-size: 35px;
-         }
-         p {
-           font-size: 20px;
-           margin: 10px 0 10px 0;
-         }
-         h4 , .colors-box h3 , .size-options h3 {
-           font-size: 18px;
-           margin: 10px 0 10px 0;
-   
-           span {
-             font-size: 20px;
-           }
-         }
-         .colors .color-square-option , .sizes .size-box {
-           width: 45px;
-           height: 35px;
-         }
-   
-         .colors-box .colors .color-square,.size-options .sizes .span-size {
-           font-size: 18px;
-         }
-   
-         .price{
-           font-size: 30px;
-         }
-          
-   
-   
-         }
-         
-   
-   }
-   }
-   
-   
-    
-   
-   
+  .prdact-area .title-items {
+    width: 100%;
 
-@media only screen and  (max-width: 440px){
+    .prudact-details {
+      .name-prudact {
+        font-size: 35px;
+      }
+      p {
+        font-size: 20px;
+        margin: 10px 0 10px 0;
+      }
+      h4,
+      .colors-box h3,
+      .size-options h3 {
+        font-size: 18px;
+        margin: 10px 0 10px 0;
 
-    .pg-prosact .title-items{
-  
-      .prudact-details{
-  
-  
-        .name-prudact{
-          font-size: 28px;
-        }
-        p{
+        span {
           font-size: 18px;
         }
-      
       }
-  
-  
-  
-      .btn{
-          font-size: 4cqw;
-        }
-  
-  
-  
+      .colors .color-square-option,
+      .sizes .size-box {
+        width: fit-content;
+        height: 35px;
+      }
+
+      .colors-box .colors .color-square,
+      .size-options .sizes .span-size {
+        font-size: 16px;
+      }
+
+      .price {
+        font-size: 30px;
+      }
     }
   }
-  
+}
 
-  /*نشط*/
-  /* تنسيق مربع اللون النشط */
+@media only screen and (max-width: 440px) {
+  .prdact-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .prdact-area .title-items {
+    width: 100%;
+    .btn.encart {
+      font-size: 12px;
+    }
+    .prudact-details {
+      .name-prudact {
+        font-size: 25px;
+      }
+      p {
+        font-size: 15px;
+        margin: 10px 0 10px 0;
+      }
+      h4,
+      .colors-box h3,
+      .size-options h3 {
+        font-size: 14px;
+        margin: 10px 0 10px 0;
+
+        span {
+          font-size: 15px;
+        }
+      }
+      .colors .color-square-option,
+      .sizes .size-box {
+        width: fit-content;
+        height: 30px;
+      }
+
+      .colors-box .colors .color-square,
+      .size-options .sizes .span-size {
+        font-size: 14px;
+      }
+
+      .price {
+        font-size: 25px;
+      }
+    }
+  }
+}
+
+/*نشط*/
+/* تنسيق مربع اللون النشط */
 .color-square-option.active .color-square {
-  background-color: var(--min-color) !important; /* تلوين خلفية المقاس المختار */
+  background-color: var(
+    --min-color
+  ) !important; /* تلوين خلفية المقاس المختار */
   color: #fff !important; /* تحويل النص للون الأبيض */
-
- 
 }
 
 /* تنسيق مربع المقاس النشط */
 .size-box.active {
-  background-color: var(--min-color) !important; /* تلوين خلفية المقاس المختار */
+  background-color: var(
+    --min-color
+  ) !important; /* تلوين خلفية المقاس المختار */
   color: #fff !important; /* تحويل النص للون الأبيض */
-  
 }
-  /*نشط*/

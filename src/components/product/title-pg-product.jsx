@@ -1,171 +1,142 @@
-import React, { useContext } from 'react'
-import { FaShare } from 'react-icons/fa'
-import { FiHeart } from 'react-icons/fi'
-import { ContextCart } from '../context/contextcart'
-import { TbShoppingCart } from 'react-icons/tb'
-import toast from 'react-hot-toast'
-import CartItem from '../cartItem/CartItem'
-import "./titel-pg-product.css"
+import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
+import { ContextCart } from "../context/contextcart";
+import CartItem from "../cartItem/CartItem";
+import "./titel-pg-product.css";
 
-
-
-function TitleProductPage({prodact}) {
-
-  const { cartItems = [], AddToCart ,AddToLike ,likeItems ,removelike} = useContext(ContextCart)
-
-  const HandleAddToCart = () => {
-
-  
-    AddToCart(prodact)
-    toast.success(
-      <div className="msg">
-      <strong>{prodact.title}</strong>
-
-      تمت الإضافة إلى العربة  
-
-      </div>
-      ,{duration : 3000}
-    )
-  }
-
- 
-
-  const encart = cartItems.some(i => i.id === prodact.id)
-  const inlike = likeItems.some(i => i.id === prodact.id)
-
-
-  const handleAddToLike = ()=>{
-    if(inlike){
-      removelike(prodact.id)
-      toast.error(`تم حذف${prodact.title}من المفضل `)
-    }else{
-      AddToLike(prodact)
-      toast.success(`  تم اضافة${prodact.title}الي المفضل`)
-    }
-   
-  }
+function TitleProductPage({ prodact }) {
   const {
-    onColorChange,
-    onSizeChange,
+    cartItems = [],
+    AddToCart,
+    AddToLike,
+    likeItems,
+    removelike,
+    onColorChange: onColorChangeCart,
   } = useContext(ContextCart);
 
- 
-  
+  // =========================
+  // المقاسات
+  // =========================
+  const availableSizes =
+    prodact?.sizes ||
+    prodact?.available_sizes ||
+    ["S", "M", "L", "XL"];
+
+  const [selectedSize, setSelectedSize] = useState(
+    prodact?.selectedSize || availableSizes[0] || ""
+  );
+
+  // =========================
+  // الألوان
+  // =========================
+  const availableColors =
+    prodact?.colors ||
+    prodact?.available_colors ||
+    [];
+
+  const [selectedColor, setSelectedColor] = useState(
+    prodact?.selectedColor || availableColors[0] || ""
+  );
+
+  // =========================
+  // الكمية
+  // =========================
+  const [quantity, setQuantity] = useState(1);
+
+  const handleIncrease = () => {
+    setQuantity((prev) => prev + 1);
+  };
+
+  const handleDecrease = () => {
+    setQuantity((prev) => Math.max(1, prev - 1));
+  };
+
+  // =========================
+  // تغيير المقاس
+  // =========================
+  const handleSizeChange = (id, newSize) => {
+    setSelectedSize(newSize);
+  };
+
+  // =========================
+  // تغيير اللون
+  // =========================
+  const handleColorChange = (id, color) => {
+    setSelectedColor(color);
+    onColorChangeCart?.(id, color);
+  };
+
+  // =========================
+  // إضافة للعربة
+  // =========================
+  const HandleAddToCart = () => {
+    const productWithDetails = {
+      ...prodact,
+      selectedSize,
+      selectedColor,
+      quantity,
+    };
+
+    AddToCart(productWithDetails);
+
+    toast.success(
+      <div className="msg">
+        <strong>{prodact.title}</strong>
+        تمت الإضافة إلى العربة
+      </div>,
+      {
+        duration: 3000,
+      }
+    );
+  };
+
+  // =========================
+  // هل المنتج موجود بالعربة؟
+  // =========================
+  const encart = cartItems.some(
+    (i) =>
+      i.id === prodact.id &&
+      (i.selectedSize || "") === selectedSize &&
+      (i.selectedColor || "") === selectedColor
+  );
+
+  // =========================
+  // هل بالمفضلة؟
+  // =========================
+  const inlike = likeItems.some((i) => i.id === prodact.id);
+
+  const handleAddToLike = () => {
+    if (inlike) {
+      removelike(prodact.id);
+      toast.error(`تم حذف ${prodact.title} من المفضل`);
+    } else {
+      AddToLike(prodact);
+      toast.success(`تم إضافة ${prodact.title} إلى المفضل`);
+    }
+  };
 
   return (
     <div className="title-items">
-
-
-                  <CartItem
-                   key={prodact.id}
-                   item={prodact}
-                   inlike={inlike}
-                   encart={encart} // مرر حالة الوجود في العربة
-                   HandleAddToCart={HandleAddToCart} // مرر دالة الإضافة هنا ✅
-                   onLike={handleAddToLike}
-                   onSizeChange={onSizeChange}
-                   onColorChange={onColorChange}
-                   toast={toast} // تأكد من تمرير الـ toast أيضاً
-                   layout="prodact"
-                  />
-
-                   
-            {/* <h2>{prodact.title}</h2>
-            <p>{prodact.description}</p>
-            
-            <div className="stars">
-                <p>5.2</p>
-                <IoIosStar />
-                <IoIosStar />
-                <IoIosStar />
-                <IoIosStar />
-                <IoIosStar />
-            </div>
-
-            <div className="prica">
-                 <h4><span>EGP</span>{prodact.price}</h4>
-            </div>
-           
-            <h4><span className='stock'>{prodact.availabilityStatus}</span>:الحاله</h4>
-
-            <div className="colors">
-                <h3>اللون : <span>احمر</span></h3>
-
-                <label>
-                <input type="radio" name="color" value="red" />
-                <span className="circle" style={{ background: "red" }}></span>
-                </label>
-
-                <label>
-                <input type="radio" name="color" value="blue" />
-                <span className="circle" style={{ background: "blue" }}></span>
-                </label>
-
-                <label>
-                <input type="radio" name="color" value="green" />
-                <span className="circle" style={{ background: "green" }}></span>
-                </label>
-
-                <label>
-                <input type="radio" name="color" value="black" />
-                <span className="circle" style={{ background: "black" }}></span>
-                </label>
-            </div>
-
-            
-            <div className="size">
-                <h3>المقاس : <span>20</span></h3>
-
-                <label>
-                <input type="radio" name="size" value="20" />
-                <span className="circle size-box">20</span>
-                </label>
-
-                <label>
-                <input type="radio" name="size" value="25" />
-                <span className="circle size-box">25</span>
-                </label>
-
-                <label>
-                <input type="radio" name="size" value="30" />
-                <span className="circle size-box">30</span>
-                </label>
-
-                <label>
-                <input type="radio" name="size" value="35" />
-                <span className="circle size-box">35</span>
-                </label>
-           </div> */}
-            
-           {/* <div className='btn-and-icon'>
-
-                
-                
-                <button className= {`btn ${inCart ? "inCart" : ""}`} onClick={HandleAddToCart}> <span>{ inCart ? "تمت الإضافة إلى العربة":"اضف الي العربه"}</span> <TbShoppingCart  /></button>
-                
-                <div className="icon-hert">
-                  <div className={`like ${inlike ? "inlike" : ""}`} onClick={handleAddToLike}>
-                     <FiHeart/>
-                  </div> */}
-
-                  {/* share */}
-                  
-
-                    {/* <div className="share">
-                       <FaShare />
-                    </div> */}
-
-                    
-                   {/* share */}
-                    {/* </div>
-              */}
-           {/* </div>
-            */}
-          
-           
-
-            </div>
-  )
+      <CartItem
+        item={{
+          ...prodact,
+          selectedSize,
+          selectedColor,
+          quantity,
+        }}
+        inlike={inlike}
+        encart={encart}
+        HandleAddToCart={HandleAddToCart}
+        onLike={handleAddToLike}
+        onSizeChange={handleSizeChange}
+        onColorChange={handleColorChange}
+        onIncrease={handleIncrease}
+        onDecrease={handleDecrease}
+        toast={toast}
+        layout="prodact"
+      />
+    </div>
+  );
 }
 
 export default TitleProductPage;

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { IoSearchOutline, IoTimeOutline } from 'react-icons/io5'
 import { useLocation, useNavigate } from 'react-router-dom'
 import "./Search.css"
-
+import { supabase } from '../../supabaseClient'; // تأكدي من مسار الملف لديكِ
 
 function Search() {
     const [search, setsearch] = useState("")
@@ -48,25 +48,29 @@ const executeSearch = (term) => {
     useEffect(() => {
         const fetchSuggestions = async () => {
             try {
-                const res = await fetch(`https://dummyjson.com/products/search?q=${search}`);
-                const data = await res.json();
-                
-                if (data.products) {
-                    // تحويل المنتجات إلى "كلمات بحث" فريدة ومختصرة
-                    const keywords = new Set();
-                    data.products.forEach(item => {
-                        // بناخد أول كلمتين من العنوان عشان تكون "جملة بحث" احترافية
-                        const shortTitle = item.title.split(' ').slice(0, 2).join(' ');
-                        keywords.add(shortTitle.toLowerCase());
-                    });
-                    
-                    setsuggestions(Array.from(keywords).slice(0, 6));
-                }
-            } catch (error) {
+              // البحث في جدول المنتجات عن التي تحتوي على نص البحث
+              const { data, error } = await supabase
+                .from('products')
+                .select('title') // جلب عمود العنوان فقط
+                .ilike('title', `%${search}%`) // البحث الجزيئي عن الكلمة
+                .limit(6); // حد أقصى 6 نتائج للمقترحات
+          
+              if (error) {
+                console.error("خطأ في جلب المقترحات:", error);
                 setsuggestions([]);
+                return;
+              }
+          
+              if (data) {
+                // استخراج عناوين المنتجات وعرضها
+                const titles = data.map(item => item.title);
+                setsuggestions(titles);
+              }
+            } catch (error) {
+              console.error("حدث خطأ:", error);
+              setsuggestions([]);
             }
-        };
-
+          };
         const time = setTimeout(() => {
             if (search.trim() !== "") {
                 fetchSuggestions();

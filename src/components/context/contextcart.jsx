@@ -46,55 +46,117 @@ const removelike = (id) => {
 
     //+ item
 
-    const increaseQuantity = (id) =>{
-        setcartItems(prevItems => prevItems.map(item =>
-            item.id === id ? {...item ,quantity : item.quantity + 1} : item
-        )) 
-    }
+    const increaseQuantity = (item) => {
+      setcartItems((prevItems) =>
+        prevItems.map((i) =>
+          i.id === item.id &&
+          (i.selectedSize || "") === (item.selectedSize || "") &&
+          (i.selectedColor || "") === (item.selectedColor || "")
+            ? { ...i, quantity: i.quantity + 1 }
+            : i
+        )
+      );
+    };
 
 
 //-
-    const decreaseQuantity = (id) =>{
-        setcartItems(prevItems => prevItems.map(item =>
-            item.id === id  && item.quantity > 1 ? {...item ,quantity : item.quantity - 1} : item
-        )) 
-    }
+const decreaseQuantity = (item) => {
+  setcartItems((prevItems) =>
+    prevItems.map((i) =>
+      i.id === item.id &&
+      (i.selectedSize || "") === (item.selectedSize || "") &&
+      (i.selectedColor || "") === (item.selectedColor || "")
+        ? {
+            ...i,
+            quantity: Math.max(1, i.quantity - 1),
+          }
+        : i
+    )
+  );
+};
 
 //delet
 
-const delet = (id) =>{
-    setcartItems(prevItems => prevItems.filter(item => item.id !== id))
-}
+const delet = (item) => {
+  setcartItems((prevItems) =>
+    prevItems.filter(
+      (i) =>
+        !(
+          i.id === item.id &&
+          (i.selectedSize || "") === (item.selectedSize || "") &&
+          (i.selectedColor || "") === (item.selectedColor || "")
+        )
+    )
+  );
+};
 
 
 
 
+const AddToCart = (item) => {
+  setcartItems((prevItems) => {
+    const existingItem = prevItems.find(
+      (i) =>
+        i.id === item.id &&
+        (i.selectedSize || "") === (item.selectedSize || "") &&
+        (i.selectedColor || "") === (item.selectedColor || "")
+    );
 
-    const AddToCart = (item)=>{
-        setcartItems ((prevItems)=>[...prevItems ,{...item , quantity : 1}])
+    if (existingItem) {
+      return prevItems.map((i) =>
+        i.id === item.id &&
+        (i.selectedSize || "") === (item.selectedSize || "") &&
+        (i.selectedColor || "") === (item.selectedColor || "")
+          ? {
+              ...i,
+              quantity: i.quantity + item.quantity,
+            }
+          : i
+      );
     }
 
+    return [
+      ...prevItems,
+      {
+        ...item,
+        quantity: item.quantity || 1,
+      },
+    ];
+  });
+};
     useEffect (()=>{
         localStorage.setItem("cartItems",JSON.stringify(cartItems))
     }, [cartItems])
 
 
     /*اللون - و المقاس */
-    const onSizeChange = (id, newSize) => {
-        setcartItems(prev =>
-          prev.map(item =>
-            item.id === id ? { ...item, size: newSize } : item
-          )
-        );
-      };
-      
-      const onColorChange = (id, newColor) => {
-        setcartItems(prev =>
-          prev.map(item =>
-            item.id === id ? { ...item, color: newColor } : item
-          )
-        );
-      };
+    const onSizeChange = (id, newSize, oldColor = "") => {
+      setcartItems((prev) =>
+        prev.map((item) =>
+          item.id === id &&
+          (item.selectedColor || "") === oldColor
+            ? {
+                ...item,
+                selectedSize: newSize,
+              }
+            : item
+        )
+      );
+    };
+    
+    const onColorChange = (id, newColor, oldSize = "") => {
+      setcartItems((prev) =>
+        prev.map((item) =>
+          item.id === id &&
+          (item.selectedSize || "") === oldSize
+            ? {
+                ...item,
+                selectedColor: newColor,
+              }
+            : item
+        )
+      );
+    };
       
     /*اللون - و المقاس */
 

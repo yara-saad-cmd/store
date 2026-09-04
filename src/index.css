@@ -20,11 +20,14 @@
   --text-white:white;
 }
 
+
+
+
 body{
   background-color: var(--min-pg);
   font-family: "Tajawal", sans-serif;
   direction: rtl;
-
+  
 
 }
 

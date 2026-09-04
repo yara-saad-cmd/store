@@ -6,7 +6,7 @@ import Invoice from '../../components/invoice/invoice'
 import "./OrderDetails.css"
 import PageTransition from '../../components/pageTransaction'
 import CartItem from '../../components/cartItem/CartItem'
-import { ContextCart } from '../../components/context/contextCart'
+import { ContextCart } from '../../components/context/contextcart'
 import Footer from '../../components/footer/footer'
 function OrderDetails() {
   const { cartItems } = useContext(ContextCart);
@@ -29,7 +29,7 @@ function OrderDetails() {
 
                     return (
                       <CartItem
-                        key={item.id}
+                      key={`${item.id}-${item.selectedSize}-${item.selectedColor}`}
                         item={item}
                         layout="details-ordar"
                       />

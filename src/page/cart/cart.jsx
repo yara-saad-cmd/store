@@ -89,7 +89,7 @@ function Cart() {
                        const inlike = likeItems.some((i) => i.id === item.id);
                       return (
                         <CartItem
-                          key={item.id}
+                        key={`${item.id}-${item.selectedSize}-${item.selectedColor}`}
                           item={item}
                           inlike={inlike}
                           onLike={handleAddToLike}

@@ -72,7 +72,9 @@
 
 }
 .pg-ordar-details .details-ordar .img-name img{
-    width: 100px;
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
     pointer-events: none;
     
 }

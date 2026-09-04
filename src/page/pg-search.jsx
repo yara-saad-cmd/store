@@ -6,61 +6,62 @@ import PageTransition from '../components/pageTransaction'
 import ProductLoading from '../components/body/product-loading'
 import Prodact from '../components/body/product'
 import Footertwo from '../components/footer/footer2'
+import { supabase } from '../supabaseClient' // 👈 استيراد مكتبة Supabase (تأكدي من صحة المسار)
 
 function Pgsearch() {
 
-    const [loading , setloading] =useState(true)
-    const [results , setresults] =useState([])
+    const [loading, setloading] = useState(true)
+    const [results, setresults] = useState([])
     const query = new URLSearchParams(useLocation().search).get("query")
- 
-    console.log(results)
 
-    useEffect(()=>{
-        const fetchResults = async ()=>{
+    useEffect(() => {
+        const fetchResults = async () => {
             setloading(true)
-            try{
-                const res= await fetch(
-                    `https://dummyjson.com/products/search?q=${query}`
-                )
-                const data = await res.json()
-                setresults(data.products || [])
+            try {
+                // 👈 البحث عن كلمة البحث داخل جدول المنتجات في Supabase
+                const { data, error } = await supabase
+                    .from('products')
+                    .select('*')
+                    .ilike('title', `%${query}%`)
 
-            }catch (error){
-                console.error("search error",error)
+                if (error) {
+                    console.error("خطأ أثناء البحث في سوبابيز:", error)
+                    setresults([])
+                } else {
+                    setresults(data || [])
+                }
 
-                
-            }finally{
+            } catch (error) {
+                console.error("search error", error)
+                setresults([])
+            } finally {
                 setloading(false)
             }
-             
         } 
-        if(query) fetchResults()
+
+        if (query) fetchResults()
             
-        
-    },[query])
+    }, [query])
+
     return (
         <div>
             <TopHeader />
             <BtmHeader />
     
             <PageTransition key={query}>
-                <div className="pg-search">
-
+                <div className="page-category">
                     {loading ? (
                         <ProductLoading key={query} />
                     ) : results.length > 0 ? (
                         <div className="prodact">
-                            <Prodact products={results} title={"نتائج البحث"} />
+                            <Prodact products={results} title={`نتائج البحث عن: ${query}`} />
                         </div>
-                    ) : <h3 className="no-data-text container">لا توجد منتجات</h3>}
-
+                    ) : <h3 className="no-data-text container">لا توجد منتجات مطابقة للبحث</h3>}
                 </div>
                 <Footertwo/>
             </PageTransition>
         </div>
     )
-    
-  
 }
 
 export default Pgsearch
