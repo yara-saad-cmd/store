@@ -16,166 +16,127 @@
     padding-bottom: 70px; 
   }
 } */
-hedar{
+header {
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
   z-index: 10000;
   background-color: var(--white-color);
-
-}
-.top-header{
-    background-color: var(--white-color);
-}
-.top-header .container{
-    display: flex;
-    align-items: center;
-
-    justify-content: space-between;
-    padding: 15px 0;
-  
-  
-    /* flex-direction: row-reverse; */
-    
-}
-.top-header .logo-img{
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
+.top-header {
+  background-color: var(--white-color);
+}
 
-/* العرض من 0 إلى 480 بكسل */
+.top-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+}
+
+.top-header .logo-img {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* الشاشات الصغيرة (الموبايل) */
 @media only screen and (max-width: 480px) {
   .logo {
     width: 90px;
   }
 
-  
-      
-
-  
-} 
-
-
-
-/* العرض من 481 بكسل إلى 768 بكسل */
-@media only screen and (min-width: 481px) and (max-width: 768px) {
-  .logo {
-    width: 100px;
-
-  }
-  
-}
-/* العرض من 769 بكسل إلى 1024 بكسل */
-@media only screen and (min-width: 769px){
-  .logo {
-    width: 130px;
-  }
- 
-}
-
-
-
-.top-header .search{
-  width: 80%;
-  margin: 0 10px 0 10px;
-}
-.top-header .search-box{
-    width: 100%;
-    border-radius: 50px;
-    background-color: var( --min-pg);
-    display: flex;
-    align-items: center;
-  
-}
-.top-header .search-box input{
-    height: 33px;
-    width: 100%;
-    padding: 5px 15px 5px 20px;
-    border-radius: 50px 0px 0px 50px;
-    padding: 10px;
-     border: var(--border-color) solid 1px;
-     font-size: 13px;
-     font-weight: 500;
-     display: flex;
-     align-items: center;
-   
-}
-.top-header .search-box button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--min-color);
-    height: 33px ;
-    width: 50px;
-    border-radius: 0px 50px 50px 0px;
-    cursor: pointer;
-    font-size: 15px;
-    color: var(--white-color);
-  
-}
-
-.top-header  .icon-header{
-    display: flex;
-    gap: 30px;
-    display: flex;
-    align-items: center;
-}
-.top-header  .icon-header .icon-1{
-    position: relative;
-    cursor: pointer;
-}
-.top-header .icon-header .icon-1 svg{
-   font-size: 20px;
-   color: var(--text-color-2);
-   
-  
-}
-.top-header .icon-header .icon-1 .count{
-    position: absolute;
-    bottom: 5px;
-    background-color: var(--min-color);
-    border-radius: 50px;
-    height: 14px;
-    width: 14px;
-    text-align: center;
-    line-height: 14px;
-    color: var(--white-color);
-    
-}
-
-/* افتراضي (كمبيوتر) */
-.desktop-search {
-  display: block;
-}
-
-.mobile-search-icon {
-  display: none;
- 
-}
-
-/* موبايل */
-@media (max-width: 480px) {
   .desktop-search {
-    display: none;   /* نخفي شريط البحث */
+    display: none; /* إخفاء شريط البحث في الموبايل */
   }
 
   .mobile-search-icon {
-    display: block; /* نظهر أيقونة البحث */
+    display: block; /* إظهار أيقونة البحث في الموبايل */
   }
 }
-/* خلي البحث يظهر في صفحة البحث حتى في الموبايل */
+
+/* الشاشات المتوسطة (التابلت) */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .logo {
+    width: 100px;
+  }
+}
+
+/* الشاشات الكبيرة (الكمبيوتر) */
+@media only screen and (min-width: 769px) {
+  .logo {
+    width: 130px;
+  }
+}
+
+.top-header .search {
+  width: 80%;
+  margin: 0 10px;
+}
+
+.top-header .search-box {
+  width: 100%;
+  border-radius: 50px;
+  background-color: var(--min-pg);
+  display: flex;
+  align-items: center;
+}
+
+.top-header .search-box input {
+  height: 33px;
+  width: 100%;
+  padding: 5px 15px 5px 20px;
+  border-radius: 50px 0 0 50px;
+  border: var(--border-color) solid 1px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.top-header .search-box button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--min-color);
+  height: 33px;
+  width: 50px;
+  border-radius: 0 50px 50px 0;
+  cursor: pointer;
+  font-size: 15px;
+  color: var(--white-color);
+}
+
+.top-header .icon-header {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.top-header .icon-header .icon-1 {
+  position: relative;
+  cursor: pointer;
+}
+
+.top-header .icon-header .icon-1 svg {
+  font-size: 20px;
+  color: var(--text-color-2);
+}
+
+.top-header .icon-header .icon-1 .count {
+  position: absolute;
+  bottom: 5px;
+  background-color: var(--min-color);
+  border-radius: 50px;
+  height: 14px;
+  width: 14px;
+  text-align: center;
+  line-height: 14px;
+  color: var(--white-color);
+}
+
+/* حالة الاستثناء لصفحة البحث */
 .search-page .desktop-search {
   display: block !important;
 }
-
-
-/*top-hedar*/
-
-
-
-  
- 

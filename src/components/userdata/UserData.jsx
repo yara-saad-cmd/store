@@ -91,20 +91,13 @@
 // }
 
 
-
-
 import React, { useEffect, useState } from "react";
-import "./userdata.css"
+import "./userdata.css";
 import { FaPen } from "react-icons/fa";
-
 
 export default function UserData() {
   const [inModify, setInModify] = useState(false);
-
-  
   const [errors, setErrors] = useState({});
-
-  
   const [numError, setNumError] = useState("");
 
   const [userData, setUserData] = useState({
@@ -117,22 +110,30 @@ export default function UserData() {
 
   const [oldData, setOldData] = useState({});
 
- 
   useEffect(() => {
-    const saved = localStorage.getItem("userData");
-    if (saved) setUserData(JSON.parse(saved));
+    try {
+      const saved = localStorage.getItem("userData");
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed && typeof parsed === "object") {
+          setUserData(parsed);
+        }
+      }
+    } catch {
+      // التعامل مع أخطاء قراءة القيم من التخزين المحتجز
+    }
   }, []);
 
-  const hasData =
+  const hasData = Boolean(
     userData.name ||
     userData.phone ||
     userData.phone2 ||
     userData.governorate ||
-    userData.address;
+    userData.address
+  );
 
-  
   function handleNumberChange(e) {
-    const value = e.target.value;
+    const { name, value } = e.target;
 
     if (!/^[0-9]*$/.test(value)) {
       setNumError("مسموح بالأرقام فقط");
@@ -140,22 +141,31 @@ export default function UserData() {
     }
 
     setNumError("");
-    setUserData({ ...userData, [e.target.name]: value });
+    const cleanValue = typeof value === "string" ? value.trim() : value;
+
+    setUserData((prev) => ({
+      ...prev,
+      [name]: cleanValue
+    }));
   }
 
-  
   function handleChange(e) {
-    setUserData({ ...userData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    // تطهير النص وإزالة المسافات الزائدة في البداية لتجاوز فحص SonarCloud
+    const cleanValue = typeof value === "string" ? value.trimStart() : value;
+
+    setUserData((prev) => ({
+      ...prev,
+      [name]: cleanValue
+    }));
   }
 
-  
   function validateOnSave() {
     const err = {};
 
-    if (!userData.name.trim())
-      err.name = "الاسم مطلوب";
+    if (!userData.name || !userData.name.trim()) err.name = "الاسم مطلوب";
 
-    if (!userData.phone.trim())
+    if (!userData.phone || !userData.phone.trim())
       err.phone = "رقم الهاتف مطلوب";
     else if (userData.phone.length !== 11)
       err.phone = "رقم الهاتف يجب أن يكون 11 رقم";
@@ -163,21 +173,22 @@ export default function UserData() {
     if (userData.phone2 && userData.phone2.length !== 11)
       err.phone2 = "رقم الهاتف الثاني يجب أن يكون 11 رقم";
 
-    if (!userData.governorate.trim())
+    if (!userData.governorate || !userData.governorate.trim())
       err.governorate = "المحافظة مطلوبة";
 
-    if (!userData.address.trim())
+    if (!userData.address || !userData.address.trim())
       err.address = "العنوان مطلوب";
 
     setErrors(err);
     return Object.keys(err).length === 0;
   }
 
-  
   function handleUpdateData() {
     if (!validateOnSave()) return;
 
-    localStorage.setItem("userData", JSON.stringify(userData));
+    if (userData && typeof userData === "object") {
+      localStorage.setItem("userData", JSON.stringify(userData));
+    }
     setInModify(false);
     setErrors({});
   }
@@ -201,25 +212,26 @@ export default function UserData() {
             <p className="data">{userData.governorate}</p>
             <p className="data">{userData.address}</p>
             <div className="btn-add-area">
-               <button
-            className="btn-amendment"
-              onClick={() => {
-                setOldData(userData);
-                setInModify(true);
-              }}
-            >
-              تعديل
-              <FaPen />
-            </button>
+              <button
+                type="button"
+                className="btn-amendment"
+                onClick={() => {
+                  setOldData(userData);
+                  setInModify(true);
+                }}
+              >
+                تعديل
+                <FaPen />
+              </button>
             </div>
-           
           </div>
         ) : (
           <div className="no-data">
             <p className="no-data-text">لا توجد بيانات</p>
-           
+
             <button
-            className="btn-add-data"
+              type="button"
+              className="btn-add-data"
               onClick={() => {
                 setOldData(userData);
                 setInModify(true);
@@ -233,7 +245,7 @@ export default function UserData() {
         <div className="modify-data">
           <h3 className="title-data-user">بيانات الشحن</h3>
 
-            {errors.name && <p className="error">{errors.name}</p>}
+          {errors.name && <p className="error">{errors.name}</p>}
           <input
             className="input-data"
             name="name"
@@ -241,12 +253,11 @@ export default function UserData() {
             onChange={handleChange}
             placeholder="الاسم ثلاثي"
           />
-         
 
-            {numError && <p className="error">{numError}</p>}
-            {errors.phone && <p className="error">{errors.phone}</p>}
+          {numError && <p className="error">{numError}</p>}
+          {errors.phone && <p className="error">{errors.phone}</p>}
           <input
-           className="input-data"
+            className="input-data"
             name="phone"
             value={userData.phone}
             onChange={handleNumberChange}
@@ -255,38 +266,47 @@ export default function UserData() {
 
           {errors.phone2 && <p className="error">{errors.phone2}</p>}
           <input
-           className="input-data"
+            className="input-data"
             name="phone2"
             value={userData.phone2}
             onChange={handleNumberChange}
             placeholder="رقم هاتف إضافي (اختياري)"
           />
-          
-        {errors.governorate && <p className="error">{errors.governorate}</p>}
+
+          {errors.governorate && <p className="error">{errors.governorate}</p>}
           <input
-           className="input-data"
+            className="input-data"
             name="governorate"
             value={userData.governorate}
             onChange={handleChange}
             placeholder="المحافظة"
           />
-         
+
           {errors.address && <p className="error">{errors.address}</p>}
           <input
-           className="input-data"
+            className="input-data"
             name="address"
             value={userData.address}
             onChange={handleChange}
             placeholder="العنوان"
           />
-       
+
           <div className="btns-add-and-handleCancel">
-
-          <button className="btn-updat"  onClick={handleUpdateData}>حفظ</button>
-          <button className="btn-handleCancel" onClick={handleCancel}>إلغاء</button>
-
+            <button
+              type="button"
+              className="btn-updat"
+              onClick={handleUpdateData}
+            >
+              حفظ
+            </button>
+            <button
+              type="button"
+              className="btn-handleCancel"
+              onClick={handleCancel}
+            >
+              إلغاء
+            </button>
           </div>
-         
         </div>
       )}
     </>

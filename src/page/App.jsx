@@ -1,6 +1,6 @@
 
-import TopHeader from "../components/header/topHeader"
-import BtmHeader from "../components/header/btmHeader"
+//import TopHeader from "../components/header/topHeader"
+//import BtmHeader from "../components/header/btmHeader"
 import Home from "./Home"
 import { Route, Routes } from "react-router-dom"
 import Cart from "../page/cart/cart"

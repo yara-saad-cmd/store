@@ -208,9 +208,16 @@ function Product({ products, title, isLikePage = false }){
                 </Link>
 
                 <div className="btm-card">
-                  <div className="icon" onClick={handleAddToCart}>
-                    <TbShoppingCartPlus />
-                  </div>
+
+                <button 
+                  type="button" 
+                  className="icon" 
+                  onClick={handleAddToCart}
+                  aria-label="إضافة إلى السلة"
+                >
+                  <TbShoppingCartPlus />
+                </button>
+
                   <div className="in-cart">
                     {incart && <span className="in-cart-label">في العربة <FaCheck /></span>}
                   </div>
