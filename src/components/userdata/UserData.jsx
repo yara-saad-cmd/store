@@ -1,96 +1,3 @@
-// import { useState, useEffect } from "react";
-
-// export default function UserDataForm() {
-//   const [isEditing, setIsEditing] = useState(false);
-
-//   const [userData, setUserData] = useState({
-//     name: "",
-//     phone2: "",
-//     phone: "",
-//     address: "",
-//   });
-
-//   // تحميل البيانات من localStorage عند فتح الصفحة
-//   useEffect(() => {
-//     const saved = localStorage.getItem("userData");
-//     if (saved) {
-//       setUserData(JSON.parse(saved));
-//     }
-//   }, []);
-
-//   // هل يوجد بيانات؟
-//   const hasData = userData.name || userData.phone2 || userData.phone || userData.address;
-
-//   const handleChange = (e) => {
-//     setUserData({ ...userData, [e.target.name]: e.target.value });
-//   };
-
-//   const handleSave = () => {
-//     localStorage.setItem("userData", JSON.stringify(userData));
-//     setIsEditing(false);
-//   };
-
-//   return (
-//     <div className="user-data-box">
-//       {!isEditing ? (
-//         hasData ? (
-//           <div>
-//             <p><strong>الاسم:</strong> {userData.name}</p>
-//             <p><strong>الإيميل:</strong> {userData.phone2}</p>
-//             <p><strong>الهاتف:</strong> {userData.phone}</p>
-//             <p><strong>العنوان:</strong> {userData.address}</p>
-
-//             <button onClick={() => setIsEditing(true)}>
-//               تعديل البيانات
-//             </button>
-//           </div>
-//         ) : (
-//           <div>
-//             <p>لم تقم بإضافة بياناتك بعد.</p>
-//             <button onClick={() => setIsEditing(true)}>
-//               إضافة البيانات
-//             </button>
-//           </div>
-//         )
-//       ) : (
-//         <div className="edit-form">
-//           <label>الاسم</label>
-//           <input
-//             name="name"
-//             value={userData.name}
-//             onChange={handleChange}
-//           />
-
-//           <label>الإيميل</label>
-//           <input
-//             name="phone2"
-//             value={userData.phone2}
-//             onChange={handleChange}
-//           />
-
-//           <label>الهاتف</label>
-//           <input
-//             name="phone"
-//             value={userData.phone}
-//             onChange={handleChange}
-//           />
-
-//           <label>العنوان</label>
-//           <input
-//             name="address"
-//             value={userData.address}
-//             onChange={handleChange}
-//           />
-
-//           <button onClick={handleSave}>حفظ</button>
-//           <button onClick={() => setIsEditing(false)}>إلغاء</button>
-//         </div>
-//       )}
-//     </div>
-//   );
-// }
-
-
 import React, { useEffect, useState } from "react";
 import "./userdata.css";
 import { FaPen } from "react-icons/fa";
@@ -112,15 +19,17 @@ export default function UserData() {
 
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("userData");
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (parsed && typeof parsed === "object") {
-          setUserData(parsed);
+      const savedData = localStorage.getItem("userData");
+
+      if (typeof savedData === "string" && savedData.trim() !== "") {
+        const parsedData = JSON.parse(savedData);
+
+        if (parsedData && typeof parsedData === "object" && !Array.isArray(parsedData)) {
+          setUserData(parsedData);
         }
       }
     } catch {
-      // التعامل مع أخطاء قراءة القيم من التخزين المحتجز
+      localStorage.removeItem("userData");
     }
   }, []);
 
@@ -141,22 +50,19 @@ export default function UserData() {
     }
 
     setNumError("");
-    const cleanValue = typeof value === "string" ? value.trim() : value;
 
     setUserData((prev) => ({
       ...prev,
-      [name]: cleanValue
+      [name]: value
     }));
   }
 
   function handleChange(e) {
     const { name, value } = e.target;
-    // تطهير النص وإزالة المسافات الزائدة في البداية لتجاوز فحص SonarCloud
-    const cleanValue = typeof value === "string" ? value.trimStart() : value;
 
     setUserData((prev) => ({
       ...prev,
-      [name]: cleanValue
+      [name]: value
     }));
   }
 
@@ -167,10 +73,10 @@ export default function UserData() {
 
     if (!userData.phone || !userData.phone.trim())
       err.phone = "رقم الهاتف مطلوب";
-    else if (userData.phone.length !== 11)
+    else if (userData.phone.trim().length !== 11)
       err.phone = "رقم الهاتف يجب أن يكون 11 رقم";
 
-    if (userData.phone2 && userData.phone2.length !== 11)
+    if (userData.phone2 && userData.phone2.trim().length > 0 && userData.phone2.trim().length !== 11)
       err.phone2 = "رقم الهاتف الثاني يجب أن يكون 11 رقم";
 
     if (!userData.governorate || !userData.governorate.trim())
@@ -186,9 +92,23 @@ export default function UserData() {
   function handleUpdateData() {
     if (!validateOnSave()) return;
 
-    if (userData && typeof userData === "object") {
-      localStorage.setItem("userData", JSON.stringify(userData));
+    // تطهير صريح وتنظيف كامل لكل الحقول النصية قبل الحفظ
+    const cleanUserData = {
+      name: (userData.name || "").trim(),
+      phone: (userData.phone || "").trim(),
+      phone2: (userData.phone2 || "").trim(),
+      governorate: (userData.governorate || "").trim(),
+      address: (userData.address || "").trim()
+    };
+
+    setUserData(cleanUserData);
+
+    try {
+      localStorage.setItem("userData", JSON.stringify(cleanUserData));
+    } catch (error) {
+      // Handle storage quota or write errors safely
     }
+
     setInModify(false);
     setErrors({});
   }
