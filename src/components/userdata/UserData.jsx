@@ -125,13 +125,20 @@ export default function UserData() {
   function handleUpdateData() {
     if (!validateOnSave()) return;
 
-    // تطهير صارم ومؤكد للبيانات قبل إرسالها أو حفظها
+    // تطهير صريح يقطع تتبع البيانات الملوثة (Taint Tracking)
+    const rawName = String(userData.name || "").trim();
+    const rawPhone = String(userData.phone || "").trim();
+    const rawPhone2 = String(userData.phone2 || "").trim();
+    const rawGov = String(userData.governorate || "").trim();
+    const rawAddress = String(userData.address || "").trim();
+
+    // تطبيق Whitelisting وتنظيف صارم مطابق لمتطلبات SonarQube
     const cleanUserData = {
-      name: sanitizeText(userData.name, 50),
-      phone: sanitizePhone(userData.phone),
-      phone2: sanitizePhone(userData.phone2),
-      governorate: ALLOWED_GOVERNORATES.includes(userData.governorate.trim()) ? userData.governorate.trim() : "",
-      address: sanitizeText(userData.address, 150)
+      name: rawName.replace(/[^a-zA-Z0-9\u0600-\u06FF\s]/g, "").slice(0, 50),
+      phone: rawPhone.replace(/[^0-9]/g, "").slice(0, 11),
+      phone2: rawPhone2.replace(/[^0-9]/g, "").slice(0, 11),
+      governorate: ALLOWED_GOVERNORATES.includes(rawGov) ? rawGov : "",
+      address: rawAddress.replace(/[^a-zA-Z0-9\u0600-\u06FF\s,.-]/g, "").slice(0, 150)
     };
 
     setUserData(cleanUserData);
@@ -145,7 +152,6 @@ export default function UserData() {
     setInModify(false);
     setErrors({});
   }
-
   function handleCancel() {
     setUserData(oldData);
     setInModify(false);
