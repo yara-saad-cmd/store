@@ -267,13 +267,15 @@ export default function CartItem({
                 {colorsList.map((color) => {
                   const active = selectedColor === color;
                   return (
-                    <label
+                    <button
+                      type="button"
                       key={color}
+                      aria-label={`إختيار اللون ${color}`}
                       className={`color-square-option ${active ? "active" : ""}`}
                       onClick={() => handleColorClick(color)}
                     >
                       <span className="color-square">{color}</span>
-                    </label>
+                    </button>
                   );
                 })}
               </div>
@@ -297,13 +299,15 @@ export default function CartItem({
                 {sizesList.map((size) => {
                   const active = selectedSize === size;
                   return (
-                    <label
+                    <button
+                      type="button"
                       key={size}
+                      aria-label={`إختيار المقاس ${size}`}
                       className={`size-box ${active ? "active" : ""}`}
                       onClick={() => handleSizeClick(size)}
                     >
                       <span className="span-size">{size}</span>
-                    </label>
+                    </button>
                   );
                 })}
               </div>
@@ -347,6 +351,7 @@ export default function CartItem({
           {(layout === "prodact" || layout === "cart") && (
             <div className="quantity">
               <button
+                type="button"
                 className="minus"
                 onClick={() =>
                   onDecrease?.({
@@ -360,6 +365,7 @@ export default function CartItem({
               </button>
               <span className="num">{item?.quantity || 1}</span>
               <button
+                type="button"
                 className="plus"
                 onClick={() =>
                   onIncrease?.({
@@ -378,6 +384,7 @@ export default function CartItem({
             {layout === "prodact" && (
               <div className="con">
                 <button
+                  type="button"
                   className={`btn ${encart ? "encart" : ""}`}
                   onClick={HandleAddToCart}
                 >
@@ -386,19 +393,23 @@ export default function CartItem({
                 </button>
 
                 <div className="icon-hert">
-                  <div
+                  <button
+                    type="button"
+                    aria-label="إضافة للمفضلة"
                     className={`like ${inlike ? "inlike" : ""}`}
                     onClick={handleAddToLike}
                   >
                     {inlike ? <FaHeart color="red" /> : <FiHeart />}
-                  </div>
+                  </button>
                 </div>
               </div>
             )}
 
             {layout === "cart" && (
               <div className="icons">
-                <div
+                <button
+                  type="button"
+                  aria-label="إضافة للمفضلة"
                   className="like"
                   onClick={() =>
                     onLike?.({
@@ -411,9 +422,11 @@ export default function CartItem({
                   }
                 >
                   {inlike ? <FaHeart color="red" /> : <FaRegHeart />}
-                </div>
+                </button>
 
-                <div
+                <button
+                  type="button"
+                  aria-label="حذف من العربة"
                   className="delete"
                   onClick={() =>
                     productId &&
@@ -425,7 +438,7 @@ export default function CartItem({
                   }
                 >
                   <FaRegTrashCan />
-                </div>
+                </button>
               </div>
             )}
           </div>
