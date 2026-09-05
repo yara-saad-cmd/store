@@ -1,169 +1,206 @@
-import React , { createContext,useEffect,useState} from 'react'
+import React, { createContext, useEffect, useState } from 'react';
 
-export const ContextCart = createContext()
+export const ContextCart = createContext();
 
-
-export default function CartProvider({children}) {
-
-//like ----------------------------------------
-const [likeItems ,setlikeItems] = useState(()=>{
-    const savelike = localStorage.getItem("likeItems")
-    return savelike ? JSON.parse(savelike):[]
-})
-
-
-const AddToLike = (product) => {
-    setlikeItems((prev) => {
-        if(prev.some((i)=> i.id === product.id)) return prev
-        return[...prev, product]
-   } )
-}
-useEffect(()=>{
-    localStorage.setItem("likeItems" , JSON.stringify(likeItems))
-},[likeItems])
-
-
-const removelike = (id) => {
-    setlikeItems((prev) => prev.filter((i) => i.id !== id));
+export default function CartProvider({ children }) {
+  // دالة مساعدة لتطهير وقراءة البيانات بأمان من localStorage
+  const getSafeLocalStorage = (key) => {
+    try {
+      const saved = localStorage.getItem(key);
+      if (!saved) return [];
+      const parsed = JSON.parse(saved);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+      console.error(`خطأ في قراءة ${key} من localStorage:`, error);
+      return [];
+    }
   };
 
-
-
-
-
-
-
-
-
-
-// cart -------------------------------------------
-
-
-    const [cartItems ,setcartItems] = useState(()=>{
-        const savecard = localStorage.getItem("cartItems")
-        return savecard ? JSON.parse(savecard):[]
-    })
-
-    //+ item
-
-    const increaseQuantity = (item) => {
-      setcartItems((prevItems) =>
-        prevItems.map((i) =>
-          i.id === item.id &&
-          (i.selectedSize || "") === (item.selectedSize || "") &&
-          (i.selectedColor || "") === (item.selectedColor || "")
-            ? { ...i, quantity: i.quantity + 1 }
-            : i
-        )
-      );
+  // ------------------ Muted Data Sanitizer Helper ------------------
+  const sanitizeItem = (item) => {
+    if (!item || typeof item !== 'object') return null;
+    return {
+      ...item,
+      id: item.id ?? item._id,
+      selectedSize: String(item.selectedSize || item.size || '').trim(),
+      selectedColor: String(item.selectedColor || item.color || '').trim(),
+      quantity: Math.max(1, Number(item.quantity) || 1),
+      price: Number(item.price) || 0,
+      title: String(item.title || item.name || '').trim(),
     };
+  };
 
+  // ------------------ LIKE ITEMS ------------------
+  const [likeItems, setlikeItems] = useState(() => getSafeLocalStorage("likeItems"));
 
-//-
-const decreaseQuantity = (item) => {
-  setcartItems((prevItems) =>
-    prevItems.map((i) =>
-      i.id === item.id &&
-      (i.selectedSize || "") === (item.selectedSize || "") &&
-      (i.selectedColor || "") === (item.selectedColor || "")
-        ? {
-            ...i,
-            quantity: Math.max(1, i.quantity - 1),
-          }
-        : i
-    )
-  );
-};
+  const AddToLike = (product) => {
+    const cleanProduct = sanitizeItem(product);
+    if (!cleanProduct || !cleanProduct.id) return;
 
-//delet
+    setlikeItems((prev) => {
+      const exists = prev.some(
+        (i) =>
+          i.id === cleanProduct.id &&
+          (i.selectedSize || "") === cleanProduct.selectedSize &&
+          (i.selectedColor || "") === cleanProduct.selectedColor
+      );
+      if (exists) return prev;
+      return [...prev, cleanProduct];
+    });
+  };
 
-const delet = (item) => {
-  setcartItems((prevItems) =>
-    prevItems.filter(
-      (i) =>
-        !(
-          i.id === item.id &&
-          (i.selectedSize || "") === (item.selectedSize || "") &&
-          (i.selectedColor || "") === (item.selectedColor || "")
-        )
-    )
-  );
-};
+  const removelike = (target) => {
+    // قبول id فقط أو كائن كامل يحتوي على المقاس واللون
+    const targetId = typeof target === 'object' ? target.id : target;
+    const targetSize = typeof target === 'object' ? String(target.selectedSize || target.size || '').trim() : null;
+    const targetColor = typeof target === 'object' ? String(target.selectedColor || target.color || '').trim() : null;
 
-
-
-
-const AddToCart = (item) => {
-  setcartItems((prevItems) => {
-    const existingItem = prevItems.find(
-      (i) =>
-        i.id === item.id &&
-        (i.selectedSize || "") === (item.selectedSize || "") &&
-        (i.selectedColor || "") === (item.selectedColor || "")
+    setlikeItems((prev) =>
+      prev.filter((i) => {
+        if (targetSize !== null && targetColor !== null) {
+          return !(
+            i.id === targetId &&
+            (i.selectedSize || "") === targetSize &&
+            (i.selectedColor || "") === targetColor
+          );
+        }
+        return i.id !== targetId;
+      })
     );
+  };
 
-    if (existingItem) {
-      return prevItems.map((i) =>
-        i.id === item.id &&
-        (i.selectedSize || "") === (item.selectedSize || "") &&
-        (i.selectedColor || "") === (item.selectedColor || "")
-          ? {
-              ...i,
-              quantity: i.quantity + item.quantity,
-            }
-          : i
-      );
+  useEffect(() => {
+    try {
+      localStorage.setItem("likeItems", JSON.stringify(likeItems));
+    } catch (error) {
+      console.error("فشل حفظ البيانات المفضلة:", error);
     }
-
-    return [
-      ...prevItems,
-      {
-        ...item,
-        quantity: item.quantity || 1,
-      },
-    ];
-  });
-};
-    useEffect (()=>{
-        localStorage.setItem("cartItems",JSON.stringify(cartItems))
-    }, [cartItems])
+  }, [likeItems]);
 
 
-    /*اللون - و المقاس */
-    const onSizeChange = (id, newSize, oldColor = "") => {
-      setcartItems((prev) =>
-        prev.map((item) =>
-          item.id === id &&
-          (item.selectedColor || "") === oldColor
-            ? {
-                ...item,
-                selectedSize: newSize,
-              }
-            : item
-        )
+  // ------------------ CART ITEMS ------------------
+  const [cartItems, setcartItems] = useState(() => getSafeLocalStorage("cartItems"));
+
+  const increaseQuantity = (item) => {
+    if (!item?.id) return;
+    const targetSize = String(item.selectedSize || "").trim();
+    const targetColor = String(item.selectedColor || "").trim();
+
+    setcartItems((prevItems) =>
+      prevItems.map((i) =>
+        i.id === item.id &&
+        (i.selectedSize || "") === targetSize &&
+        (i.selectedColor || "") === targetColor
+          ? { ...i, quantity: i.quantity + 1 }
+          : i
+      )
+    );
+  };
+
+  const decreaseQuantity = (item) => {
+    if (!item?.id) return;
+    const targetSize = String(item.selectedSize || "").trim();
+    const targetColor = String(item.selectedColor || "").trim();
+
+    setcartItems((prevItems) =>
+      prevItems.map((i) =>
+        i.id === item.id &&
+        (i.selectedSize || "") === targetSize &&
+        (i.selectedColor || "") === targetColor
+          ? { ...i, quantity: Math.max(1, i.quantity - 1) }
+          : i
+      )
+    );
+  };
+
+  const delet = (item) => {
+    if (!item?.id) return;
+    const targetSize = String(item.selectedSize || "").trim();
+    const targetColor = String(item.selectedColor || "").trim();
+
+    setcartItems((prevItems) =>
+      prevItems.filter(
+        (i) =>
+          !(
+            i.id === item.id &&
+            (i.selectedSize || "") === targetSize &&
+            (i.selectedColor || "") === targetColor
+          )
+      )
+    );
+  };
+
+  const AddToCart = (item) => {
+    const cleanItem = sanitizeItem(item);
+    if (!cleanItem || !cleanItem.id) return;
+
+    setcartItems((prevItems) => {
+      const existingItem = prevItems.find(
+        (i) =>
+          i.id === cleanItem.id &&
+          (i.selectedSize || "") === cleanItem.selectedSize &&
+          (i.selectedColor || "") === cleanItem.selectedColor
       );
-    };
-    
-    const onColorChange = (id, newColor, oldSize = "") => {
-      setcartItems((prev) =>
-        prev.map((item) =>
-          item.id === id &&
-          (item.selectedSize || "") === oldSize
-            ? {
-                ...item,
-                selectedColor: newColor,
-              }
-            : item
-        )
-      );
-    };
-      
-    /*اللون - و المقاس */
+
+      if (existingItem) {
+        return prevItems.map((i) =>
+          i.id === cleanItem.id &&
+          (i.selectedSize || "") === cleanItem.selectedSize &&
+          (i.selectedColor || "") === cleanItem.selectedColor
+            ? { ...i, quantity: i.quantity + cleanItem.quantity }
+            : i
+        );
+      }
+
+      return [...prevItems, cleanItem];
+    });
+  };
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    } catch (error) {
+      console.error("فشل حفظ بيانات العربة:", error);
+    }
+  }, [cartItems]);
+
+  // ------------------ Size & Color Change ------------------
+  const onSizeChange = (id, newSize, oldColor = "") => {
+    setcartItems((prev) =>
+      prev.map((item) =>
+        item.id === id && (item.selectedColor || "") === oldColor
+          ? { ...item, selectedSize: String(newSize).trim() }
+          : item
+      )
+    );
+  };
+
+  const onColorChange = (id, newColor, oldSize = "") => {
+    setcartItems((prev) =>
+      prev.map((item) =>
+        item.id === id && (item.selectedSize || "") === oldSize
+          ? { ...item, selectedColor: String(newColor).trim() }
+          : item
+      )
+    );
+  };
 
   return (
-    <ContextCart.Provider value={{cartItems , AddToCart ,increaseQuantity ,decreaseQuantity ,delet ,likeItems ,AddToLike,removelike,onSizeChange,onColorChange}}>
-        {children}
+    <ContextCart.Provider
+      value={{
+        cartItems,
+        AddToCart,
+        increaseQuantity,
+        decreaseQuantity,
+        delet,
+        likeItems,
+        AddToLike,
+        removelike,
+        onSizeChange,
+        onColorChange,
+      }}
+    >
+      {children}
     </ContextCart.Provider>
-  
-  )
+  );
 }

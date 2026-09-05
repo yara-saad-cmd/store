@@ -2,6 +2,30 @@ import React, { useEffect, useState } from "react";
 import "./userdata.css";
 import { FaPen } from "react-icons/fa";
 
+// قائمة المحافظات المسموح بها لتطبيق مفهوم Whitelisting
+const ALLOWED_GOVERNORATES = [
+  "القاهرة", "الجيزة", "الإسكندرية", "الدقهلية", "الشرقية", "المنوفية",
+  "القليوبية", "البحيرة", "الغربية", "بور سعيد", "دمياط", "الإسماعيلية",
+  "السويس", "كفر الشيخ", "الفيوم", "بني سويف", "المنيا", "أسيوط",
+  "سوهاج", "قنا", "أسوان", "الأقصر", "البحر الأحمر", "الوادي الجديد",
+  "مطروح", "شمال سيناء", "جنوب سيناء"
+];
+
+// دالة تنظيف النص التجريبي وإزالة الرموز الخاصة كحماية ضد XSS/Injection
+const sanitizeText = (input, maxLength = 100) => {
+  if (typeof input !== "string") return "";
+  return input
+    .replace(/[<>/'"&]/g, "")
+    .trim()
+    .slice(0, maxLength);
+};
+
+// دالة تطهير أرقام الهواتف
+const sanitizePhone = (input) => {
+  if (typeof input !== "string" && typeof input !== "number") return "";
+  return String(input).replace(/[^0-9]/g, "").slice(0, 11);
+};
+
 export default function UserData() {
   const [inModify, setInModify] = useState(false);
   const [errors, setErrors] = useState({});
@@ -25,7 +49,14 @@ export default function UserData() {
         const parsedData = JSON.parse(savedData);
 
         if (parsedData && typeof parsedData === "object" && !Array.isArray(parsedData)) {
-          setUserData(parsedData);
+          // تطهير البيانات المسترجعة من Storage قبل إسنادها للـ State
+          setUserData({
+            name: sanitizeText(parsedData.name, 50),
+            phone: sanitizePhone(parsedData.phone),
+            phone2: sanitizePhone(parsedData.phone2),
+            governorate: ALLOWED_GOVERNORATES.includes(parsedData.governorate) ? parsedData.governorate : "",
+            address: sanitizeText(parsedData.address, 150)
+          });
         }
       }
     } catch {
@@ -81,6 +112,8 @@ export default function UserData() {
 
     if (!userData.governorate || !userData.governorate.trim())
       err.governorate = "المحافظة مطلوبة";
+    else if (!ALLOWED_GOVERNORATES.includes(userData.governorate.trim()))
+      err.governorate = "يرجى اختيار محافظة صالحة من القائمة";
 
     if (!userData.address || !userData.address.trim())
       err.address = "العنوان مطلوب";
@@ -92,13 +125,13 @@ export default function UserData() {
   function handleUpdateData() {
     if (!validateOnSave()) return;
 
-    // تطهير صريح وتنظيف كامل لكل الحقول النصية قبل الحفظ
+    // تطهير صارم ومؤكد للبيانات قبل إرسالها أو حفظها
     const cleanUserData = {
-      name: (userData.name || "").trim(),
-      phone: (userData.phone || "").trim(),
-      phone2: (userData.phone2 || "").trim(),
-      governorate: (userData.governorate || "").trim(),
-      address: (userData.address || "").trim()
+      name: sanitizeText(userData.name, 50),
+      phone: sanitizePhone(userData.phone),
+      phone2: sanitizePhone(userData.phone2),
+      governorate: ALLOWED_GOVERNORATES.includes(userData.governorate.trim()) ? userData.governorate.trim() : "",
+      address: sanitizeText(userData.address, 150)
     };
 
     setUserData(cleanUserData);
@@ -106,7 +139,7 @@ export default function UserData() {
     try {
       localStorage.setItem("userData", JSON.stringify(cleanUserData));
     } catch (error) {
-      // Handle storage quota or write errors safely
+      console.error("فشل الحفظ في Storage:", error);
     }
 
     setInModify(false);
@@ -128,7 +161,7 @@ export default function UserData() {
 
             <p className="data">{userData.name}</p>
             <p className="data">{userData.phone}</p>
-            <p className="data">{userData.phone2}</p>
+            {userData.phone2 && <p className="data">{userData.phone2}</p>}
             <p className="data">{userData.governorate}</p>
             <p className="data">{userData.address}</p>
             <div className="btn-add-area">
@@ -194,13 +227,19 @@ export default function UserData() {
           />
 
           {errors.governorate && <p className="error">{errors.governorate}</p>}
-          <input
+          <select
             className="input-data"
             name="governorate"
             value={userData.governorate}
             onChange={handleChange}
-            placeholder="المحافظة"
-          />
+          >
+            <option value="">اختر المحافظة</option>
+            {ALLOWED_GOVERNORATES.map((gov) => (
+              <option key={gov} value={gov}>
+                {gov}
+              </option>
+            ))}
+          </select>
 
           {errors.address && <p className="error">{errors.address}</p>}
           <input
