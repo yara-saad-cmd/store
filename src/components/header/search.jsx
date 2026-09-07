@@ -109,16 +109,28 @@ const executeSearch = (term) => {
                 <ul className="suggestions">
                     {/* سجل البحث الشخصي */}
                     {search === "" && history.map((item, index) => (
-                        <li key={`hist-${index}`} onMouseDown={() => executeSearch(item)}>
-                           <IoTimeOutline /> {item}
-                        </li>
+                        <li key={`hist-${index}`}>
+                        <button
+                          type="button"
+                          className="history-item"
+                          onMouseDown={() => executeSearch(item)}
+                        >
+                          {item}
+                        </button>
+                      </li>
                     ))}
 
                     {/* مقترحات كلمات البحث الشائعة (مستخرجة من البيانات) */}
                     {search !== "" && suggestions.map((word, index) => (
-                        <li key={`word-${index}`} onMouseDown={() => executeSearch(word)}>
-                            <IoSearchOutline style={{fontSize: '0.9em', opacity: 0.6}} /> {word}
-                        </li>
+                        <li key={`word-${index}`}>
+                        <button
+                          type="button"
+                          className="your-class"
+                          onMouseDown={() => executeSearch(word)}
+                        >
+                          {word}
+                        </button>
+                      </li>
                     ))}
                 </ul>
             )}

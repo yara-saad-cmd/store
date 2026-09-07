@@ -150,16 +150,18 @@ function ImgPgProdact({ prodact }) {
         onMouseMove={handleMouseMove}
         onMouseLeave={(e) => handleMouseUpOrLeave(e, null)}
       >
-        {allImages.map((img) => (
+        <button
+          type="button"
+          className={img === activeImg ? "active-thumb" : ""}
+          onMouseUp={(e) => handleMouseUpOrLeave(e, img)}
+        >
           <img
             key={img}
             src={img}
             alt={prodact.title}
-            className={img === activeImg ? "active-thumb" : ""}
-            onMouseUp={(e) => handleMouseUpOrLeave(e, img)}
-            onDragStart={(e) => e.preventDefault()} 
+            draggable="false"
           />
-        ))}
+        </button>
       </div>
 
       <div className="big-image">

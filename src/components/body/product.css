@@ -50,6 +50,7 @@
   height: 300px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 @media only screen and (min-width: 1101px) and (max-width: 1305px) {
@@ -320,9 +321,7 @@
 .msg{
   z-index: 10000;
 }
-.card {
-  position: relative;
-}
+
 
 .remove-like-btn {
   position: absolute;

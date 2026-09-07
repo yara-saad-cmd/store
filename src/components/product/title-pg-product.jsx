@@ -81,7 +81,7 @@ function TitleProductPage({ prodact }) {
 
     toast.success(
       <div className="msg">
-        <strong>{prodact.title}</strong>
+        <strong>{prodact.title}</strong>{" "}
         تمت الإضافة إلى العربة
       </div>,
       {

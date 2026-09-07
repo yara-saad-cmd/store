@@ -36,7 +36,7 @@ function Slider() {
       <p>عروض او خصمات او ترويج مننتج معين</p>
       <Link to="/" className='btn'>تسوق الآن</Link>
       </div>
-      <img src='/src/img/slayd1.jpg' alt='slide image'/>
+      <img src='/src/img/slayd1.jpg' alt='slide'/>
 
     </SwiperSlide>
 
@@ -49,7 +49,7 @@ function Slider() {
       <p>عروض او خصمات او ترويج مننتج معين</p>
       <Link to="/" className='btn'>تسوق الآن</Link>
       </div>
-      <img src='/src/img/slayd2.jpg' alt='slide image'/>
+      <img src='/src/img/slayd2.jpg' alt='slide'/>
 
 
     </SwiperSlide>
@@ -63,7 +63,7 @@ function Slider() {
       <p>عروض او خصمات او ترويج مننتج معين</p>
       <Link to="/" className='btn'>تسوق الآن</Link>
       </div>
-     <img src='/src/img/slayd3.jpg' alt='slide image'/>
+     <img src='/src/img/slayd3.jpg' alt='slide'/>
 
     </SwiperSlide>
 

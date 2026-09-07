@@ -34,7 +34,7 @@ function RelatedProducts({
                 AddToCart(item);
                 toast.success(
                   <div className="msg">
-                    <strong>{item.title}</strong>
+                    <strong>{item.title}</strong>{" "}
                     تمت الإضافة إلى العربة
                   </div>,
                   { duration: 3000 }
