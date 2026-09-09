@@ -32,7 +32,15 @@ function TopHeader() {
 
             <div className="icon-header">
 
-              <div className="icon-1 mobile-search-icon" onClick={() => navigate("/search-page")}>
+              <div className="icon-1 mobile-search-icon" onClick={() => navigate("/search-page")} className="icon-1 mobile-search-icon"
+                role="button"
+                tabIndex={0}
+                onClick={() => navigate("/search-page")}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    navigate("/search-page");
+                  }
+                }}>
                 <IoSearch />
                 </div>
            

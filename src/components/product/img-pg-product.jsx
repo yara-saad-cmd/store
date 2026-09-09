@@ -143,26 +143,31 @@ function ImgPgProdact({ prodact }) {
 
   return (
     <div className="imegs">
-      <div 
-        className="small-images"
-        ref={containerRef}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={(e) => handleMouseUpOrLeave(e, null)}
-      >
-        <button
-          type="button"
-          className={img === activeImg ? "active-thumb" : ""}
-          onMouseUp={(e) => handleMouseUpOrLeave(e, img)}
-        >
-          <img
-            key={img}
-            src={img}
-            alt={prodact.title}
-            draggable="false"
-          />
-        </button>
-      </div>
+   <div
+  className="small-images"
+  ref={containerRef}
+  role="region"
+  aria-label="صور المنتج"
+  tabIndex={0}
+  onMouseDown={handleMouseDown}
+  onMouseMove={handleMouseMove}
+  onMouseLeave={(e) => handleMouseUpOrLeave(e, null)}
+>
+  {allImages.map((img) => (
+    <button
+      key={img}
+      type="button"
+      className={img === activeImg ? "active-thumb" : ""}
+      onMouseUp={(e) => handleMouseUpOrLeave(e, img)}
+    >
+      <img
+        src={img}
+        alt={prodact.title}
+        draggable="false"
+      />
+    </button>
+  ))}
+</div>
 
       <div className="big-image">
         <img key={activeImg} src={activeImg} alt={prodact.title} />

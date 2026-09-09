@@ -66,9 +66,15 @@ function RelatedProducts({
                     </div>
                   </Link>
                   <div className="btm-card">
-                    <div className="cart-icon" onClick={handleAddToCart}>
-                      <TbShoppingCartPlus />
-                    </div>
+
+                  <button
+                  type="button"
+                  className="cart-icon"
+                  onClick={handleAddToCart}
+                >
+                  <TbShoppingCartPlus />
+                </button>
+                   
 
                     <div className="in-cart">
                       {incart && (

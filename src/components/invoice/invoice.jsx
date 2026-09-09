@@ -45,7 +45,7 @@ function Invoice({layout}) {
           <Link to={layout === "cart" ? "/order-details" : "/payment"}>
           
             <button>
-              {layout === "cart" ? "تابع الشراء" :  "تابع الشراء" } (
+              {layout === "cart" ? "اتمام الطلب" :  "تابع الشراء" } (
               <span>{cartItems.length}</span>)
             </button>
 

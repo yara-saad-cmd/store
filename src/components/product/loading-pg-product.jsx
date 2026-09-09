@@ -23,14 +23,18 @@ function Loading() {
 
                 <div className="title-items ">
 
-                <h1 className="loading-text-item skeleton"></h1>
-                <h2 className="loading-text-item1 skeleton"></h2>
-                <h2 className="loading-text-item1 skeleton"></h2>
-                <h3 className="loading-text-item skeleton"></h3>
-                <h3 className="loading-text-item skeleton"></h3>
-                <h4 className="loading-text-item skeleton"></h4>
-                <h4 className="loading-text-item skeleton"></h4>
-                <h3 className="loading-text-item skeleton"></h3>
+                <div className="loading-text-item skeleton h1"></div>
+
+                <div className="loading-text-item1 skeleton h2"></div>
+                <div className="loading-text-item1 skeleton h2"></div>
+
+                <div className="loading-text-item skeleton h3"></div>
+                <div className="loading-text-item skeleton h3"></div>
+
+                <div className="loading-text-item skeleton h4"></div>
+                <div className="loading-text-item skeleton h4"></div>
+
+                <div className="loading-text-item skeleton h3"></div>
                 </div>
                
             </div>
