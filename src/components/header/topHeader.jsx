@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import logo from "../../img/logo.png"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from "react-router-dom";
 import { FiHeart } from "react-icons/fi";
 import { TbShoppingCart } from "react-icons/tb";
 import { LuUserRound } from "react-icons/lu";
@@ -9,7 +9,7 @@ import {ContextCart} from "../context/contextcart"
 import Search from './search';
 
 
-import { useNavigate } from "react-router-dom";
+
 import { IoSearch } from 'react-icons/io5';
 
 function TopHeader() {
@@ -32,17 +32,19 @@ function TopHeader() {
 
             <div className="icon-header">
 
-              <div className="icon-1 mobile-search-icon" onClick={() => navigate("/search-page")} className="icon-1 mobile-search-icon"
-                role="button"
-                tabIndex={0}
-                onClick={() => navigate("/search-page")}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    navigate("/search-page");
-                  }
-                }}>
-                <IoSearch />
-                </div>
+            <div
+              className="icon-1 mobile-search-icon"
+              role="button"
+              tabIndex={0}
+              onClick={() => navigate("/search-page")}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  navigate("/search-page");
+                }
+              }}
+            >
+              <IoSearch />
+            </div>
            
 
             

@@ -143,12 +143,11 @@ function ImgPgProdact({ prodact }) {
 
   return (
     <div className="imegs">
-   <div
+  <div
   className="small-images"
   ref={containerRef}
   role="region"
   aria-label="صور المنتج"
-  tabIndex={0}
   onMouseDown={handleMouseDown}
   onMouseMove={handleMouseMove}
   onMouseLeave={(e) => handleMouseUpOrLeave(e, null)}

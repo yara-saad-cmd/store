@@ -39,7 +39,7 @@ function Payment() {
 
                         </label>
 
-                        <label className="radio-card">
+                        <label className="radio-card visa">
                           <input type="radio" name="pay" />
                           <span className="custom-radio"></span>
                            

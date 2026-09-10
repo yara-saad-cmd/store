@@ -185,21 +185,36 @@ export default function CartProvider({ children }) {
     );
   };
 
+  const contextValue = useMemo(
+    () => ({
+      cartItems,
+      AddToCart,
+      increaseQuantity,
+      decreaseQuantity,
+      delet,
+      likeItems,
+      AddToLike,
+      removelike,
+      onSizeChange,
+      onColorChange,
+    }),
+    [
+      cartItems,
+      AddToCart,
+      increaseQuantity,
+      decreaseQuantity,
+      delet,
+      likeItems,
+      AddToLike,
+      removelike,
+      onSizeChange,
+      onColorChange,
+    ]
+  );
+
+
   return (
-    <ContextCart.Provider
-      value={{
-        cartItems,
-        AddToCart,
-        increaseQuantity,
-        decreaseQuantity,
-        delet,
-        likeItems,
-        AddToLike,
-        removelike,
-        onSizeChange,
-        onColorChange,
-      }}
-    >
+    <ContextCart.Provider value={contextValue}>
       {children}
     </ContextCart.Provider>
   );

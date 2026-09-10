@@ -1,15 +1,4 @@
-/* :root{
-    --min-color:#6e3f1f;
-     --min-pg:#FFF9F9;
-     --min-pg2:#E6E6E6;
-    --bottms-color:#444444;
-    --border-color:#BABABA;
-    --white-color:rgb(255, 255, 255);
-    --bottm-nav:#F2F2F2;
-    --text-color-1:#000000;
-    --text-color-2:#1d1d1d;
-    --text-white:white;
-  } */
+
 /*البيانات بدون تعديل*/
 .data-area {
     
@@ -48,9 +37,6 @@
     width: 100px;
     height: 25px;
     font-size: 13px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: #0000;
     border-radius: 10px;
     color: var(--bottms-color);
