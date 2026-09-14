@@ -13,12 +13,7 @@
     width: 130px;
     height: 40px;
 }
-/* .pg-cart .cart{
- position: fixed;
- top: 15px;
- right: 200px;
- z-index: 1100;
-} */
+
  /*sersh*/
  .pg-search .no-data-text{
     height: calc(100vh - 514px);

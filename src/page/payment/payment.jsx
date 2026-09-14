@@ -1,105 +1,144 @@
-import React from 'react'
-import PageLocation from '../../components/pageLocationFolder/pageLocation'
-import HeaderTwo from '../../components/header/header-2'
-import "./payment.css"
 
-import imgVISA from "../../img/1764260377009.png"
-import { Link } from 'react-router-dom'
-import PageTransition from '../../components/pageTransaction'
-import Footer from '../../components/footer/footer'
+import React from "react";
 
+import PageLocation from "../../components/pageLocationFolder/pageLocation";
+
+import HeaderTwo from "../../components/header/header-2";
+
+import "./payment.css";
+
+import imgVISA from "../../img/1764260377009.png";
+
+import { Link } from "react-router-dom";
+
+import PageTransition from "../../components/pageTransaction";
+
+import Footer from "../../components/footer/footer";
 
 function Payment() {
   return (
     <>
-          <HeaderTwo />
-          <PageTransition>
-              <div className="pg-cash">
-                  <div className="all-payment">
-                    <div className="container">
+      <HeaderTwo />
 
-                    <div className="pg-title">
-                      <PageLocation/>
-                    </div>
+      <PageTransition>
+        <div className="pg-cash">
+          <div className="all-payment">
+            <div className="container">
+              <div className="pg-title">
+                <PageLocation />
+              </div>
 
-                    <div className="all-content">
+              <div className="all-content">
+                <div className="payment-methods">
+                  <div className="radio-group">
+                    <h3 className="text-title">
+                      اختر طريقة الدفع
+                    </h3>
 
-                      <div className="payment-methods">
+                    <label
+                      className="radio-card"
+                      htmlFor="cash-payment"
+                    >
+                      <input
+                        id="cash-payment"
+                        type="radio"
+                        name="pay"
+                      />
 
-                      <div className="radio-group">
-                        <h3 className='text-title'>اختر طريقة الدفع</h3>
-                        <label className="radio-card ">
-                          <input type="radio" name="pay" />
-                          <span className="custom-radio"></span>
+                      <span className="custom-radio"></span>
 
-                          <div className="radio-content">
-                            <span className="text">الدفع عند الاستلام</span>
-                            <p className="desc">معلومات حول الدفع عند الاستلام </p>
-                          </div>
+                      <div className="radio-content">
+                        <span className="text">
+                          الدفع عند الاستلام
+                        </span>
 
-                        </label>
-
-                        <label className="radio-card">
-                          <input type="radio" name="pay" />
-                          <span className="custom-radio"></span>
-                           
-                          <div className="radio-content">
-                            <span className="text">الدفع بالفيزا</span>
-                            <p className="desc">معلومات حول الدفع باستخدام البطاقة البنكية </p>
-                            <div className="more-details">
-
-                              <button>اضف بطاقه بنكيه</button>
-
-                              <div className="visa">
-
-                              <p>طرق الدفع المتاحة</p>
-                              <span><img src={imgVISA} alt='img'/></span>
-                              <span><img src={imgVISA} alt='img'/></span>
-                              <span><img src={imgVISA} alt='img'/></span>
-
-                              </div>
-
-                            </div>
-                            
-                          </div>
-
-                        </label>
+                        <p className="desc">
+                          معلومات حول الدفع عند الاستلام
+                        </p>
                       </div>
+                    </label>
 
+                    <label
+                      className="radio-card"
+                      htmlFor="visa-payment"
+                    >
+                      <input
+                        id="visa-payment"
+                        type="radio"
+                        name="pay"
+                      />
 
-                    </div>
+                      <span className="custom-radio"></span>
 
-                    <div className="Coupon">
+                      <div className="radio-content">
+                        <span className="text">
+                          الدفع بالفيزا
+                        </span>
 
-                          <p className='text'>كود الخصم الخاص بك</p>
+                        <p className="desc">
+                          معلومات حول الدفع باستخدام البطاقة البنكية
+                        </p>
 
-                          <div className="coupon-input">
-                              <input  placeholder='كود الخصم'/>
-                              <button className='add'>تطبيق</button>
+                        <div className="more-details">
+                          <button type="button">
+                            اضف بطاقه بنكيه
+                          </button>
+
+                          <div className="visa">
+                            <p>طرق الدفع المتاحة</p>
+
+                            <span>
+                              <img src={imgVISA} alt="Visa" />
+                            </span>
+
+                            <span>
+                              <img src={imgVISA} alt="Visa" />
+                            </span>
+
+                            <span>
+                              <img src={imgVISA} alt="Visa" />
+                            </span>
                           </div>
-
-                            <Link to="/order-done"><button className='btn-submit-order'>متابعة</button></Link>
-                          
-                    </div>
-
-                    </div>
-                  
-                      
-                
-                
-            
+                        </div>
+                      </div>
+                    </label>
+                  </div>
                 </div>
-               
-                 </div>
-                   <Footer/>
+              <div className="Coupon">
+                <p className="text">
+                  كود الخصم الخاص بك
+                </p>
 
+                <div className="coupon-input">
+                  <input placeholder="كود الخصم" />
+
+                  <button
+                    type="button"
+                    className="add"
+                  >
+                    تطبيق
+                  </button>
+                </div>
+
+                <Link to="/order-done">
+                  <button
+                    type="button"
+                    className="btn-submit-order"
+                  >
+                    متابعة
+                  </button>
+                </Link>
+              </div> </div>
+
+             
             </div>
-          
-          </PageTransition>
-           
-       
+          </div>
+
+          <Footer />
+        </div>
+      </PageTransition>
     </>
-  )
+  );
 }
 
-export default Payment
+export default Payment;

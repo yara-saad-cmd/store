@@ -1,16 +1,4 @@
-/* :root{
-    --min-color:#6e3f1f;
-     --min-pg:#FFF9F9;
-     --min-pg2:#E6E6E6;
-    --bottms-color:#444444;
-    --border-color:#BABABA;
-    --white-color:rgb(255, 255, 255);
-    --bottm-nav:#F2F2F2;
-    --text-color-1:#000000;
-    --text-color-2:#1d1d1d;
-    --text-white:white;
-  }
-   */
+
 .pg-account .pg-body{
    display: flex;
    gap: 10px;
@@ -165,47 +153,4 @@
 
     }
   }
-/* .pg-account .pg-body .usar-data .data{
-    background-color: #ada9a9;
-    display: flex;
-    flex-direction: column;
-    width: 75%;
-    margin: 15px;
-    height: 300px;
-   
-
-
-}
-.pg-account .pg-body .usar-data h3{
-    margin: 10px 0 10px 0;
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--text-color-2);
-}
-.pg-account .pg-body .usar-data .data p{
-    margin: 0 0 10px 0;
-    height: 40px;
-    max-width: 80%;
-    font-size: 17px;
-    font-weight: 500; 
-    overflow: hidden;
-   
-
-}
-.pg-account .pg-body .usar-data .data  span{
-    word-break: break-word;
-    font-weight: 400;
-    overflow-wrap: anywhere;
-
-
-} */
-
-/*   
-  @media only screen and (max-width: 440px) {
-    .card {
-      flex: 1 1 calc(50% - 8px);
-      max-width: calc(50% - 8px);
-      min-width: 170px;
-    }
-  } */
 
