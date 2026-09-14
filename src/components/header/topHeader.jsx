@@ -32,19 +32,14 @@ function TopHeader() {
 
             <div className="icon-header">
 
-            <div
+            <button
+              type="button"
               className="icon-1 mobile-search-icon"
-              role="button"
-              tabIndex={0}
               onClick={() => navigate("/search-page")}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  navigate("/search-page");
-                }
-              }}
+              aria-label="البحث"
             >
               <IoSearch />
-            </div>
+            </button>
            
 
             

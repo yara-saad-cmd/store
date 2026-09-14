@@ -28,7 +28,7 @@ function Payment() {
 
                       <div className="radio-group">
                         <h3 className='text-title'>اختر طريقة الدفع</h3>
-                        <label className="radio-card">
+                        <label className="radio-card ">
                           <input type="radio" name="pay" />
                           <span className="custom-radio"></span>
 
@@ -39,7 +39,7 @@ function Payment() {
 
                         </label>
 
-                        <label className="radio-card visa">
+                        <label className="radio-card">
                           <input type="radio" name="pay" />
                           <span className="custom-radio"></span>
                            

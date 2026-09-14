@@ -109,7 +109,7 @@ const executeSearch = (term) => {
                 <ul className="suggestions">
                     {/* سجل البحث الشخصي */}
                     {search === "" && history.map((item, index) => (
-                        <li key={`hist-${index}`}>
+                        <li key={`hist-${item}`}>
                         <button
                           type="button"
                           className="history-item"
@@ -122,7 +122,7 @@ const executeSearch = (term) => {
 
                     {/* مقترحات كلمات البحث الشائعة (مستخرجة من البيانات) */}
                     {search !== "" && suggestions.map((word, index) => (
-                        <li key={`word-${index}`}>
+                        <li key={`word-${word}`}>
                         <button
                           type="button"
                           className="your-class"

@@ -18,28 +18,28 @@ export default function PageLocation() {
 
   return (
     <div className="page-location">
-      {steps.map((step, index) => {
-        const isActive = currentPath === step.path;
+     {steps.map((step, index) => {
+  const isActive = currentPath === step.path;
 
-        return (
-          <span key={index} className="step-container">
-            <div className={isActive ? "step-active" : ""}>
-              <Link
-              to={step.path}
-              className={`step-label ${isActive ? "step-active" : ""}`}
-            >
-              {step.name}
-            </Link>
+  return (
+    <span key={step.path} className="step-container">
+      <div className={isActive ? "step-active" : ""}>
+        <Link
+          to={step.path}
+          className={`step-label ${isActive ? "step-active" : ""}`}
+        >
+          {step.name}
+        </Link>
+      </div>
 
-            </div>
-
-           
-            {index < steps.length - 1 && (
-              <span className="checkout-arrow"><IoMdArrowBack /> </span>
-            )}
-          </span>
-        );
-      })}
+      {index < steps.length - 1 && (
+        <span className="checkout-arrow">
+          <IoMdArrowBack />
+        </span>
+      )}
+    </span>
+  );
+})}
     </div>
   );
 }

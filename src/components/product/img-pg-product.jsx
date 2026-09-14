@@ -143,10 +143,9 @@ function ImgPgProdact({ prodact }) {
 
   return (
     <div className="imegs">
-  <div
+  <section
   className="small-images"
   ref={containerRef}
-  role="region"
   aria-label="صور المنتج"
   onMouseDown={handleMouseDown}
   onMouseMove={handleMouseMove}
@@ -166,8 +165,7 @@ function ImgPgProdact({ prodact }) {
       />
     </button>
   ))}
-</div>
-
+</section>
       <div className="big-image">
         <img key={activeImg} src={activeImg} alt={prodact.title} />
       </div>
