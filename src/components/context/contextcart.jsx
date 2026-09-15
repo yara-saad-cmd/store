@@ -35,8 +35,8 @@ export default function CartProvider({ children }) {
 
   const AddToLike = (product) => {
     const cleanProduct = sanitizeItem(product);
-    if (!cleanProduct || !cleanProduct.id) return;
 
+    if (!cleanProduct?.id) return;
     setlikeItems((prev) => {
       const exists = prev.some(
         (i) =>
@@ -132,10 +132,11 @@ export default function CartProvider({ children }) {
 
   const AddToCart = (item) => {
     const cleanItem = sanitizeItem(item);
-    if (!cleanItem || !cleanItem.id) return;
+
+    if (!cleanItem?.id) return;
 
     setcartItems((prevItems) => {
-      const existingItem = prevItems.find(
+      const existingItem = prevItems.some(
         (i) =>
           i.id === cleanItem.id &&
           (i.selectedSize || "") === cleanItem.selectedSize &&

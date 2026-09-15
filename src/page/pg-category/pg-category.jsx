@@ -61,7 +61,7 @@ function Pgcategory() {
         <TopHeader/>
         <BtmHeader/>
         <div className="page-category-two">
-          <>
+          
             {isLoading ? (
               <ProductLoading key={category}/>
             ) : (
@@ -69,7 +69,7 @@ function Pgcategory() {
                 <Product products={categoryprodact} title={category} />
               </div>
             )}
-          </>
+          
         </div>
       </div>
       <Footertwo/>

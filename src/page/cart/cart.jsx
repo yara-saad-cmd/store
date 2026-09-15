@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import HeaderTwo from "../../components/header/header-2";
 import "./cart.css";
 import { ContextCart } from "../../components/context/contextcart";
-import { FaRegHeart } from "react-icons/fa";import { FaHeart, FaRegTrashCan } from "react-icons/fa6";
 import PageTransition from "../../components/pageTransaction";
 import toast from "react-hot-toast"; 
 import PageLocation from "../../components/pageLocationFolder/pageLocation"

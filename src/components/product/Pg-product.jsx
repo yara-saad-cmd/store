@@ -55,7 +55,7 @@ function Pgproduct() {
   }, [id]); 
 
   useEffect(() => {
-    if (!prodact || !prodact.category_id) return;
+    if (!prodact?.category_id) return;
 
     const getRelatedProducts = async () => {
       setloadingrelatedProducts(true);

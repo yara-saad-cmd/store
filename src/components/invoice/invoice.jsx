@@ -2,7 +2,6 @@ import React, { useContext } from 'react'
 import { ContextCart } from '../context/contextCart';
 import { Link } from 'react-router-dom';
 import "./invoice.css"
-import CartItem from '../cartItem/CartItem';
 function Invoice({layout}) {
 
  

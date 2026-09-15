@@ -184,8 +184,10 @@ function Product({ products, title, isLikePage = false }){
 
                 <Link to={`/products/${item.id}`}>
                   <div className="img">
-                    {/* تعديل قراءة الصورة لتتوافق مع السوبابيز أو اللينك العادي */}
-                    <img src={item.image_url || (item.images && item.images[0])} alt={item.title} />
+                  <img
+                    src={item.image_url || item.images?.[0]}
+                    alt={item.title}
+                  />
                   </div>
 
                   <div className="content">

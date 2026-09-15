@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
-import { IoSearchOutline, IoTimeOutline } from 'react-icons/io5'
+import { IoSearchOutline} from 'react-icons/io5'
 import { useLocation, useNavigate } from 'react-router-dom'
 import "./Search.css"
 import { supabase } from '../../supabaseClient'; // تأكدي من مسار الملف لديكِ
