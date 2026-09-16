@@ -31,10 +31,10 @@ function Cart() {
     if (inlike) {
      
       removelike(item.id);
-      toast?.error && toast.error(`تم حذف ${item.title} من المفضل`);
+      toast?.error?.(`تم حذف ${item.title} من المفضل`);
     } else {
       AddToLike(item);
-      toast?.success && toast.success(`تم إضافة ${item.title} إلى المفضل`);
+      toast?.success?.(`تم إضافة ${item.title} إلى المفضل`);
     }
   };
 

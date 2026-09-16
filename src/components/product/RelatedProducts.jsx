@@ -45,7 +45,7 @@ function RelatedProducts({
                 <div className={`card ${incart ? "incart" : ""}`} key={item.id}>
                   <Link to={`/products/${item.id}`}>
                     <div className="img">
-                      <img src={item.images && item.images[0] ? item.images[0] : ""} alt={item.title} />
+                    <img src={item.images?.[0] || ""} alt={item.title} />
                     </div>
 
                     <div className="content">

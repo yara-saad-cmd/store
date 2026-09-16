@@ -26,7 +26,7 @@ const sanitizeText = (input, maxLength = 100) => {
 const sanitizePhone = (input) => {
   if (typeof input !== "string" && typeof input !== "number") return "";
 
-  return String(input).replace(/[^0-9]/g, "").slice(0, 11);
+  return String(input).replace(/\D/g, "").slice(0, 11);
 };
 
 export default function UserData() {
@@ -86,7 +86,7 @@ export default function UserData() {
   function handleNumberChange(e) {
     const { name, value } = e.target;
 
-    if (!/^[0-9]*$/.test(value)) {
+    if (!/^\d*$/.test(value)) {
       setNumError("مسموح بالأرقام فقط");
       return;
     }
@@ -111,11 +111,11 @@ export default function UserData() {
   function validateOnSave() {
     const err = {};
 
-    if (!userData.name || !userData.name.trim()) {
+    if (!userData.name?.trim()) {
       err.name = "الاسم مطلوب";
     }
 
-    if (!userData.phone || !userData.phone.trim()) {
+    if (!userData.phone?.trim()) {
       err.phone = "رقم الهاتف مطلوب";
     } else if (userData.phone.trim().length !== 11) {
       err.phone = "رقم الهاتف يجب أن يكون 11 رقم";
@@ -129,7 +129,7 @@ export default function UserData() {
       err.phone2 = "رقم الهاتف الثاني يجب أن يكون 11 رقم";
     }
 
-    if (!userData.governorate || !userData.governorate.trim()) {
+    if (!userData.governorate?.trim()) {
       err.governorate = "المحافظة مطلوبة";
     } else if (
       !ALLOWED_GOVERNORATES.includes(userData.governorate.trim())

@@ -45,7 +45,7 @@ function ImgPgProdact({ prodact }) {
   // حفظ بيانات السحب بالكامل
   const dragStart = useRef({ isDown: false, startY: 0, startX: 0, scrollTop: 0, scrollLeft: 0, moved: false });
 
-  const allImages = prodact && prodact.images && prodact.images.length > 0 ? prodact.images : [];
+  const allImages = prodact?.images?.length > 0 ? prodact.images : [];
 
   useEffect(() => {
     setActiveImg(null);
