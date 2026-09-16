@@ -1,42 +1,64 @@
-import React, { createContext, useEffect, useState ,useMemo} from 'react';
+
+import React, { createContext, useEffect, useMemo, useState } from "react";
 
 export const ContextCart = createContext();
 
 export default function CartProvider({ children }) {
-  // دالة مساعدة لتطهير وقراءة البيانات بأمان من localStorage
+
+  // ------------------ Data Sanitizer Helper ------------------
+
+  const sanitizeItem = (item) => {
+    if (!item || typeof item !== "object") return null;
+  
+    return {
+      ...item,
+      id: item.id ?? item._id,
+      title: String(item.title || item.name || "").trim(),
+      price: Number(item.price) || 0,
+      quantity: Math.max(1, Number(item.quantity) || 1),
+      selectedSize: String(
+        item.selectedSize || item.size || ""
+      ).trim(),
+      selectedColor: String(
+        item.selectedColor || item.color || ""
+      ).trim(),
+    };
+  };
+
+  // ------------------ Safe localStorage Reader ------------------
+
   const getSafeLocalStorage = (key) => {
     try {
       const saved = localStorage.getItem(key);
+
       if (!saved) return [];
+
       const parsed = JSON.parse(saved);
-      return Array.isArray(parsed) ? parsed : [];
+
+      if (!Array.isArray(parsed)) {
+        return [];
+      }
+
+      return parsed
+        .map(sanitizeItem)
+        .filter(Boolean);
     } catch (error) {
       console.error(`خطأ في قراءة ${key} من localStorage:`, error);
       return [];
     }
   };
 
-  // ------------------ Muted Data Sanitizer Helper ------------------
-  const sanitizeItem = (item) => {
-    if (!item || typeof item !== 'object') return null;
-    return {
-      ...item,
-      id: item.id ?? item._id,
-      selectedSize: String(item.selectedSize || item.size || '').trim(),
-      selectedColor: String(item.selectedColor || item.color || '').trim(),
-      quantity: Math.max(1, Number(item.quantity) || 1),
-      price: Number(item.price) || 0,
-      title: String(item.title || item.name || '').trim(),
-    };
-  };
-
   // ------------------ LIKE ITEMS ------------------
-  const [likeItems, setlikeItems] = useState(() => getSafeLocalStorage("likeItems"));
+
+  const [likeItems, setlikeItems] = useState(() =>
+    getSafeLocalStorage("likeItems")
+  );
 
   const AddToLike = (product) => {
     const cleanProduct = sanitizeItem(product);
 
     if (!cleanProduct?.id) return;
+
     setlikeItems((prev) => {
       const exists = prev.some(
         (i) =>
@@ -44,16 +66,27 @@ export default function CartProvider({ children }) {
           (i.selectedSize || "") === cleanProduct.selectedSize &&
           (i.selectedColor || "") === cleanProduct.selectedColor
       );
+
       if (exists) return prev;
+
       return [...prev, cleanProduct];
     });
   };
 
   const removelike = (target) => {
     // قبول id فقط أو كائن كامل يحتوي على المقاس واللون
-    const targetId = typeof target === 'object' ? target.id : target;
-    const targetSize = typeof target === 'object' ? String(target.selectedSize || target.size || '').trim() : null;
-    const targetColor = typeof target === 'object' ? String(target.selectedColor || target.color || '').trim() : null;
+    const targetId =
+      typeof target === "object" ? target.id : target;
+
+    const targetSize =
+      typeof target === "object"
+        ? String(target.selectedSize || target.size || "").trim()
+        : null;
+
+    const targetColor =
+      typeof target === "object"
+        ? String(target.selectedColor || target.color || "").trim()
+        : null;
 
     setlikeItems((prev) =>
       prev.filter((i) => {
@@ -64,6 +97,7 @@ export default function CartProvider({ children }) {
             (i.selectedColor || "") === targetColor
           );
         }
+
         return i.id !== targetId;
       })
     );
@@ -71,18 +105,28 @@ export default function CartProvider({ children }) {
 
   useEffect(() => {
     try {
-      localStorage.setItem("likeItems", JSON.stringify(likeItems));
+      const safeLikeItems = likeItems
+        .map(sanitizeItem)
+        .filter(Boolean);
+
+      localStorage.setItem(
+        "likeItems",
+        JSON.stringify(safeLikeItems)
+      );
     } catch (error) {
       console.error("فشل حفظ البيانات المفضلة:", error);
     }
   }, [likeItems]);
 
-
   // ------------------ CART ITEMS ------------------
-  const [cartItems, setcartItems] = useState(() => getSafeLocalStorage("cartItems"));
+
+  const [cartItems, setcartItems] = useState(() =>
+    getSafeLocalStorage("cartItems")
+  );
 
   const increaseQuantity = (item) => {
     if (!item?.id) return;
+
     const targetSize = String(item.selectedSize || "").trim();
     const targetColor = String(item.selectedColor || "").trim();
 
@@ -99,6 +143,7 @@ export default function CartProvider({ children }) {
 
   const decreaseQuantity = (item) => {
     if (!item?.id) return;
+
     const targetSize = String(item.selectedSize || "").trim();
     const targetColor = String(item.selectedColor || "").trim();
 
@@ -107,7 +152,10 @@ export default function CartProvider({ children }) {
         i.id === item.id &&
         (i.selectedSize || "") === targetSize &&
         (i.selectedColor || "") === targetColor
-          ? { ...i, quantity: Math.max(1, i.quantity - 1) }
+          ? {
+              ...i,
+              quantity: Math.max(1, i.quantity - 1),
+            }
           : i
       )
     );
@@ -115,6 +163,7 @@ export default function CartProvider({ children }) {
 
   const delet = (item) => {
     if (!item?.id) return;
+
     const targetSize = String(item.selectedSize || "").trim();
     const targetColor = String(item.selectedColor || "").trim();
 
@@ -148,7 +197,10 @@ export default function CartProvider({ children }) {
           i.id === cleanItem.id &&
           (i.selectedSize || "") === cleanItem.selectedSize &&
           (i.selectedColor || "") === cleanItem.selectedColor
-            ? { ...i, quantity: i.quantity + cleanItem.quantity }
+            ? {
+                ...i,
+                quantity: i.quantity + cleanItem.quantity,
+              }
             : i
         );
       }
@@ -159,18 +211,30 @@ export default function CartProvider({ children }) {
 
   useEffect(() => {
     try {
-      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      const safeCartItems = cartItems
+        .map(sanitizeItem)
+        .filter(Boolean);
+
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify(safeCartItems)
+      );
     } catch (error) {
       console.error("فشل حفظ بيانات العربة:", error);
     }
   }, [cartItems]);
 
   // ------------------ Size & Color Change ------------------
+
   const onSizeChange = (id, newSize, oldColor = "") => {
     setcartItems((prev) =>
       prev.map((item) =>
-        item.id === id && (item.selectedColor || "") === oldColor
-          ? { ...item, selectedSize: String(newSize).trim() }
+        item.id === id &&
+        (item.selectedColor || "") === oldColor
+          ? {
+              ...item,
+              selectedSize: String(newSize).trim(),
+            }
           : item
       )
     );
@@ -179,12 +243,18 @@ export default function CartProvider({ children }) {
   const onColorChange = (id, newColor, oldSize = "") => {
     setcartItems((prev) =>
       prev.map((item) =>
-        item.id === id && (item.selectedSize || "") === oldSize
-          ? { ...item, selectedColor: String(newColor).trim() }
+        item.id === id &&
+        (item.selectedSize || "") === oldSize
+          ? {
+              ...item,
+              selectedColor: String(newColor).trim(),
+            }
           : item
       )
     );
   };
+
+  // ------------------ Context Value ------------------
 
   const contextValue = useMemo(
     () => ({
@@ -212,7 +282,6 @@ export default function CartProvider({ children }) {
       onColorChange,
     ]
   );
-
 
   return (
     <ContextCart.Provider value={contextValue}>
