@@ -181,17 +181,17 @@ export default function CartProvider({ children }) {
 
   const AddToCart = (item) => {
     const cleanItem = sanitizeItem(item);
-
+  
     if (!cleanItem?.id) return;
-
+  
     setcartItems((prevItems) => {
-      const existingItem = prevItems.some(
+      const existingItem = prevItems.find(
         (i) =>
           i.id === cleanItem.id &&
           (i.selectedSize || "") === cleanItem.selectedSize &&
           (i.selectedColor || "") === cleanItem.selectedColor
       );
-
+  
       if (existingItem) {
         return prevItems.map((i) =>
           i.id === cleanItem.id &&
@@ -199,12 +199,13 @@ export default function CartProvider({ children }) {
           (i.selectedColor || "") === cleanItem.selectedColor
             ? {
                 ...i,
+                ...cleanItem,
                 quantity: i.quantity + cleanItem.quantity,
               }
             : i
         );
       }
-
+  
       return [...prevItems, cleanItem];
     });
   };

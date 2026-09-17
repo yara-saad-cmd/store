@@ -188,8 +188,8 @@ export default function CartItem({
   const selectedSize = localSize ?? defaultSize;
   const selectedColor = localColor ?? defaultColor;
 
-  const hasSizes = sizesList.length > 0;
-  const hasColors = colorsList.length > 0;
+  const hasSizes = sizesList.length > 0 || Boolean(selectedSize);
+const hasColors = colorsList.length > 0 || Boolean(selectedColor);
 
   const handleSizeClick = (size) => {
     setLocalSize(size);
@@ -230,10 +230,9 @@ export default function CartItem({
   };
 
   const productImage =
-    item?.image ||
-    item?.image_url ||
-    item?.thumbnail ||
-    (Array.isArray(item?.images) && item.images.length > 0 ? item.images[0] : "");
+  Array.isArray(item?.images) && item.images.length > 0
+    ? item.images[0]
+    : item?.image || item?.image_url || item?.thumbnail || "";
 
   return (
     <div className="item-cart">

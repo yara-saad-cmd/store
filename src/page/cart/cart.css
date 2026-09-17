@@ -297,10 +297,10 @@
     }
    
 
-    .pg-cart .cart .cart-prodact .item-cart .img-name Link img{
+    /* .pg-cart .cart .cart-prodact .item-cart .img-name Link img{
         object-fit: cover; 
     object-position: center;
-    }
+    } */
 
     .pg-cart .cart .prdact .plus-and-mynas{
         width: 135px;
