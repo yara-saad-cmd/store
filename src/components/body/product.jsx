@@ -146,7 +146,7 @@ function Product({ products, title, isLikePage = false }){
         Array.isArray(item) ? item : item.products || []
       );
 
-  const { cartItems = [], AddToCart ,removelike } = useContext(ContextCart);
+  const { cartItems = [], AddToCart, removelike } = useContext(ContextCart);
   const [visibleCount, setVisibleCount] = useState(20);
 
   return (
@@ -156,10 +156,26 @@ function Product({ products, title, isLikePage = false }){
         {allProducts && allProducts.length > 0 ? (
           allProducts.slice(0, visibleCount).map((item) => {
 
-            const incart = cartItems.some(i => i.id === item.id);
+            // نحسب المقاس واللون بنفس الطريقة المستخدمة في باقي الموقع:
+            // لو العنصر جاي من المفضلة وعنده مقاس/لون محدد، نستخدمه زي ما هو.
+            // لو منتج عادي من الرئيسية، نستخدم أول مقاس/لون حقيقي للمنتج (أو فاضي لو مفيش).
+            const itemSize = item.selectedSize ?? (item.sizes?.[0] || "");
+            const itemColor = item.selectedColor ?? (item.colors?.[0] || "");
+
+            const incart = cartItems.some(
+              (i) =>
+                i.id === item.id &&
+                (i.selectedSize || "") === itemSize &&
+                (i.selectedColor || "") === itemColor
+            );
 
             const handleAddToCart = () => {
-              AddToCart(item);
+              AddToCart({
+                ...item,
+                selectedSize: itemSize,
+                selectedColor: itemColor,
+                quantity: 1,
+              });
               toast.success(
                 <div className="msg">
                   <strong>{`تم اضافه ${item.title} الي العربه`}</strong>
@@ -169,13 +185,16 @@ function Product({ products, title, isLikePage = false }){
             };
 
             return (
-              <div className={`card ${incart ? "incart" : ""}`} key={item.id}>
+              <div
+                className={`card ${incart ? "incart" : ""}`}
+                key={`${item.id}-${itemSize}-${itemColor}`}
+              >
                 {isLikePage && (
                   <button 
                     className="remove-like-btn"
                     onClick={(e) => {
                       e.preventDefault();
-                      removelike(item.id);
+                      removelike(item); // نبعت العنصر كامل عشان يتحذف نفس اللون/المقاس بالظبط، مش كل الألوان
                     }}
                   >
                     إزالة
@@ -185,7 +204,7 @@ function Product({ products, title, isLikePage = false }){
                 <Link to={`/products/${item.id}`}>
                   <div className="img">
                   <img
-                    src={item.image_url || item.images?.[0]}
+                    src={item.images?.[0]}
                     alt={item.title}
                   />
                   </div>
@@ -194,8 +213,6 @@ function Product({ products, title, isLikePage = false }){
                     <div className="text">
                       <h3>{item.title}</h3>
                     </div>
-
-                 
 
                     <div className="StarsAndPrice">
                       <div className="stars">

@@ -18,13 +18,13 @@ function TitleProductPage({ prodact }) {
   // المقاسات
   // =========================
   const availableSizes =
-    prodact?.sizes ||
-    prodact?.available_sizes ||
-    ["S", "M", "L", "XL"];
+  (Array.isArray(prodact?.sizes) && prodact.sizes.length > 0
+    ? prodact.sizes
+    : prodact?.available_sizes) || [];
 
-  const [selectedSize, setSelectedSize] = useState(
-    prodact?.selectedSize || availableSizes[0] || ""
-  );
+const [selectedSize, setSelectedSize] = useState(
+  prodact?.selectedSize || availableSizes[0] || ""
+);
 
   // =========================
   // الألوان

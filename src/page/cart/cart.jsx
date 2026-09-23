@@ -26,11 +26,15 @@ function Cart() {
 
  
   const handleAddToLike = (item) => {
-    const inlike = likeItems.some((i) => i.id === item.id);
+    const inlike = likeItems.some(
+      (i) =>
+        i.id === item.id &&
+        (i.selectedSize || "") === (item.selectedSize || "") &&
+        (i.selectedColor || "") === (item.selectedColor || "")
+    );
 
     if (inlike) {
-     
-      removelike(item.id);
+      removelike(item); // نبعت العنصر كامل عشان يتحذف بنفس المقاس واللون بالظبط
       toast?.error?.(`تم حذف ${item.title} من المفضل`);
     } else {
       AddToLike(item);
@@ -85,7 +89,12 @@ function Cart() {
   
                   <div className="prdact">
                     {cartItems.map((item) => {
-                       const inlike = likeItems.some((i) => i.id === item.id);
+                       const inlike = likeItems.some(
+                         (i) =>
+                           i.id === item.id &&
+                           (i.selectedSize || "") === (item.selectedSize || "") &&
+                           (i.selectedColor || "") === (item.selectedColor || "")
+                       );
                       return (
                         <CartItem
                         key={`${item.id}-${item.selectedSize}-${item.selectedColor}`}

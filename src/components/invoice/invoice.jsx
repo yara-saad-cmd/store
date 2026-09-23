@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { ContextCart } from '../context/contextCart';
+import { ContextCart } from '../context/contextcart';
 import { Link } from 'react-router-dom';
 import "./invoice.css"
 function Invoice({layout}) {

@@ -201,7 +201,7 @@ const hasColors = colorsList.length > 0 || Boolean(selectedColor);
   const handleColorClick = (color) => {
     setLocalColor(color);
     if (onColorChange && productId) {
-      onColorChange(productId, color);
+      onColorChange(productId, color, selectedSize); // 👈 تمرير المقاس الحالي عشان يلاقي العنصر الصح في العربة
     }
   };
 

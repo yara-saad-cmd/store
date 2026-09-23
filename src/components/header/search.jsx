@@ -8,7 +8,18 @@ import { supabase } from '../../supabaseClient'; // تأكدي من مسار ا�
 function Search() {
     const [search, setsearch] = useState("")
     const [suggestions, setsuggestions] = useState([]) // هنا هنخزن كلمات مش منتجات
-    const [history, sethistory] = useState([])
+   
+    const [history, sethistory] = useState(() => {
+      try {
+          const saved = localStorage.getItem('mySearchHistory');
+          const parsed = saved ? JSON.parse(saved) : [];
+          return Array.isArray(parsed) ? parsed : [];
+      } catch (error) {
+          console.error("خطأ في قراءة سجل البحث:", error);
+          return [];
+      }
+    })
+
     const [showDropdown, setShowDropdown] = useState(false)
 
     const locachan = useLocation()
@@ -45,7 +56,9 @@ const executeSearch = (term) => {
         executeSearch(search);
     }
 
-    useEffect(() => {
+        useEffect(() => {
+        let isCancelled = false;
+
         const fetchSuggestions = async () => {
             try {
               // البحث في جدول المنتجات عن التي تحتوي على نص البحث
@@ -54,7 +67,9 @@ const executeSearch = (term) => {
                 .select('title') // جلب عمود العنوان فقط
                 .ilike('title', `%${search}%`) // البحث الجزيئي عن الكلمة
                 .limit(6); // حد أقصى 6 نتائج للمقترحات
-          
+
+              if (isCancelled) return; // تجاهل النتيجة لو تم إلغاء هذا الطلب
+
               if (error) {
                 console.error("خطأ في جلب المقترحات:", error);
                 setsuggestions([]);
@@ -67,19 +82,24 @@ const executeSearch = (term) => {
                 setsuggestions(titles);
               }
             } catch (error) {
-              console.error("حدث خطأ:", error);
-              setsuggestions([]);
+              if (!isCancelled) {
+                console.error("حدث خطأ:", error);
+                setsuggestions([]);
+              }
             }
           };
-        const time = setTimeout(() => {
-            if (search.trim() !== "") {
+          const time = setTimeout(() => {
+            if (search.trim().length >= 2) {
                 fetchSuggestions();
             } else {
                 setsuggestions([]);
             }
         }, 300);
 
-        return () => clearTimeout(time);
+        return () => {
+            isCancelled = true;
+            clearTimeout(time);
+        };
     }, [search]);
 
     useEffect(() => {

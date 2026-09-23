@@ -75,10 +75,15 @@ function App() {
           <Route path="/Temsconditions" element={<Temsconditions />} />
           <Route path="/Termsofuse" element={<Termsofuse />} />
           <Route path="/search-page" element={<SearchPage />} />
-          <Route path="/LoadingBtmHeader" element={<LoadingBtmHeader />} />
 
+            {/* لازم تفضل دايماً آخر Route في الليستة */}
+            <Route path="*" element={
+              <div style={{ textAlign: 'center', padding: '80px 20px' }}>
+                <h2>404 - الصفحة غير موجودة</h2>
+              </div>
+            } />
 
-        </Routes >
+            </Routes >
       </AnimatePresence>
 
 
