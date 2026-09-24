@@ -1,5 +1,5 @@
 
-import React, { createContext, useEffect, useMemo, useState } from "react";
+import React, { createContext, useCallback, useEffect, useMemo, useState } from "react";
 
 export const ContextCart = createContext();
 
@@ -54,54 +54,23 @@ export default function CartProvider({ children }) {
     getSafeLocalStorage("likeItems")
   );
 
-  const AddToLike = (product) => {
+  const AddToLike = useCallback((product) => {
     const cleanProduct = sanitizeItem(product);
 
     if (!cleanProduct?.id) return;
-
     setlikeItems((prev) => {
-      const exists = prev.some(
-        (i) =>
-          i.id === cleanProduct.id &&
-          (i.selectedSize || "") === cleanProduct.selectedSize &&
-          (i.selectedColor || "") === cleanProduct.selectedColor
-      );
-
+      const exists = prev.some((i) => i.id === cleanProduct.id);
       if (exists) return prev;
-
       return [...prev, cleanProduct];
     });
-  };
+  }, []);
 
-  const removelike = (target) => {
-    // قبول id فقط أو كائن كامل يحتوي على المقاس واللون
-    const targetId =
-      typeof target === "object" ? target.id : target;
+  const removelike = useCallback((target) => {
+    // قبول id مباشرة أو كائن كامل — بنستخرج id بس، والمقارنة دايماً بالـ id فقط
+    const targetId = typeof target === 'object' ? target.id : target;
 
-    const targetSize =
-      typeof target === "object"
-        ? String(target.selectedSize || target.size || "").trim()
-        : null;
-
-    const targetColor =
-      typeof target === "object"
-        ? String(target.selectedColor || target.color || "").trim()
-        : null;
-
-    setlikeItems((prev) =>
-      prev.filter((i) => {
-        if (targetSize !== null && targetColor !== null) {
-          return !(
-            i.id === targetId &&
-            (i.selectedSize || "") === targetSize &&
-            (i.selectedColor || "") === targetColor
-          );
-        }
-
-        return i.id !== targetId;
-      })
-    );
-  };
+    setlikeItems((prev) => prev.filter((i) => i.id !== targetId));
+  }, []);
 
   useEffect(() => {
     try {

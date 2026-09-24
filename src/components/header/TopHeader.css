@@ -124,3 +124,9 @@ header {
 .search-page .desktop-search {
   display: block !important;
 }
+/* إخفاء أيقونة البحث بتاعة الموبايل في الشاشات المتوسطة والكبيرة */
+@media only screen and (min-width: 481px) {
+  .mobile-search-icon {
+    display: none;
+  }
+}

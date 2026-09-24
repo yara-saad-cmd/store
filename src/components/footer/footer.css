@@ -19,7 +19,7 @@
  
 .footerTwo{
     background-color: var(--min-color);
-    margin-top: 30px;
+    margin-top: 0;
     
 
     .logo-and-icon{

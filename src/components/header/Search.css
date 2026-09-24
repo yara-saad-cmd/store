@@ -13,7 +13,7 @@
    padding: 5px;
    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
    border-radius: 5px;
- z-index: 10000;
+ z-index: 1000;
 
   }
   .suggestions li{
@@ -25,5 +25,13 @@
   .suggestions li:last-child{
     border: none;
   }
+  .suggestions {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  margin: 7px 0 0 0;
+  width: auto;
+}
 
   /* search*/

@@ -56,7 +56,9 @@ function TopHeader() {
 
               <Link to="/cart">
               <TbShoppingCart />
-                  <span className='count'>{cartItems.length}</span>
+                  <span className='count'>
+                    {cartItems.reduce((sum, item) => sum + (item.quantity || 1), 0)}
+                  </span>
               </Link>
 
               </div>

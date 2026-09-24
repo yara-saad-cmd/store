@@ -38,11 +38,13 @@ function BtmHeader() {
       <div className="container">
         <nav className='btm-nav'>
           
-          {loading ? (
+        {loading ? (
            <LoadingBtmHeader />
+          ) : categories.length === 0 ? (
+            null // أو أي رسالة بسيطة لو حابة، لكن الأفضل يفضل الشريط فاضي بهدوء بدل ما يبان له مساحة فاضية غريبة
           ) : (
             categories.map((category) => (
-              <span key={category.id}> {/* استخدام الـ id الفرعي كـ key */}
+              <span key={category.id}>
                 <Link to={`/category/${category.slug}`}> {category.name} </Link>
               </span>
             ))

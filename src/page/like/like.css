@@ -10,7 +10,7 @@
 }
 .all-like{
     flex: 1;
-    margin-bottom: 100px;
+   
 }
 .pg-like .like .title{
     color: var(--text-color-1);

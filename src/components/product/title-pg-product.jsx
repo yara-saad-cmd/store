@@ -11,9 +11,7 @@ function TitleProductPage({ prodact }) {
     AddToLike,
     likeItems,
     removelike,
-    onColorChange: onColorChangeCart,
   } = useContext(ContextCart);
-
   // =========================
   // المقاسات
   // =========================
@@ -63,9 +61,7 @@ const [selectedSize, setSelectedSize] = useState(
   // =========================
   const handleColorChange = (id, color) => {
     setSelectedColor(color);
-    onColorChangeCart?.(id, color);
   };
-
   // =========================
   // إضافة للعربة
   // =========================

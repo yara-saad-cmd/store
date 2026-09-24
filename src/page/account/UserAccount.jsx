@@ -14,10 +14,10 @@ import Footertwo from '../../components/footer/footer2'
 function UserAccount() {
   return (
     <div className='all-pg-account'>
-        <TopHeader/>
-        <BtmHeader/>
+      
        <PageTransition>
-
+      <TopHeader/>
+            <BtmHeader/>
           <div className="pg-account">
             <div className="container">
 

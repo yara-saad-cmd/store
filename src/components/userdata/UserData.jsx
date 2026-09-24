@@ -32,7 +32,7 @@ const sanitizePhone = (input) => {
 export default function UserData() {
   const [inModify, setInModify] = useState(false);
   const [errors, setErrors] = useState({});
-  const [numError, setNumError] = useState("");
+  const [numError, setNumError] = useState({ phone: "", phone2: "" });
 
   const [userData, setUserData] = useState({
     name: "",
@@ -87,11 +87,11 @@ export default function UserData() {
     const { name, value } = e.target;
 
     if (!/^\d*$/.test(value)) {
-      setNumError("مسموح بالأرقام فقط");
+      setNumError((prev) => ({ ...prev, [name]: "مسموح بالأرقام فقط" }));
       return;
     }
 
-    setNumError("");
+    setNumError((prev) => ({ ...prev, [name]: "" }));
 
     setUserData((prev) => ({
       ...prev,
@@ -251,31 +251,33 @@ export default function UserData() {
             placeholder="الاسم ثلاثي"
           />
 
-          {numError && <p className="error">{numError}</p>}
+{numError.phone && <p className="error">{numError.phone}</p>}
 
-          {errors.phone && (
-            <p className="error">{errors.phone}</p>
-          )}
+{errors.phone && (
+  <p className="error">{errors.phone}</p>
+)}
 
-          <input
-            className="input-data"
-            name="phone"
-            value={userData.phone}
-            onChange={handleNumberChange}
-            placeholder="رقم الهاتف"
-          />
+<input
+  className="input-data"
+  name="phone"
+  value={userData.phone}
+  onChange={handleNumberChange}
+  placeholder="رقم الهاتف"
+/>
 
-          {errors.phone2 && (
-            <p className="error">{errors.phone2}</p>
-          )}
+{numError.phone2 && <p className="error">{numError.phone2}</p>}
 
-          <input
-            className="input-data"
-            name="phone2"
-            value={userData.phone2}
-            onChange={handleNumberChange}
-            placeholder="رقم هاتف إضافي (اختياري)"
-          />
+{errors.phone2 && (
+  <p className="error">{errors.phone2}</p>
+)}
+
+<input
+  className="input-data"
+  name="phone2"
+  value={userData.phone2}
+  onChange={handleNumberChange}
+  placeholder="رقم هاتف إضافي (اختياري)"
+/>
 
           {errors.governorate && (
             <p className="error">{errors.governorate}</p>

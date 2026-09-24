@@ -20,6 +20,21 @@
 
 
 
+#root {
+  min-height: 100vh;
+}
+.page-transition {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-transition > .footerTwo,
+.page-transition > .footer {
+  margin-top: auto;
+}
+
+
 
 body{
   background-color: var(--min-pg);
@@ -53,7 +68,7 @@ a{
 .container{
   width: 90%;
   margin: 0 auto;
-  max-width: 1350px;
+  max-width: 1350px
 }
 /* loading */
 .skeleton {

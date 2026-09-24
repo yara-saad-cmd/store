@@ -1,15 +1,32 @@
 import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import PageLocation from '../../components/pageLocationFolder/pageLocation'
 import HeaderTwo from '../../components/header/header-2'
 import UserDataForm from "../../components/userdata/UserData"
 import Invoice from '../../components/invoice/invoice'
 import "./OrderDetails.css"
-import PageTransition from '../../components/pageTransaction'
+import PageTransition from '../../components/PageTransaction'
 import CartItem from '../../components/cartItem/CartItem'
 import { ContextCart } from '../../components/context/contextcart'
 import Footer from '../../components/footer/footer'
 function OrderDetails() {
   const { cartItems } = useContext(ContextCart);
+
+  if (cartItems.length === 0) {
+    return (
+      <PageTransition>
+        <div className="pg-ordar-details">
+          <HeaderTwo />
+          <div style={{ textAlign: 'center', padding: '80px 20px' }}>
+            <h2>لا توجد منتجات لإتمام الطلب</h2>
+            <Link to="/">العودة للتسوق</Link>
+          </div>
+          <Footer />
+        </div>
+      </PageTransition>
+    );
+  }
+
   return (
     <PageTransition>
 

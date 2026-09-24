@@ -2,3 +2,10 @@
  
  margin: 30px 0 100px 0;
 }
+.page-category {
+    flex: 1;
+  }
+  .no-data-prudact{
+    padding-top: 10px;
+    font-size: clamp(1.0rem, 3vw, 1.5rem);
+  }

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import TopHeader from '../../components/header/topHeader'
 import BtmHeader from '../../components/header/btmHeader'
 import { ContextCart } from '../../components/context/contextcart'
-import PageTransition from '../../components/PageTransaction'
+import PageTransition from '../components/pageTransaction'
 import Product from '../../components/body/product'
 import "./like.css"
 import likeimg from "../../img/like.png"
@@ -14,10 +14,11 @@ function Like() {
   return (
     
     <div className="pg-like">
-      <TopHeader/>
-      <BtmHeader/>
+      
 
       <PageTransition>
+        <TopHeader/>
+      <BtmHeader/>
         <div className="all-like">
             <div className="like-pruda">
 
@@ -61,10 +62,10 @@ function Like() {
       </div>
         
         </div>
-      
+      <Footer/>
 
       </PageTransition>
-      <Footer/>
+      
     </div>
    
   )

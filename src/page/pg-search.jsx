@@ -51,17 +51,18 @@ function Pgsearch() {
       />
     </div>
   ) : (
-    <h3 className="no-data-text container">
+    <h3 className="no-data-prudact container">
       لا توجد منتجات مطابقة للبحث
     </h3>
   );
 
   return (
-    <div>
-      <TopHeader />
+    
+      
+      <PageTransition key={query}>
+        <TopHeader />
       <BtmHeader />
 
-      <PageTransition key={query}>
         <div className="page-category">
           {loading ? (
             <ProductLoading key={query} />
@@ -72,7 +73,7 @@ function Pgsearch() {
 
         <Footertwo />
       </PageTransition>
-    </div>
+    
   );
 }
 
