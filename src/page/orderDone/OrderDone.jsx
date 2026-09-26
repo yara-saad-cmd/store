@@ -10,11 +10,11 @@ import Footer from '../../components/footer/footer'
 
 function OrderDone() {
   return (
-    <>
+    
     <div className='page-order-done'>
-        <HeaderTwo/>
+       
         <PageTransition>
-
+ <HeaderTwo/>
            <div className="icon-and-content">
             <div className="icon">
             <AiFillCheckCircle />
@@ -27,13 +27,13 @@ function OrderDone() {
             </Link>
             
         </div>
-      
+       <Footer/>
         </PageTransition>
        
         
     </div>
-      <Footer/>
-    </>
+     
+    
     
   )
 }

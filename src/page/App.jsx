@@ -39,9 +39,8 @@ function App() {
 
       <Toaster position="bottom-center" toastOptions={{
         style: {
-          background: "#466555",
           color: "#000",
-          padding: "5px"
+          padding: "5px"                                                                                                                                                                                                                                        
         }
       }
       }

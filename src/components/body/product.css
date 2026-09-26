@@ -254,6 +254,10 @@
   color: var(--white-color);
 }
 
+
+
+
+
 /*loading*/
 
 .loading-product .product-content h1{
@@ -309,6 +313,7 @@
 
 .msg{
   z-index: 10000;
+  
 }
 
 

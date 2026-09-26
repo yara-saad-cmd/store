@@ -6,6 +6,8 @@ import { TbShoppingCart } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import { ContextCart } from "../context/contextcart";
 
+
+
 export default function CartItem({
   item,
   inlike,

@@ -1,30 +1,41 @@
 .page-order-done {
+    min-height: 100vh;
+    background-color: var(--min-pg2);
     display: flex;
+    flex-direction: column;
+}
+
+.page-order-done .icon-and-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 45px);
- background-color: var( --min-pg2);
+    gap: 10px;
+    text-align: center;
+    padding: 20px;
+}
 
-    .icon-and-content{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
+.page-order-done .icon svg {
+    font-size: 100px;
+    color: rgb(20, 211, 20);
+}
 
-        .icon svg{
-            font-size: 100px;
-            color: rgb(20, 211, 20);
-        }
-        h4{
-            font-size: 30px;
-            font-weight: 700;
-        }
-        button{
-            background-color: var(--min-color);
-            color: var(--text-white);
-            padding: 3px 7px;
-            border-radius: 3px;
-            font-size: 18px;
-        }
-    }
+.page-order-done h4 {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.page-order-done button {
+    background-color: var(--min-color);
+    color: var(--text-white);
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.page-order-done button:hover {
+    opacity: 0.9;
 }

@@ -1,177 +1,173 @@
-
-.pg-ordar-details{
-    min-height: 100vh;  
-    background-color:var( --min-pg2);
+.pg-ordar-details {
+    min-height: 100vh;
+    background-color: var(--min-pg2);
     display: flex;
     flex-direction: column;
-    
 }
-.pg-ordar-details .details{
+
+/* تم تصحيح الباغ هنا: كان .pg-ordar-details.all-content بدون مسافة */
+.pg-ordar-details .all-content {
+    flex: 1;
+    padding: 20px 0;
+}
+
+.pg-ordar-details .details {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    gap: 15px;
     margin-bottom: 40px;
+}
 
-}
-.pg-ordar-details.all-content{
-    flex: 1; 
-}
-.data-ordar-and-user{
-    margin-left: 10px;
-    min-width: 0; /* هذا السطر هو السحر، يمنع الديف من التمدد خارج الأب */
+/*prudacts*/
+.data-ordar-and-user {
+    min-width: 0; /* يمنع الديف من التمدد خارج الأب */
     width: 100%;
     flex: 2;
 }
-.pg-ordar-details .details .data-ordar-and-user .details-ordar{
-    background-color:var(--white-color);
-    height: auto;
 
-
+.pg-ordar-details .details .data-ordar-and-user .details-ordar {
+    background-color: var(--white-color);
     display: flex;
     gap: 15px;
     padding: 10px;
-    /* التعديلات الضرورية للاسكرول */
-    overflow-x: auto; 
-    white-space: nowrap; /* يمنع المنتجات من النزول لسطر جديد لإجبار السكرول */
-    width: 100%; 
-    
-    /* تحسين شكل السكرول (اختياري) */
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    width: 100%;
+    border-radius: 10px;
     scrollbar-width: thin;
 }
-.pg-ordar-details .details .data-ordar-and-user .user-data{
-    background-color:var(--white-color);
-   
-    padding: 5px;
+
+.pg-ordar-details .details .data-ordar-and-user .user-data {
+    background-color: var(--white-color);
+    border-radius: 10px;
+    padding: 10px;
     margin-top: 10px;
 }
-.pg-ordar-details .details .invoice{
-    background-color:var(--white-color);
+
+.pg-ordar-details .details .invoice {
+    background-color: var(--white-color);
+    border-radius: 10px;
     flex: 1;
     height: fit-content;
-    padding: 10px 0;
+    padding: 5px 10px;
 }
-/*prudacts*/
-.pg-ordar-details .details-ordar{
-    display: flex;
-    max-width: 100%;
-   
-    gap: 15px;
-    overflow-x: auto;  
-    overflow-y: hidden; 
-    padding: 10px;
-   
 
-
-}
-.pg-ordar-details .item-cart{
+.pg-ordar-details .item-cart {
     padding: 5px;
-    border:  1px solid var(--border-color);
+    border: 1px solid var(--border-color);
     border-radius: 10px;
-    flex: 0 0 auto; /* يمنع المنتج من صغر حجمه ويحافظ على أبعاده */
+    flex: 0 0 auto; /* يمنع المنتج من الانضغاط */
     width: 120px;
-
 }
-.pg-ordar-details .details-ordar .img-name img{
+
+
+.pg-ordar-details .details-ordar .img-name img {
     width: 100%;
     height: 110px;
     object-fit: cover;
+    border-radius: 6px;
     pointer-events: none;
-    
 }
-.pg-ordar-details .details-ordar .name-prudact{
+
+.pg-ordar-details .details-ordar .name-prudact {
     font-size: 13px;
     max-width: 100px;
-    white-space: nowrap;      
-    overflow: hidden;         
-    text-overflow: ellipsis; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.pg-ordar-details .details-ordar .prodat-details .size{
-    font-size: 11px;
-    white-space: nowrap;      
-    overflow: hidden;         
-    text-overflow: ellipsis; 
+
+.pg-ordar-details .size{
+    display: inline-block;
+    font-size: 13px;
+    max-width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
 }
+
+
 .pg-ordar-details .color-item {
     display: inline-block;
     font-size: 13px;
     max-width: 80px;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; 
+    text-overflow: ellipsis;
 }
 
-.pg-ordar-details .price{
+.pg-ordar-details .price {
     font-size: 14px;
+    font-weight: 600;
 }
-
 /*prudacts*/
 
-/*quantity*/
-.details-ordar .quantity{
-    
+.details-ordar .quantity {
     font-size: 11px;
-
 }
 
-/*quantity*/
-@media (max-width: 930px){
+/*maseg*/
+.data-ordar-and-user .maseg {
+    background-color: var(--white-color);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+    height: fit-content;
+}
+
+.data-ordar-and-user .maseg .masegs {
+    min-width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    font-family: inherit;
+}
+
+.data-ordar-and-user .maseg .time {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.data-ordar-and-user .maseg .time .time-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1 1 auto;
+    white-space: nowrap;
+    margin-top: 10px;
+}
+
+.data-ordar-and-user .maseg .time .time-group label {
+    flex-shrink: 0;
+    margin: 5px 10px;
+}
+
+.data-ordar-and-user .maseg .time .time-group input.masegs-time {
+    flex-grow: 1;
+    min-width: 120px;
+    margin: 0;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+/*maseg*/
+
+@media (max-width: 930px) {
     .pg-ordar-details .details {
         flex-direction: column;
     }
-    .pg-ordar-details .details .invoice{
-        margin-top: 10px;
+
+    .pg-ordar-details .details .invoice {
+        margin-top: 0;
     }
-    .pg-ordar-details .item-cart{
+
+    .pg-ordar-details .item-cart {
         width: 100px;
     }
-
 }
-
-/*maseg*/
-.data-ordar-and-user {
-    .maseg {
-      margin: 15px 0;
-      height: fit-content;
-     
-      .masegs {
-        min-width: 100%; 
-        max-width: 100%;
-        box-sizing: border-box;
-        padding: 10px;
-        margin: 10px 0;
-        border-radius: 10px;
-      }
-  
-      .time {
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-      
-        .time-group {
-          display: flex;
-          align-items: center;
-          gap: 8px; 
-          flex: 1 1 auto;
-          white-space: nowrap; 
-          margin-top: 10px;
-      
-          label {
-           
-            flex-shrink: 0; 
-            margin: 5px 10px;
-          }
-      
-          input.masegs-time {
-            flex-grow: 1; 
-            min-width: 120px; 
-            margin: 0; 
-            padding: 5px;
-            border-radius: 10px;
-          }
-        }
-      }
-      }
-    }
-  
-
-/*maseg*/
