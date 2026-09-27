@@ -192,6 +192,10 @@
       margin: 15px 0 0 0;
       cursor: pointer;
     }
+    .btn-submit-order.btn-disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   }
 
   @media (max-width:700px){

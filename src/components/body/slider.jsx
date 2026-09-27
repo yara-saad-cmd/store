@@ -1,13 +1,13 @@
 import React from 'react'
-
-//import React, { useRef, useState } from 'react';
-// Import Swiper React componants
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import "./slider.css"
 import 'swiper/css/pagination';
 import { Autoplay,Pagination } from 'swiper/modules';
 import { Link } from 'react-router-dom';
+import slayd1 from '../../img/slayd1.jpg';
+import slayd2 from '../../img/slayd2.jpg';
+import slayd3 from '../../img/slayd3.jpg';
 
 function Slider() {
   return (
@@ -36,7 +36,7 @@ function Slider() {
       <p>عروض او خصمات او ترويج مننتج معين</p>
       <Link to="/" className='btn'>تسوق الآن</Link>
       </div>
-      <img src='/src/img/slayd1.jpg' alt='slide'/>
+      <img src={slayd1} alt='slide'/>
 
     </SwiperSlide>
 
@@ -49,7 +49,7 @@ function Slider() {
       <p>عروض او خصمات او ترويج مننتج معين</p>
       <Link to="/" className='btn'>تسوق الآن</Link>
       </div>
-      <img src='/src/img/slayd2.jpg' alt='slide'/>
+      <img src={slayd2} alt='slide'/>
 
 
     </SwiperSlide>
@@ -63,7 +63,7 @@ function Slider() {
       <p>عروض او خصمات او ترويج مننتج معين</p>
       <Link to="/" className='btn'>تسوق الآن</Link>
       </div>
-     <img src='/src/img/slayd3.jpg' alt='slide'/>
+      <img src={slayd3} alt='slide'/>
 
     </SwiperSlide>
 

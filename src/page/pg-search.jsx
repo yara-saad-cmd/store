@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import TopHeader from "../components/header/topHeader";
 import BtmHeader from "../components/header/btmHeader";
-import PageTransition from "../components/pageTransaction";
+import PageTransition from "../components/PageTransaction";
 import ProductLoading from "../components/body/product-loading";
 import Prodact from "../components/body/product";
 import Footertwo from "../components/footer/footer2";
@@ -22,9 +22,9 @@ function Pgsearch() {
       try {
         // البحث عن كلمة البحث داخل جدول المنتجات في Supabase
         const { data, error } = await supabase
-          .from("products")
-          .select("*")
-          .ilike("title", `%${query}%`);
+        .from("products")
+        .select("*")
+        .or(`title.ilike.%${query}%,description.ilike.%${query}%`);
 
         if (error) {
           console.error("خطأ أثناء البحث في سوبابيز:", error);
@@ -40,7 +40,12 @@ function Pgsearch() {
       }
     };
 
-    if (query) fetchResults();
+    if (query) {
+      fetchResults();
+    } else {
+      setresults([]);
+      setloading(false);
+    }
   }, [query]);
 
   const searchResults = results.length > 0 ? (

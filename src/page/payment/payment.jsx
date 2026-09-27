@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 
 import PageLocation from "../../components/pageLocationFolder/pageLocation";
 
@@ -11,11 +11,13 @@ import imgVISA from "../../img/1764260377009.png";
 
 import { Link } from "react-router-dom";
 
-import PageTransition from "../../components/pageTransaction";
+import PageTransition from "../../components/PageTransaction";
 
 import Footer from "../../components/footer/footer";
 
 function Payment() {
+  const [selectedMethod, setSelectedMethod] = useState("");
+
   return (
     <>
       <HeaderTwo />
@@ -39,10 +41,13 @@ function Payment() {
                       className="radio-card"
                       htmlFor="cash-payment"
                     >
-                      <input
+                                           <input
                         id="cash-payment"
                         type="radio"
                         name="pay"
+                        value="cash"
+                        checked={selectedMethod === "cash"}
+                        onChange={(e) => setSelectedMethod(e.target.value)}
                       />
 
                       <span className="custom-radio"></span>
@@ -62,10 +67,13 @@ function Payment() {
                       className="radio-card"
                       htmlFor="visa-payment"
                     >
-                      <input
+                                            <input
                         id="visa-payment"
                         type="radio"
                         name="pay"
+                        value="visa"
+                        checked={selectedMethod === "visa"}
+                        onChange={(e) => setSelectedMethod(e.target.value)}
                       />
 
                       <span className="custom-radio"></span>
@@ -120,14 +128,25 @@ function Payment() {
                   </button>
                 </div>
 
-                <Link to="/order-done">
+                {selectedMethod ? (
+                  <Link to="/order-done">
+                    <button
+                      type="button"
+                      className="btn-submit-order"
+                    >
+                      متابعة
+                    </button>
+                  </Link>
+                ) : (
                   <button
                     type="button"
-                    className="btn-submit-order"
+                    className="btn-submit-order btn-disabled"
+                    disabled
+                   
                   >
-                    متابعة
+                    اختر طريقة الدف للمتابع
                   </button>
-                </Link>
+                )}
               </div> </div>
 
              

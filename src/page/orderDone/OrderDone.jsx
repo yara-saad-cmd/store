@@ -3,7 +3,7 @@ import "./orderDone.css"
 import { Link } from 'react-router-dom'
 import { AiFillCheckCircle } from 'react-icons/ai'
 import HeaderTwo from '../../components/header/header-2'
-import PageTransition from '../../components/pageTransaction'
+import PageTransition from '../../components/PageTransaction'
 import Footer from '../../components/footer/footer'
 
 
