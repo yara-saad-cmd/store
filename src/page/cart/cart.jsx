@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import HeaderTwo from "../../components/header/header-2";
 import "./cart.css";
 import { ContextCart } from "../../components/context/contextcart";
-import PageTransition from "../../components/PageTransaction";
+import PageTransition from "../../components/pageTransaction";
 import toast from "react-hot-toast"; 
 import PageLocation from "../../components/pageLocationFolder/pageLocation"
 import Visa from "../../components/visa/visa";import { Link } from "react-router-dom";
