@@ -2,7 +2,7 @@ import React from 'react'
 import TopHeader from '../../components/header/topHeader'
 import BtmHeader from '../../components/header/btmHeader'
 import "./UserAccount.css"
-import PageTransition from "../../components/pageTransaction"
+import PageTransition from "../../components/PageTransaction"
 import { FiHeart } from 'react-icons/fi'
 import { TbShoppingCart } from 'react-icons/tb'
 import { LuUserRound } from 'react-icons/lu'
