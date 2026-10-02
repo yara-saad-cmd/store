@@ -5,7 +5,7 @@ import { ContextCart } from '../../components/context/contextcart'
 import PageTransition from '../../components/pageTransaction'
 import Product from '../../components/body/product'
 import "./like.css"
-import likeimg from "../../img/like.png"
+import likeimg from "../../img/like2.png"
 import { Link } from 'react-router-dom'
 import Footer from '../../components/footer/footer'
 function Like() {

@@ -158,10 +158,11 @@ function ImgPgProdact({ prodact }) {
       className={img === activeImg ? "active-thumb" : ""}
       onMouseUp={(e) => handleMouseUpOrLeave(e, img)}
     >
-      <img
+            <img
         src={img}
         alt={prodact.title}
         draggable="false"
+        loading="lazy"
       />
     </button>
   ))}

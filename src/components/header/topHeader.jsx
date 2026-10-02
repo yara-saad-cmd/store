@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import logo from "../../img/logo.png"
+import logo from "../../img/logo (1).png"
 import { Link, useNavigate } from "react-router-dom";
 import { FiHeart } from "react-icons/fi";
 import { TbShoppingCart } from "react-icons/tb";

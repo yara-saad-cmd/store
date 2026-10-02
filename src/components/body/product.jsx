@@ -201,11 +201,12 @@ function Product({ products, title, isLikePage = false }){
                   </button>
                 )}    
 
-                <Link to={`/products/${item.id}`}>
+<Link to={`/products/${item.id}`}>
                   <div className="img">
                   <img
                     src={item.images?.[0]}
                     alt={item.title}
+                    loading="lazy"
                   />
                   </div>
 

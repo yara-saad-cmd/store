@@ -1,7 +1,7 @@
     import React from 'react'
     import "./footer.css"
     import { Link } from 'react-router-dom'
-    import logo from "../../img/logo.png"
+    import logo from "../../img/logo (1).png"
     import { AiFillInstagram } from 'react-icons/ai'
     import { FaTelegramPlane } from 'react-icons/fa'
     import { IoLogoWhatsapp } from 'react-icons/io5'
