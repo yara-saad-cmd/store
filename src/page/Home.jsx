@@ -71,15 +71,17 @@
 // }
 
 // export default Home;
-import React, { useEffect, useState } from 'react'
-import Slider from '../components/body/slider'
+import React, { useEffect, useState, Suspense, lazy } from 'react'
 import Prodact from "../components/body/product" // ده ملف الـ Product بتاعك
 import ProductLoading from '../components/body/product-loading'
-import PageTransition from '../components/pageTransaction'
+import PageTransition from '../components/PageTransaction'
 import Footertwo from '../components/footer/footer2'
 import TopHeader from '../components/header/topHeader'
 import BtmHeader from '../components/header/btmHeader'
-import { supabase } from '../supabaseClient' 
+import { supabase } from '../supabaseClient'
+
+// السلايدر بيتحمل لوحده بعد باقي الصفحة، عشان مكتبة Swiper تقيلة نسبياً
+const Slider = lazy(() => import('../components/body/slider'))
 
 function Home() {
   const [product, setProduct] = useState([])
@@ -118,7 +120,11 @@ function Home() {
         <BtmHeader />
       </header>
 
-      <Slider />
+      <Suspense >
+        <Slider />
+      </Suspense>
+
+      {loading ? (
   
       {loading ? (
         <ProductLoading/>
