@@ -124,8 +124,7 @@ function Home() {
         <Slider />
       </Suspense>
 
-      {loading ? (
-  
+     
       {loading ? (
         <ProductLoading/>
       ) : (
