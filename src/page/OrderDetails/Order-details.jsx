@@ -5,7 +5,7 @@ import HeaderTwo from '../../components/header/header-2'
 import UserDataForm from "../../components/userdata/UserData"
 import Invoice from '../../components/invoice/invoice'
 import "./OrderDetails.css"
-import PageTransition from '../../components/pageTransaction'
+import PageTransition from '../../components/PageTransaction'
 import CartItem from '../../components/cartItem/CartItem'
 import { ContextCart } from '../../components/context/contextcart'
 import Footer from '../../components/footer/footer'

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import TopHeader from '../../components/header/topHeader'
 import BtmHeader from '../../components/header/btmHeader'
 import { ContextCart } from '../../components/context/contextcart'
-import PageTransition from '../../components/pageTransaction'
+import PageTransition from '../../components/PageTransaction'
 import Product from '../../components/body/product'
 import "./like.css"
 import likeimg from "../../img/like2.png"

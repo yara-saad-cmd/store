@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import TopHeader from "../components/header/topHeader";
 import BtmHeader from "../components/header/btmHeader";
-import PageTransition from "../components/pageTransaction";
+import PageTransition from "../components/PageTransaction";
 import ProductLoading from "../components/body/product-loading";
 import Prodact from "../components/body/product";
 import Footertwo from "../components/footer/footer2";

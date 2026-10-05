@@ -11,7 +11,7 @@ import imgVISA from "../../img/1764260377009.png";
 
 import { Link } from "react-router-dom";
 
-import PageTransition from "../../components/pageTransaction";
+import PageTransition from "../../components/PageTransaction";
 
 import Footer from "../../components/footer/footer";
 

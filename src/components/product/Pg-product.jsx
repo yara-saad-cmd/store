@@ -7,7 +7,7 @@ import TopHeader from "../header/topHeader";
 import { ContextCart } from "../context/contextcart";
 import ImgPgproduct from "./img-pg-product";
 import TitlePpgPproduct from "./title-pg-product";
-import PageTransition from "../pageTransaction";
+import PageTransition from "../PageTransaction";
 import Footertwo from "../footer/footer2";
 import { supabase } from '../../supabaseClient'; 
 

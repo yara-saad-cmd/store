@@ -2,7 +2,7 @@
 // import Slider from '../components/body/slider'
 // import Prodact from "../components/body/product"
 // import ProductLoading from '../components/body/product-loading'
-// import PageTransition from '../components/pageTransaction'
+// import PageTransition from '../components/PageTransaction'
 // import Footertwo from '../components/footer/footer2'
 // import TopHeader from '../components/header/topHeader'
 // import BtmHeader from '../components/header/btmHeader'
