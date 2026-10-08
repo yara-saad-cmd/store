@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# ملفات المتغيرات السرية
+.env
+.env.local
+.env.*.local

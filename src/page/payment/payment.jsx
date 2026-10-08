@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import PageLocation from "../../components/pageLocationFolder/pageLocation";
 
@@ -9,14 +9,126 @@ import "./payment.css";
 
 import imgVISA from "../../img/1764260377009.png";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import PageTransition from "../../components/PageTransaction";
 
 import Footer from "../../components/footer/footer";
 
+import { supabase } from "../../supabaseClient";
+
+import { ContextCart } from "../../components/context/contextcart";
+
+
 function Payment() {
   const [selectedMethod, setSelectedMethod] = useState("");
+
+  const { cartItems } = useContext(ContextCart);
+  const navigate = useNavigate();
+
+  // قراءة بيانات العميل المحفوظة من فورم الشحن (UserData.jsx)
+  const getSavedUserData = () => {
+    try {
+      const saved = localStorage.getItem("userData");
+      if (!saved) return null;
+
+      const parsed = JSON.parse(saved);
+      if (!parsed || typeof parsed !== "object") return null;
+
+      return parsed;
+    } catch (error) {
+      console.error("خطأ في قراءة بيانات العميل:", error);
+      return null;
+    }
+  };
+
+  // حساب الإجمالي بنفس منطق Invoice.jsx بالظبط
+  const calculateOrderTotal = () => {
+    const total = cartItems.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
+
+    const discount = 10;
+    const discountAmount = (total * discount) / 100;
+    const subtotal = total - discountAmount;
+    const shipping = 60;
+    const totalPrice = subtotal + shipping;
+
+    return { subtotal, shipping, totalPrice };
+  };
+
+  // إرسال الطلب لقاعدة البيانات عند الضغط على "متابعة"
+  const handleSubmitOrder = async () => {
+    const userData = getSavedUserData();
+
+    if (
+      !userData ||
+      !userData.name?.trim() ||
+      !userData.phone?.trim() ||
+      !userData.governorate?.trim() ||
+      !userData.address?.trim()
+    ) {
+      console.log("بيانات العميل ناقصة");
+      return;
+    }
+
+    if (cartItems.length === 0) {
+      console.log("العربة فارغة");
+      return;
+    }
+
+    const { subtotal, shipping, totalPrice } = calculateOrderTotal();
+
+    const { data: newOrderId, error: orderError } = await supabase.rpc(
+      "create_order",
+      {
+        order_data: {
+          customer_name: userData.name,
+          customer_phone: userData.phone,
+          customer_phone2: userData.phone2 || null,
+          governorate: userData.governorate,
+          address: userData.address,
+          payment_method: selectedMethod,
+          subtotal: subtotal,
+          shipping: shipping,
+          total: totalPrice,
+        },
+      }
+    );
+
+    if (orderError) {
+      console.error("خطأ في إنشاء الطلب:", orderError);
+      return;
+    }
+
+    console.log("تم إنشاء الطلب بنجاح، رقم الطلب:", newOrderId);
+
+    // تحويل منتجات العربة لشكل يطابق أعمدة جدول order_items
+    const orderItemsPayload = cartItems.map((item) => ({
+      order_id: newOrderId,
+      product_id: item.id,
+      product_title: item.title,
+      selected_size: item.selectedSize || null,
+      selected_color: item.selectedColor || null,
+      quantity: item.quantity,
+      price: item.price,
+    }));
+
+    const { error: itemsError } = await supabase
+      .from("order_items")
+      .insert(orderItemsPayload);
+
+    if (itemsError) {
+      console.error("خطأ في إضافة منتجات الطلب:", itemsError);
+      return;
+    }
+
+    console.log("تم إضافة منتجات الطلب بنجاح");
+
+    navigate("/order-done");
+  };
+
 
   return (
     <>
@@ -129,14 +241,13 @@ function Payment() {
                 </div>
 
                 {selectedMethod ? (
-                  <Link to="/order-done">
-                    <button
-                      type="button"
-                      className="btn-submit-order"
-                    >
-                      متابعة
-                    </button>
-                  </Link>
+                  <button
+                    type="button"
+                    className="btn-submit-order"
+                    onClick={handleSubmitOrder}
+                  >
+                    متابعة
+                  </button>
                 ) : (
                   <button
                     type="button"
