@@ -54,7 +54,7 @@ function Cart() {
      
             {cartItems.length === 0 ? (
               // حالة العربة فارغة
-              <div className="no-prodact">
+              <div className="no-goods">
                 <img src={ImgCartEmpty} alt="img"/>
                 <h2>لم يتم إضافة أي منتجات إلى العربة</h2>
                 <Link to="/"> <button className="btn-go-home">تسوق الآن</button></Link>
@@ -74,7 +74,7 @@ function Cart() {
              
               
               
-                <div className="cart-prodact">
+                <div className="cart-goods">
 
                  
    

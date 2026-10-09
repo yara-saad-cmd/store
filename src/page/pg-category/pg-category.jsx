@@ -65,7 +65,7 @@ function Pgcategory() {
             {isLoading ? (
               <ProductLoading key={category}/>
             ) : (
-              <div className="prodact">
+              <div className="goods">
                 <Product products={categoryprodact} title={category} />
               </div>
             )}

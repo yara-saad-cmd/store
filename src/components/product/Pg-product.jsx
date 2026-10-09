@@ -17,7 +17,7 @@ import RelatedProducts from "./RelatedProducts";
 function Pgproduct() {
   const { id } = useParams();
 
-  const [prodact, setprodact] = useState(null);
+  const [goods, setprodact] = useState(null);
   const [loading, setloading] = useState(true);
   const [relatedProducts, setrelatedProducts] = useState([]);
   const [loadingrelatedProducts, setloadingrelatedProducts] = useState(true);
@@ -55,7 +55,7 @@ function Pgproduct() {
   }, [id]); 
 
   useEffect(() => {
-    if (!prodact?.category_id) return;
+    if (!goods?.category_id) return;
 
     const getRelatedProducts = async () => {
       setloadingrelatedProducts(true);
@@ -63,7 +63,7 @@ function Pgproduct() {
         const { data, error } = await supabase
         .from("products")
         .select("*")
-        .eq("category_id", prodact.category_id);
+        .eq("category_id", goods.category_id);
 
         if (error) {
           console.log("Error fetching related products:", error);
@@ -78,10 +78,10 @@ function Pgproduct() {
     };
 
     getRelatedProducts();
-  }, [prodact?.category_id]);
+  }, [goods?.category_id]);
 
   if (loading) return <Loading />;
-  if (!prodact) return <p>prodact not found</p>;
+  if (!goods) return <p>goods not found</p>;
 
   return (
     <div className="all-page">
@@ -93,8 +93,8 @@ function Pgproduct() {
         <div className="pg-prosact">
           <div className="container">
             <div className="prdact-area">
-              <ImgPgproduct key={prodact.id} prodact={prodact} />
-              <TitlePpgPproduct prodact={prodact} />
+              <ImgPgproduct key={goods.id} goods={goods} />
+              <TitlePpgPproduct goods={goods} />
             </div>
           </div>
 
@@ -106,7 +106,7 @@ function Pgproduct() {
             relatedProducts={relatedProducts}
             visibleCount={visibleCount}
             setVisibleCount={setVisibleCount} // 👈 مررنا الدالة هنا لكي يعمل الزر بداخل الكمبوننت
-            prodact={prodact}
+            goods={goods}
             cartItems={cartItems}
             AddToCart={AddToCart}
           />

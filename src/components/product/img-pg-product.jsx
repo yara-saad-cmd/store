@@ -1,30 +1,30 @@
 // import React, { useState, useEffect } from 'react' // 1. أضف useEffect
 
-// function ImgPgProdact({ prodact }) {
-//   const [activeImg, setActiveImg] = useState(prodact.images[0]);
+// function ImgPgProdact({ goods }) {
+//   const [activeImg, setActiveImg] = useState(goods.images[0]);
 
 //   // 2. مراقبة تغير المنتج
 //   useEffect(() => {
-//     // عندما يتغير الـ prodact، اجعل الصورة النشطة هي أول صورة للمنتج الجديد
-//     setActiveImg(prodact.images[0]);
-//   }, [prodact]); // هذه المصفوفة تعني: "نفذ هذا الكود كلما تغير كائن prodact"
+//     // عندما يتغير الـ goods، اجعل الصورة النشطة هي أول صورة للمنتج الجديد
+//     setActiveImg(goods.images[0]);
+//   }, [goods]); // هذه المصفوفة تعني: "نفذ هذا الكود كلما تغير كائن goods"
 
 //   return (
 //     <div className="imegs">
 //       <div className="small-images">
-//         {prodact.images.map((img, index) => (
+//         {goods.images.map((img, index) => (
 //           <img
 //             key={index}
 //             src={img}
 //             className={img === activeImg ? "active-thumb" : ""}
 //             onClick={() => setActiveImg(img)}
-//             alt={prodact.title}
+//             alt={goods.title}
 //           />
 //         ))}
 //       </div>
 
 //       <div className="big-image">
-//         <img src={activeImg} alt={prodact.title} />
+//         <img src={activeImg} alt={goods.title} />
 //       </div>
 //     </div>
 //   )
@@ -38,14 +38,14 @@
 import React, { useState, useEffect, useRef } from 'react'
 import "./img-pg-product.css"
 
-function ImgPgProdact({ prodact }) {
+function ImgPgProdact({ goods }) {
   const [activeImg, setActiveImg] = useState(null);
   const containerRef = useRef(null);
   
   // حفظ بيانات السحب بالكامل
   const dragStart = useRef({ isDown: false, startY: 0, startX: 0, scrollTop: 0, scrollLeft: 0, moved: false });
 
-  const allImages = prodact?.images?.length > 0 ? prodact.images : [];
+  const allImages = goods?.images?.length > 0 ? goods.images : [];
 
   useEffect(() => {
     setActiveImg(null);
@@ -55,7 +55,7 @@ function ImgPgProdact({ prodact }) {
       }
     }, 0);
     return () => clearTimeout(timeout);
-  }, [prodact]);
+  }, [goods]);
 
   // دالة السنتر الدقيقة جداً بالملّي
   const centerImage = (imgElement) => {
@@ -160,7 +160,7 @@ function ImgPgProdact({ prodact }) {
     >
             <img
         src={img}
-        alt={prodact.title}
+        alt={goods.title}
         draggable="false"
         loading="lazy"
       />
@@ -168,7 +168,7 @@ function ImgPgProdact({ prodact }) {
   ))}
 </section>
       <div className="big-image">
-        <img key={activeImg} src={activeImg} alt={prodact.title} />
+        <img key={activeImg} src={activeImg} alt={goods.title} />
       </div>
     </div>
   )

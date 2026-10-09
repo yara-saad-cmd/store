@@ -5,7 +5,7 @@ import TopHeader from "../components/header/topHeader";
 import BtmHeader from "../components/header/btmHeader";
 import PageTransition from "../components/PageTransaction";
 import ProductLoading from "../components/body/product-loading";
-import Prodact from "../components/body/product";
+import Goods from "../components/body/product";
 import Footertwo from "../components/footer/footer2";
 import { supabase } from "../supabaseClient";
 
@@ -49,8 +49,8 @@ function Pgsearch() {
   }, [query]);
 
   const searchResults = results.length > 0 ? (
-    <div className="prodact">
-      <Prodact
+    <div className="goods">
+      <Goods
         products={results}
         title={`نتائج البحث عن: ${query}`}
       />

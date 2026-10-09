@@ -12,13 +12,13 @@ function RelatedProducts({
   relatedProducts, 
   visibleCount, 
   setVisibleCount, // 👈 استلام الدالة بنجاح
-  prodact, 
+  goods, 
   cartItems, 
   AddToCart 
 }) {
   
   // تصفية المصفوفة أولاً لاستبعاد المنتج المفتوح حالياً قبل حساب الطول أو التقطيع
-  const filteredProducts = relatedProducts.filter((item) => item.id !== prodact.id);
+  const filteredProducts = relatedProducts.filter((item) => item.id !== goods.id);
 
   return (
     <div className="mor-product">

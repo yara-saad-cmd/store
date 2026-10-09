@@ -1,6 +1,6 @@
 // import React, { useEffect, useState } from 'react'
 // import Slider from '../components/body/slider'
-// import Prodact from "../components/body/product"
+// import Goods from "../components/body/product"
 // import ProductLoading from '../components/body/product-loading'
 // import PageTransition from '../components/PageTransaction'
 // import Footertwo from '../components/footer/footer2'
@@ -60,7 +60,7 @@
 //        <ProductLoading/>
 //       ):(
        
-//         <Prodact products={product} />
+//         <Goods products={product} />
 //       )}
 //       <Footertwo/>
       
@@ -72,7 +72,7 @@
 
 // export default Home;
 import React, { useEffect, useState, Suspense, lazy } from 'react'
-import Prodact from "../components/body/product" // ده ملف الـ Product بتاعك
+import Goods from "../components/body/product" // ده ملف الـ Product بتاعك
 import ProductLoading from '../components/body/product-loading'
 import PageTransition from '../components/PageTransaction'
 import Footertwo from '../components/footer/footer2'
@@ -129,7 +129,7 @@ function Home() {
         <ProductLoading/>
       ) : (
         // بنمرر البيانات المغلفة هنا
-        <Prodact products={product} />
+        <Goods products={product} />
       )}
       <Footertwo/>
     </PageTransition>

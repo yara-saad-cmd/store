@@ -238,8 +238,8 @@ const hasColors = colorsList.length > 0 || Boolean(selectedColor);
 
   return (
     <div className="item-cart">
-      <div className={`img-name ${layout === "prodact" ? "hide-in-product" : ""}`}>
-        {layout !== "prodact" && (
+      <div className={`img-name ${layout === "goods" ? "hide-in-product" : ""}`}>
+        {layout !== "goods" && (
           <Link to={`/products/${productId}`}>
             {productImage && <img src={productImage} alt={item?.title || "صورة المنتج"} />}
           </Link>
@@ -250,16 +250,16 @@ const hasColors = colorsList.length > 0 || Boolean(selectedColor);
         <div className="prudact-details">
           <h3 className="name-prudact">{item?.title}</h3>
 
-          {layout === "prodact" && item?.description && <p>{item.description}</p>}
+          {layout === "goods" && item?.description && <p>{item.description}</p>}
 
-          {layout === "prodact" && item?.availability && (
+          {layout === "goods" && item?.availability && (
             <h4>
               الحاله: <span className="stock">{item.availability}</span>
             </h4>
           )}
 
           {/* الألوان - صفحة المنتج */}
-          {layout === "prodact" && hasColors && (
+          {layout === "goods" && hasColors && (
             <div className="colors-box">
               <h3>
                 اللون : <span>{selectedColor}</span>
@@ -291,7 +291,7 @@ const hasColors = colorsList.length > 0 || Boolean(selectedColor);
           )}
 
           {/* المقاسات - صفحة المنتج */}
-          {layout === "prodact" && hasSizes && (
+          {layout === "goods" && hasSizes && (
             <div className="size-options">
               <h3>
                 المقاس : <span>{selectedSize}</span>
@@ -349,7 +349,7 @@ const hasColors = colorsList.length > 0 || Boolean(selectedColor);
         </div>
 
         <div className="plus-and-mynas">
-          {(layout === "prodact" || layout === "cart") && (
+          {(layout === "goods" || layout === "cart") && (
             <div className="quantity">
               <button
                 type="button"
@@ -382,7 +382,7 @@ const hasColors = colorsList.length > 0 || Boolean(selectedColor);
           )}
 
           <div className="btn-and-icon">
-            {layout === "prodact" && (
+            {layout === "goods" && (
               <div className="con">
                 <button
                   type="button"

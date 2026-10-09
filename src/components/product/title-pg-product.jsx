@@ -4,7 +4,7 @@ import { ContextCart } from "../context/contextcart";
 import CartItem from "../cartItem/CartItem";
 import "./titel-pg-product.css";
 
-function TitleProductPage({ prodact }) {
+function TitleProductPage({ goods }) {
   const {
     cartItems = [],
     AddToCart,
@@ -16,24 +16,24 @@ function TitleProductPage({ prodact }) {
   // المقاسات
   // =========================
   const availableSizes =
-  (Array.isArray(prodact?.sizes) && prodact.sizes.length > 0
-    ? prodact.sizes
-    : prodact?.available_sizes) || [];
+  (Array.isArray(goods?.sizes) && goods.sizes.length > 0
+    ? goods.sizes
+    : goods?.available_sizes) || [];
 
 const [selectedSize, setSelectedSize] = useState(
-  prodact?.selectedSize || availableSizes[0] || ""
+  goods?.selectedSize || availableSizes[0] || ""
 );
 
   // =========================
   // الألوان
   // =========================
   const availableColors =
-    prodact?.colors ||
-    prodact?.available_colors ||
+    goods?.colors ||
+    goods?.available_colors ||
     [];
 
   const [selectedColor, setSelectedColor] = useState(
-    prodact?.selectedColor || availableColors[0] || ""
+    goods?.selectedColor || availableColors[0] || ""
   );
 
   // =========================
@@ -67,7 +67,7 @@ const [selectedSize, setSelectedSize] = useState(
   // =========================
   const HandleAddToCart = () => {
     const productWithDetails = {
-      ...prodact,
+      ...goods,
       selectedSize,
       selectedColor,
       quantity,
@@ -77,7 +77,7 @@ const [selectedSize, setSelectedSize] = useState(
 
     toast.success(
       <div className="msg">
-        <strong>{prodact.title}</strong>{" "}
+        <strong>{goods.title}</strong>{" "}
         تمت الإضافة إلى العربة
       </div>,
       {
@@ -91,7 +91,7 @@ const [selectedSize, setSelectedSize] = useState(
   // =========================
   const encart = cartItems.some(
     (i) =>
-      i.id === prodact.id &&
+      i.id === goods.id &&
       (i.selectedSize || "") === selectedSize &&
       (i.selectedColor || "") === selectedColor
   );
@@ -99,15 +99,15 @@ const [selectedSize, setSelectedSize] = useState(
   // =========================
   // هل بالمفضلة؟
   // =========================
-  const inlike = likeItems.some((i) => i.id === prodact.id);
+  const inlike = likeItems.some((i) => i.id === goods.id);
 
   const handleAddToLike = () => {
     if (inlike) {
-      removelike(prodact.id);
-      toast.error(`تم حذف ${prodact.title} من المفضل`);
+      removelike(goods.id);
+      toast.error(`تم حذف ${goods.title} من المفضل`);
     } else {
-      AddToLike(prodact);
-      toast.success(`تم إضافة ${prodact.title} إلى المفضل`);
+      AddToLike(goods);
+      toast.success(`تم إضافة ${goods.title} إلى المفضل`);
     }
   };
 
@@ -115,7 +115,7 @@ const [selectedSize, setSelectedSize] = useState(
     <div className="title-items">
       <CartItem
         item={{
-          ...prodact,
+          ...goods,
           selectedSize,
           selectedColor,
           quantity,
@@ -129,7 +129,7 @@ const [selectedSize, setSelectedSize] = useState(
         onIncrease={handleIncrease}
         onDecrease={handleDecrease}
         toast={toast}
-        layout="prodact"
+        layout="goods"
       />
     </div>
   );

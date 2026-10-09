@@ -32,14 +32,14 @@
     margin: 0 auto;
     padding: 20px;
 }
-.pg-cart .cart .cart-prodact{
+.pg-cart .cart .cart-goods{
     flex: 2; /* يأخذ مساحة أكبر */
     width: auto; /* الغِ العرض الثابت 55% */
     
 }
 
 
-.pg-cart .cart .cart-prodact .title{
+.pg-cart .cart .cart-goods .title{
     background-color:var(--white-color);
     height: 50px;
     padding: 15px 20px;
@@ -48,7 +48,7 @@
     display: flex;
     align-items: center;
 }
-.pg-cart .cart .cart-prodact .item-cart{
+.pg-cart .cart .cart-goods .item-cart{
     background-color:var(--white-color);
     margin-top: 10px;
     height: fit-content;
@@ -56,7 +56,7 @@
     position: relative;
     display: flex;
 }
-.pg-cart .cart .cart-prodact .item-cart .img-name{
+.pg-cart .cart .cart-goods .item-cart .img-name{
     width: 110px;
     height: 110px;
     max-width: 110px;
@@ -68,14 +68,14 @@
     position: relative;
     
 }
-.pg-cart .cart .cart-prodact .item-cart .img-name a {
+.pg-cart .cart .cart-goods .item-cart .img-name a {
     position: relative;
     display: block;
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
-.pg-cart .cart .cart-prodact .item-cart .img-name a img{
+.pg-cart .cart .cart-goods .item-cart .img-name a img{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -209,8 +209,8 @@
     padding: 5px;
     margin-top: 10px;
 }
- /*no-prodact*/
- .no-prodact{
+ /*no-goods*/
+ .no-goods{
   
     height: 100vh;
     display: flex;
@@ -237,7 +237,7 @@
         margin: 5px;
     }
  }
- /*no-prodact*/
+ /*no-goods*/
  @media only screen and (min-width: 999px) and (max-width: 1200px){
     .pg-cart .cart .Content .name-prudact{
         max-width: 150px;
@@ -251,7 +251,7 @@
         flex-direction: column; /* تحويل العناصر لتصبح فوق بعضها */
     }
 
-    .pg-cart .cart .cart-prodact, 
+    .pg-cart .cart .cart-goods, 
     .pg-cart .cart .invoice-area {
         width: 100%; /* العرض كامل في الشاشات الصغيرة */
     }
@@ -291,12 +291,12 @@
     }
 
 
-    .pg-cart .cart .cart-prodact .item-cart{
+    .pg-cart .cart .cart-goods .item-cart{
         height: 190px;
     }
    
 
-    /* .pg-cart .cart .cart-prodact .item-cart .img-name Link img{
+    /* .pg-cart .cart .cart-goods .item-cart .img-name Link img{
         object-fit: cover; 
     object-position: center;
     } */
@@ -306,7 +306,7 @@
     }
 }
 @media (max-width: 330px){
-    .pg-cart .cart .cart-prodact .item-cart{
+    .pg-cart .cart .cart-goods .item-cart{
         flex-direction: column;
           align-items: center;
           height: 280px;
