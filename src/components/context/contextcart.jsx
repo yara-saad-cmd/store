@@ -148,6 +148,12 @@ export default function CartProvider({ children }) {
     );
   };
 
+  const clearCart = useCallback(() => {
+    setcartItems([]);
+  }, []);
+
+
+
   const AddToCart = (item) => {
     const cleanItem = sanitizeItem(item);
   
@@ -233,6 +239,7 @@ export default function CartProvider({ children }) {
       increaseQuantity,
       decreaseQuantity,
       delet,
+      clearCart,
       likeItems,
       AddToLike,
       removelike,
@@ -245,6 +252,7 @@ export default function CartProvider({ children }) {
       increaseQuantity,
       decreaseQuantity,
       delet,
+      clearCart,
       likeItems,
       AddToLike,
       removelike,

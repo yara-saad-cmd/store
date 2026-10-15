@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { Navigate } from 'react-router-dom'
 import PageLocation from '../../components/pageLocationFolder/pageLocation'
 import HeaderTwo from '../../components/header/header-2'
 import UserDataForm from "../../components/userdata/UserData"
@@ -12,20 +12,34 @@ import Footer from '../../components/footer/footer'
 function OrderDetails() {
   const { cartItems } = useContext(ContextCart);
 
-  if (cartItems.length === 0) {
-    return (
-      <PageTransition>
-        <div className="pg-ordar-details">
-          <HeaderTwo />
-          <div style={{ textAlign: 'center', padding: '80px 20px' }}>
-            <h2>لا توجد منتجات لإتمام الطلب</h2>
-            <Link to="/">العودة للتسوق</Link>
-          </div>
-          <Footer />
-        </div>
-      </PageTransition>
-    );
-  }
+  // القيمة الابتدائية بتتقرا من localStorage، فالملاحظة متضيعش لو العميلة عملت Refresh
+  const [note, setNote] = useState(() => {
+    try {
+      return localStorage.getItem("orderNote") || "";
+    } catch (error) {
+      console.error("خطأ في قراءة الملاحظة:", error);
+      return "";
+    }
+  });
+
+  const handleNoteChange = (e) => {
+    const value = e.target.value;
+    setNote(value);
+
+    try {
+      localStorage.setItem("orderNote", value);
+    } catch (error) {
+      console.error("فشل حفظ الملاحظة:", error);
+    }
+  };
+
+ 
+   
+      if (cartItems.length === 0) {
+        return <Navigate to="/cart" replace />;
+      }
+    
+  
 
   return (
     <PageTransition>
@@ -61,22 +75,14 @@ function OrderDetails() {
                 
                 <div className="maseg">
                  
-                    <p>افضل وقت للاستلام في اليوم (اختياري)</p>
-
-
-                    <div className="time">
-                      <div className="time-group">
-                        <label htmlFor="appt-one">من الساعة:</label>
-                        <input type='time' className='masegs-time' id='appt-one' name='appt-one' />
-                      </div>
-
-                      <div className="time-group">
-                        <label htmlFor="appt">إلى الساعة:</label>
-                        <input type='time' className='masegs-time' id='appt' name='appt' />
-                      </div>
-                    </div>
                  
-                  <textarea className='masegs' placeholder='ملاحظة للبائع (اختياري)' ></textarea>
+                <textarea
+                    className='masegs'
+                    placeholder='ملاحظة للبائع (اختياري)'
+                    value={note}
+                    onChange={handleNoteChange}
+                    maxLength={500}
+                  ></textarea>
                 </div>
               </div>
 

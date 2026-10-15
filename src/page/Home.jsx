@@ -79,6 +79,7 @@ import Footertwo from '../components/footer/footer2'
 import TopHeader from '../components/header/topHeader'
 import BtmHeader from '../components/header/btmHeader'
 import { supabase } from '../supabaseClient'
+import SliderLoading from '../components/body/SliderLoading'
 
 // السلايدر بيتحمل لوحده بعد باقي الصفحة، عشان مكتبة Swiper تقيلة نسبياً
 const Slider = lazy(() => import('../components/body/slider'))
@@ -120,7 +121,7 @@ function Home() {
         <BtmHeader />
       </header>
 
-      <Suspense >
+      <Suspense fallback={<SliderLoading />}>
         <Slider />
       </Suspense>
 

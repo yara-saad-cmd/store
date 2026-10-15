@@ -4,6 +4,7 @@
     background-color: var(--white-color);
     border-top: 1px solid var(--border-color);
    
+   
   }
   
   .btm-header .container {
@@ -103,7 +104,19 @@
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }
+.arya-login a{
+ display: flex;
+ align-items: center;
+  .login{
+ margin-left: 5px;
+  
+}
 
 
+svg{
+  font-size: 20px;
+  
+  }
+}
 
   /* loading btm hedar */

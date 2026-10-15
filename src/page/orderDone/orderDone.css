@@ -39,3 +39,21 @@
 .page-order-done button:hover {
     opacity: 0.9;
 }
+
+
+.page-order-done .order-number {
+    margin-top: 10px;
+    font-size: 20px;
+    color: var(--text-color-2);
+  }
+  
+  .page-order-done .order-number strong {
+    color: var(--min-color);
+    font-weight: 800;
+  }
+  
+  .page-order-done .order-number-hint {
+    margin: 5px 0 20px;
+    font-size: 14px;
+    opacity: 0.7;
+  }

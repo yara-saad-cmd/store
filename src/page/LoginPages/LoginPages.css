@@ -1,0 +1,75 @@
+.cont-iogin{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+    height: 90vh;
+    
+    .titel-pg-login ,.titel-create-account{
+       
+    font-size: 24px;
+    font-weight: bold;
+    margin: 15px 0;
+    text-align: center;
+}
+.login-arya ,.all-content-pag{
+  background-color: var(--min-pg);
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   flex-direction: column;
+   width: 90%;
+   max-width: 430px;
+   height: 550px;
+   border-radius: 15px;
+   box-shadow:  0px 0px 30px var(--border-color);
+   padding: 10px;
+    
+   .inputs , .inputs-arya{
+         display: flex;
+        flex-direction: column;
+        width: 80%;
+      
+        max-width: 400px;
+
+    }
+   
+    
+}
+   
+
+
+.log-in-puttom ,.create-account-puttom a ,.put-create-account{
+ width: 70%;
+ max-width: 390px;
+ height: 30px;
+ border-radius: 5px;
+}
+
+.log-in-puttom ,.put-create-account{
+    color: var(--text-white);
+    background-color: var(--min-color);
+}
+
+.create-account-puttom a{
+    background-color: var(--white-color);
+    color:var(--text-color-1);
+    text-align: center;
+   
+}
+
+
+
+
+}
+
+
+.inp-data{
+    background-color: rgba(255, 255, 255, 0);
+     margin: 15px 0;
+     padding: 5px;
+     border-bottom: solid 2px var( --bottms-color);
+ 
+ }
+
+
+

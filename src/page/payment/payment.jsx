@@ -1,6 +1,7 @@
 
 import React, { useContext, useState } from "react";
 
+import toast from "react-hot-toast";
 import PageLocation from "../../components/pageLocationFolder/pageLocation";
 
 import HeaderTwo from "../../components/header/header-2";
@@ -9,7 +10,7 @@ import "./payment.css";
 
 import imgVISA from "../../img/1764260377009.png";
 
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import PageTransition from "../../components/PageTransaction";
 
@@ -20,12 +21,15 @@ import { supabase } from "../../supabaseClient";
 import { ContextCart } from "../../components/context/contextcart";
 
 
+
 function Payment() {
   const [selectedMethod, setSelectedMethod] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const { cartItems } = useContext(ContextCart);
+  const { cartItems, clearCart } = useContext(ContextCart);
   const navigate = useNavigate();
 
+ 
   // قراءة بيانات العميل المحفوظة من فورم الشحن (UserData.jsx)
   const getSavedUserData = () => {
     try {
@@ -41,27 +45,24 @@ function Payment() {
       return null;
     }
   };
+    // قراءة الملاحظة اللي العميلة كتبتها في صفحة تفاصيل الطلب
+    const getSavedNote = () => {
+      try {
+        return localStorage.getItem("orderNote") || "";
+      } catch (error) {
+        console.error("خطأ في قراءة الملاحظة:", error);
+        return "";
+      }
+    };
 
-  // حساب الإجمالي بنفس منطق Invoice.jsx بالظبط
-  const calculateOrderTotal = () => {
-    const total = cartItems.reduce(
-      (acc, item) => acc + item.price * item.quantity,
-      0
-    );
-
-    const discount = 10;
-    const discountAmount = (total * discount) / 100;
-    const subtotal = total - discountAmount;
-    const shipping = 60;
-    const totalPrice = subtotal + shipping;
-
-    return { subtotal, shipping, totalPrice };
-  };
+ 
 
   // إرسال الطلب لقاعدة البيانات عند الضغط على "متابعة"
   const handleSubmitOrder = async () => {
-    const userData = getSavedUserData();
+    if (isSubmitting) return;
 
+    const userData = getSavedUserData();
+   
     if (
       !userData ||
       !userData.name?.trim() ||
@@ -69,67 +70,71 @@ function Payment() {
       !userData.governorate?.trim() ||
       !userData.address?.trim()
     ) {
-      console.log("بيانات العميل ناقصة");
+      toast.error("من فضلك أكملي بيانات الشحن في صفحة تفاصيل الطلب");
       return;
     }
 
     if (cartItems.length === 0) {
-      console.log("العربة فارغة");
+      toast.error("العربة فارغة");
       return;
     }
 
-    const { subtotal, shipping, totalPrice } = calculateOrderTotal();
+    setIsSubmitting(true);
 
-    const { data: newOrderId, error: orderError } = await supabase.rpc(
-      "create_order",
-      {
-        order_data: {
-          customer_name: userData.name,
-          customer_phone: userData.phone,
-          customer_phone2: userData.phone2 || null,
-          governorate: userData.governorate,
-          address: userData.address,
-          payment_method: selectedMethod,
-          subtotal: subtotal,
-          shipping: shipping,
-          total: totalPrice,
-        },
+    try {
+            // بنبعت بس اختيارات العميلة، والأسعار بتتحسب في قاعدة البيانات
+            const orderItemsPayload = cartItems.map((item) => ({
+              product_id: item.id,
+              selected_size: item.selectedSize || null,
+              selected_color: item.selectedColor || null,
+              quantity: item.quantity,
+              
+              
+            }));
+
+      // استدعاء واحد: الطلب ومنتجاته بيتسجلوا مع بعض أو مفيش حاجة بتتسجل
+      const { data: newOrderId, error: orderError } = await supabase.rpc(
+        "create_order_with_items",
+        {
+          order_data: {
+            customer_name: userData.name,
+            customer_phone: userData.phone,
+            customer_phone2: userData.phone2 || null,
+            governorate: userData.governorate,
+            address: userData.address,
+            payment_method: selectedMethod,
+            note: getSavedNote().trim() || null,
+         
+              
+          },
+          items: orderItemsPayload,
+        }
+      );
+
+      if (orderError) {
+        console.error("خطأ في إنشاء الطلب:", orderError);
+        toast.error("حصلت مشكلة أثناء إرسال طلبك، من فضلك حاولي مرة تانية");
+        return;
       }
-    );
+      try {
+        localStorage.removeItem("orderNote");
+      } catch (error) {
+        console.error("فشل مسح الملاحظة:", error);
+      }
 
-    if (orderError) {
-      console.error("خطأ في إنشاء الطلب:", orderError);
-      return;
+      clearCart();
+      navigate("/order-done", {
+        state: { orderId: newOrderId },
+        replace: true,
+      });
+
+    } catch (error) {
+      console.error("خطأ غير متوقع أثناء إرسال الطلب:", error);
+      toast.error("تعذر الاتصال بالخادم، تأكدي من الإنترنت وحاولي تاني");
+    } finally {
+      setIsSubmitting(false);
     }
-
-    console.log("تم إنشاء الطلب بنجاح، رقم الطلب:", newOrderId);
-
-    // تحويل منتجات العربة لشكل يطابق أعمدة جدول order_items
-    const orderItemsPayload = cartItems.map((item) => ({
-      order_id: newOrderId,
-      product_id: item.id,
-      product_title: item.title,
-      selected_size: item.selectedSize || null,
-      selected_color: item.selectedColor || null,
-      quantity: item.quantity,
-      price: item.price,
-    }));
-
-    const { error: itemsError } = await supabase
-      .from("order_items")
-      .insert(orderItemsPayload);
-
-    if (itemsError) {
-      console.error("خطأ في إضافة منتجات الطلب:", itemsError);
-      return;
-    }
-
-    console.log("تم إضافة منتجات الطلب بنجاح");
-
-    navigate("/order-done");
   };
-
-
   return (
     <>
       <HeaderTwo />
@@ -241,13 +246,14 @@ function Payment() {
                 </div>
 
                 {selectedMethod ? (
-                  <button
-                    type="button"
-                    className="btn-submit-order"
-                    onClick={handleSubmitOrder}
-                  >
-                    متابعة
-                  </button>
+                                    <button
+                                    type="button"
+                                    className="btn-submit-order"
+                                    onClick={handleSubmitOrder}
+                                    disabled={isSubmitting}
+                                  >
+                                    {isSubmitting ? "جاري إرسال الطلب..." : "متابعة"}
+                                  </button>
                 ) : (
                   <button
                     type="button"

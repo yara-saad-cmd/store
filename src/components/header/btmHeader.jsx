@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import LoadingBtmHeader from './LoadingBtmhader';
-import { supabase } from '../../supabaseClient'; 
+import { supabase } from '../../supabaseClient';
 import "./BtmHeader.css";
+import { CiLogin } from 'react-icons/ci';
 
 function BtmHeader() {
   const [categories, setCategories] = useState([]);
@@ -35,11 +36,26 @@ function BtmHeader() {
 
   return (
     <div className="btm-header">
+
       <div className="container">
+
+      
+
         <nav className='btm-nav'>
-          
-        {loading ? (
-           <LoadingBtmHeader />
+  <div className="arya-login">
+
+        <Link to="/login" >
+
+          <button className='login'>تسجيل الدخول  </button>
+          <CiLogin />
+
+        </Link>
+         
+
+        </div>
+
+          {loading ? (
+            <LoadingBtmHeader />
           ) : categories.length === 0 ? (
             null // أو أي رسالة بسيطة لو حابة، لكن الأفضل يفضل الشريط فاضي بهدوء بدل ما يبان له مساحة فاضية غريبة
           ) : (

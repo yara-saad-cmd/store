@@ -5,6 +5,8 @@ import { Route, Routes } from "react-router-dom"
 import { Toaster } from "react-hot-toast"
 import ScrollToTop from "../components/ScrollToTop"
 import { AnimatePresence } from "framer-motion"
+import Login from "./LoginPages/Login"
+import CreateAccount from "./LoginPages/CreateAccount"
 
 // الصفحات دي بتتحمل بس وقت الحاجة ليها، مش من أول زيارة للموقع
 const Cart = lazy(() => import("../page/cart/cart"))
@@ -75,6 +77,10 @@ function App() {
             <Route path="/Temsconditions" element={<Temsconditions />} />
             <Route path="/Termsofuse" element={<Termsofuse />} />
             <Route path="/search-page" element={<SearchPage />} />
+            {/* login pags */}
+            <Route path="/login" element={<Login/>} />
+            <Route path="/CreateAccount" element={<CreateAccount/>} />
+            {/* login pags */}
 
             {/* لازم تفضل دايماً آخر Route في الليستة */}
             <Route path="*" element={

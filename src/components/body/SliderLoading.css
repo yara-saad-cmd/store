@@ -1,0 +1,11 @@
+
+.slider-loading {
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  
+  .slider-loading-box {
+    width: 100%;
+    height: 400px;
+  }
+  
