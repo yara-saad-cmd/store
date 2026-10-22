@@ -1,40 +1,4 @@
-// import React, { useState, useEffect } from 'react' // 1. أضف useEffect
 
-// function ImgPgProdact({ goods }) {
-//   const [activeImg, setActiveImg] = useState(goods.images[0]);
-
-//   // 2. مراقبة تغير المنتج
-//   useEffect(() => {
-//     // عندما يتغير الـ goods، اجعل الصورة النشطة هي أول صورة للمنتج الجديد
-//     setActiveImg(goods.images[0]);
-//   }, [goods]); // هذه المصفوفة تعني: "نفذ هذا الكود كلما تغير كائن goods"
-
-//   return (
-//     <div className="imegs">
-//       <div className="small-images">
-//         {goods.images.map((img, index) => (
-//           <img
-//             key={index}
-//             src={img}
-//             className={img === activeImg ? "active-thumb" : ""}
-//             onClick={() => setActiveImg(img)}
-//             alt={goods.title}
-//           />
-//         ))}
-//       </div>
-
-//       <div className="big-image">
-//         <img src={activeImg} alt={goods.title} />
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default ImgPgProdact;
-
-
-
-// حوات u الي   a   في product
 import React, { useState, useEffect, useRef } from 'react'
 import "./img-pg-product.css"
 

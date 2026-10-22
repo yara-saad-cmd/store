@@ -16,15 +16,17 @@ function Pgsearch() {
   const query = new URLSearchParams(useLocation().search).get("query");
 
   useEffect(() => {
+    // نشيل الرموز اللي ممكن تلخبط صيغة الفلتر
+    const safeQuery = (query || "").replace(/[,()%*\\]/g, " ").trim();
+
     const fetchResults = async () => {
       setloading(true);
 
       try {
-        // البحث عن كلمة البحث داخل جدول المنتجات في Supabase
         const { data, error } = await supabase
-        .from("products")
-        .select("*")
-        .or(`title.ilike.%${query}%,description.ilike.%${query}%`);
+          .from("products")
+          .select("*")
+          .or(`title.ilike.%${safeQuery}%,description.ilike.%${safeQuery}%`);
 
         if (error) {
           console.error("خطأ أثناء البحث في سوبابيز:", error);
@@ -40,7 +42,7 @@ function Pgsearch() {
       }
     };
 
-    if (query) {
+    if (safeQuery) {
       fetchResults();
     } else {
       setresults([]);

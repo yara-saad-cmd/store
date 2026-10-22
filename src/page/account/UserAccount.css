@@ -154,3 +154,18 @@
     }
   }
 
+  .pg-account .log-out .btn-logout:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .pg-admin {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: var(--text-color-1);
+  }
+  
+  .pg-admin:hover {
+    color: var(--min-color);
+  }

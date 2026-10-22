@@ -1,14 +1,17 @@
 
 import React, { Suspense, lazy } from "react"
 import Home from "./Home"
-import { Route, Routes } from "react-router-dom"
+import { Link, Route, Routes } from "react-router-dom"
 import { Toaster } from "react-hot-toast"
 import ScrollToTop from "../components/ScrollToTop"
 import { AnimatePresence } from "framer-motion"
-import Login from "./LoginPages/Login"
-import CreateAccount from "./LoginPages/CreateAccount"
+import AdminRoute from "../components/admin/AdminRoute"
 
-// الصفحات دي بتتحمل بس وقت الحاجة ليها، مش من أول زيارة للموقع
+const AdminProductForm = lazy(() => import("../components/admin/AdminProductForm"))
+const AdminProducts = lazy(() => import("../components/admin/AdminProducts"))
+const AdminOrders = lazy(() => import("../components/admin/AdminOrders"))
+const Login = lazy(() => import("./LoginPages/Login"))
+const CreateAccount = lazy(() => import("./LoginPages/CreateAccount"))
 const Cart = lazy(() => import("../page/cart/cart"))
 const Pgcategory = lazy(() => import("../page/pg-category/pg-category"))
 const Pgsearch = lazy(() => import("../page/pg-search"))
@@ -55,7 +58,11 @@ function App() {
         <Suspense fallback={<div className="route-loading" aria-busy="true"></div>}>
           <Routes>
 
-
+                     {/* لوحة التحكم: للأدمن بس */}
+                     <Route path="/admin" element={<AdminRoute><AdminOrders /></AdminRoute>} />
+            <Route path="/admin/products" element={<AdminRoute><AdminProducts /></AdminRoute>} />
+            <Route path="/admin/products/new" element={<AdminRoute><AdminProductForm /></AdminRoute>} />
+            <Route path="/admin/products/:id" element={<AdminRoute><AdminProductForm /></AdminRoute>} />
             <Route path="/" element={<Home />} />
             <Route path="/order-details" element={<OrderDetails />} />
             <Route path="/like" element={<Like />} />
@@ -84,8 +91,9 @@ function App() {
 
             {/* لازم تفضل دايماً آخر Route في الليستة */}
             <Route path="*" element={
-              <div style={{ textAlign: 'center', padding: '80px 20px' }}>
+              <div className="status-message">
                 <h2>404 - الصفحة غير موجودة</h2>
+                <Link to="/">العودة للرئيسية</Link>
               </div>
             } />
 

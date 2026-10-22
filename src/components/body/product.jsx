@@ -216,10 +216,12 @@ function Product({ products, title, isLikePage = false }){
                     </div>
 
                     <div className="StarsAndPrice">
-                      <div className="stars">
-                        <span>{(item.rating ?? 5).toFixed(1)}</span>
-                        <IoIosStar />
-                      </div>
+                    {item.rating != null && (
+                        <div className="stars">
+                          <span>{Number(item.rating).toFixed(1)}</span>
+                          <IoIosStar />
+                        </div>
+                      )}
                       <h5 className="price">
                         <span>EGP</span> {item.price}
                       </h5>

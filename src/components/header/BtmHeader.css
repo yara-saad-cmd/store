@@ -104,19 +104,5 @@
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }
-.arya-login a{
- display: flex;
- align-items: center;
-  .login{
- margin-left: 5px;
-  
-}
-
-
-svg{
-  font-size: 20px;
-  
-  }
-}
 
   /* loading btm hedar */

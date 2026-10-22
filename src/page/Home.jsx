@@ -99,8 +99,7 @@ function Home() {
         if (error) {
           console.error("Error fetching from Supabase:", error)
         } else {
-          // التعديل السحري هنا: بنغلف المصفوفة جوه جيسون عشان كود الـ Product القديم بتاعك يقراها علطول
-            console.log("البيانات القادمة من سوبابيز بالكامل:", data);
+        
           setProduct({ all: data || [] })
         }
       

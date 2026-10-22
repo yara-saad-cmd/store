@@ -130,3 +130,26 @@ header {
     display: none;
   }
 }
+
+
+
+.top-header .icon-header .login-link {
+  color: var(--text-color-2);
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.top-header .icon-header .login-link:hover {
+  color: var(--min-color);
+}
+
+@media (max-width: 480px) {
+  .top-header .icon-header {
+    gap: 15px;
+  }
+
+  .top-header .icon-header .login-link {
+    font-size: 12px;
+  }
+}

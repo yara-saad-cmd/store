@@ -73,6 +73,13 @@
         }
     }
 }
+
+
+.footerTwo .icon a {
+  color: inherit;
+  display: flex;
+}
+
 @media (max-width: 480px){
  
   .footerTwo .links a {
