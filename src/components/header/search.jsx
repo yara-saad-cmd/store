@@ -28,11 +28,8 @@ function Search() {
     // أضف هذا الـ useEffect لمزامنة الـ input مع الرابط (URL)
 useEffect(() => {
     const params = new URLSearchParams(locachan.search);
-    const query = params.get('query');
-    if (query) {
-        setsearch(query);
-    }
-}, [locachan.search]); // سيعمل في كل مرة يتغير فيها الرابط
+    setsearch(params.get('query') || "");
+  }, [locachan.search]);
 
     
 const executeSearch = (term) => {
@@ -64,8 +61,9 @@ const executeSearch = (term) => {
               // البحث في جدول المنتجات عن التي تحتوي على نص البحث
               const { data, error } = await supabase
                 .from('products')
-                .select('title') // جلب عمود العنوان فقط
-                .ilike('title', `%${search}%`) // البحث الجزيئي عن الكلمة
+                .select('title')
+                .eq('is_hidden', false)
+                .ilike('title', `%${search.replace(/[%_\\]/g, ' ')}%`)
                 .limit(6); // حد أقصى 6 نتائج للمقترحات
 
               if (isCancelled) return; // تجاهل النتيجة لو تم إلغاء هذا الطلب

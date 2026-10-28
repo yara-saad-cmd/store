@@ -19,6 +19,8 @@ function Pgsearch() {
     // نشيل الرموز اللي ممكن تلخبط صيغة الفلتر
     const safeQuery = (query || "").replace(/[,()%*\\]/g, " ").trim();
 
+    let cancelled = false;
+
     const fetchResults = async () => {
       setloading(true);
 
@@ -26,30 +28,35 @@ function Pgsearch() {
         const { data, error } = await supabase
           .from("products")
           .select("*")
+          .eq("is_hidden", false)
           .or(`title.ilike.%${safeQuery}%,description.ilike.%${safeQuery}%`);
+          if (cancelled) return;
 
-        if (error) {
-          console.error("خطأ أثناء البحث في سوبابيز:", error);
-          setresults([]);
-        } else {
-          setresults(data || []);
+          if (error) {
+            console.error("خطأ أثناء البحث في سوبابيز:", error);
+            setresults([]);
+          } else {
+            setresults(data || []);
+          }
+        } catch (error) {
+          console.error("search error", error);
+          if (!cancelled) setresults([]);
+        } finally {
+          if (!cancelled) setloading(false);
         }
-      } catch (error) {
-        console.error("search error", error);
+      };
+  
+      if (safeQuery) {
+        fetchResults();
+      } else {
         setresults([]);
-      } finally {
         setloading(false);
       }
-    };
-
-    if (safeQuery) {
-      fetchResults();
-    } else {
-      setresults([]);
-      setloading(false);
-    }
-  }, [query]);
-
+  
+      return () => {
+        cancelled = true;
+      };
+    }, [query]);
   const searchResults = results.length > 0 ? (
     <div className="goods">
       <Goods

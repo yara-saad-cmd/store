@@ -5,7 +5,7 @@ import { ContextCart } from "../../components/context/contextcart";
 import PageTransition from "../../components/PageTransaction";
 import toast from "react-hot-toast"; 
 import PageLocation from "../../components/pageLocationFolder/pageLocation"
-import Visa from "../../components/visa/visa";import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Invoice from "../../components/invoice/invoice";
 import CartItem from "../../components/cartItem/CartItem";
 import ImgCartEmpty from "../../img/img-cart-ampty.png"
@@ -106,11 +106,8 @@ function Cart() {
                 </div>
   
                 <div className="invoice-area">
-                  <div className="invoice">
+                <div className="invoice">
                     <Invoice layout="cart" />
-                  </div>
-                  <div className="cach-area">
-                    <Visa />
                   </div>
                 </div>
               

@@ -9,6 +9,7 @@ export default function AdminNav() {
     <nav className="admin-nav" aria-label="لوحة التحكم">
       <NavLink to="/admin" end className={getClassName}>الطلبات</NavLink>
       <NavLink to="/admin/products" className={getClassName}>المنتجات</NavLink>
+      <NavLink to="/admin/categories" className={getClassName}>الأقسام</NavLink>
     </nav>
   )
 }

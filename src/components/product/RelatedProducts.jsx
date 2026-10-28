@@ -54,10 +54,12 @@ function RelatedProducts({
                       </div>
 
                       <div className="StarsAndPrice">
-                        <div className="stars">
-                          <span>{item.rating != null ? Number(item.rating).toFixed(1) : "0.0"}</span>{" "}
-                          <IoIosStar />
-                        </div>
+                        {item.rating != null && (
+                          <div className="stars">
+                            <span>{Number(item.rating).toFixed(1)}</span>
+                            <IoIosStar />
+                          </div>
+                        )}
                         <h5 className="price">
                           <span>EGP </span>
                           {item.price}

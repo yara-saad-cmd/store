@@ -93,8 +93,9 @@ function Home() {
       try {
         // بنجيب المنتجات من سوبابيز
         const { data, error } = await supabase
-          .from('products')
-          .select('*')
+        .from('products')
+        .select('*')
+        .eq('is_hidden', false)
 
         if (error) {
           console.error("Error fetching from Supabase:", error)

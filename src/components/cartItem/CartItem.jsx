@@ -193,20 +193,19 @@ export default function CartItem({
   const hasSizes = sizesList.length > 0 || Boolean(selectedSize);
 const hasColors = colorsList.length > 0 || Boolean(selectedColor);
 
-  const handleSizeClick = (size) => {
-    setLocalSize(size);
-    if (onSizeChange && productId) {
-      onSizeChange(productId, size, selectedColor);
-    }
-  };
+const handleSizeClick = (size) => {
+  setLocalSize(size);
+  if (onSizeChange && productId) {
+    onSizeChange(productId, size, selectedColor, selectedSize);
+  }
+};
 
-  const handleColorClick = (color) => {
-    setLocalColor(color);
-    if (onColorChange && productId) {
-      onColorChange(productId, color, selectedSize); // 👈 تمرير المقاس الحالي عشان يلاقي العنصر الصح في العربة
-    }
-  };
-
+const handleColorClick = (color) => {
+  setLocalColor(color);
+  if (onColorChange && productId) {
+    onColorChange(productId, color, selectedSize, selectedColor);
+  }
+};
   const handleAddToLike = () => {
     if (!productId) return;
 

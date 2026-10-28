@@ -3,51 +3,40 @@ import React, { createContext, useCallback, useEffect, useMemo, useState } from 
 
 export const ContextCart = createContext();
 
+// ------------------ Data Sanitizer Helper ------------------
+
+const sanitizeItem = (item) => {
+  if (!item || typeof item !== "object") return null;
+
+  return {
+    ...item,
+    id: item.id ?? item._id,
+    title: String(item.title || item.name || "").trim(),
+    price: Number(item.price) || 0,
+    quantity: Math.max(1, Number(item.quantity) || 1),
+    selectedSize: String(item.selectedSize || item.size || "").trim(),
+    selectedColor: String(item.selectedColor || item.color || "").trim(),
+  };
+};
+
+// ------------------ Safe localStorage Reader ------------------
+
+const getSafeLocalStorage = (key) => {
+  try {
+    const saved = localStorage.getItem(key);
+    if (!saved) return [];
+
+    const parsed = JSON.parse(saved);
+    if (!Array.isArray(parsed)) return [];
+
+    return parsed.map(sanitizeItem).filter(Boolean);
+  } catch (error) {
+    console.error(`خطأ في قراءة ${key} من localStorage:`, error);
+    return [];
+  }
+};
+
 export default function CartProvider({ children }) {
-
-  // ------------------ Data Sanitizer Helper ------------------
-
-  const sanitizeItem = (item) => {
-    if (!item || typeof item !== "object") return null;
-  
-    return {
-      ...item,
-      id: item.id ?? item._id,
-      title: String(item.title || item.name || "").trim(),
-      price: Number(item.price) || 0,
-      quantity: Math.max(1, Number(item.quantity) || 1),
-      selectedSize: String(
-        item.selectedSize || item.size || ""
-      ).trim(),
-      selectedColor: String(
-        item.selectedColor || item.color || ""
-      ).trim(),
-    };
-  };
-
-  // ------------------ Safe localStorage Reader ------------------
-
-  const getSafeLocalStorage = (key) => {
-    try {
-      const saved = localStorage.getItem(key);
-
-      if (!saved) return [];
-
-      const parsed = JSON.parse(saved);
-
-      if (!Array.isArray(parsed)) {
-        return [];
-      }
-
-      return parsed
-        .map(sanitizeItem)
-        .filter(Boolean);
-    } catch (error) {
-      console.error(`خطأ في قراءة ${key} من localStorage:`, error);
-      return [];
-    }
-  };
-
   // ------------------ LIKE ITEMS ------------------
 
   const [likeItems, setlikeItems] = useState(() =>
@@ -93,7 +82,7 @@ export default function CartProvider({ children }) {
     getSafeLocalStorage("cartItems")
   );
 
-  const increaseQuantity = (item) => {
+  const increaseQuantity = useCallback((item) => {
     if (!item?.id) return;
 
     const targetSize = String(item.selectedSize || "").trim();
@@ -104,13 +93,12 @@ export default function CartProvider({ children }) {
         i.id === item.id &&
         (i.selectedSize || "") === targetSize &&
         (i.selectedColor || "") === targetColor
-          ? { ...i, quantity: i.quantity + 1 }
-          : i
-      )
-    );
-  };
-
-  const decreaseQuantity = (item) => {
+        ? { ...i, quantity: i.quantity + 1 }
+        : i
+    )
+  );
+}, []);
+const decreaseQuantity = useCallback((item) => {
     if (!item?.id) return;
 
     const targetSize = String(item.selectedSize || "").trim();
@@ -128,9 +116,8 @@ export default function CartProvider({ children }) {
           : i
       )
     );
-  };
-
-  const delet = (item) => {
+  }, []);
+   const delet = useCallback((item) => {
     if (!item?.id) return;
 
     const targetSize = String(item.selectedSize || "").trim();
@@ -146,7 +133,7 @@ export default function CartProvider({ children }) {
           )
       )
     );
-  };
+  }, []);
 
   const clearCart = useCallback(() => {
     setcartItems([]);
@@ -154,7 +141,7 @@ export default function CartProvider({ children }) {
 
 
 
-  const AddToCart = (item) => {
+  const AddToCart = useCallback((item) => {
     const cleanItem = sanitizeItem(item);
   
     if (!cleanItem?.id) return;
@@ -183,7 +170,7 @@ export default function CartProvider({ children }) {
   
       return [...prevItems, cleanItem];
     });
-  };
+  }, []);
 
   useEffect(() => {
     try {
@@ -202,34 +189,60 @@ export default function CartProvider({ children }) {
 
   // ------------------ Size & Color Change ------------------
 
-  const onSizeChange = (id, newSize, oldColor = "") => {
-    setcartItems((prev) =>
-      prev.map((item) =>
+   // بيغيّر مقاس/لون عنصر واحد في العربة، ولو في عنصر تاني بنفس الاختيار الجديد بيدمجهم
+   const changeCartOption = useCallback((id, from, to) => {
+    setcartItems((prev) => {
+      const matches = (item, size, color) =>
         item.id === id &&
-        (item.selectedColor || "") === oldColor
-          ? {
-              ...item,
-              selectedSize: String(newSize).trim(),
-            }
-          : item
-      )
-    );
-  };
+        (item.selectedSize || "") === size &&
+        (item.selectedColor || "") === color;
 
-  const onColorChange = (id, newColor, oldSize = "") => {
-    setcartItems((prev) =>
-      prev.map((item) =>
-        item.id === id &&
-        (item.selectedSize || "") === oldSize
-          ? {
-              ...item,
-              selectedColor: String(newColor).trim(),
-            }
-          : item
-      )
-    );
-  };
+      const source = prev.find((item) => matches(item, from.size, from.color));
+      if (!source) return prev;
 
+      // مفيش تغيير فعلي
+      if (from.size === to.size && from.color === to.color) return prev;
+
+      const target = prev.find((item) => matches(item, to.size, to.color));
+
+      if (target) {
+        // العنصر الجديد موجود: نجمع الكميات ونشيل القديم
+        return prev
+          .filter((item) => item !== source)
+          .map((item) =>
+            item === target
+              ? { ...item, quantity: item.quantity + source.quantity }
+              : item
+          );
+      }
+
+      return prev.map((item) =>
+        item === source
+          ? { ...item, selectedSize: to.size, selectedColor: to.color }
+          : item
+      );
+    });
+  }, []);
+
+  const onSizeChange = useCallback(
+    (id, newSize, color = "", oldSize = "") =>
+      changeCartOption(
+        id,
+        { size: String(oldSize).trim(), color: String(color).trim() },
+        { size: String(newSize).trim(), color: String(color).trim() }
+      ),
+    [changeCartOption]
+  );
+
+  const onColorChange = useCallback(
+    (id, newColor, size = "", oldColor = "") =>
+      changeCartOption(
+        id,
+        { size: String(size).trim(), color: String(oldColor).trim() },
+        { size: String(size).trim(), color: String(newColor).trim() }
+      ),
+    [changeCartOption]
+  );
   // ------------------ Context Value ------------------
 
   const contextValue = useMemo(

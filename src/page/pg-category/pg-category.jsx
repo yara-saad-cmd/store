@@ -28,7 +28,7 @@ function Pgcategory() {
         .single();
 
       if (categoryError || !categoryData) {
-        console.log("القسم غير موجود", categoryError);
+        console.error("القسم غير موجود", categoryError);
         setcategoryprodact([]);
         setisLoading(false);
         return;
@@ -38,7 +38,8 @@ function Pgcategory() {
       const { data: productsData, error: productsError } = await supabase
         .from("products")
         .select("*")
-        .eq("category_id", categoryData.id); // 👈 تم تصحيح اسم العمود category_id
+        .eq("category_id", categoryData.id)
+        .eq("is_hidden", false);
 
       if (productsError) {
         console.error("خطأ في جلب المنتجات:", productsError);
@@ -53,7 +54,7 @@ function Pgcategory() {
     fetchCategoryProducts();
   }, [category]);
 
-  console.log(categoryprodact);
+
 
   return (
     <PageTransition>

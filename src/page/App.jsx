@@ -10,6 +10,7 @@ import AdminRoute from "../components/admin/AdminRoute"
 const AdminProductForm = lazy(() => import("../components/admin/AdminProductForm"))
 const AdminProducts = lazy(() => import("../components/admin/AdminProducts"))
 const AdminOrders = lazy(() => import("../components/admin/AdminOrders"))
+const AdminCategories = lazy(() => import("../components/admin/AdminCategories"))
 const Login = lazy(() => import("./LoginPages/Login"))
 const CreateAccount = lazy(() => import("./LoginPages/CreateAccount"))
 const Cart = lazy(() => import("../page/cart/cart"))
@@ -28,6 +29,7 @@ const Temsconditions = lazy(() => import("./About-This-Site/terms-conditions"))
 const Termsofuse = lazy(() => import("../page/About-This-Site/Termsofuse"))
 const SearchPage = lazy(() => import("../components/SearchPage/SearchPage"))
 const Pgproduct = lazy(() => import("../components/product/Pg-product"))
+
 
 function App() {
 
@@ -60,7 +62,8 @@ function App() {
 
                      {/* لوحة التحكم: للأدمن بس */}
                      <Route path="/admin" element={<AdminRoute><AdminOrders /></AdminRoute>} />
-            <Route path="/admin/products" element={<AdminRoute><AdminProducts /></AdminRoute>} />
+                     <Route path="/admin/products" element={<AdminRoute><AdminProducts /></AdminRoute>} />
+                     <Route path="/admin/categories" element={<AdminRoute><AdminCategories /></AdminRoute>} />
             <Route path="/admin/products/new" element={<AdminRoute><AdminProductForm /></AdminRoute>} />
             <Route path="/admin/products/:id" element={<AdminRoute><AdminProductForm /></AdminRoute>} />
             <Route path="/" element={<Home />} />

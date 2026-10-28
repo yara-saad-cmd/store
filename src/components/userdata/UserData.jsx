@@ -13,11 +13,12 @@ const ALLOWED_GOVERNORATES = [
 ];
 
 // دالة تنظيف النص التجريبي وإزالة الرموز الخاصة كحماية ضد XSS/Injection
+// React بيهرّب النصوص تلقائياً، فبنشيل بس الأقواس والاقتباس اللي ملهمش لازمة في الاسم والعنوان
 const sanitizeText = (input, maxLength = 100) => {
   if (typeof input !== "string") return "";
 
   return input
-    .replace(/[<>/'"&]/g, "")
+    .replace(/[<>"]/g, "")
     .trim()
     .slice(0, maxLength);
 };

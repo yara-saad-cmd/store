@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./Pg-product.css";
 import Loading from "./loading-pg-product";
 import BtmHeader from "../header/btmHeader";
@@ -35,14 +35,15 @@ function Pgproduct() {
         const {data, error} = await supabase
         .from('products')
         .select('*')
-        .eq('id', id)      
-        .single();         
-
+        .eq('id', id)
+        .eq('is_hidden', false)
+        .maybeSingle();
+        
         if (error) {
           console.error("حصلت مشكلة وإحنا بنجيب البيانات:", error);
         } else {
           setprodact(data);
-          console.log("المنتج اللي جاي من سوبابيز هو:", data);
+         
         }
       } catch (err) {
         console.error("خطأ غير متوقع:", err);
@@ -63,15 +64,18 @@ function Pgproduct() {
         const { data, error } = await supabase
         .from("products")
         .select("*")
-        .eq("category_id", goods.category_id);
+        .eq("category_id", goods.category_id)
+        .neq("id", goods.id)
+        .eq("is_hidden", false)
+        .neq("id", goods.id);
 
         if (error) {
-          console.log("Error fetching related products:", error);
+          console.error("Error fetching related products:", error);
         } else {
           setrelatedProducts(data || []);
         }
       } catch (err) {
-        console.log("Error:", err);
+        console.error("Error:", err);;
       } finally {
         setloadingrelatedProducts(false);
       }
@@ -81,8 +85,14 @@ function Pgproduct() {
   }, [goods?.category_id]);
 
   if (loading) return <Loading />;
-  if (!goods) return <p>goods not found</p>;
-
+  if (!goods) {
+    return (
+      <div className="status-message">
+        <h2>المنتج غير موجود</h2>
+        <Link to="/">العودة للرئيسية</Link>
+      </div>
+    );
+  }
   return (
     <div className="all-page">
       <header>

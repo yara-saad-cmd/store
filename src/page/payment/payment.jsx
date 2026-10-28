@@ -1,4 +1,3 @@
-
 import React, { useContext, useState } from "react";
 
 import toast from "react-hot-toast";
@@ -19,17 +18,32 @@ import Footer from "../../components/footer/footer";
 import { supabase } from "../../supabaseClient";
 
 import { ContextCart } from "../../components/context/contextcart";
+import { siteInfo } from "../../components/siteInfo";
+
+const { visa: visaEnabled, coupons: couponsEnabled } = siteInfo.payment;
 
 
+// القاعدة بترجّع كود ثابت، والرسالة اللي بتظهر للعميلة بتتكتب هنا ونقدر نغيّرها براحتنا
+const ORDER_ERRORS = {
+  limit_phone: "وصلتِ للحد الأقصى من الطلبات، حاولي لاحقا",
+  limit_total: "حدث مشكله حاولي بعد قليل",
+  item_unavailable: "احد المنتجات التي طلبتها غبر متاحه",
+};
+
+const getOrderErrorMessage = (error) => {
+  const code = error?.hint || error?.message || "";
+  return ORDER_ERRORS[code] || "حصلت مشكلة أثناء إرسال طلبك، من فضلك حاولي مرة تانية";
+};
 
 function Payment() {
-  const [selectedMethod, setSelectedMethod] = useState("");
+   // لو الفيزا مقفولة، الدفع عند الاستلام بيتحدد تلقائياً
+   const [selectedMethod, setSelectedMethod] = useState(visaEnabled ? "" : "cash");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { cartItems, clearCart } = useContext(ContextCart);
   const navigate = useNavigate();
 
- 
+
   // قراءة بيانات العميل المحفوظة من فورم الشحن (UserData.jsx)
   const getSavedUserData = () => {
     try {
@@ -45,24 +59,24 @@ function Payment() {
       return null;
     }
   };
-    // قراءة الملاحظة اللي العميلة كتبتها في صفحة تفاصيل الطلب
-    const getSavedNote = () => {
-      try {
-        return localStorage.getItem("orderNote") || "";
-      } catch (error) {
-        console.error("خطأ في قراءة الملاحظة:", error);
-        return "";
-      }
-    };
 
- 
+  // قراءة الملاحظة اللي العميلة كتبتها في صفحة تفاصيل الطلب
+  const getSavedNote = () => {
+    try {
+      return localStorage.getItem("orderNote") || "";
+    } catch (error) {
+      console.error("خطأ في قراءة الملاحظة:", error);
+      return "";
+    }
+  };
+
 
   // إرسال الطلب لقاعدة البيانات عند الضغط على "متابعة"
   const handleSubmitOrder = async () => {
     if (isSubmitting) return;
 
     const userData = getSavedUserData();
-   
+
     if (
       !userData ||
       !userData.name?.trim() ||
@@ -82,15 +96,13 @@ function Payment() {
     setIsSubmitting(true);
 
     try {
-            // بنبعت بس اختيارات العميلة، والأسعار بتتحسب في قاعدة البيانات
-            const orderItemsPayload = cartItems.map((item) => ({
-              product_id: item.id,
-              selected_size: item.selectedSize || null,
-              selected_color: item.selectedColor || null,
-              quantity: item.quantity,
-              
-              
-            }));
+      // بنبعت بس اختيارات العميلة، والأسعار بتتحسب في قاعدة البيانات
+      const orderItemsPayload = cartItems.map((item) => ({
+        product_id: item.id,
+        selected_size: item.selectedSize || null,
+        selected_color: item.selectedColor || null,
+        quantity: item.quantity,
+      }));
 
       // استدعاء واحد: الطلب ومنتجاته بيتسجلوا مع بعض أو مفيش حاجة بتتسجل
       const { data: newOrderId, error: orderError } = await supabase.rpc(
@@ -104,8 +116,6 @@ function Payment() {
             address: userData.address,
             payment_method: selectedMethod,
             note: getSavedNote().trim() || null,
-         
-              
           },
           items: orderItemsPayload,
         }
@@ -113,9 +123,10 @@ function Payment() {
 
       if (orderError) {
         console.error("خطأ في إنشاء الطلب:", orderError);
-        toast.error("حصلت مشكلة أثناء إرسال طلبك، من فضلك حاولي مرة تانية");
+        toast.error(getOrderErrorMessage(orderError), { duration: 4000 });
         return;
       }
+
       try {
         localStorage.removeItem("orderNote");
       } catch (error) {
@@ -135,6 +146,7 @@ function Payment() {
       setIsSubmitting(false);
     }
   };
+
   return (
     <>
       <HeaderTwo />
@@ -158,7 +170,7 @@ function Payment() {
                       className="radio-card"
                       htmlFor="cash-payment"
                     >
-                                           <input
+                      <input
                         id="cash-payment"
                         type="radio"
                         name="pay"
@@ -180,11 +192,12 @@ function Payment() {
                       </div>
                     </label>
 
+                    {visaEnabled && (
                     <label
                       className="radio-card"
                       htmlFor="visa-payment"
                     >
-                                            <input
+                      <input
                         id="visa-payment"
                         type="radio"
                         name="pay"
@@ -224,49 +237,52 @@ function Payment() {
                               <img src={imgVISA} alt="Visa" />
                             </span>
                           </div>
-                        </div>
+                          </div>
                       </div>
                     </label>
+                    )}
                   </div>
                 </div>
-              <div className="Coupon">
-                <p className="text">
-                  كود الخصم الخاص بك
-                </p>
 
-                <div className="coupon-input">
-                  <input placeholder="كود الخصم" />
+                <div className="Coupon">
+                {couponsEnabled && (
+                    <>
+                      <p className="text">
+                        كود الخصم الخاص بك
+                      </p>
 
-                  <button
-                    type="button"
-                    className="add"
-                  >
-                    تطبيق
-                  </button>
+                      <div className="coupon-input">
+                        <input placeholder="كود الخصم" />
+
+                        <button
+                          type="button"
+                          className="add"
+                        >
+                          تطبيق
+                        </button>
+                      </div>
+                    </>
+                  )}
+                  {selectedMethod ? (
+                    <button
+                      type="button"
+                      className="btn-submit-order"
+                      onClick={handleSubmitOrder}
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "جاري إرسال الطلب..." : "متابعة"}
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      className="btn-submit-order btn-disabled"
+                      disabled
+                    >
+                      اختر طريقة الدف للمتابع
+                    </button>
+                  )}
                 </div>
-
-                {selectedMethod ? (
-                                    <button
-                                    type="button"
-                                    className="btn-submit-order"
-                                    onClick={handleSubmitOrder}
-                                    disabled={isSubmitting}
-                                  >
-                                    {isSubmitting ? "جاري إرسال الطلب..." : "متابعة"}
-                                  </button>
-                ) : (
-                  <button
-                    type="button"
-                    className="btn-submit-order btn-disabled"
-                    disabled
-                   
-                  >
-                    اختر طريقة الدف للمتابع
-                  </button>
-                )}
-              </div> </div>
-
-             
+              </div>
             </div>
           </div>
 
