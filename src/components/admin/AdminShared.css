@@ -1,0 +1,56 @@
+/* عناوين صفحات الأدمن */
+.admin-orders-title,
+.admin-products-title,
+.product-form-title{ margin:20px 0 15px; }
+
+/* رسائل (تحميل / خطأ / فاضي) */
+.admin-orders-message,
+.admin-products-message,
+.product-form-message{ text-align:center; padding:40px 0; }
+
+/* الفلاتر */
+.admin-orders-filters,
+.admin-products-filters{
+  display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;
+}
+.admin-orders-filters button,
+.admin-products-filters button{
+  background-color:var(--white-color);
+  border:1px solid var(--border-color);
+  border-radius:20px;
+  padding:6px 14px;
+  font-size:14px;
+  cursor:pointer;
+}
+.admin-orders-filters button.active,
+.admin-products-filters button.active{
+  background-color:var(--min-color);
+  border-color:var(--min-color);
+  color:var(--text-white);
+}
+
+/* الكروت البيضاء */
+.admin-order,
+.admin-product,
+.product-form{
+  background-color:var(--white-color);
+  border-radius:12px;
+  box-shadow:var(--shadow-card);
+}
+
+/* الأزرار الرئيسية */
+.admin-retry,
+.admin-add-product,
+.admin-product-edit,
+.product-form-save{
+  background-color:var(--min-color);
+  color:var(--text-white);
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* حالة disabled */
+.admin-status:disabled,
+.admin-product-toggle:disabled,
+.product-form-upload:disabled,
+.product-form-save:disabled{ opacity:.5; cursor:not-allowed; }

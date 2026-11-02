@@ -19,7 +19,7 @@
  
 .footerTwo{
     background-color: var(--min-color);
-    margin-top: 0;
+   
     
 
     .logo-and-icon{
@@ -47,13 +47,13 @@
         width: fit-content;
         padding-bottom: 30px;
           a {
-        text-decoration: none;
+      
         color: var(--text-color-1);
         font-weight: 300;
         font-size: 20px;
       }
         a:hover{
-            background-color: rgba(245, 245, 245, 0.233);
+            background-color:var(--overlay-light);
         }
       }
       
@@ -88,9 +88,7 @@
 
 }
 @media (max-width: 768px) {
-  .footerTwo .container{
-    grid-auto-flow: row;      /* يخليهم تحت بعض */
-  }
+ 
 
   .footerTwo .links {
      grid-template-rows: repeat(2, auto);

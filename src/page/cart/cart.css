@@ -1,10 +1,5 @@
 
-.pg-cart{
-    min-height: 100vh;   /* تملى الشاشة لو المحتوى قليل */
-  background-color:var( --min-pg2);
-  display: flex;
-  flex-direction: column;
- }
+
 .all-content{
     flex: 1; 
  }
@@ -59,9 +54,7 @@
 .pg-cart .cart .cart-goods .item-cart .img-name{
     width: 110px;
     height: 110px;
-    max-width: 110px;
-    max-height: 110px;
-    background-color: var(--white-color);
+   
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,14 +69,12 @@
     overflow: hidden;
 }
 .pg-cart .cart .cart-goods .item-cart .img-name a img{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+   
     width: 100%;
     height: 100%;
     object-fit: cover;
     position: absolute;
-    background-color:var(--white-color);
+    
     
 }
 .pg-cart .cart .item-cart .Content{
@@ -98,7 +89,7 @@
     font-size: 20px;
     overflow: hidden;
     text-overflow: ellipsis;
-    background-color:var(--white-color);
+   
     
 }
  .pg-cart .cart .item-cart .Content .size select{
@@ -113,14 +104,14 @@
     background-color: var( --min-pg);
 }
 .pg-cart .cart .item-cart .Content .price{
-    background-color:var(--white-color);
+   
     padding: 3px 0;
     font-size: 16px;
     font-weight: bold;
    
 }
 .pg-cart .cart .prdact .plus-and-mynas {
-    background-color:var(--white-color);
+   
     display: flex;
     align-items: flex-end;
     padding: 3px;
@@ -188,7 +179,7 @@
     position: -webkit-sticky; /* لدعم متصفحات safari */
     position: sticky;
     top: 100px; /* المسافة من أعلى الشاشة أثناء التحرك */
-    width: 100%; /* سيأخذ عرضه من مساحة الـ flex المخصصة له */
+   
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -212,7 +203,7 @@
  /*no-goods*/
  .no-goods{
   
-    height: 100vh;
+    min-height:60vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -237,6 +228,24 @@
         margin: 5px;
     }
  }
+
+
+
+.cart-problem {
+    margin: 4px 0 12px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background:var(--danger-bg);
+    color:var(--danger); 
+    font-size: 14px;
+  }
+  
+  .cart-row.has-problem .item-cart {
+    opacity: 0.7;
+  }
+
+
+
  /*no-goods*/
  @media only screen and (min-width: 999px) and (max-width: 1200px){
     .pg-cart .cart .Content .name-prudact{
@@ -267,6 +276,8 @@
 
 
 
+
+
 @media (max-width: 700px){
     .pg-cart .cart .Content .name-prudact{
         max-width: 100px;
@@ -292,7 +303,7 @@
 
 
     .pg-cart .cart .cart-goods .item-cart{
-        height: 190px;
+        min-height:190px;
     }
    
 
@@ -309,7 +320,7 @@
     .pg-cart .cart .cart-goods .item-cart{
         flex-direction: column;
           align-items: center;
-          height: 280px;
+          min-height:280px; 
     }
     .pg-cart .cart .prdact .plus-and-mynas{
         width: 100%;

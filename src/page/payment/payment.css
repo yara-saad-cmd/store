@@ -1,239 +1,220 @@
 
-.pg-cash{
-  min-height: 100vh;   /* تملى الشاشة لو المحتوى قليل */
-  background-color:var( --min-pg2);
-  display: flex;
-  flex-direction: column;
-   
-}
-.all-payment{
+.all-payment {
   flex: 1;
 }
-.pg-cash .all-content{
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    margin-top: 60px;
+.pg-cash .all-content {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-top: 60px;
 
-    .payment-methods{
-      width: 65%;
-    }
-
+  .payment-methods {
+    width: 65%;
+  }
 }
 
 /*------------------------------------*/
 .radio-group {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width:100%;
-    background-color: var(--white-color);
-    border-radius: 10px;
-    padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  background-color: var(--white-color);
+  border-radius: 10px;
+  padding: 10px;
 
-    .text-title{
-      margin: 5px 15px 0 0;
-    }
-   
+  .text-title {
+    margin: 5px 15px 0 0;
   }
+}
+
+.radio-card {
+  display: flex;
+  gap: 12px;
+  margin: 10px;
+  padding: 12px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  position: relative;
+}
+
+/* نخفي الراديو الأصلي */
+.radio-card input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.radio-card:has(input:focus-visible) {
+  outline: 2px solid var(--min-color);
+}
+
+/* الدائرة */
+.custom-radio {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  position: relative;
+  flex-shrink:0;
+}
+
+/* النقطة الداخلية */
+.custom-radio::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: var(--min-color);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+/* عند الاختيار */
+
+
+.radio-card input:checked + .custom-radio::after {
+  opacity: 1;
+}
+.radio-content {
+  width: 100%;
+}
+.radio-content p {
+  margin: 10px 0;
+}
+/* كمان نلون الكارد */
+.radio-card .radio-content .text {
+  font-weight: 600;
+  font-size: 16px;
+}
+.radio-card input:checked ~ .radio-content .text {
+  color: var(--min-color);
+  font-weight: 600;
+}
+
+.radio-card:hover {
+  border-color: var(--min-color);
+}
+.radio-card input:checked + .custom-radio {
+  border-color: var(--min-color);
+}
+
+.radio-content .visa {
+  text-align: center;
+}
+.radio-content .more-details{
+  display:flex;
+   justify-content:space-between;
+    align-items:flex-end;
+     margin:15px 0 5px;
+}
+.radio-content .visa span img {
   
-  .radio-card {
-    display: flex;
-    gap: 12px;
-    margin: 10px;
-    padding: 12px 16px;
-    border: 2px solid var(--border-color);
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  /* نخفي الراديو الأصلي */
-  .radio-card input {
-    display: none;
-  }
-  
-  /* الدائرة */
-  .custom-radio {
-    width: 18px;
-    height: 18px;
-    border: 2px solid var(--border-color);
-    border-radius: 50%;
-    position: relative;
-  }
-  
-  /* النقطة الداخلية */
-  .custom-radio::after {
-    content: "";
-    width: 10px;
-    height: 10px;
-    background:var(--min-color);
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: 0.3s;
-  }
-  
-  /* عند الاختيار */
-  .radio-card input:checked + .custom-radio {
-    border-color: var(--min-color);
-  }
-  
-  .radio-card input:checked + .custom-radio::after {
-    opacity: 1;
-  }
- .radio-content {
-    width: 100%;
- }
- .radio-content  p{
-    margin: 10px 0;
- }
-  /* كمان نلون الكارد */
-  .radio-card .radio-content .text {
-    font-weight: 600;
-    font-size: 16px;
-  }
-  .radio-card input:checked ~  .radio-content .text {
-    color: var(--min-color);
-    font-weight: 600; 
+  width: 40px;
+  height: 30px;
+  margin: 5px 5px;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+}
+.radio-content button {
  
+  border-radius: 5px;
+  width: 60%;
+  height: fit-content;
+  padding: 3px;
+  border: 1px solid var(--min-color);
+  background-color: var(--white-color);
+  color: var(--text-color-1);
+  cursor: pointer;
+}
+.radio-content button:hover {
+  border: 1px solid var(--border-color);
+  background-color: var(--min-color);
+  color: var(--white-color);
+}
+/*------------------------------------------------الالزء يتاع الكود و المتابه*/
+.pg-cash .all-content .Coupon {
+  background-color: var(--white-color);
+  border-radius: 10px;
+  padding: 20px;
+  width: 35%;
+
+  .text {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 15px;
   }
-  
-  .radio-card:hover {
-    border-color: var(--min-color);
-  }
-  .radio-card:has(input:checked) {
-    border-color: var(--min-color);
-  }
-  
-  
-  .radio-card .more-details{
+
+  .coupon-input {
     display: flex;
     justify-content: space-between;
   }
-  .radio-content .visa {
-    text-align: center;
-  }
-  .radio-content .more-details{
-    display: flex;
-    align-items: flex-end;
-    margin: 15px 0 5px 0;
-  }
- .radio-content .visa span img{
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 30px;
-    margin: 5px 5px;
-    border-radius: 5px;
+
+  .coupon-input input {
     border: 1px solid var(--border-color);
-  }
- .radio-content button{
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    width: 60%;
-    height: fit-content;
+    border-radius: 10px;
     padding: 3px;
-    border: 1px solid var(--min-color);
-    background-color: var(--white-color);
-    color: var(--text-color-1);
-    cursor: pointer;
-   
+    margin-left: 10px;
+    width: 80%;
   }
-  .radio-content button:hover{
-   border: 1px solid var(--border-color);
+
+  .coupon-input .add {
     background-color: var(--min-color);
     color: var(--white-color);
-  }
- /*------------------------------------------------الالزء يتاع الكود و المتابه*/
-  .pg-cash .all-content .Coupon {
-    background-color: var(--white-color);
+    padding: 3px;
     border-radius: 10px;
-    padding: 20px;
-    width: 35%;
+    width: 30%;
+    cursor: pointer;
+  }
+  .btn-submit-order {
+    background-color: var(--min-color);
+    width: 100%;
+    padding: 3px;
+    border-radius: 10px;
+    color: var(--white-color);
+    margin: 15px 0 0 0;
+    cursor: pointer;
+  }
+ 
+}
 
+@media (max-width: 700px) {
+  .pg-cash .all-content {
+    flex-direction: column;
+    width: 100%;
+
+    .payment-methods,
+    .Coupon {
+      width: 100%;
+    }
+  }
+}
+@media (max-width: 400px) {
+  .radio-group .text-title {
+    font-size: 15px;
+  }
+
+  .radio-card .radio-content {
     .text {
-      font-size: 18px;
-      font-weight: 500;
-      margin-bottom: 15px;
+      font-size: 14px;
     }
 
-    .coupon-input{
-      display: flex; 
-      justify-content: space-between;
+    p {
+      font-size: 13px;
     }
 
-    .coupon-input input{
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 3px;
-      margin-left:10px ;
-      width: 80%; 
-    }
-
-    .coupon-input .add{
-      background-color: var(--min-color);
-      color: var(--white-color);
-      padding: 3px;
-      border-radius: 10px;
-      width: 30%;
-      cursor: pointer;
-    }
-    .btn-submit-order{
-      background-color: var(--min-color);
-      width: 100%;
-      padding: 3px;
-      border-radius: 10px;
-      color: var(--white-color);
-      margin: 15px 0 0 0;
-      cursor: pointer;
-    }
-    .btn-submit-order.btn-disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
+    button {
+      font-size: 12px;
     }
   }
-
-  @media (max-width:700px){
-    .pg-cash .all-content{
-      flex-direction: column;
-      width: 100%;
-
-
-      .payment-methods , .Coupon{
-        width: 100%;
-      }
-    
-    }
-  }
-  @media (max-width:400px){
-    .radio-group .text-title {
-      font-size: 15px;
-    }
-
-
-    .radio-card .radio-content {
-    .text{
-          font-size: 14px;
-        }
-
-      p{
-        font-size: 13px;
-      }
-
-      button{
-        font-size: 12px;
-
-      }
-    }
-
-
-  }
-  .btn-submit-order:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
+}
+.btn-submit-order.btn-disabled{
+   opacity:.5;
+    cursor:not-allowed;
+   }

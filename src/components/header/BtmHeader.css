@@ -7,24 +7,21 @@
    
   }
   
-  .btm-header .container {
-    overflow-x: auto;       
-    overflow-y: hidden;
-    white-space: nowrap;
-    padding: 10px 0;
-    box-sizing: border-box;
-  
-   
-    scrollbar-width: none; 
+  .btm-header .container{
+    overflow-x:auto;
+    overflow-y:hidden;
+    white-space:nowrap;
+    padding:10px 0;
+    scrollbar-width:none;
   }
   
   .btm-header .container::-webkit-scrollbar {
     height: 6px;
-    background: transparent; 
+    background: var(--scrollbar-thumb) ; 
   }
   
   .btm-header .container::-webkit-scrollbar-thumb {
-    background-color: transparent; 
+    background-color:var(--scrollbar-thumb) ; 
     border-radius: 3px;
     transition: background-color 0.3s;
   }
@@ -32,12 +29,12 @@
   
   .btm-header .container:hover::-webkit-scrollbar-thumb,
   .btm-header .container:hover::-webkit-scrollbar-track {
-    background-color: #ffffff; 
+    background-color:var(--min-pg2); 
    
   }
   
   .btm-header .container:hover::-webkit-scrollbar-thumb {
-    background-color: #7a7a7a; 
+    background-color:var(--scrollbar-thumb);
   }
   
   
@@ -69,7 +66,7 @@
     border-radius: 25px;
     transition: 0.2s;
     white-space: nowrap;
-    box-shadow: inset 2px 2px 5px rgba(73, 64, 64, 0.137);
+    box-shadow: var(--shadow-inset);
   }
   
   .btm-header .container .btm-nav span a:hover {
@@ -95,9 +92,9 @@
   width: 110px;
   height: 32px;
   border-radius: 25px;
-  background: linear-gradient(90deg, #e4e4e4 25%, #d3d3d3 50%, #e4e4e4 75%);
-  background-size: 200% 100%;
-  animation: loading-shimmer 1.5s infinite;
+  background:linear-gradient(90deg, var(--skeleton-bg) 25%, var(--skeleton-bg-dark) 50%, var(--skeleton-bg) 75%);
+  background-size:200% 100%;
+  animation:loading-shimmer 1.5s infinite;
 }
 
 @keyframes loading-shimmer {

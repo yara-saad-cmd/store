@@ -65,7 +65,10 @@ const [selectedSize, setSelectedSize] = useState(
   // =========================
   // إضافة للعربة
   // =========================
+  const outOfStock = goods?.availability !== "متوفر";
+
   const HandleAddToCart = () => {
+    if (outOfStock) return;
     const productWithDetails = {
       ...goods,
       selectedSize,
@@ -122,6 +125,7 @@ const [selectedSize, setSelectedSize] = useState(
         }}
         inlike={inlike}
         encart={encart}
+        outOfStock={outOfStock}
         HandleAddToCart={HandleAddToCart}
         onLike={handleAddToLike}
         onSizeChange={handleSizeChange}

@@ -2,7 +2,11 @@ import React, { useContext } from 'react'
 import { ContextCart } from '../context/contextcart';
 import { Link } from 'react-router-dom';
 import "./invoice.css"
-function Invoice({layout}) {
+
+
+
+
+function Invoice({ layout, blocked = false }) {
 
  
    
@@ -41,15 +45,18 @@ function Invoice({layout}) {
                 </h4>
                 
                 <div className="button">
-          <Link to={layout === "cart" ? "/order-details" : "/payment"}>
-          
-            <button>
-              {layout === "cart" ? "تابع الشراء" : "اتمام الطلب"  } (
-              <span>{cartItems.length}</span>)
+                {blocked ? (
+            <button type="button" disabled>
+              احذفي المنتجات غير المتاحة للمتابعة
             </button>
-
-
-          </Link>
+          ) : (
+            <Link to={layout === "cart" ? "/order-details" : "/payment"}>
+              <button>
+                {layout === "cart" ? "تابع الشراء" : "اتمام الطلب"} (
+                <span>{cartItems.length}</span>)
+              </button>
+            </Link>
+          )}
 
 
         </div>

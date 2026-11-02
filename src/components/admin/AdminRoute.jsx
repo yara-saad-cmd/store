@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Navigate } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
-
+import "./AdminShared.css"
 // بيحمي صفحات الأدمن: مش مسجل ← الدخول، مسجل وغير أدمن ← الرئيسية
 export default function AdminRoute({ children }) {
   const { user, loading, isAdmin, adminLoading } = useContext(AuthContext)

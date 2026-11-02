@@ -1,10 +1,17 @@
-.pg-prosact .title-items {
-  width: 58%;
-  padding: 10px;
+/* .pg-prosact .title-items {
+  width: 40%;
+  padding: 10px 40px 10px 10px;
 }
 .title-items {
-  width: 58%;
-}
+  width: 40%;
+} */
+.pg-prosact .title-items{ 
+   width: 40%;
+  padding: 0px 40px 10px 10px;
+ }
+
+
+
 .pg-prosact .title-items .prudact-details .name-prudact {
   color: var(--min-color);
   font-size: 30px;
@@ -20,7 +27,7 @@
 
 .pg-prosact .title-items .stars {
   display: flex;
-  color: gold;
+  color:var(--star-color);
   font-size: 20px;
   align-items: center;
 }
@@ -46,10 +53,10 @@
 }
 .pg-prosact .title-items .prudact-details h4 .stock {
   margin-right: 5px;
-  color: blue;
+  color:var(--info);
 }
 .pg-prosact .title-items .prudact-details h4 .no-stock {
-  color: rgb(255, 0, 0);
+  color:var(--danger-bright);
   margin-right: 5px;
 }
 .pg-prosact .title-items .colors,
@@ -136,7 +143,7 @@
   .colors-box
   .color-square-option.active
   .color-square {
-  color: #fff;
+    color:var(--text-white);
 }
 
 /* المقاس المختار */
@@ -151,7 +158,7 @@
   .size-options
   .size-box.active
   .span-size {
-  color: #fff;
+    color:var(--text-white);
 }
 
 .pg-prosact .title-items .btn-and-icon {
@@ -203,7 +210,7 @@
   background-color: var(--white-color);
   color: var(--min-color);
   border: solid 1px var(--border-color);
-  transition: 0.3 ease-in-out;
+  
   pointer-events: none;
 }
 
@@ -272,16 +279,15 @@
 /*@media*/
 
 @media only screen and (max-width: 968px) and (min-width: 440px) {
-  .prdact-area {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-
-  .prdact-area .title-items {
-    width: 100%;
+  .prdact-area{ 
+    flex-direction:column;
+     justify-content:center; 
+     align-items:center;
+      margin-bottom:20px;
+     }
+  .prdact-area .title-items{
+    width:100%;
+   }
 
     .prudact-details {
       .name-prudact {
@@ -317,7 +323,7 @@
       }
     }
   }
-}
+
 
 @media only screen and (max-width: 440px) {
   .prdact-area {
@@ -369,19 +375,16 @@
   }
 }
 
-/*نشط*/
-/* تنسيق مربع اللون النشط */
-.color-square-option.active .color-square {
-  background-color: var(
-    --min-color
-  ) !important; /* تلوين خلفية المقاس المختار */
-  color: #fff !important; /* تحويل النص للون الأبيض */
-}
 
-/* تنسيق مربع المقاس النشط */
-.size-box.active {
-  background-color: var(
-    --min-color
-  ) !important; /* تلوين خلفية المقاس المختار */
-  color: #fff !important; /* تحويل النص للون الأبيض */
+
+
+
+
+
+
+
+
+.con .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

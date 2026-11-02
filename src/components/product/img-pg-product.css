@@ -1,12 +1,12 @@
 .pg-prosact .imegs {
-  width: 40%;
+  width: 60%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
 
 .pg-prosact .imegs .big-image {
-  width: 83%;
+  width: 80%;
 }
 
 .pg-prosact .imegs .big-image img {
@@ -17,7 +17,7 @@
 }
 
 .pg-prosact .imegs .small-images {
-  width: 15%;
+  width: 12%;
   flex-direction: column;
   gap: 10px;
   display: flex;
@@ -48,7 +48,7 @@
   height: 60px;
   padding: 0;
   margin: 0;
-  border: 3px solid white;
+  border:3px solid var(--white-color);
   border-radius: 4px;
   background: none;
   cursor: pointer;
@@ -62,15 +62,15 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  cursor: pointer;
+ 
   display: block;
-  border: none;
+ 
   pointer-events: none; /* منع أي تفاعل مباشر مع img نفسها، التفاعل على الـ button */
 }
 
 /* الصورة النشطة: الكلاس بيتحط على الـ button */
 .pg-prosact .imegs .small-images button.active-thumb {
-  border-color: var(--min-color) !important;
+  border-color: var(--min-color) ;
 }
 
 /* Hover فقط عندما لا يكون هناك سحب */
@@ -79,16 +79,12 @@
 }
 
 /* أثناء السحب نمنع الأزرار من استقبال أحداث الماوس */
-.pg-prosact .imegs .small-images.dragging button {
+/* .pg-prosact .imegs .small-images.dragging button {
   pointer-events: none;
-}
+} */
 
 /* باقي تنسيق الصور */
-.prdact-area .imegs {
-  width: 60%;
-  display: flex;
-  justify-content: space-between;
-}
+
 
 .prdact-area .imegs .big-image {
   width: 80%;

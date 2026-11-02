@@ -4,8 +4,8 @@
     align-items: center;
     gap: 15px;
     font-size: 16px;
-    pointer-events: none;
-    cursor: default;
+    /* pointer-events: none;
+    cursor: default; */
   }
   @media (max-width: 550px){
     .page-location{
@@ -20,8 +20,8 @@
     gap: 8px;
   }
   .step-label {
-    color: #949494;
-    transition: 0.3s;
+    color:var(--text-disabled);
+     transition:color .3s;
     text-decoration: none;
   }
   .step-active .step-label {
@@ -32,6 +32,10 @@
   .checkout-arrow {
     display: flex;
     align-items: center;
-    color: #aaa;
+    color:var(--text-disabled);
     font-size: 20px;
   }
+.step-label.step-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

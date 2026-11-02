@@ -120,10 +120,6 @@ header {
   color: var(--white-color);
 }
 
-/* حالة الاستثناء لصفحة البحث */
-.search-page .desktop-search {
-  display: block !important;
-}
 /* إخفاء أيقونة البحث بتاعة الموبايل في الشاشات المتوسطة والكبيرة */
 @media only screen and (min-width: 481px) {
   .mobile-search-icon {
@@ -132,6 +128,10 @@ header {
 }
 
 
+/* حالة الاستثناء لصفحة البحث */
+.search-page .desktop-search {
+  display: block 
+}
 
 .top-header .icon-header .login-link {
   color: var(--text-color-2);

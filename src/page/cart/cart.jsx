@@ -9,6 +9,19 @@ import { Link } from "react-router-dom";
 import Invoice from "../../components/invoice/invoice";
 import CartItem from "../../components/cartItem/CartItem";
 import ImgCartEmpty from "../../img/img-cart-ampty.png"
+import useCartStatus from "../../components/context/useCartStatus"
+
+// رسايل التنبيه على المنتج، وتقدري تعدليها براحتك
+const PROBLEM_MESSAGES = {
+  removed: "المنتج ده لم يعد متاحاً، احذفيه من العربة للمتابعة",
+  out_of_stock: "المنتج ده غير متوفر حالياً، احذفيه من العربة للمتابعة",
+  price_changed: "سعر المنتج اتغيّر، السعر الحالي هيتحسب عند تأكيد الطلب",
+}
+
+
+
+
+
 function Cart() {
  
   const {
@@ -23,10 +36,14 @@ function Cart() {
     onSizeChange,
   } = useContext(ContextCart);
 
+  const { problems } = useCartStatus(cartItems);
 
- 
- 
-      const handleAddToLike = (item) => {
+  // تغيّر السعر تنبيه بس، أما المحذوف وغير المتوفر فبيمنعوا المتابعة
+  const hasBlockingProblem = Object.values(problems).some(
+    (problem) => problem !== "price_changed"
+  );
+
+  const handleAddToLike = (item) => {
     const inlike = likeItems.some((i) => i.id === item.id);
 
     if (inlike) {
@@ -85,21 +102,31 @@ function Cart() {
                   </div>
   
                   <div className="prdact">
-                    {cartItems.map((item) => {
-                       const inlike = likeItems.some((i) => i.id === item.id);
+                  {cartItems.map((item) => {
+                      const inlike = likeItems.some((i) => i.id === item.id);
+                      const problem = problems[item.id];
                       return (
-                        <CartItem
-                        key={`${item.id}-${item.selectedSize}-${item.selectedColor}`}
-                          item={item}
-                          inlike={inlike}
-                          onLike={handleAddToLike}
-                          onDelete={delet}
-                          onIncrease={increaseQuantity}
-                          onDecrease={decreaseQuantity}
-                          onSizeChange={onSizeChange}
-                          onColorChange={onColorChange}
-                          layout="cart"
-                        />
+                        <div
+                          className={`cart-row ${problem ? "has-problem" : ""}`}
+                          key={`${item.id}-${item.selectedSize}-${item.selectedColor}`}
+                        >
+                          <CartItem
+                            item={item}
+                            inlike={inlike}
+                            onLike={handleAddToLike}
+                            onDelete={delet}
+                            onIncrease={increaseQuantity}
+                            onDecrease={decreaseQuantity}
+                            onSizeChange={onSizeChange}
+                            onColorChange={onColorChange}
+                            layout="cart"
+                          />
+                          {problem && (
+                            <p className="cart-problem" role="alert">
+                              {PROBLEM_MESSAGES[problem]}
+                            </p>
+                          )}
+                        </div>
                       );
                     })}
                   </div>
@@ -107,7 +134,7 @@ function Cart() {
   
                 <div className="invoice-area">
                 <div className="invoice">
-                    <Invoice layout="cart" />
+                <Invoice layout="cart" blocked={hasBlockingProblem} />
                   </div>
                 </div>
               

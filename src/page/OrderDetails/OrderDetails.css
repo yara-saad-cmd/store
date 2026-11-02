@@ -1,9 +1,4 @@
-.pg-ordar-details {
-    min-height: 100vh;
-    background-color: var(--min-pg2);
-    display: flex;
-    flex-direction: column;
-}
+
 
 /* تم تصحيح الباغ هنا: كان .pg-ordar-details.all-content بدون مسافة */
 .pg-ordar-details .all-content {
@@ -77,25 +72,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
-.pg-ordar-details .size{
-    display: inline-block;
-    font-size: 13px;
-    max-width: 80px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    
-}
-
-
-.pg-ordar-details .color-item {
-    display: inline-block;
-    font-size: 13px;
-    max-width: 80px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.pg-ordar-details .size,
+.pg-ordar-details .color-item{
+  display:inline-block; font-size:13px; max-width:80px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 }
 
 .pg-ordar-details .price {

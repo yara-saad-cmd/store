@@ -9,6 +9,8 @@
 }
 .pg-account  .log-out{
     margin: 10px 20px;
+
+
     .btn-logout{
         background-color: rgba(255, 255, 255, 0);
         color: var(--text-color-1);
@@ -16,7 +18,7 @@
         
     }
    .btn-logout:hover{
-        color: red;
+    color:var(--danger-bright);
     }
 
    
@@ -36,7 +38,7 @@
     margin: 10px ;
     padding: 5px;
     background-color: var( --min-pg);
-    box-shadow: 3px 7px 15px rgba(0, 0, 0, 0.25);
+    box-shadow:var(--shadow-panel);
 }
 .pg-account .pages-sidebar {
     flex: 1;
@@ -73,21 +75,13 @@
     font-size: 17px;
     font-weight: 500;
 }
-.pg-account .pages-sidebar .more-pages .pg-user , .pg-favorite , .pg-cart-icon , .message{
-   cursor: pointer;
-    display: flex;
-    align-items: center;
-    color: var(--text-color-1);
-}
-.pg-account .pages-sidebar .more-pages .pg-user {
+.pg-account .more-pages :is(.pg-user,.pg-favorite,.pg-cart-icon,.message,.pg-admin){
+    cursor:pointer; display:flex; align-items:center; color:var(--text-color-1);
+  }
+.pg-account .more-pages .pg-user {
     color:var(--min-color);
 }
-.pg-user:hover,
-.pg-favorite:hover,
-.pg-cart-icon:hover,
-.message:hover {
-    color:var(--min-color)
-}
+.pg-account .more-pages :is(.pg-user,.pg-favorite,.pg-cart-icon,.message,.pg-admin):hover{ color:var(--min-color); }
 
 
 
@@ -105,12 +99,15 @@
             display: flex;
                 flex-direction: column-reverse;  
 
-
+                .pg-account .log-out .btn-logout:disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                  }
+                     
             .log-out {
                 text-align: center;
 
-
-               .btn-logout{
+          .btn-logout{
                 border: 1px solid var(--border-color);
                 padding: 5px;
                 border-radius: 20px;
@@ -154,10 +151,7 @@
     }
   }
 
-  .pg-account .log-out .btn-logout:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
+  
 
   .pg-admin {
     cursor: pointer;

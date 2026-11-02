@@ -1,9 +1,4 @@
-.page-order-done {
-    min-height: 100vh;
-    background-color: var(--min-pg2);
-    display: flex;
-    flex-direction: column;
-}
+
 
 .page-order-done .icon-and-content {
     flex: 1;
@@ -18,7 +13,7 @@
 
 .page-order-done .icon svg {
     font-size: 100px;
-    color: rgb(20, 211, 20);
+    color:var(--success-light);
 }
 
 .page-order-done h4 {

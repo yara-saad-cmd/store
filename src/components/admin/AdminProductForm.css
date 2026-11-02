@@ -3,14 +3,6 @@
    
   }
   
-  .product-form-title {
-    margin: 20px 0 15px;
-  }
-  
-  .product-form-message {
-    text-align: center;
-    padding: 40px 0;
-  }
   
   .product-form-message a {
     color: var(--min-color);
@@ -22,9 +14,7 @@
     flex-direction: column;
     gap: 18px;
     max-width: 760px;
-    background-color: var(--white-color);
     border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
     padding: 20px;
   }
   
@@ -121,8 +111,8 @@
   }
   
   .product-form-image-actions button:last-child:hover {
-    color: red;
-    border-color: red;
+    color:var(--danger-bright);
+    border-color:var(--danger-bright);
   }
   
   .product-form-upload {
@@ -137,10 +127,6 @@
     cursor: pointer;
   }
   
-  .product-form-upload:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
   
   .product-form-check {
     display: flex;
@@ -150,7 +136,7 @@
   }
   
   .product-form-error {
-    color: #c0392b;
+    color:var(--danger); 
   }
   
   .product-form-actions {
@@ -163,16 +149,9 @@
     min-height: 44px;
     padding: 0 28px;
     border-radius: 8px;
-    background-color: var(--min-color);
-    color: var(--text-white);
-    font-weight: 700;
-    cursor: pointer;
   }
   
-  .product-form-save:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
+  
   
   .product-form-cancel {
     color: var(--text-color-2);

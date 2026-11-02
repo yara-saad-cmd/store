@@ -9,8 +9,7 @@ import "./payment.css";
 
 import imgVISA from "../../img/1764260377009.png";
 
-import { useNavigate } from "react-router-dom";
-
+import { Navigate, useNavigate } from "react-router-dom";
 import PageTransition from "../../components/PageTransaction";
 
 import Footer from "../../components/footer/footer";
@@ -28,6 +27,7 @@ const ORDER_ERRORS = {
   limit_phone: "وصلتِ للحد الأقصى من الطلبات، حاولي لاحقا",
   limit_total: "حدث مشكله حاولي بعد قليل",
   item_unavailable: "احد المنتجات التي طلبتها غبر متاحه",
+  item_out_of_stock: "أحد المنتجات التي طلبتها غير متوفر حالياً",
 };
 
 const getOrderErrorMessage = (error) => {
@@ -38,7 +38,8 @@ const getOrderErrorMessage = (error) => {
 function Payment() {
    // لو الفيزا مقفولة، الدفع عند الاستلام بيتحدد تلقائياً
    const [selectedMethod, setSelectedMethod] = useState(visaEnabled ? "" : "cash");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [orderPlaced, setOrderPlaced] = useState(false);
 
   const { cartItems, clearCart } = useContext(ContextCart);
   const navigate = useNavigate();
@@ -133,6 +134,7 @@ function Payment() {
         console.error("فشل مسح الملاحظة:", error);
       }
 
+      setOrderPlaced(true);
       clearCart();
       navigate("/order-done", {
         state: { orderId: newOrderId },
@@ -146,6 +148,11 @@ function Payment() {
       setIsSubmitting(false);
     }
   };
+
+   // لو العربة فاضية (فتح الصفحة بالرابط مثلاً) نرجّعها للعربة
+   if (cartItems.length === 0 && !orderPlaced) {
+    return <Navigate to="/cart" replace />;
+  }
 
   return (
     <>

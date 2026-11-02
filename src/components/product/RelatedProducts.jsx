@@ -30,7 +30,10 @@ function RelatedProducts({
             {filteredProducts.slice(0, visibleCount).map((item) => {
               const incart = cartItems.some((i) => i.id === item.id);
 
+              const outOfStock = item.availability !== "متوفر";
+
               const handleAddToCart = () => {
+                if (outOfStock) return;
                 AddToCart(item);
                 toast.success(
                   <div className="msg">
@@ -42,7 +45,8 @@ function RelatedProducts({
               };
 
               return (
-                <div className={`card ${incart ? "incart" : ""}`} key={item.id}>
+                <div className={`card ${incart ? "incart" : ""} ${outOfStock ? "out-of-stock" : ""}`} key={item.id}>
+                  {outOfStock && <span className="stock-badge">غير متوفر</span>}
                   <Link to={`/products/${item.id}`}>
                     <div className="img">
                     <img src={item.images?.[0] || ""} alt={item.title} />
@@ -73,6 +77,8 @@ function RelatedProducts({
                   type="button"
                   className="cart-icon"
                   onClick={handleAddToCart}
+                  disabled={outOfStock}
+                  aria-label={outOfStock ? "غير متوفر" : "إضافة إلى السلة"}
                 >
                   <TbShoppingCartPlus />
                 </button>

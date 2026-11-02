@@ -1,15 +1,4 @@
-/* :root{
-    --min-color:#6e3f1f;
-     --min-pg:#FFF9F9;
-     --min-pg2:#E6E6E6;
-    --bottms-color:#444444;
-    --border-color:#BABABA;
-    --white-color:rgb(255, 255, 255);
-    --bottm-nav:#F2F2F2;
-    --text-color-1:#000000;
-    --text-color-2:#1d1d1d;
-    --text-white:white;
-  } */
+
 
 .pg-prosact{
     padding:  15px 0;
@@ -24,72 +13,6 @@
    margin-top: 60px;
 }
 
-
-
-hr{
-  width: 100%;
-  margin: 50px 0px 30px 0px;
-  border: none;
-  height: 1px;
-  background-color: var(--border-color);
-}
-/*cart incart*/
-.mor-product .cart-icon{
-  font-size: 20px;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: 0.2s;
-  cursor: pointer;
-  color: var(--text-color-1);
-  margin: 0px 2px 2px 0px;
-
-  
-}
-.mor-product .cart-icon:hover{
-  background-color: var(--min-color);
-  color: var(--white-color);
-}
-.mor-product .in-cart span{
-  color: var(--text-color-1);
-  display: flex;
-  align-items: center;
-  padding: 3px;
-}
-.mor-product .in-cart span svg{
-  margin-right: 5px;
-  width: 15px;
-  height: 15px;
-  font-weight: bold;
-  color: #2ed15f;
-}
-.mor-product .card.incart .cart-icon{
-  pointer-events: none;
-  background-color: var(--min-color);
-  color: var(--white-color);
-}
-/*cart incart*/
-
-
-
-
-
-/* .load-more {
-  display: inline-block;     
-  padding: 10px 20px;        
-  cursor: pointer;          
-  margin: 20px auto;        
-  text-align: center;         
- color: var(--min-color);  
-        
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  display: block;             
-}
 
 
 

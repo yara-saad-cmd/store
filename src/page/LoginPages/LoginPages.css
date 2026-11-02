@@ -55,8 +55,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 70%;
-    max-width: 390px;
+   
     min-height: 44px;
     border-radius: 5px;
     font-size: 16px;
@@ -65,6 +64,8 @@
   
   .log-in-puttom,
   .put-create-account {
+    width: 70%;
+    max-width: 390px;
     color: var(--text-white);
     background-color: var(--min-color);
   }
@@ -83,11 +84,11 @@
   }
   
   .form-message-error {
-    color: #c0392b;
+    color:var(--danger);
   }
   
   .form-message-success {
-    color: #1e7e34;
+    color:var(--success); 
   }
   
   .log-in-puttom:disabled,

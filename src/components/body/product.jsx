@@ -169,7 +169,10 @@ function Product({ products, title, isLikePage = false }){
                 (i.selectedColor || "") === itemColor
             );
 
+            const outOfStock = item.availability !== "متوفر";
+
             const handleAddToCart = () => {
+              if (outOfStock) return;
               AddToCart({
                 ...item,
                 selectedSize: itemSize,
@@ -186,9 +189,10 @@ function Product({ products, title, isLikePage = false }){
 
             return (
               <div
-                className={`card ${incart ? "incart" : ""}`}
-                key={`${item.id}-${itemSize}-${itemColor}`}
-              >
+              className={`card ${incart ? "incart" : ""} ${outOfStock ? "out-of-stock" : ""}`}
+              key={`${item.id}-${itemSize}-${itemColor}`}
+            >
+              {outOfStock && <span className="stock-badge">غير متوفر</span>}
                 {isLikePage && (
                   <button 
                     className="remove-like-btn"
@@ -235,7 +239,8 @@ function Product({ products, title, isLikePage = false }){
                   type="button" 
                   className="icon" 
                   onClick={handleAddToCart}
-                  aria-label="إضافة إلى السلة"
+                  disabled={outOfStock}
+                  aria-label={outOfStock ? "غير متوفر" : "إضافة إلى السلة"}
                 >
                   <TbShoppingCartPlus />
                 </button>

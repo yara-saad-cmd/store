@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import './AdminNav.css'
-
+import "./AdminShared.css"
 const getClassName = ({ isActive }) => (isActive ? 'active' : '')
 
 export default function AdminNav() {

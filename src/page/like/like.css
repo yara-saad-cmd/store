@@ -1,13 +1,7 @@
 
 
 
-.pg-like{
-    min-height: 100vh;   /* تملى الشاشة لو المحتوى قليل */
-    background-color:var( --min-pg2);
-    display: flex;
-    flex-direction: column;
-   
-}
+
 .all-like{
     flex: 1;
    
@@ -30,9 +24,7 @@
 .fivrt-prudact .empty-state p{
     font-size: 30px;
     font-weight: 500;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align:center;
 }
 .empty-state .btn-shop-now{
     background-color: var(--min-color);

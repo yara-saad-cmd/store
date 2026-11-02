@@ -18,6 +18,7 @@ export default function CartItem({
   onSizeChange,
   onColorChange,
   encart,
+  outOfStock = false,
   HandleAddToCart,
   removelike,
   AddToLike,
@@ -383,15 +384,21 @@ const handleColorClick = (color) => {
           <div className="btn-and-icon">
             {layout === "goods" && (
               <div className="con">
-                <button
+                              <button
                   type="button"
                   className={`btn ${encart ? "encart" : ""}`}
                   onClick={HandleAddToCart}
+                  disabled={outOfStock}
                 >
-                  <span>{encart ? "تمت الإضافة إلى العربة" : "اضف الي العربه"}</span>
+                  <span>
+                    {outOfStock
+                      ? "غير متوفر"
+                      : encart
+                        ? "تمت الإضافة إلى العربة"
+                        : "اضف الي العربه"}
+                  </span>
                   <TbShoppingCart />
                 </button>
-
                 <div className="icon-hert">
                   <button
                     type="button"

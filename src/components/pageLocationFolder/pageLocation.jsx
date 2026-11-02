@@ -16,20 +16,30 @@ export default function PageLocation() {
     { name: "تم الطلب", path: "/order-done" },
   ];
 
+  const currentIndex = steps.findIndex((step) => step.path === currentPath);
+
   return (
     <div className="page-location">
-     {steps.map((step, index) => {
+          {steps.map((step, index) => {
   const isActive = currentPath === step.path;
+  // الخطوات اللي بعد الحالية مقفولة، والرجوع لخطوة سابقة مسموح
+  const isUpcoming = index > currentIndex;
 
   return (
     <span key={step.path} className="step-container">
       <div className={isActive ? "step-active" : ""}>
-        <Link
-          to={step.path}
-          className={`step-label ${isActive ? "step-active" : ""}`}
-        >
-          {step.name}
-        </Link>
+        {isUpcoming ? (
+          <span className="step-label step-disabled" aria-disabled="true">
+            {step.name}
+          </span>
+        ) : (
+          <Link
+            to={step.path}
+            className={`step-label ${isActive ? "step-active" : ""}`}
+          >
+            {step.name}
+          </Link>
+        )}
       </div>
 
       {index < steps.length - 1 && (

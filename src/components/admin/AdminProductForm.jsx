@@ -8,7 +8,7 @@ import Footer from '../footer/footer'
 import AdminNav from './AdminNav'
 import { supabase } from '../../supabaseClient'
 import { compressImage, getImageErrorMessage } from '../utils/compressImage'
-
+import "./AdminShared.css"
 const BUCKET = 'product-images'
 const MAX_IMAGES = 8
 const MAX_PRICE = 1000000

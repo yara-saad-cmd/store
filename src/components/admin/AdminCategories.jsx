@@ -6,7 +6,7 @@ import PageTransition from '../PageTransaction'
 import Footer from '../footer/footer'
 import AdminNav from './AdminNav'
 import { supabase } from '../../supabaseClient'
-
+import "./AdminShared.css"
 // حروف إنجليزية صغيرة وأرقام وشرطات بينهم، مثال: men-shirts
 const SLUG_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/
 const EMPTY_FORM = { name: '', slug: '' }

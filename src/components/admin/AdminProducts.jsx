@@ -7,7 +7,7 @@ import Footer from '../footer/footer'
 import AdminNav from './AdminNav'
 import { supabase } from '../../supabaseClient'
 import { Link } from 'react-router-dom'
-
+import "./AdminShared.css"
 function AdminProducts() {
   const [products, setProducts] = useState([])
   const [categories, setCategories] = useState([])
