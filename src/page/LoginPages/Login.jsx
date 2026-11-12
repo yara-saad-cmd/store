@@ -112,6 +112,10 @@ function Login() {
               {isSubmitting ? 'جاري تسجيل الدخول...' : 'تسجيل الدخول'}
             </button>
 
+            <Link to="/forgot-password" className="create-account-puttom">
+              نسيت كلمة المرور؟
+            </Link>
+
             <Link to="/CreateAccount" className="create-account-puttom">
               انشاء حساب جديد
             </Link>

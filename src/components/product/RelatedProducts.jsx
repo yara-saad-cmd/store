@@ -6,6 +6,7 @@ import { FaCheck } from "react-icons/fa6";
 import toast from "react-hot-toast";
 import ProductLayout from "../body/ProductLayout";
 import ProductLoading from "../body/product-loading";
+import PriceValue from "../utils/PriceValue";
 
 function RelatedProducts({ 
   loadingrelatedProducts, 
@@ -46,7 +47,10 @@ function RelatedProducts({
 
               return (
                 <div className={`card ${incart ? "incart" : ""} ${outOfStock ? "out-of-stock" : ""}`} key={item.id}>
-                  {outOfStock && <span className="stock-badge">غير متوفر</span>}
+                                   {outOfStock && <span className="stock-badge">غير متوفر</span>}
+                  {item.discount_percent > 0 && (
+                    <span className="discount-badge">-{item.discount_percent}%</span>
+                  )}
                   <Link to={`/products/${item.id}`}>
                     <div className="img">
                     <img src={item.images?.[0] || ""} alt={item.title} />
@@ -65,8 +69,8 @@ function RelatedProducts({
                           </div>
                         )}
                         <h5 className="price">
-                          <span>EGP </span>
-                          {item.price}
+                        <span>EGP </span>
+                        <PriceValue price={item.price} discount={item.discount_percent} />
                         </h5>
                       </div>
                     </div>

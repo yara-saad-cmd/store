@@ -1,0 +1,40 @@
+.admin-shipping-title {
+    margin: 20px 0;
+}
+.admin-shipping-content{
+    margin-top: 50px;
+}
+.admin-shipping-message {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.admin-shipping-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: solid 1px var(--border-color);
+}
+
+.admin-shipping-row label {
+    flex: 1;
+    font-weight: bold;
+}
+
+.admin-shipping-row input {
+    width: 100px;
+    padding: 6px 8px;
+}
+
+.admin-shipping-save {
+    padding: 6px 16px;
+    color: var(--white-color);
+    background-color: var(--min-color);
+    cursor: pointer;
+}
+
+.admin-shipping-save:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

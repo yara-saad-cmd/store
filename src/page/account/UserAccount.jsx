@@ -5,7 +5,7 @@ import "./UserAccount.css"
 import PageTransition from "../../components/PageTransaction"
 import { FiHeart } from 'react-icons/fi'
 import { TbShoppingCart } from 'react-icons/tb'
-import { LuUserRound, LuLayoutDashboard } from 'react-icons/lu'
+import { LuUserRound, LuLayoutDashboard, LuPackage } from 'react-icons/lu'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { FaUserCircle, FaWhatsapp } from 'react-icons/fa'
 import toast from 'react-hot-toast'
@@ -14,6 +14,10 @@ import Visa from "../../components/visa/visa"
 import Footertwo from '../../components/footer/footer2'
 import { supabase } from '../../supabaseClient'
 import { AuthContext } from '../../components/context/AuthContext'
+import { siteInfo } from '../../components/siteInfo'
+
+
+
 
 function UserAccount() {
   const { user, loading, isAdmin } = useContext(AuthContext)
@@ -92,10 +96,20 @@ function UserAccount() {
                   <Link to="/user-account" className='pg-user'> <LuUserRound /> <span>الملف الشخصي</span></Link>
                   <Link to="/like" className='pg-favorite'>  <FiHeart /><span>قائمة المفضل</span></Link>
                   <Link to="/cart" className='pg-cart-icon'>  <TbShoppingCart /><span>سلة المشتريات</span></Link>
+                  <Link to="/my-orders" className='pg-orders'> <LuPackage /> <span>طلباتي</span></Link>
                   {isAdmin && (
                     <Link to="/admin" className='pg-admin'> <LuLayoutDashboard /> <span>لوحة التحكم</span></Link>
                   )}
-                  <p className='message'><FaWhatsapp /><span>الرسائل</span></p>
+                                   {siteInfo.whatsappNumber && (
+                    <a
+                      href={`https://wa.me/${siteInfo.whatsappNumber}`}
+                      className='message'
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaWhatsapp /><span>الرسائل</span>
+                    </a>
+                  )}
 
                 </div>
 

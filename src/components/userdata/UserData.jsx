@@ -1,8 +1,9 @@
-
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./userdata.css";
 import { FaPen } from "react-icons/fa";
-
+import toast from "react-hot-toast";
+import { supabase } from "../../supabaseClient";
+import { AuthContext } from "../context/AuthContext";
 // قائمة المحافظات المسموح بها لتطبيق مفهوم Whitelisting
 const ALLOWED_GOVERNORATES = [
   "القاهرة", "الجيزة", "الإسكندرية", "الدقهلية", "الشرقية", "المنوفية",
@@ -11,6 +12,10 @@ const ALLOWED_GOVERNORATES = [
   "سوهاج", "قنا", "أسوان", "الأقصر", "البحر الأحمر", "الوادي الجديد",
   "مطروح", "شمال سيناء", "جنوب سيناء"
 ];
+// رقم مصري: 010 أو 011 أو 012 وبعدها 8 أرقام (لازم يطابق القاعدة)
+const PHONE_PATTERN = /^01[012][0-9]{8}$/;
+
+
 
 // دالة تنظيف النص التجريبي وإزالة الرموز الخاصة كحماية ضد XSS/Injection
 // React بيهرّب النصوص تلقائياً، فبنشيل بس الأقواس والاقتباس اللي ملهمش لازمة في الاسم والعنوان
@@ -31,6 +36,9 @@ const sanitizePhone = (input) => {
 };
 
 export default function UserData() {
+  const { user } = useContext(AuthContext);
+  const userId = user?.id ?? null;
+
   const [inModify, setInModify] = useState(false);
   const [errors, setErrors] = useState({});
   const [numError, setNumError] = useState({ phone: "", phone2: "" });
@@ -76,6 +84,59 @@ export default function UserData() {
     }
   }, []);
 
+   // لو العميلة مسجّلة، بياناتها المحفوظة في حسابها تتحمّل (وتفضل بعد الخروج والدخول)
+   useEffect(() => {
+    if (!userId) return;
+
+    let cancelled = false;
+
+    const loadProfile = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("shipping_profiles")
+          .select("name, phone, phone2, governorate, address")
+          .eq("user_id", userId)
+          .maybeSingle();
+
+        if (cancelled) return;
+
+        if (error) {
+          console.error("خطأ في جلب بيانات الشحن:", error);
+          return;
+        }
+
+        if (!data) return;
+
+        const profileData = {
+          name: sanitizeText(data.name, 50),
+          phone: sanitizePhone(data.phone),
+          phone2: sanitizePhone(data.phone2),
+          governorate: ALLOWED_GOVERNORATES.includes(data.governorate)
+            ? data.governorate
+            : "",
+          address: sanitizeText(data.address, 150),
+        };
+
+        setUserData(profileData);
+
+        try {
+          localStorage.setItem("userData", JSON.stringify(profileData));
+          window.dispatchEvent(new Event("userDataChanged"));
+        } catch (storageError) {
+          console.error("فشل الحفظ في Storage:", storageError);
+        }
+      } catch (error) {
+        console.error("خطأ غير متوقع في جلب بيانات الشحن:", error);
+      }
+    };
+
+    loadProfile();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [userId]);
+
   const hasData = Boolean(
     userData.name ||
     userData.phone ||
@@ -118,16 +179,12 @@ export default function UserData() {
 
     if (!userData.phone?.trim()) {
       err.phone = "رقم الهاتف مطلوب";
-    } else if (userData.phone.trim().length !== 11) {
-      err.phone = "رقم الهاتف يجب أن يكون 11 رقم";
+    } else if (!PHONE_PATTERN.test(userData.phone.trim())) {
+      err.phone = "رقم الهاتف يجب أن يكون 11 رقم ويبدأ بـ 010 أو 011 أو 012";
     }
 
-    if (
-      userData.phone2 &&
-      userData.phone2.trim().length > 0 &&
-      userData.phone2.trim().length !== 11
-    ) {
-      err.phone2 = "رقم الهاتف الثاني يجب أن يكون 11 رقم";
+    if (userData.phone2 && !PHONE_PATTERN.test(userData.phone2.trim())) {
+      err.phone2 = "رقم الهاتف الثاني يجب أن يكون 11 رقم ويبدأ بـ 010 أو 011 أو 012";
     }
 
     if (!userData.governorate?.trim()) {
@@ -146,7 +203,7 @@ export default function UserData() {
     return Object.keys(err).length === 0;
   }
 
-  function handleUpdateData() {
+  async function handleUpdateData() {
     if (!validateOnSave()) return;
 
     const safeName = sanitizeText(userData.name, 50);
@@ -174,12 +231,40 @@ export default function UserData() {
 
     try {
       localStorage.setItem("userData", JSON.stringify(cleanUserData));
+      // نبلّغ الفاتورة إن بيانات الشحن اتغيرت، عشان تحدّث سعر الشحن من غير Refresh
+      window.dispatchEvent(new Event("userDataChanged"));
     } catch (error) {
       console.error("فشل الحفظ في Storage:", error);
     }
 
     setInModify(false);
     setErrors({});
+
+    // العميلة المسجّلة: نحفظ في حسابها كمان. لو فشل، البيانات لسه محفوظة في المتصفح
+    if (userId) {
+      try {
+        const { error } = await supabase.from("shipping_profiles").upsert(
+          {
+            user_id: userId,
+            name: cleanUserData.name,
+            phone: cleanUserData.phone,
+            phone2: cleanUserData.phone2 || null,
+            governorate: cleanUserData.governorate,
+            address: cleanUserData.address,
+            updated_at: new Date().toISOString(),
+          },
+          { onConflict: "user_id" }
+        );
+
+        if (error) {
+          console.error("خطأ في حفظ بيانات الشحن في الحساب:", error);
+          toast.error("اتحفظت على الجهاز بس، تعذر حفظها في حسابك");
+        }
+      } catch (error) {
+        console.error("خطأ غير متوقع في حفظ بيانات الشحن:", error);
+        toast.error("اتحفظت على الجهاز بس، تعذر حفظها في حسابك");
+      }
+    }
   }
 
   function handleCancel() {

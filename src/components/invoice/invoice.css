@@ -24,6 +24,11 @@
  .invoice .the-invoice .pordr{
     border-bottom: solid 1px var(--border-color);
 }
+.invoice .the-invoice .shipping-pending{
+    font-size: 13px;
+    text-align: left;
+    color: var(--text-muted, #777);
+}
  .invoice .the-invoice .button{
     width: 100%;
     text-align: center;

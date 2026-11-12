@@ -76,7 +76,7 @@ function AdminCategories() {
 
     if (!name) return setFormError('اسم القسم مطلوب')
     if (!SLUG_PATTERN.test(slug) || slug.length > 50) {
-      return setFormError('الرابط لازم يكون حروف إنجليزية صغيرة وأرقام و _ فقط، مثال: men_shirts')
+      return setFormError('الرابط لازم يكون حروف إنجليزية صغيرة وأرقام وشرطات (-) فقط، مثال: men-shirts') 
     }
     if (categories.some((c) => c.id !== editingId && c.slug === slug)) {
       return setFormError('الرابط ده مستخدم في قسم تاني')
@@ -218,7 +218,7 @@ function AdminCategories() {
                 required
               />
               <span className="category-form-hint">
-    حروف إنجليزية صغيرة وأرقام  مثل category1 _ category-1
+              حروف إنجليزية صغيرة وأرقام وشرطات بينهم، مثال: men-shirts أو category-1
               </span>
             </div>
 
@@ -262,11 +262,7 @@ function AdminCategories() {
             <article className="admin-category" key={category.id}>
               <div className="admin-category-info">
                 <h3>{category.name}</h3>
-                {category.slug ? (
-                  <p className="admin-category-slug" dir="ltr">/category/{category.slug}</p>
-                ) : (
-                  <p className="admin-category-noslug">بدون رابط، عدّليه عشان القسم يشتغل</p>
-                )}
+                <p className="admin-category-slug" dir="ltr">/category/{category.slug}</p>
               </div>
 
               <div className="admin-category-actions">

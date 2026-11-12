@@ -1,5 +1,4 @@
-
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 import TopHeader from "../components/header/topHeader";
 import BtmHeader from "../components/header/btmHeader";
@@ -8,6 +7,7 @@ import ProductLoading from "../components/body/product-loading";
 import Goods from "../components/body/product";
 import Footertwo from "../components/footer/footer2";
 import { supabase } from "../supabaseClient";
+import { normalizeAr } from "../components/utils/normalizeAr";
 
 function Pgsearch() {
   const [loading, setloading] = useState(true);
@@ -16,8 +16,7 @@ function Pgsearch() {
   const query = new URLSearchParams(useLocation().search).get("query");
 
   useEffect(() => {
-    // نشيل الرموز اللي ممكن تلخبط صيغة الفلتر
-    const safeQuery = (query || "").replace(/[,()%*\\]/g, " ").trim();
+    const cleanQuery = (query || "").trim();
 
     let cancelled = false;
 
@@ -25,40 +24,56 @@ function Pgsearch() {
       setloading(true);
 
       try {
-        const { data, error } = await supabase
-          .from("products")
-          .select("*")
-          .eq("is_hidden", false)
-          .or(`title.ilike.%${safeQuery}%,description.ilike.%${safeQuery}%`);
-          if (cancelled) return;
+        // البحث والتقريب بيحصلوا في القاعدة (search_products)، والمخفي مش بيرجع
+        const { data, error } = await supabase.rpc("search_products", { q: cleanQuery });
 
-          if (error) {
-            console.error("خطأ أثناء البحث في سوبابيز:", error);
-            setresults([]);
-          } else {
-            setresults(data || []);
-          }
-        } catch (error) {
-          console.error("search error", error);
-          if (!cancelled) setresults([]);
-        } finally {
-          if (!cancelled) setloading(false);
+        if (cancelled) return;
+
+        if (error) {
+          console.error("خطأ أثناء البحث في سوبابيز:", error);
+          setresults([]);
+        } else {
+          setresults(data || []);
         }
-      };
-  
-      if (safeQuery) {
-        fetchResults();
-      } else {
-        setresults([]);
-        setloading(false);
+      } catch (error) {
+        console.error("search error", error);
+        if (!cancelled) setresults([]);
+      } finally {
+        if (!cancelled) setloading(false);
       }
-  
-      return () => {
-        cancelled = true;
-      };
-    }, [query]);
+    };
+
+    if (cleanQuery.length >= 2) {
+      fetchResults();
+    } else {
+      setresults([]);
+      setloading(false);
+    }
+
+    return () => {
+      cancelled = true;
+    };
+  }, [query]);
+
+  // لو مفيش منتج فيه الكلمة زي ما هي، يبقى النتايج جت بالتقريب
+  const isApproximate = useMemo(() => {
+    const normalizedQuery = normalizeAr((query || "").trim().slice(0, 60));
+    if (!normalizedQuery || results.length === 0) return false;
+
+    return !results.some((product) =>
+      normalizeAr(
+        `${product.title} ${(product.keywords || []).join(" ")} ${product.description || ""}`
+      ).includes(normalizedQuery)
+    );
+  }, [results, query]);
+
   const searchResults = results.length > 0 ? (
     <div className="goods">
+      {isApproximate && (
+        <p className="search-approx-note container">
+          لم نجد تطابقاً تاماً لـ «{query}»، دي أقرب النتائج
+        </p>
+      )}
       <Goods
         products={results}
         title={`نتائج البحث عن: ${query}`}
@@ -71,25 +86,21 @@ function Pgsearch() {
   );
 
   return (
-    
-      
-      <PageTransition key={query}>
-        <TopHeader />
+    <PageTransition key={query}>
+      <TopHeader />
       <BtmHeader />
 
-        <div className="page-category">
-          {loading ? (
-            <ProductLoading key={query} />
-          ) : (
-            searchResults
-          )}
-        </div>
+      <div className="page-category">
+        {loading ? (
+          <ProductLoading key={query} />
+        ) : (
+          searchResults
+        )}
+      </div>
 
-        <Footertwo />
-      </PageTransition>
-    
+      <Footertwo />
+    </PageTransition>
   );
 }
 
 export default Pgsearch;
-

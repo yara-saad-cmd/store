@@ -11,13 +11,17 @@ const AdminProductForm = lazy(() => import("../components/admin/AdminProductForm
 const AdminProducts = lazy(() => import("../components/admin/AdminProducts"))
 const AdminOrders = lazy(() => import("../components/admin/AdminOrders"))
 const AdminCategories = lazy(() => import("../components/admin/AdminCategories"))
+const AdminShipping = lazy(() => import("../components/admin/AdminShipping"))
 const Login = lazy(() => import("./LoginPages/Login"))
 const CreateAccount = lazy(() => import("./LoginPages/CreateAccount"))
+const ForgotPassword = lazy(() => import("./LoginPages/ForgotPassword"))
+const ResetPassword = lazy(() => import("./LoginPages/ResetPassword"))
 const Cart = lazy(() => import("../page/cart/cart"))
 const Pgcategory = lazy(() => import("../page/pg-category/pg-category"))
 const Pgsearch = lazy(() => import("../page/pg-search"))
 const Like = lazy(() => import("../page/like/like"))
 const UserAccount = lazy(() => import("../page/account/UserAccount"))
+const MyOrders = lazy(() => import("../page/account/MyOrders"))
 const OrderDetails = lazy(() => import("../page/OrderDetails/Order-details"))
 const Payment = lazy(() => import("../page/payment/payment"))
 const OrderDone = lazy(() => import("../page/orderDone/OrderDone"))
@@ -64,6 +68,7 @@ function App() {
                      <Route path="/admin" element={<AdminRoute><AdminOrders /></AdminRoute>} />
                      <Route path="/admin/products" element={<AdminRoute><AdminProducts /></AdminRoute>} />
                      <Route path="/admin/categories" element={<AdminRoute><AdminCategories /></AdminRoute>} />
+                     <Route path="/admin/shipping" element={<AdminRoute><AdminShipping /></AdminRoute>} />
             <Route path="/admin/products/new" element={<AdminRoute><AdminProductForm /></AdminRoute>} />
             <Route path="/admin/products/:id" element={<AdminRoute><AdminProductForm /></AdminRoute>} />
             <Route path="/" element={<Home />} />
@@ -73,6 +78,7 @@ function App() {
             <Route path="/payment" element={<Payment />} />
             <Route path="/order-done" element={<OrderDone />} />
             <Route path="/user-account" element={<UserAccount />} />
+            <Route path="/my-orders" element={<MyOrders />} />
 
             <Route path="/search" element={<Pgsearch />} />
 
@@ -90,6 +96,8 @@ function App() {
             {/* login pags */}
             <Route path="/login" element={<Login/>} />
             <Route path="/CreateAccount" element={<CreateAccount/>} />
+            <Route path="/forgot-password" element={<ForgotPassword/>} />
+            <Route path="/reset-password" element={<ResetPassword/>} />
             {/* login pags */}
 
             {/* لازم تفضل دايماً آخر Route في الليستة */}

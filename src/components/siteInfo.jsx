@@ -1,7 +1,7 @@
 //بيانات النواصل و السوشل ميديا 
 export const siteInfo = {
    //اكتب قبل الرقم 20 كود الدوله 
-    whatsappNumber: "",
+    whatsappNumber: "200100000000",
     social: {
       instagram: "www.dsfd.com",
       telegram: "www.dsfd.com",

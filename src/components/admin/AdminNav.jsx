@@ -10,6 +10,7 @@ export default function AdminNav() {
       <NavLink to="/admin" end className={getClassName}>الطلبات</NavLink>
       <NavLink to="/admin/products" className={getClassName}>المنتجات</NavLink>
       <NavLink to="/admin/categories" className={getClassName}>الأقسام</NavLink>
+      <NavLink to="/admin/shipping" className={getClassName}>الشحن</NavLink>
     </nav>
   )
 }

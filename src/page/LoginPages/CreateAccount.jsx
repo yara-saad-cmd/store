@@ -122,8 +122,8 @@ function CreateAccount() {
                 aria-label="رقم الهاتف"
                 autoComplete="tel"
                 inputMode="numeric"
-                pattern="01[0-9]{9}"
-                title="رقم هاتف مصري من 11 رقم يبدأ بـ 01"
+                              pattern="01[012][0-9]{8}"
+                title="رقم هاتف مصري من 11 رقم يبدأ بـ 010 أو 011 أو 012"
               />
               <input
                 type="password"

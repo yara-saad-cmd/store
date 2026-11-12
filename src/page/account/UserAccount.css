@@ -75,13 +75,13 @@
     font-size: 17px;
     font-weight: 500;
 }
-.pg-account .more-pages :is(.pg-user,.pg-favorite,.pg-cart-icon,.message,.pg-admin){
+.pg-account .more-pages :is(.pg-user,.pg-favorite,.pg-cart-icon,.message,.pg-admin ,.pg-orders){
     cursor:pointer; display:flex; align-items:center; color:var(--text-color-1);
   }
 .pg-account .more-pages .pg-user {
     color:var(--min-color);
 }
-.pg-account .more-pages :is(.pg-user,.pg-favorite,.pg-cart-icon,.message,.pg-admin):hover{ color:var(--min-color); }
+.pg-account .more-pages :is(.pg-user,.pg-favorite,.pg-cart-icon,.message,.pg-admin ,.pg-orders):hover{ color:var(--min-color); }
 
 
 

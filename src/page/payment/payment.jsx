@@ -15,10 +15,9 @@ import PageTransition from "../../components/PageTransaction";
 import Footer from "../../components/footer/footer";
 
 import { supabase } from "../../supabaseClient";
-
 import { ContextCart } from "../../components/context/contextcart";
+import useCartStatus from "../../components/context/useCartStatus";
 import { siteInfo } from "../../components/siteInfo";
-
 const { visa: visaEnabled, coupons: couponsEnabled } = siteInfo.payment;
 
 
@@ -35,6 +34,16 @@ const getOrderErrorMessage = (error) => {
   return ORDER_ERRORS[code] || "حصلت مشكلة أثناء إرسال طلبك، من فضلك حاولي مرة تانية";
 };
 
+// لو العميلة مجتش من صفحة التفاصيل (فتحت الرابط مباشرة) نرجّعها للعربة
+const cameFromDetails = () => {
+  try {
+    return sessionStorage.getItem("stepPayment") === "1";
+  } catch (error) {
+    console.error("خطأ في قراءة علامة الخطوة:", error);
+    return true; // لو التخزين مش شغال منقفلش عليها الطريق
+  }
+};
+
 function Payment() {
    // لو الفيزا مقفولة، الدفع عند الاستلام بيتحدد تلقائياً
    const [selectedMethod, setSelectedMethod] = useState(visaEnabled ? "" : "cash");
@@ -42,8 +51,10 @@ function Payment() {
   const [orderPlaced, setOrderPlaced] = useState(false);
 
   const { cartItems, clearCart } = useContext(ContextCart);
+  const { problems, checking } = useCartStatus(cartItems);
   const navigate = useNavigate();
 
+  const hasBlockingProblem = Object.keys(problems).length > 0;
 
   // قراءة بيانات العميل المحفوظة من فورم الشحن (UserData.jsx)
   const getSavedUserData = () => {
@@ -94,6 +105,11 @@ function Payment() {
       return;
     }
 
+    if (hasBlockingProblem) {
+      toast.error("في منتج في العربة غير متاح، راجعي العربة الأول");
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -125,13 +141,24 @@ function Payment() {
       if (orderError) {
         console.error("خطأ في إنشاء الطلب:", orderError);
         toast.error(getOrderErrorMessage(orderError), { duration: 4000 });
+
+        // منتج اتخفى أو خلص: نرجّعها للعربة عشان الفحص هناك يوريها أنهي منتج
+        const code = orderError?.hint || orderError?.message || "";
+        if (code === "item_unavailable" || code === "item_out_of_stock") {
+          navigate("/cart", { replace: true });
+        }
         return;
       }
-
       try {
         localStorage.removeItem("orderNote");
       } catch (error) {
         console.error("فشل مسح الملاحظة:", error);
+      }
+      try {
+        sessionStorage.removeItem("stepDetails");
+        sessionStorage.removeItem("stepPayment");
+      } catch (error) {
+        console.error("فشل مسح علامات الخطوات:", error);
       }
 
       setOrderPlaced(true);
@@ -150,7 +177,11 @@ function Payment() {
   };
 
    // لو العربة فاضية (فتح الصفحة بالرابط مثلاً) نرجّعها للعربة
-   if (cartItems.length === 0 && !orderPlaced) {
+   if ((cartItems.length === 0 || !cameFromDetails()) && !orderPlaced) {
+    return <Navigate to="/cart" replace />;
+  }
+
+  if (hasBlockingProblem && !orderPlaced) {
     return <Navigate to="/cart" replace />;
   }
 
@@ -275,9 +306,9 @@ function Payment() {
                       type="button"
                       className="btn-submit-order"
                       onClick={handleSubmitOrder}
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? "جاري إرسال الطلب..." : "متابعة"}
+                      disabled={isSubmitting || checking}
+                      >
+                        {isSubmitting ? "جاري إرسال الطلب..." : "متابعة"}
                     </button>
                   ) : (
                     <button

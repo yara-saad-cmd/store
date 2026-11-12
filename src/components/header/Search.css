@@ -30,3 +30,25 @@
 
  
   /* search*/
+  .suggestions .suggestion-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.suggestions .suggestion-img {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.suggestions button.active {
+    background-color: var(--border-color);
+}
+
+.search-approx-note {
+    padding: 10px 0;
+    color: var(--text-muted, #777);
+}

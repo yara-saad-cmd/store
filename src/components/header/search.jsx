@@ -1,14 +1,16 @@
-
 import React, { useEffect, useState } from 'react'
-import { IoSearchOutline} from 'react-icons/io5'
+import { IoSearchOutline } from 'react-icons/io5'
 import { useLocation, useNavigate } from 'react-router-dom'
 import "./Search.css"
-import { supabase } from '../../supabaseClient'; // تأكدي من مسار الملف لديكِ
+import { supabase } from '../../supabaseClient'
+
+const MIN_CHARS = 2
 
 function Search() {
     const [search, setsearch] = useState("")
-    const [suggestions, setsuggestions] = useState([]) // هنا هنخزن كلمات مش منتجات
-   
+    const [suggestions, setsuggestions] = useState([]) // { id, title, image }
+    const [activeIndex, setActiveIndex] = useState(-1) // العنصر المحدد بالأسهم
+
     const [history, sethistory] = useState(() => {
       try {
           const saved = localStorage.getItem('mySearchHistory');
@@ -25,69 +27,60 @@ function Search() {
     const locachan = useLocation()
     const navigat = useNavigate()
 
-    // أضف هذا الـ useEffect لمزامنة الـ input مع الرابط (URL)
-useEffect(() => {
-    const params = new URLSearchParams(locachan.search);
-    setsearch(params.get('query') || "");
-  }, [locachan.search]);
+    // مزامنة الـ input مع الرابط (URL)
+    useEffect(() => {
+        const params = new URLSearchParams(locachan.search);
+        setsearch(params.get('query') || "");
+    }, [locachan.search]);
 
-    
-const executeSearch = (term) => {
-    const trimmedTerm = term.trim();
-    if (trimmedTerm) {
-        // تحديث التاريخ
-        const newHistory = [trimmedTerm, ...history.filter(h => h !== trimmedTerm)].slice(0, 5);
-        sethistory(newHistory);
-        localStorage.setItem('mySearchHistory', JSON.stringify(newHistory));
-        
-        // إخفاء القائمة المنسدلة وتحديث النص
-        setShowDropdown(false);
-        setsearch(trimmedTerm); 
-        
-        // الانتقال لصفحة البحث
-        navigat(`/search?query=${encodeURIComponent(trimmedTerm)}`);
-    }
-};
+    const executeSearch = (term) => {
+        const trimmedTerm = term.trim();
+        if (trimmedTerm) {
+            const newHistory = [trimmedTerm, ...history.filter(h => h !== trimmedTerm)].slice(0, 5);
+            sethistory(newHistory);
+            localStorage.setItem('mySearchHistory', JSON.stringify(newHistory));
+
+            setShowDropdown(false);
+            setActiveIndex(-1);
+            setsearch(trimmedTerm);
+
+            navigat(`/search?query=${encodeURIComponent(trimmedTerm)}`);
+        }
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         executeSearch(search);
     }
 
-        useEffect(() => {
+    useEffect(() => {
         let isCancelled = false;
 
         const fetchSuggestions = async () => {
             try {
-              // البحث في جدول المنتجات عن التي تحتوي على نص البحث
-              const { data, error } = await supabase
-                .from('products')
-                .select('title')
-                .eq('is_hidden', false)
-                .ilike('title', `%${search.replace(/[%_\\]/g, ' ')}%`)
-                .limit(6); // حد أقصى 6 نتائج للمقترحات
+                // البحث والتقريب بيحصلوا في القاعدة (suggest_products)
+                const { data, error } = await supabase.rpc('suggest_products', { q: search });
 
-              if (isCancelled) return; // تجاهل النتيجة لو تم إلغاء هذا الطلب
+                if (isCancelled) return;
 
-              if (error) {
-                console.error("خطأ في جلب المقترحات:", error);
-                setsuggestions([]);
-                return;
-              }
-          
-              if (data) {
-                // استخراج عناوين المنتجات وعرضها
-                const titles = data.map(item => item.title);
-                setsuggestions(titles);
-              }
+                if (error) {
+                    console.error("خطأ في جلب المقترحات:", error);
+                    setsuggestions([]);
+                    return;
+                }
+
+                setsuggestions(data || []);
+                setActiveIndex(-1);
             } catch (error) {
-              if (!isCancelled) {
-                console.error("حدث خطأ:", error);
-                setsuggestions([]);
-              }
+                if (!isCancelled) {
+                    console.error("حدث خطأ:", error);
+                    setsuggestions([]);
+                }
             }
-          };
-          const time = setTimeout(() => {
-            if (search.trim().length >= 2) {
+        };
+
+        const time = setTimeout(() => {
+            if (search.trim().length >= MIN_CHARS) {
                 fetchSuggestions();
             } else {
                 setsuggestions([]);
@@ -104,51 +97,94 @@ const executeSearch = (term) => {
         setShowDropdown(false);
     }, [locachan])
 
+    // القايمة المعروضة حالياً: السجل لو الخانة فاضية، وإلا الاقتراحات
+    const listItems = search === "" ? history : suggestions.map((item) => item.title)
+    const isOpen = showDropdown && listItems.length > 0
+
+    const handleKeyDown = (e) => {
+        if (e.key === 'Escape') {
+            setShowDropdown(false);
+            setActiveIndex(-1);
+            return;
+        }
+
+        if (listItems.length === 0) return;
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            setShowDropdown(true);
+            setActiveIndex((prev) => (prev + 1) % listItems.length);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            setShowDropdown(true);
+            setActiveIndex((prev) => (prev <= 0 ? listItems.length - 1 : prev - 1));
+        } else if (e.key === 'Enter' && isOpen && activeIndex >= 0 && activeIndex < listItems.length) {
+            e.preventDefault();
+            executeSearch(listItems[activeIndex]);
+        }
+    }
+
     return (
         <div className='search desktop-search' onBlur={() => setTimeout(() => setShowDropdown(false), 200)}>
             <form onSubmit={handleSubmit} className='search-box'>
-                <button type='submit'><IoSearchOutline /></button>
-                <input 
-                    type='text' 
-                    name='search' 
-                    id='search' 
+                <button type='submit' aria-label="بحث"><IoSearchOutline /></button>
+                <input
+                    type='text'
+                    name='search'
+                    id='search'
                     value={search}
-                    placeholder='ما الذي تبحث عنه' 
+                    placeholder='ما الذي تبحث عنه'
+                    role="combobox"
+                    aria-expanded={isOpen}
+                    aria-controls="search-suggestions"
+                    aria-autocomplete="list"
+                    aria-activedescendant={activeIndex >= 0 ? `search-option-${activeIndex}` : undefined}
                     onFocus={() => setShowDropdown(true)}
                     onChange={(e) => {
                         setsearch(e.target.value);
+                        setActiveIndex(-1);
                         setShowDropdown(true);
-                    }} 
+                    }}
+                    onKeyDown={handleKeyDown}
                     autoComplete='off'
                 />
             </form>
 
-            {showDropdown && (suggestions.length > 0 || (search === "" && history.length > 0)) && (
-                <ul className="suggestions">
+            {isOpen && (
+                <ul className="suggestions" id="search-suggestions" role="listbox">
                     {/* سجل البحث الشخصي */}
                     {search === "" && history.map((item, index) => (
-                        <li key={`hist-${item}`}>
-                        <button
-                          type="button"
-                          className="history-item"
-                          onMouseDown={() => executeSearch(item)}
-                        >
-                          {item}
-                        </button>
-                      </li>
+                        <li key={`hist-${item}`} role="none">
+                            <button
+                                type="button"
+                                role="option"
+                                id={`search-option-${index}`}
+                                aria-selected={activeIndex === index}
+                                className={`history-item ${activeIndex === index ? 'active' : ''}`}
+                                onMouseDown={() => executeSearch(item)}
+                            >
+                                {item}
+                            </button>
+                        </li>
                     ))}
 
-                    {/* مقترحات كلمات البحث الشائعة (مستخرجة من البيانات) */}
-                    {search !== "" && suggestions.map((word, index) => (
-                        <li key={`word-${word}`}>
-                        <button
-                          type="button"
-                          className="your-class"
-                          onMouseDown={() => executeSearch(word)}
-                        >
-                          {word}
-                        </button>
-                      </li>
+                    {/* اقتراحات من أسماء المنتجات (بتحمّل الأخطاء الإملائية) */}
+                    {search !== "" && suggestions.map((item, index) => (
+                        <li key={`word-${item.id}`} role="none">
+                            <button
+                                type="button"
+                                role="option"
+                                id={`search-option-${index}`}
+                                aria-selected={activeIndex === index}
+                                className={`your-class suggestion-item ${activeIndex === index ? 'active' : ''}`}
+                                onMouseDown={() => executeSearch(item.title)}
+                            >
+                                {item.image && (
+                                    <img className="suggestion-img" src={item.image} alt="" loading="lazy" />
+                                )}
+                                <span>{item.title}</span>
+                            </button>
+                        </li>
                     ))}
                 </ul>
             )}
@@ -157,98 +193,3 @@ const executeSearch = (term) => {
 }
 
 export default Search;
-
-
-
-// الكود القديم
-
-
-
-
-// import React, { useEffect, useState } from 'react'
-// import { IoSearchOutline } from 'react-icons/io5'
-// import { Link, useLocation, useNavigate } from 'react-router-dom'
-
-// function Search() {
-
-//     const [search ,setsearch] = useState("")
-
-//     const [suggestions ,setsuggestions] = useState([])
-
-//     const locachan = useLocation()
-
-//     const navigat = useNavigate()
-
-
-//     const handleSubmit = (e) => {
-//         e.preventDefault()
-//         if (search.trim()){
-//              navigat(`/search?query=${encodeURIComponent(search.trim())}`)
-//         } 
-//     }
-
-
-//     useEffect(() => {
-//       const fetchSuggestions = async () => {
-//         try {
-//           const res = await fetch(`https://dummyjson.com/produts/search?q=${search}`);
-//           const data = await res.json();
-//           setsuggestions(data.produts.slice(0, 5) || []);
-//         } catch (error) {
-//           console.error("search error", error);
-//           setsuggestions([]);
-//         }
-//       };
-    
-      
-//       const time = setTimeout(() => {
-//         if (search.trim() !== "") {
-//           fetchSuggestions();
-//         } else {
-//           setsuggestions([]);
-//         }
-//       }, 300);
-    
-     
-//       return () => clearTimeout(time);
-    
-//     }, [search]); 
-
-  
-//     useEffect(()=>{
-//       setsuggestions([]);
-//     },[locachan])
-
-//   return (
-//     <div className='search'>
-//         <form onSubmit={handleSubmit} className='search-box'>
-
-//             <button type='submit' ><IoSearchOutline /></button>
-//             <input type='text' name='search' id='search' placeholder='ما المنتج اللني تبحث' onChange={(e) => setsearch(e.target.value)} autoComplete='off'/>
-
-//         </form>
-//         {suggestions.length > 0 && (
-
-//   <ul className="suggestions">
-
-//     {suggestions.map((item) => (
-
-//       <li key={item.id}>
-
-//         <Link to={`/produts/${item.id}`}>
-//           {item.title}
-//         </Link>
-
-//       </li>
-
-//     ))}
-
-//   </ul>
-// )}
-
-
-//  </div>
-//   )
-// }
-
-// export default Search

@@ -12,6 +12,7 @@ import "./AdminShared.css"
 const BUCKET = 'product-images'
 const MAX_IMAGES = 8
 const MAX_PRICE = 1000000
+const MAX_DISCOUNT = 90
 const AVAILABILITY_OPTIONS = ['متوفر', 'غير متوفر']
 
 // "S, M, L" أو "S، M، L" أو سطر لكل قيمة ← مصفوفة من غير تكرار
@@ -19,16 +20,26 @@ const parseList = (text) => [
   ...new Set(text.split(/[,،\n]/).map((value) => value.trim()).filter(Boolean)),
 ]
 
+// بيستخرج مسار الملف جوه الـ bucket من الرابط العام، ولو الرابط مش تبعنا بيرجّع null
+const getStoragePath = (url) => {
+  const marker = `/${BUCKET}/`
+  const index = typeof url === 'string' ? url.indexOf(marker) : -1
+  return index === -1 ? null : decodeURIComponent(url.slice(index + marker.length))
+}
+
 const EMPTY_FORM = {
   title: '',
   description: '',
   price: '',
   availability: 'متوفر',
+  discountPercent: '0',
   categoryId: '',
   colors: '',
   sizes: '',
+  keywords: '',
   isHidden: false,
 }
+
 
 function AdminProductForm() {
   const { id } = useParams()
@@ -38,6 +49,7 @@ function AdminProductForm() {
 
   const [form, setForm] = useState(EMPTY_FORM)
   const [images, setImages] = useState([])
+  const [originalImages, setOriginalImages] = useState([])
   const [categories, setCategories] = useState([])
   const [loading, setLoading] = useState(isEdit)
   const [loadState, setLoadState] = useState('ok') // ok | notfound | error
@@ -101,12 +113,15 @@ function AdminProductForm() {
             description: product.description || '',
             price: String(product.price ?? ''),
             availability: product.availability || 'متوفر',
+            discountPercent: String(product.discount_percent ?? 0),
             categoryId: product.category_id ? String(product.category_id) : '',
             colors: (product.colors || []).join(', '),
             sizes: (product.sizes || []).join(', '),
+            keywords: (product.keywords || []).join(', '),
             isHidden: Boolean(product.is_hidden),
           })
           setImages((product.images || []).map((url, index) => ({ key: `existing-${index}`, url })))
+          setOriginalImages(product.images || [])
         }
       } catch (error) {
         console.error('خطأ غير متوقع في تحميل البيانات:', error)
@@ -200,14 +215,21 @@ function AdminProductForm() {
     const title = form.title.trim()
     const description = form.description.trim()
     const price = Number(form.price)
+    const discountPercent = Number(form.discountPercent || 0)
 
     if (!title) return setFormError('اسم المنتج مطلوب')
     if (!description) return setFormError('وصف المنتج مطلوب')
     if (!Number.isInteger(price) || price < 1 || price > MAX_PRICE) {
       return setFormError('السعر لازم يكون رقم صحيح أكبر من صفر')
     }
+    if (
+      !Number.isInteger(discountPercent) ||
+      discountPercent < 0 ||
+      discountPercent > MAX_DISCOUNT
+    ) {
+      return setFormError(`الخصم لازم يكون رقم صحيح من 0 إلى ${MAX_DISCOUNT}`)
+    }
     if (images.length === 0) return setFormError('أضيفي صورة واحدة على الأقل')
-
     setFormError('')
     setIsSubmitting(true)
 
@@ -229,15 +251,18 @@ function AdminProductForm() {
 
       const colors = parseList(form.colors)
       const sizes = parseList(form.sizes)
+      const keywords = parseList(form.keywords)
 
       const payload = {
         title,
         description,
         price,
         availability: form.availability,
+        discount_percent: discountPercent,
         category_id: form.categoryId ? Number(form.categoryId) : null,
         colors: colors.length ? colors : null,
         sizes: sizes.length ? sizes : null,
+        keywords: keywords.length ? keywords : null,
         images: finalUrls,
         is_hidden: form.isHidden,
       }
@@ -254,6 +279,24 @@ function AdminProductForm() {
       }
 
       saved = true
+
+      // الصور اللي اتشالت من المنتج نمسحها من الـ bucket (بعد الحفظ، وفشلها مش بيعطّل حاجة)
+      if (isEdit) {
+        const removedPaths = originalImages
+          .filter((url) => !finalUrls.includes(url))
+          .map(getStoragePath)
+          .filter(Boolean)
+
+        
+          if (removedPaths.length > 0) {
+          supabase.storage
+          .from(BUCKET)
+          .remove(removedPaths)
+          
+          .catch((removeError) => console.error('فشل مسح الصور القديمة:', removeError))
+        }
+      }
+
       toast.success(isEdit ? 'تم تعديل المنتج' : 'تم إضافة المنتج')
       navigate('/admin/products')
     } catch (error) {
@@ -354,6 +397,24 @@ function AdminProductForm() {
         </div>
 
         <div className="product-form-field">
+          <label htmlFor="pf-discount">الخصم (%)</label>
+          <input
+            id="pf-discount"
+            type="number"
+            name="discountPercent"
+            min="0"
+            max={MAX_DISCOUNT}
+            step="1"
+            inputMode="numeric"
+            value={form.discountPercent}
+            onChange={handleChange}
+          />
+          <span className="product-form-hint">
+            سيبيه 0 لو مفيش خصم. الحد الأقصى {MAX_DISCOUNT}%
+          </span>
+        </div>
+
+        <div className="product-form-field">
           <label htmlFor="pf-category">القسم</label>
           <select
             id="pf-category"
@@ -397,8 +458,23 @@ function AdminProductForm() {
         </div>
 
         <div className="product-form-field">
-          <span className="product-form-label">الصور ({images.length}/{MAX_IMAGES})</span>
+          <label htmlFor="pf-keywords">أسماء بديلة للبحث (اختياري)</label>
+          <input
+            id="pf-keywords"
+            type="text"
+            name="keywords"
+            value={form.keywords}
+            onChange={handleChange}
+            maxLength={300}
+            placeholder="جزمة, كوتشي, حذاء رياضي"
+          />
+          <span className="product-form-hint">
+            كلمات الزبونة ممكن تدوّر بيها على المنتج ده. بتخدم البحث بس ومش بتظهر في الموقع
+          </span>
+        </div>
 
+        <div className="product-form-field">
+          <span className="product-form-label">الصور ({images.length}/{MAX_IMAGES})</span>
           {images.length > 0 && (
             <ul className="product-form-images">
               {images.map((item, index) => (

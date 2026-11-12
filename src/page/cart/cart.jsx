@@ -10,12 +10,13 @@ import Invoice from "../../components/invoice/invoice";
 import CartItem from "../../components/cartItem/CartItem";
 import ImgCartEmpty from "../../img/img-cart-ampty.png"
 import useCartStatus from "../../components/context/useCartStatus"
+import { withLivePrice } from "../../components/utils/pricing"
 
 // رسايل التنبيه على المنتج، وتقدري تعدليها براحتك
 const PROBLEM_MESSAGES = {
   removed: "المنتج ده لم يعد متاحاً، احذفيه من العربة للمتابعة",
   out_of_stock: "المنتج ده غير متوفر حالياً، احذفيه من العربة للمتابعة",
-  price_changed: "سعر المنتج اتغيّر، السعر الحالي هيتحسب عند تأكيد الطلب",
+  
 }
 
 
@@ -36,12 +37,11 @@ function Cart() {
     onSizeChange,
   } = useContext(ContextCart);
 
-  const { problems } = useCartStatus(cartItems);
+  const { problems, live } = useCartStatus(cartItems);
 
   // تغيّر السعر تنبيه بس، أما المحذوف وغير المتوفر فبيمنعوا المتابعة
-  const hasBlockingProblem = Object.values(problems).some(
-    (problem) => problem !== "price_changed"
-  );
+   // أي مشكلة (منتج محذوف أو غير متوفر) بتمنع المتابعة
+   const hasBlockingProblem = Object.keys(problems).length > 0;
 
   const handleAddToLike = (item) => {
     const inlike = likeItems.some((i) => i.id === item.id);
@@ -110,8 +110,8 @@ function Cart() {
                           className={`cart-row ${problem ? "has-problem" : ""}`}
                           key={`${item.id}-${item.selectedSize}-${item.selectedColor}`}
                         >
-                          <CartItem
-                            item={item}
+                                                    <CartItem
+                            item={withLivePrice(item, live[item.id])}
                             inlike={inlike}
                             onLike={handleAddToLike}
                             onDelete={delet}

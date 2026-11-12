@@ -5,6 +5,7 @@ import { FiHeart } from "react-icons/fi";
 import { TbShoppingCart } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import { ContextCart } from "../context/contextcart";
+import PriceValue from "../utils/PriceValue";
 
 
 
@@ -342,9 +343,9 @@ const handleColorClick = (color) => {
             </div>
           )}
 
-          <p className="price">
+<p className="price">
             <span>EGP</span>
-            {item?.price || 0}
+            <PriceValue price={item?.price || 0} discount={item?.discount_percent} />
           </p>
         </div>
 

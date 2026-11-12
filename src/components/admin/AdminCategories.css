@@ -112,9 +112,6 @@
     color: var(--text-muted);
   }
   
-  .admin-category-noslug {
-    color:var(--danger);
-  }
   
   .admin-category-actions {
     display: flex;
