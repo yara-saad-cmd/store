@@ -38,11 +38,11 @@ function ResetPassword() {
         console.error('خطأ في تغيير كلمة المرور:', error)
 
         if (error.code === 'weak_password') {
-          setMessage({ type: 'error', text: 'كلمة المرور ضعيفة، جربي كلمة أطول وأصعب' })
+          setMessage({ type: 'error', text: 'كلمة المرور ضعيفة، جرب كلمة أطول وأصعب' })
         } else if (error.code === 'same_password') {
           setMessage({ type: 'error', text: 'اختاري كلمة مرور مختلفة عن القديمة' })
         } else {
-          setMessage({ type: 'error', text: 'حصلت مشكلة أثناء تغيير كلمة المرور، حاولي مرة تانية' })
+          setMessage({ type: 'error', text: 'حصلت مشكلة أثناء تغيير كلمة المرور، حاول مره اخرى' })
         }
         return
       }
@@ -53,7 +53,7 @@ function ResetPassword() {
       console.error('خطأ غير متوقع أثناء تغيير كلمة المرور:', error)
       setMessage({
         type: 'error',
-        text: 'تعذر الاتصال بالخادم، تأكدي من الإنترنت وحاولي تاني',
+        text: 'تعذر الاتصال بالخادم، تأكد من اتصال الانترنت وحاول مجددا',
       })
     } finally {
       setIsSubmitting(false)
@@ -70,7 +70,7 @@ function ResetPassword() {
       <div className="login-arya">
         <h3 className="titel-pg-login">الرابط غير صالح</h3>
         <p className="form-message form-message-error" role="alert">
-          الرابط منتهي أو غير صحيح، اطلبي رابط جديد.
+          الرابط منتهي أو غير صحيح، اطلب رابط جديد.
         </p>
         <Link to="/forgot-password" className="create-account-puttom">
           طلب رابط جديد

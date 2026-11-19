@@ -121,9 +121,17 @@
 }
 .pg-cart .cart .prdact .plus-and-mynas svg{
     font-size: 18px;
+    
    
     
 }
+.pg-cart .cart .prdact .plus-and-mynas .like svg {
+    color: var(--text-color-1);
+}
+.pg-cart .cart .prdact .plus-and-mynas .like.inlike svg {
+color: var(--danger);
+}
+
 .pg-cart .cart .prdact .plus-and-mynas .icons{
     display: flex;
     width: 55px;

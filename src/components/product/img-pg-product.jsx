@@ -102,7 +102,7 @@ function ImgPgProdact({ goods }) {
   };
 
   if (!activeImg) {
-    return <div className="imegs" style={{ minHeight: '500px' }}></div>;
+    return <div className="imegs imegs-loading"></div>;
   }
 
   return (

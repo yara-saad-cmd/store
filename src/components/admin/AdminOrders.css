@@ -6,35 +6,16 @@
   
   
  
-/*   
-  .admin-orders-filters button {
-    background-color: var(--white-color);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 6px 14px;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  
-  .admin-orders-filters button.active {
-    background-color: var(--min-color);
-    border-color: var(--min-color);
-    color: var(--text-white);
-  } */
-  
  
-  
-  .admin-retry {
-     margin-top:10px; 
-     border-radius:5px;
-      padding:8px 16px;
-     }
   
   .admin-order {
     padding: 15px;
     margin-bottom: 15px;
   }
   
+
+  
+
   .admin-order-head {
     display: flex;
     justify-content: space-between;
@@ -119,10 +100,7 @@
     cursor: pointer;
   }
   
-  .admin-status:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
+ 
   
   .admin-status.status-pending {
     border-color:var(--warning); 
@@ -138,11 +116,6 @@
   
   .admin-status.status-cancelled {
     border-color:var(--danger);
-  }
-
-
-  .admin-orders-title {
-    margin: 20px 0 15px;
   }
 
 

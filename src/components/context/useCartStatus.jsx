@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../../supabaseClient'
 
-// بيرجّع { [productId]: 'removed' | 'out_of_stock' | 'price_changed' } للمنتجات اللي فيها مشكلة
+// بيرجّع { [productId]: 'removed' | 'out_of_stock' } للمنتجات اللي فيها مشكلة
 // وكمان live: الأسعار والخصومات الحالية من القاعدة
 export default function useCartStatus(cartItems) {
   const [problems, setProblems] = useState({})
   const [live, setLive] = useState({})
   const [checking, setChecking] = useState(false)
 
-  // مفتاح ثابت بيتغير بس لو المنتجات أو أسعارها وخصوماتها المحفوظة اتغيرت، مش مع كل تغيير في الكمية
    // مفتاح ثابت بيتغير بس لو المنتجات اتغيرت، مش مع كل تغيير في الكمية
    const key = [...new Set(cartItems.map((item) => item.id))].sort().join(',')
 

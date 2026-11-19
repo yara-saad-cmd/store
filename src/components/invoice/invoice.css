@@ -33,18 +33,28 @@
     width: 100%;
     text-align: center;
 }
- .invoice .the-invoice .button button{
-    height: 35px;
-    font-size: 15px;
-    width: 90%;
-    margin: 20px 10px 10px 10px;
-    font-weight:bold;
-    color: var(--white-color);
-    background-color: var(--min-color);
-    cursor: pointer;
-    transition: 0.3s;
+.invoice .the-invoice .button .invoice-link,
+.invoice .the-invoice .button button{
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   box-sizing: border-box;
+   height: 35px;
+   font-size: 15px;
+   width: 90%;
+   margin: 20px 10px 20px 10px;
+   font-weight:bold;
+   color: var(--white-color);
+   background-color: var(--min-color);
+   border: none;
+   text-decoration: none;
+   cursor: pointer;
+   transition: 0.3s;
 }
- .invoice .the-invoice .button button:hover{
-    transform: scale(1.1);
+.invoice .the-invoice .button .invoice-link:hover{
+   transform: scale(1.1);
 }
-
+.invoice .the-invoice .button button:disabled{
+   opacity: 0.6;
+   cursor: not-allowed;
+}

@@ -14,9 +14,9 @@ const getErrorMessage = (error) => {
     case 'email_address_not_authorized':
       return 'هذا البريد غير مسموح له بالتسجيل حالياً'
     case 'weak_password':
-      return 'كلمة المرور ضعيفة، جربي كلمة أطول وأصعب'
+      return 'كلمة المرور ضعيفة، جرب كلمة أطول وأصعب'
     default:
-      return 'حصلت مشكلة أثناء إنشاء الحساب، حاولي مرة تانية'
+      return 'حصلت مشكلة أثناء إنشاء الحساب، حاول مره اخرى'
   }
 }
 
@@ -65,20 +65,20 @@ function CreateAccount() {
 
       // لو البريد مسجّل قبل كده، Supabase بيرجّع نجاح شكلي من غير ما يبعت حاجة
       if (data.user?.identities?.length === 0) {
-        setMessage({ type: 'error', text: 'هذا البريد مسجّل بالفعل، جربي تسجيل الدخول' })
+        setMessage({ type: 'error', text: 'هذا البريد مسجّل بالفعل، جرب تسجيل الدخول' })
         return
       }
 
       form.reset()
       setMessage({
         type: 'success',
-        text: 'تم إنشاء الحساب. بعتنا رابط تأكيد على بريدك، افتحيه لتفعيل الحساب.',
+        text: 'تم إنشاء الحساب. بعتنا رابط تأكيد على بريدك، افتحه لتفعيل الحساب.',
       })
     } catch (error) {
       console.error('خطأ غير متوقع أثناء إنشاء الحساب:', error)
       setMessage({
         type: 'error',
-        text: 'تعذر الاتصال بالخادم، تأكدي من الإنترنت وحاولي تاني',
+        text: 'تعذر الاتصال بالخادم، تأكد من اتصال الانترنت وحاول مجددا',
       })
     } finally {
       setIsSubmitting(false)

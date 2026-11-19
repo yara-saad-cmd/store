@@ -86,9 +86,9 @@ function Like() {
               {displayItems.length === 0 ? (
                 <div className="empty-state">
                   <img src={likeimg} alt='قائمة المفضلات' />
-                  <p>لم يتم اضافة منتجات الي قائمة المفضلات</p>
+                  <p>لم تتم إضافة منتجات إلى قائمة المفضلات</p>
 
-                  <Link to="/"> <button className='btn-shop-now'> تصوق الان </button> </Link>
+<Link to="/"> <button className='btn-shop-now'>تسوق الآن</button> </Link>
                 </div>
               ) : (
                 <div className="like">

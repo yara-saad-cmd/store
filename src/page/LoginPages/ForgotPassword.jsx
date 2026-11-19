@@ -35,7 +35,7 @@ function ForgotPassword() {
           setMessage({ type: 'error', text: 'محاولات كتير، حاولي بعد قليل' })
           return
         }
-        setMessage({ type: 'error', text: 'حصلت مشكلة، حاولي مرة تانية' })
+        setMessage({ type: 'error', text: 'حصلت مشكلة، حاول مره اخرى' })
         return
       }
 
@@ -49,7 +49,7 @@ function ForgotPassword() {
       console.error('خطأ غير متوقع في استرجاع كلمة المرور:', error)
       setMessage({
         type: 'error',
-        text: 'تعذر الاتصال بالخادم، تأكدي من الإنترنت وحاولي تاني',
+        text: 'تعذر الاتصال بالخادم، تأكد من اتصال الانترنت وحاول مجددا',
       })
     } finally {
       setIsSubmitting(false)

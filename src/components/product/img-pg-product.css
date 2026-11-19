@@ -78,25 +78,8 @@
   transform: scale(1.05);
 }
 
-/* أثناء السحب نمنع الأزرار من استقبال أحداث الماوس */
-/* .pg-prosact .imegs .small-images.dragging button {
-  pointer-events: none;
-} */
-
-/* باقي تنسيق الصور */
 
 
-.prdact-area .imegs .big-image {
-  width: 80%;
-}
-
-.prdact-area .imegs .big-image img {
-  width: 100%;
-}
-
-.prdact-area .imegs .small-images {
-  width: 12%;
-}
 
 /* الموبايل */
 @media only screen and (max-width: 966px) {
@@ -130,4 +113,7 @@
     height: 60px;
     flex-shrink: 0;
   }
+}
+.imegs-loading {
+  min-height: 500px;
 }

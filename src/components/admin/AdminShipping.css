@@ -4,11 +4,7 @@
 .admin-shipping-content{
     margin-top: 50px;
 }
-.admin-shipping-message {
-    padding: 20px 0;
-    text-align: center;
-}
-
+ 
 .admin-shipping-row {
     display: flex;
     align-items: center;
@@ -25,16 +21,17 @@
 .admin-shipping-row input {
     width: 100px;
     padding: 6px 8px;
+    border: 1px solid var(--border-input);
+    border-radius: 6px;
+    background-color: var(--white-color);
+}
+
+.admin-shipping-row input:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 .admin-shipping-save {
     padding: 6px 16px;
-    color: var(--white-color);
-    background-color: var(--min-color);
-    cursor: pointer;
 }
 
-.admin-shipping-save:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}

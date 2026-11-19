@@ -112,7 +112,7 @@ function AdminOrders() {
 
       if (error) {
         console.error('خطأ في جلب المزيد من الطلبات:', error)
-        toast.error('تعذر تحميل المزيد، حاولي مرة تانية')
+        toast.error('تعذر تحميل المزيد، حاول مره اخرى')
         return
       }
 
@@ -124,7 +124,7 @@ function AdminOrders() {
       setTotalCount(count || 0)
     } catch (error) {
       console.error('خطأ غير متوقع في جلب المزيد:', error)
-      toast.error('تعذر الاتصال بالخادم، حاولي تاني')
+      toast.error('تعذر الاتصال بالخادم، حاول مجددا')
     } finally {
       setLoadingMore(false)
     }
@@ -152,25 +152,26 @@ function AdminOrders() {
 
       if (error || !data?.length) {
         console.error('خطأ في تعديل حالة الطلب:', error)
-        toast.error('تعذر تعديل حالة الطلب، حاولي مرة تانية')
+        toast.error('تعذر تعديل حالة الطلب، حاول مره اخرى')
         return
       }
 
-      setOrders((prev) => {
-        // لو في فلتر والطلب مبقاش مطابق له، يختفي من القائمة
-        if (filter !== 'all' && filter !== newStatus) {
-          setTotalCount((total) => Math.max(0, total - 1))
-          return prev.filter((order) => order.id !== orderId)
-        }
-        return prev.map((order) =>
-          order.id === orderId ? { ...order, status: newStatus } : order
+         // لو في فلتر والطلب مبقاش مطابق له، يختفي من القائمة
+      if (filter !== 'all' && filter !== newStatus) {
+        setOrders((prev) => prev.filter((order) => order.id !== orderId))
+        setTotalCount((total) => Math.max(0, total - 1))
+      } else {
+        setOrders((prev) =>
+          prev.map((order) =>
+            order.id === orderId ? { ...order, status: newStatus } : order
+          )
         )
-      })
+      }
       fetchCounts()
       toast.success('تم تحديث حالة الطلب')
     } catch (error) {
       console.error('خطأ غير متوقع في تعديل الحالة:', error)
-      toast.error('تعذر الاتصال بالخادم، حاولي تاني')
+      toast.error('تعذر الاتصال بالخادم، حاول مجددا')
     } finally {
       setUpdatingId(null)
     }

@@ -85,7 +85,7 @@ function MyOrders() {
 
       if (error) {
         console.error('خطأ في جلب المزيد من طلباتي:', error)
-        toast.error('تعذر تحميل المزيد، حاولي مرة تانية')
+        toast.error('تعذر تحميل المزيد، حاول مره اخرى')
         return
       }
 
@@ -96,7 +96,7 @@ function MyOrders() {
       setTotalCount(count || 0)
     } catch (error) {
       console.error('خطأ غير متوقع في جلب المزيد:', error)
-      toast.error('تعذر الاتصال بالخادم، حاولي تاني')
+      toast.error('تعذر الاتصال بالخادم، حاول مجددا')
     } finally {
       setLoadingMore(false)
     }
@@ -117,11 +117,11 @@ function MyOrders() {
             <Link to="/user-account" className="my-orders-back">العودة للحساب</Link>
           </div>
 
-          {loading && <p className="my-orders-message">جاري تحميل طلباتك...</p>}
+          {loading && <p className="my-orders-message">جاري تحميل الطلبات...</p>}
 
           {!loading && loadError && (
             <div className="my-orders-message">
-              <p>تعذر تحميل طلباتك</p>
+              <p>تعذر تحميل الطلبات</p>
               <button type="button" className="my-orders-retry" onClick={fetchOrders}>
                 إعادة المحاولة
               </button>
@@ -131,7 +131,7 @@ function MyOrders() {
           {!loading && !loadError && orders.length === 0 && (
             <div className="my-orders-message">
               <p>لا توجد طلبات حتى الآن</p>
-              <Link to="/" className="my-orders-back">تسوقي الآن</Link>
+              <Link to="/" className="my-orders-back">تسوق الان</Link>
             </div>
           )}
 

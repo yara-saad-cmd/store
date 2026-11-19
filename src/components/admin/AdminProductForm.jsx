@@ -229,7 +229,7 @@ function AdminProductForm() {
     ) {
       return setFormError(`الخصم لازم يكون رقم صحيح من 0 إلى ${MAX_DISCOUNT}`)
     }
-    if (images.length === 0) return setFormError('أضيفي صورة واحدة على الأقل')
+    if (images.length === 0) return setFormError('اضافت صورة واحدة على الأقل')
     setFormError('')
     setIsSubmitting(true)
 
@@ -274,7 +274,7 @@ function AdminProductForm() {
 
       if (error || !data?.length) {
         console.error('خطأ في حفظ المنتج:', error)
-        setFormError('تعذر حفظ المنتج، حاولي مرة تانية')
+        setFormError('تعذر حفظ المنتج، حاول مره اخرى')
         return
       }
 
@@ -301,7 +301,7 @@ function AdminProductForm() {
       navigate('/admin/products')
     } catch (error) {
       console.error('خطأ غير متوقع أثناء الحفظ:', error)
-      setFormError('حصلت مشكلة أثناء الحفظ أو رفع الصور، تأكدي من الإنترنت وحاولي تاني')
+      setFormError('حصلت مشكلة أثناء الحفظ أو رفع الصور، تأكد من اتصال الانترنت وحاول مجددا')
     } finally {
       if (!saved && uploadedPaths.length > 0) {
         supabase.storage
@@ -410,7 +410,7 @@ function AdminProductForm() {
             onChange={handleChange}
           />
           <span className="product-form-hint">
-            سيبيه 0 لو مفيش خصم. الحد الأقصى {MAX_DISCOUNT}%
+          اتركه فارغ ان لم يكون هناك خصم متاح. الحد الأقصى {MAX_DISCOUNT}%
           </span>
         </div>
 
@@ -440,7 +440,7 @@ function AdminProductForm() {
               onChange={handleChange}
               placeholder="أبيض, أسود, بيج"
             />
-            <span className="product-form-hint">افصلي بين الألوان بفاصلة. سيبيها فاضية لو المنتج من غير ألوان</span>
+            <span className="product-form-hint">افصل بين الألوان بفاصلة. اتركه فارغ لو المنتج من غير ألوان</span>
           </div>
 
           <div className="product-form-field">
@@ -453,7 +453,7 @@ function AdminProductForm() {
               onChange={handleChange}
               placeholder="S, M, L, XL"
             />
-            <span className="product-form-hint">افصلي بين المقاسات بفاصلة. سيبيها فاضية لو المنتج من غير مقاسات</span>
+            <span className="product-form-hint">افصل بين المقاسات بفاصلة. اتركه فارغ لو المنتج من غير مقاسات</span>
           </div>
         </div>
 
@@ -469,7 +469,7 @@ function AdminProductForm() {
             placeholder="جزمة, كوتشي, حذاء رياضي"
           />
           <span className="product-form-hint">
-            كلمات الزبونة ممكن تدوّر بيها على المنتج ده. بتخدم البحث بس ومش بتظهر في الموقع
+            كلمات الزبون ممكن تدوّر بيها على المنتج ده. بتخدم البحث بس ومش بتظهر في الموقع
           </span>
         </div>
 

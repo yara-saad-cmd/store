@@ -6,8 +6,9 @@
 /* رسائل (تحميل / خطأ / فاضي) */
 .admin-orders-message,
 .admin-products-message,
+.admin-categories-message,
+.admin-shipping-message,
 .product-form-message{ text-align:center; padding:40px 0; }
-
 /* الفلاتر */
 .admin-orders-filters,
 .admin-products-filters{
@@ -42,6 +43,7 @@
 .admin-retry,
 .admin-add-product,
 .admin-product-edit,
+.admin-shipping-save,
 .product-form-save{
   background-color:var(--min-color);
   color:var(--text-white);
@@ -49,8 +51,19 @@
   cursor:pointer;
 }
 
+.admin-retry{
+  margin-top:10px;
+  padding:8px 16px;
+  border-radius:5px;
+}
 /* حالة disabled */
 .admin-status:disabled,
 .admin-product-toggle:disabled,
 .product-form-upload:disabled,
+.admin-shipping-save:disabled,
 .product-form-save:disabled{ opacity:.5; cursor:not-allowed; }
+.admin-categories-message , .admin-shipping-message{
+  text-align: center;
+    padding: 24px 0;
+}
+

@@ -13,11 +13,11 @@ const getErrorMessage = (error) => {
     case 'invalid_credentials':
       return 'البريد الإلكتروني أو كلمة المرور غير صحيحة'
     case 'email_not_confirmed':
-      return 'لازم تأكدي بريدك الإلكتروني الأول، افتحي الرابط اللي وصلك'
+      return 'لازم تأكد بريدك الإلكتروني الأول، افتح الرابط اللي وصلك'
     case 'over_request_rate_limit':
       return 'محاولات كتير، حاولي بعد شوية'
     default:
-      return 'حصلت مشكلة أثناء تسجيل الدخول، حاولي مرة تانية'
+      return 'حصلت مشكلة أثناء تسجيل الدخول، حاول مره اخرى'
   }
 }
 
@@ -55,7 +55,7 @@ function Login() {
       console.error('خطأ غير متوقع أثناء تسجيل الدخول:', error)
       setMessage({
         type: 'error',
-        text: 'تعذر الاتصال بالخادم، تأكدي من الإنترنت وحاولي تاني',
+        text: 'تعذر الاتصال بالخادم، تأكد من اتصال الانترنت وحاول مجددا',
       })
     } finally {
       setIsSubmitting(false)

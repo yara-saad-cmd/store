@@ -55,10 +55,10 @@ export async function compressImage(file) {
 export function getImageErrorMessage(error) {
   switch (error.message) {
     case 'UNSUPPORTED_TYPE':
-      return 'نوع الملف غير مدعوم، استخدمي JPG أو PNG أو WebP'
+      return 'نوع الملف غير مدعوم، استخدم JPG أو PNG أو WebP'
     case 'FILE_TOO_LARGE':
       return 'حجم الصورة أكبر من 20 ميجا'
     default:
-      return 'تعذر قراءة الصورة، جربي صورة تانية'
+      return 'تعذر قراءة الصورة، جرب صورة اخري'
   }
 }

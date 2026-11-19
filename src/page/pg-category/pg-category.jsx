@@ -7,7 +7,7 @@ import "./pg-category.css"
 import ProductLoading from '../../components/body/product-loading';
 import PageTransition from '../../components/PageTransaction'
 import Footertwo from '../../components/footer/footer2';
-import { supabase } from '../../supabaseClient'; // تأكدي من صحة المسار
+import { supabase } from '../../supabaseClient'; // تأكد من صحة المسار
 
 function Pgcategory() {
 

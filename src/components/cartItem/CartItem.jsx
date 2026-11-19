@@ -255,7 +255,7 @@ const handleColorClick = (color) => {
 
           {layout === "goods" && item?.availability && (
             <h4>
-              الحاله: <span className="stock">{item.availability}</span>
+           الحالة :<span className={`stock ${item.availability === "متوفر" ? "" : "no-stock"}`}>{item.availability}</span>
             </h4>
           )}
 
@@ -272,7 +272,7 @@ const handleColorClick = (color) => {
                     <button
                       type="button"
                       key={color}
-                      aria-label={`إختيار اللون ${color}`}
+                      aria-label={`اختيار اللون ${color}`}
                       className={`color-square-option ${active ? "active" : ""}`}
                       onClick={() => handleColorClick(color)}
                     >
@@ -304,7 +304,7 @@ const handleColorClick = (color) => {
                     <button
                       type="button"
                       key={size}
-                      aria-label={`إختيار المقاس ${size}`}
+                      aria-label={`اختيار المقاس ${size}`}
                       className={`size-box ${active ? "active" : ""}`}
                       onClick={() => handleSizeClick(size)}
                     >
@@ -396,7 +396,7 @@ const handleColorClick = (color) => {
                       ? "غير متوفر"
                       : encart
                         ? "تمت الإضافة إلى العربة"
-                        : "اضف الي العربه"}
+                        : "أضف إلى العربة"}
                   </span>
                   <TbShoppingCart />
                 </button>
@@ -407,7 +407,7 @@ const handleColorClick = (color) => {
                     className={`like ${inlike ? "inlike" : ""}`}
                     onClick={handleAddToLike}
                   >
-                    {inlike ? <FaHeart color="red" /> : <FiHeart />}
+                                      {inlike ? <FaHeart /> : <FiHeart />}
                   </button>
                 </div>
               </div>
@@ -418,7 +418,7 @@ const handleColorClick = (color) => {
                 <button
                   type="button"
                   aria-label="إضافة للمفضلة"
-                  className="like"
+                  className={`like ${inlike ? "inlike" : ""}`}
                   onClick={() =>
                     onLike?.({
                       ...item,
@@ -429,7 +429,7 @@ const handleColorClick = (color) => {
                     })
                   }
                 >
-                  {inlike ? <FaHeart color="red" /> : <FaRegHeart />}
+                                    {inlike ? <FaHeart /> : <FaRegHeart />}
                 </button>
 
                 <button

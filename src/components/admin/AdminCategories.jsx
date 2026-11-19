@@ -98,7 +98,7 @@ function AdminCategories() {
         setFormError(
           error?.code === '23505'
             ? 'الرابط ده مستخدم في قسم تاني'
-            : 'تعذر حفظ القسم، حاولي مرة تانية'
+            : 'تعذر حفظ القسم، حاول مره اخرى'
         )
         return
       }
@@ -108,7 +108,7 @@ function AdminCategories() {
       await fetchCategories()
     } catch (error) {
       console.error('خطأ غير متوقع أثناء حفظ القسم:', error)
-      setFormError('تعذر الاتصال بالخادم، تأكدي من الإنترنت وحاولي تاني')
+      setFormError('تعذر الاتصال بالخادم، تأكد من اتصال الانترنت وحاول مجددا')
     } finally {
       setIsSaving(false)
     }
@@ -127,12 +127,12 @@ function AdminCategories() {
 
       if (countError) {
         console.error('خطأ في عدّ منتجات القسم:', countError)
-        toast.error('تعذر حذف القسم، حاولي مرة تانية')
+        toast.error('تعذر حذف القسم، حاول مره اخرى')
         return
       }
 
       const message = count > 0
-        ? `القسم "${category.name}" فيه ${count} منتج، هيفضلوا من غير قسم. متأكدة من الحذف؟`
+        ? `القسم "${category.name}" فيه ${count} منتج، هيفضلوا من غير قسم. متاكد من الحذف؟`
         : `حذف القسم "${category.name}"؟`
 
       if (!window.confirm(message)) return
@@ -146,7 +146,7 @@ function AdminCategories() {
 
         if (detachError) {
           console.error('خطأ في فصل المنتجات عن القسم:', detachError)
-          toast.error('تعذر حذف القسم، حاولي مرة تانية')
+          toast.error('تعذر حذف القسم، حاول مره اخرى')
           return
         }
       }
@@ -159,7 +159,7 @@ function AdminCategories() {
 
       if (error || !data?.length) {
         console.error('خطأ في حذف القسم:', error)
-        toast.error('تعذر حذف القسم، حاولي مرة تانية')
+        toast.error('تعذر حذف القسم، حاول مره اخرى')
         return
       }
 
@@ -168,7 +168,7 @@ function AdminCategories() {
       await fetchCategories()
     } catch (error) {
       console.error('خطأ غير متوقع أثناء حذف القسم:', error)
-      toast.error('تعذر الاتصال بالخادم، حاولي تاني')
+      toast.error('تعذر الاتصال بالخادم، حاول مجددا')
     } finally {
       setDeletingId(null)
     }

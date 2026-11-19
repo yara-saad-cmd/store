@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ContextCart } from '../context/contextcart';
 import { Link } from 'react-router-dom';
 import { supabase } from '../../supabaseClient';
+import { unitPrice } from '../utils/pricing'
 import "./invoice.css"
 
 // علامة بتتسجل لما العميلة تتقدم خطوة، عشان الصفحة اللي بعدها تتأكد إنها جت بالتسلسل
@@ -25,10 +26,6 @@ const getSavedGovernorate = () => {
     return ""
   }
 }
-
-// نفس معادلة دالة القاعدة: تقريب سعر الوحدة بعد الخصم
-const unitPrice = (price, discount) =>
-  Math.round((Number(price) * (100 - Number(discount || 0))) / 100)
 
 function Invoice({ layout, blocked = false }) {
   const { cartItems } = useContext(ContextCart)
@@ -143,10 +140,10 @@ function Invoice({ layout, blocked = false }) {
 
   return (
     <div className="invoice">
-      <p className="title">الفاتوره</p>
+           <p className="title">الفاتورة</p>
       <div className="the-invoice">
         <h4>
-          اجمالي المنتجات:<span>{total.toFixed(2)}</span>
+        إجمالي المنتجات:<span>{total.toFixed(2)}</span>
         </h4>
 
         {hasDiscount && (
@@ -155,7 +152,7 @@ function Invoice({ layout, blocked = false }) {
               الخصم:<span>- {discountAmount.toFixed(2)}</span>
             </h4>
             <h4>
-              الاجمالي الفرعي:<span>{subtotal.toFixed(2)}</span>
+            الإجمالي الفرعي:<span>{subtotal.toFixed(2)}</span>
             </h4>
           </>
         )}
@@ -175,18 +172,17 @@ function Invoice({ layout, blocked = false }) {
         <div className="button">
           {blocked ? (
             <button type="button" disabled>
-              احذفي المنتجات غير المتاحة للمتابعة
+                           احذف المنتجات غير المتاحة للمتابعة
             </button>
           ) : (
             <Link
-              to={layout === "cart" ? "/order-details" : "/payment"}
-              onClick={() => markStep(layout === "cart" ? "stepDetails" : "stepPayment")}
-            >
-              <button>
-                {layout === "cart" ? "تابع الشراء" : "اتمام الطلب"} (
-                <span>{cartItems.length}</span>)
-              </button>
-            </Link>
+            to={layout === "cart" ? "/order-details" : "/payment"}
+            className="invoice-link"
+            onClick={() => markStep(layout === "cart" ? "stepDetails" : "stepPayment")}
+          >
+            {layout === "cart" ? "تابع الشراء" : "إتمام الطلب"} (
+            <span>{cartItems.length}</span>)
+          </Link>
           )}
         </div>
       </div>

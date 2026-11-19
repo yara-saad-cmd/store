@@ -1,7 +1,7 @@
 import React from 'react'
 import "./footer.css"
 import { Link } from 'react-router-dom'
-import logo from "../../img/logo (1).png"
+import logo from "../../img/logo(1).png"
 import { AiFillInstagram } from 'react-icons/ai'
 import { FaTelegramPlane } from 'react-icons/fa'
 import { IoLogoWhatsapp } from 'react-icons/io5'
@@ -48,17 +48,17 @@ function Footertwo() {
           <div className="legal">
             <h4 className='title'>القوانين</h4>
             <div className="links">
-              <Link to="/Privacypolicy">سياست الخصوصيه</Link>
-              <Link to="/Temsconditions">الشروط و الاحكام</Link>
+            <Link to="/Privacypolicy">سياسة الخصوصية</Link>
+            <Link to="/Temsconditions">الشروط والأحكام</Link>
               <Link to="/Termsofuse">سياسة الاستخدام</Link>
             </div>
           </div>
 
           <div className="shipping-and-orders">
-            <h4 className='title'>الشحن و الطلبات</h4>
+          <h4 className='title'>الشحن والطلبات</h4>
             <div className="links">
-              <Link to="/ShippingDelivery">سياسة الشحن و التوصيل</Link>
-              <Link to="/Return">سياست الاسترجاع و الاستبدال</Link>
+            <Link to="/ShippingDelivery">سياسة الشحن والتوصيل</Link>
+            <Link to="/Return">سياسة الاسترجاع والاستبدال</Link>
             </div>
           </div>
 

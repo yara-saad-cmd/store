@@ -42,10 +42,7 @@ function App() {
     <>
 
 
-      {/* <header>
-      <TopHeader />
-      <BtmHeader />
-</header> */}
+      
 
 
       <Toaster position="bottom-center" toastOptions={{

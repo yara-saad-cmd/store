@@ -13,14 +13,11 @@ function RelatedProducts({
   relatedProducts, 
   visibleCount, 
   setVisibleCount, // 👈 استلام الدالة بنجاح
-  goods, 
   cartItems, 
   AddToCart 
 }) {
   
-  // تصفية المصفوفة أولاً لاستبعاد المنتج المفتوح حالياً قبل حساب الطول أو التقطيع
-  const filteredProducts = relatedProducts.filter((item) => item.id !== goods.id);
-
+ 
   return (
     <div className="mor-product">
       {loadingrelatedProducts ? (
@@ -28,7 +25,7 @@ function RelatedProducts({
       ) : (
         <>
           <ProductLayout title={"مقترحات من نفس الفئة"}>
-            {filteredProducts.slice(0, visibleCount).map((item) => {
+          {relatedProducts.slice(0, visibleCount).map((item) => {
               const incart = cartItems.some((i) => i.id === item.id);
 
               const outOfStock = item.availability !== "متوفر";
@@ -102,8 +99,8 @@ function RelatedProducts({
           </ProductLayout>
 
           {/* 🌟 مكان زر "عرض المزيد" النظيف والصحيح تماماً هنا 🌟 */}
-          {visibleCount < filteredProducts.length && (
-            <div style={{ textAlign: "center", marginTop: "20px", width: "100%" }}>
+          {visibleCount < relatedProducts.length && (
+                    <div className="load-more-wrapper">
               <button className="load-more" onClick={() => setVisibleCount(prev => prev + 12)}>
                 ... عرض المزيد 
               </button>

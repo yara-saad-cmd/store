@@ -73,7 +73,7 @@ function AdminShipping() {
 
       if (error || !data?.length) {
         console.error('خطأ في حفظ سعر الشحن:', error)
-        toast.error('تعذر حفظ السعر، حاولي مرة تانية')
+        toast.error('تعذر حفظ السعر، حاول مره اخرى')
         return
       }
 
@@ -83,7 +83,7 @@ function AdminShipping() {
       toast.success(`تم حفظ سعر ${rate.governorate}`)
     } catch (error) {
       console.error('خطأ غير متوقع أثناء حفظ سعر الشحن:', error)
-      toast.error('تعذر الاتصال بالخادم، حاولي تاني')
+      toast.error('تعذر الاتصال بالخادم، حاول مجددا')
     } finally {
       setSavingGov(null)
     }

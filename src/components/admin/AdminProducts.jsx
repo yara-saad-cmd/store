@@ -71,7 +71,7 @@ function AdminProducts() {
 
       if (error || !data?.length) {
         console.error('خطأ في تعديل ظهور المنتج:', error)
-        toast.error('تعذر تعديل المنتج، حاولي مرة تانية')
+        toast.error('تعذر تعديل المنتج، حاول مره اخرى')
         return
       }
 
@@ -81,7 +81,7 @@ function AdminProducts() {
       toast.success(nextHidden ? 'تم إخفاء المنتج' : 'تم إظهار المنتج')
     } catch (error) {
       console.error('خطأ غير متوقع في تعديل المنتج:', error)
-      toast.error('تعذر الاتصال بالخادم، حاولي تاني')
+      toast.error('تعذر الاتصال بالخادم، حاول مجددا')
     } finally {
       setUpdatingId(null)
     }

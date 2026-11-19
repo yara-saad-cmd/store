@@ -31,7 +31,7 @@ function OrderDone() {
             رقم طلبك: <strong>#{orderId}</strong>
           </p>
           <p className="order-number-hint">
-            احتفظي برقم الطلب للرجوع إليه
+            احتفظ برقم الطلب للرجوع إليه
           </p>
 
           <Link to="/">

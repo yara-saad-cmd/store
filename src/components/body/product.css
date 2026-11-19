@@ -55,10 +55,7 @@
   color:var(--success-light);
 }
  
-.card:hover {
-  transform: translateY(-4px);
-  
-}
+
 
 
 .card .img {
@@ -131,13 +128,11 @@
   font-weight: bold;
   margin: 0;
 }
-
-.card .content h5 span {
+.card .content h5 > span:first-child {
   font-size: 13px;
 }
 
-
-.pag-prodacrs .card .icon {
+.card .btm-card :is(.icon, .cart-icon) {
   font-size: 20px;
   width: 30px;
   height: 30px;
@@ -148,11 +143,9 @@
   transition: 0.2s;
   cursor: pointer;
   color: var(--text-color-1);
-  margin: 0px 0px 0px 0px;
-
-  
 }
-.pag-prodacrs .card.incart .icon{
+
+.card.incart .btm-card :is(.icon, .cart-icon) {
   pointer-events: none;
   background-color: var(--min-color);
   color: var(--white-color);
@@ -161,11 +154,11 @@
 .in-cart-label {
   font-size: 12px;
   font-weight: bold;
-  z-index: 200;
+  
 }
 
 
-.pag-prodacrs .card .icon:hover {
+.card .btm-card :is(.icon, .cart-icon):not(:disabled):hover {
   background-color: var(--min-color);
   color: var(--white-color);
 }
@@ -199,10 +192,6 @@
 
 
 
-.msg{
-  z-index: 100;
-  
-}
 
 
 .remove-like-btn {
@@ -251,11 +240,11 @@
 
 
 
-
 .card .stock-badge {
   position: absolute;
-  top: 8px;
-  inset-inline-start: 8px;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 2;
   padding: 4px 10px;
   border-radius: 4px;
@@ -268,13 +257,13 @@
   opacity: 0.5;
 }
 
-.card .btm-card button:disabled,
-.card .btm-card .cart-icon:disabled {
+.card .btm-card button:disabled { 
   opacity: 0.4;
   cursor: not-allowed;
 }
 
-/*jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj*/
+
+/* شارة الخصم */
 .card .discount-badge {
   position: absolute;
   top: 10px;

@@ -67,7 +67,7 @@ function Pgproduct() {
         .eq("category_id", goods.category_id)
         .neq("id", goods.id)
         .eq("is_hidden", false)
-        .neq("id", goods.id);
+        
 
         if (error) {
           console.error("Error fetching related products:", error);
@@ -75,7 +75,7 @@ function Pgproduct() {
           setrelatedProducts(data || []);
         }
       } catch (err) {
-        console.error("Error:", err);;
+        console.error("Error:", err);
       } finally {
         setloadingrelatedProducts(false);
       }
@@ -116,7 +116,7 @@ function Pgproduct() {
             relatedProducts={relatedProducts}
             visibleCount={visibleCount}
             setVisibleCount={setVisibleCount} // 👈 مررنا الدالة هنا لكي يعمل الزر بداخل الكمبوننت
-            goods={goods}
+          
             cartItems={cartItems}
             AddToCart={AddToCart}
           />

@@ -54,7 +54,7 @@ function Product({ products, title, isLikePage = false }){
               });
               toast.success(
                 <div className="msg">
-                  <strong>{`تم اضافه ${item.title} الي العربه`}</strong>
+                                 <strong>{`تمت إضافة ${item.title} إلى العربة`}</strong>
                 </div>,
                 { duration: 3000 }
               );
@@ -74,7 +74,7 @@ function Product({ products, title, isLikePage = false }){
                     className="remove-like-btn"
                     onClick={(e) => {
                       e.preventDefault();
-                      removelike(item); // نبعت العنصر كامل عشان يتحذف نفس اللون/المقاس بالظبط، مش كل الألوان
+                      removelike(item.id); // نبعت العنصر كامل عشان يتحذف نفس اللون/المقاس بالظبط، مش كل الألوان
                     }}
                   >
                     إزالة

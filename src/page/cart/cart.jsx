@@ -14,8 +14,8 @@ import { withLivePrice } from "../../components/utils/pricing"
 
 // رسايل التنبيه على المنتج، وتقدري تعدليها براحتك
 const PROBLEM_MESSAGES = {
-  removed: "المنتج ده لم يعد متاحاً، احذفيه من العربة للمتابعة",
-  out_of_stock: "المنتج ده غير متوفر حالياً، احذفيه من العربة للمتابعة",
+  removed: "هاذا المنتج لم يعد متاحاً، احذفه من العربة للمتابعة",
+  out_of_stock: "هاذا المنتج غير متوفر حالياً، احذفيه من العربة للمتابعة",
   
 }
 
@@ -39,8 +39,7 @@ function Cart() {
 
   const { problems, live } = useCartStatus(cartItems);
 
-  // تغيّر السعر تنبيه بس، أما المحذوف وغير المتوفر فبيمنعوا المتابعة
-   // أي مشكلة (منتج محذوف أو غير متوفر) بتمنع المتابعة
+    // أي مشكلة (منتج محذوف أو غير متوفر) بتمنع المتابعة
    const hasBlockingProblem = Object.keys(problems).length > 0;
 
   const handleAddToLike = (item) => {
@@ -74,7 +73,7 @@ function Cart() {
               <div className="no-goods">
                 <img src={ImgCartEmpty} alt="img"/>
                 <h2>لم يتم إضافة أي منتجات إلى العربة</h2>
-                <Link to="/"> <button className="btn-go-home">تسوق الآن</button></Link>
+                <Link to="/"> <button className="btn-go-home"> تسوق الان </button></Link>
               
               </div>
 

@@ -23,15 +23,15 @@ const { visa: visaEnabled, coupons: couponsEnabled } = siteInfo.payment;
 
 // القاعدة بترجّع كود ثابت، والرسالة اللي بتظهر للعميلة بتتكتب هنا ونقدر نغيّرها براحتنا
 const ORDER_ERRORS = {
-  limit_phone: "وصلتِ للحد الأقصى من الطلبات، حاولي لاحقا",
-  limit_total: "حدث مشكله حاولي بعد قليل",
-  item_unavailable: "احد المنتجات التي طلبتها غبر متاحه",
+  limit_phone: "وصلتَ للحد الأقصى من الطلبات، حاول لاحقاً",
+  limit_total: "حدث مشكله حاول بعد قليل",
+  item_unavailable: "أحد المنتجات التي طلبتها غير متاحة",
   item_out_of_stock: "أحد المنتجات التي طلبتها غير متوفر حالياً",
 };
 
 const getOrderErrorMessage = (error) => {
   const code = error?.hint || error?.message || "";
-  return ORDER_ERRORS[code] || "حصلت مشكلة أثناء إرسال طلبك، من فضلك حاولي مرة تانية";
+  return ORDER_ERRORS[code] || "حصلت مشكلة أثناء إرسال طلبك، من فضلك حاول مره اخرى";
 };
 
 // لو العميلة مجتش من صفحة التفاصيل (فتحت الرابط مباشرة) نرجّعها للعربة
@@ -96,7 +96,7 @@ function Payment() {
       !userData.governorate?.trim() ||
       !userData.address?.trim()
     ) {
-      toast.error("من فضلك أكملي بيانات الشحن في صفحة تفاصيل الطلب");
+      toast.error("من فضلك اكمل بيانات الشحن في صفحة تفاصيل الطلب");
       return;
     }
 
@@ -106,7 +106,7 @@ function Payment() {
     }
 
     if (hasBlockingProblem) {
-      toast.error("في منتج في العربة غير متاح، راجعي العربة الأول");
+      toast.error("في منتج في العربة غير متاح، راجع العربة اولا");
       return;
     }
 
@@ -170,7 +170,7 @@ function Payment() {
 
     } catch (error) {
       console.error("خطأ غير متوقع أثناء إرسال الطلب:", error);
-      toast.error("تعذر الاتصال بالخادم، تأكدي من الإنترنت وحاولي تاني");
+      toast.error("تعذر الاتصال بالخادم، تأكد من اتصال الانترنت وحاول مجددا");
     } finally {
       setIsSubmitting(false);
     }
@@ -201,7 +201,7 @@ function Payment() {
                 <div className="payment-methods">
                   <div className="radio-group">
                     <h3 className="text-title">
-                      اختر طريقة الدفع
+                    اختر طريقة الدفع للمتابعة
                     </h3>
 
                     <label

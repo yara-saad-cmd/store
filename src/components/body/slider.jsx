@@ -7,7 +7,7 @@ import { Autoplay,Pagination } from 'swiper/modules';
 import { Link } from 'react-router-dom';
 import slayd1 from '../../img/slayd1.jpg';
 import slayd2 from '../../img/slayd2.jpg';
-import slayd3 from '../../img/slayd3 (1).jpg';
+import slayd3 from '../../img/slayd3(1).jpg';
 
 function Slider() {
   return (

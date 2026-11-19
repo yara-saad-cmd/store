@@ -33,7 +33,7 @@ function UserAccount() {
 
       if (error) {
         console.error('خطأ في تسجيل الخروج:', error)
-        toast.error('حصلت مشكلة أثناء تسجيل الخروج، حاولي مرة تانية')
+        toast.error('حصلت مشكلة أثناء تسجيل الخروج، حاول مره اخرى')
         return
       }
 
@@ -48,7 +48,7 @@ function UserAccount() {
       navigate('/', { replace: true })
     } catch (error) {
       console.error('خطأ غير متوقع أثناء تسجيل الخروج:', error)
-      toast.error('تعذر الاتصال بالخادم، تأكدي من الإنترنت وحاولي تاني')
+      toast.error('تعذر الاتصال بالخادم، تأكد من اتصال الانترنت وحاول مجددا')
     } finally {
       setIsSigningOut(false)
     }

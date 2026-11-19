@@ -139,8 +139,7 @@ const decreaseQuantity = useCallback((item) => {
     setcartItems([]);
   }, []);
 
-  // بيحدّث السعر والخصم المخزّنين بالقيم الحالية من القاعدة: { [productId]: { price, discount_percent } }
- 
+  
 
 
   const AddToCart = useCallback((item) => {

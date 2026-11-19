@@ -1,75 +1,57 @@
-/* .pg-prosact .title-items {
+.pg-prosact .title-items {
   width: 40%;
-  padding: 10px 40px 10px 10px;
+  padding: 0 10px 10px 10px;
 }
-.title-items {
-  width: 40%;
-} */
-.pg-prosact .title-items{ 
-   width: 40%;
-  padding: 0px 40px 10px 10px;
- }
-
-
 
 .pg-prosact .title-items .prudact-details .name-prudact {
   color: var(--min-color);
   font-size: 30px;
   font-weight: bold;
 }
+
 .pg-prosact .title-items .prudact-details p {
   color: var(--text-color-2);
   font-size: 18px;
-  padding: 5px 0px 5px 5px;
+  padding: 5px 0 5px 5px;
   font-weight: 400;
 }
-/*stsrs*/
 
-.pg-prosact .title-items .stars {
-  display: flex;
-  color:var(--star-color);
-  font-size: 20px;
-  align-items: center;
-}
-.pg-prosact .title-items .stars p {
-  margin-right: 5px;
-  font-size: 18px;
-}
-/*stsrs*/
-
+/* السعر */
 .pg-prosact .title-items .prudact-details .price {
   color: var(--text-color-2);
   font-size: 25px;
 }
-.pg-prosact .title-items .prudact-details .price span {
+
+/* كلمة EGP بس، مش السعر بعد الخصم (price-now) */
+.pg-prosact .title-items .prudact-details .price > span:first-child {
   color: var(--text-color-2);
   font-size: 18px;
   padding: 0;
   margin: 3px;
 }
+
 .pg-prosact .title-items h4 {
   font-size: 16px;
-  margin: 5px 0 5px 0;
+  margin: 5px 0;
 }
+
 .pg-prosact .title-items .prudact-details h4 .stock {
   margin-right: 5px;
-  color:var(--info);
+  color: var(--info);
 }
+
 .pg-prosact .title-items .prudact-details h4 .no-stock {
-  color:var(--danger-bright);
-  margin-right: 5px;
+  color: var(--danger-bright);
 }
-.pg-prosact .title-items .colors,
-.pg-prosact .title-items .size {
-  cursor: pointer;
-  position: relative;
-  margin-top: 10px;
-  text-align: right;
-  max-width: 400px;
-}
+
 /* ===========================
    Colors & Sizes
 =========================== */
+
+.pg-prosact .title-items .colors {
+  margin-top: 10px;
+  max-width: 400px;
+}
 
 .pg-prosact .title-items .prudact-details .colors-box,
 .pg-prosact .title-items .prudact-details .size-options {
@@ -106,11 +88,7 @@
   background: var(--white-color);
 }
 
-.pg-prosact
-  .title-items
-  .prudact-details
-  .colors-box
-  .color-square-option:hover,
+.pg-prosact .title-items .prudact-details .colors-box .color-square-option:hover,
 .pg-prosact .title-items .prudact-details .size-options .size-box:hover {
   border-color: var(--min-color);
 }
@@ -127,45 +105,28 @@
   color: var(--text-color-1);
 }
 
-/* اللون المختار */
-.pg-prosact
-  .title-items
-  .prudact-details
-  .colors-box
-  .color-square-option.active {
-  background: var(--min-color);
-  border-color: var(--min-color);
-}
-
-.pg-prosact
-  .title-items
-  .prudact-details
-  .colors-box
-  .color-square-option.active
-  .color-square {
-    color:var(--text-white);
-}
-
-/* المقاس المختار */
+/* اللون والمقاس المختار */
+.pg-prosact .title-items .prudact-details .colors-box .color-square-option.active,
 .pg-prosact .title-items .prudact-details .size-options .size-box.active {
   background: var(--min-color);
   border-color: var(--min-color);
 }
 
-.pg-prosact
-  .title-items
-  .prudact-details
-  .size-options
-  .size-box.active
-  .span-size {
-    color:var(--text-white);
+.pg-prosact .title-items .prudact-details .colors-box .color-square-option.active .color-square,
+.pg-prosact .title-items .prudact-details .size-options .size-box.active .span-size {
+  color: var(--text-white);
 }
+
+/* ===========================
+   الزراير
+=========================== */
 
 .pg-prosact .title-items .btn-and-icon {
   display: flex;
   align-items: center;
   margin-top: 20px;
 }
+
 .btn-and-icon .con {
   display: flex;
 }
@@ -173,6 +134,7 @@
 .pg-prosact .title-items .btn-and-icon .icon-hert {
   display: flex;
 }
+
 .pg-prosact .title-items .btn-and-icon .icon-hert svg {
   border-radius: 50px;
   border: solid 1px var(--border-color);
@@ -186,10 +148,17 @@
   background-color: var(--min-color);
   color: var(--white-color);
 }
+
 .pg-prosact .title-items .btn-and-icon .icon-hert svg:hover {
   background-color: var(--white-color);
   color: var(--min-color);
 }
+
+.pg-prosact .title-items .like.inlike svg {
+  background-color: var(--white-color);
+  color: var(--min-color);
+}
+
 .pg-prosact .title-items .btn {
   background-color: var(--min-color);
   width: fit-content;
@@ -203,45 +172,42 @@
   justify-content: center;
   align-items: center;
 }
+
 .pg-prosact .title-items .btn span {
   margin-left: 10px;
 }
-.pg-prosact .title-items .btn.encart {
-  background-color: var(--white-color);
-  color: var(--min-color);
-  border: solid 1px var(--border-color);
-  
-  pointer-events: none;
-}
 
-.pg-prosact .title-items .like svg {
-  margin-left: 10px;
-  font-size: 22px;
-}
-
-.pg-prosact .title-items .like.inlike svg {
-  background-color: var(--white-color);
-  color: var(--min-color);
-}
-.pg-prosact .title-items .share svg {
-  margin-left: 10px;
-  font-size: 22px;
-}
-.pg-prosact .title-items .btn:hover {
+.pg-prosact .title-items .btn:hover:not(:disabled) {
   transform: scale(1.1);
   background-color: var(--white-color);
   color: var(--min-color);
   border: solid 1px var(--border-color);
 }
-.pg-prosact .plus-and-mynas .quantity{
+
+.pg-prosact .title-items .btn.encart {
+  background-color: var(--white-color);
+  color: var(--min-color);
+  border: solid 1px var(--border-color);
+  pointer-events: none;
+}
+
+.pg-prosact .title-items .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===========================
+   الكمية
+=========================== */
+
+.pg-prosact .plus-and-mynas .quantity {
   display: flex;
   align-items: center;
   flex-direction: row;
-  margin: 8px 0px;
-  
+  margin: 8px 0;
 }
 
-.pg-prosact .plus-and-mynas .quantity button{
+.pg-prosact .plus-and-mynas .quantity button {
   width: 25px;
   height: 26px;
   border: 1px solid var(--text-color-1);
@@ -254,7 +220,7 @@
   padding: 0;
 }
 
-.pg-prosact .plus-and-mynas .quantity span{
+.pg-prosact .plus-and-mynas .quantity span {
   width: 25px;
   height: 26px;
   border-top: 1px solid var(--text-color-1);
@@ -268,123 +234,119 @@
   padding: 0;
 }
 
-.pg-prosact .plus-and-mynas .quantity .minus{
+.pg-prosact .plus-and-mynas .quantity .minus {
   border-radius: 0 20px 20px 0;
 }
 
-.pg-prosact .plus-and-mynas .quantity .plus{
+.pg-prosact .plus-and-mynas .quantity .plus {
   border-radius: 20px 0 0 20px;
 }
 
-/*@media*/
+/* ===========================
+   تابلت (966 → 441)
+   الـ selectors كاملة عشان تغلب القواعد الأساسية
+=========================== */
 
-@media only screen and (max-width: 968px) and (min-width: 440px) {
-  .prdact-area{ 
-    flex-direction:column;
-     justify-content:center; 
-     align-items:center;
-      margin-bottom:20px;
-     }
-  .prdact-area .title-items{
-    width:100%;
-   }
-
-    .prudact-details {
-      .name-prudact {
-        font-size: 35px;
-      }
-      p {
-        font-size: 20px;
-        margin: 10px 0 10px 0;
-      }
-      h4,
-      .colors-box h3,
-      .size-options h3 {
-        font-size: 18px;
-        margin: 10px 0 10px 0;
-
-        span {
-          font-size: 18px;
-        }
-      }
-      .colors .color-square-option,
-      .sizes .size-box {
-        width: fit-content;
-        height: 35px;
-      }
-
-      .colors-box .colors .color-square,
-      .size-options .sizes .span-size {
-        font-size: 16px;
-      }
-
-      .price {
-        font-size: 30px;
-      }
-    }
-  }
-
-
-@media only screen and (max-width: 440px) {
-  .prdact-area {
-    display: flex;
+@media only screen and (max-width: 966px) and (min-width: 441px) {
+  .pg-prosact .prdact-area {
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     margin-bottom: 20px;
   }
 
-  .prdact-area .title-items {
+  .pg-prosact .prdact-area .title-items {
     width: 100%;
-    .btn.encart {
-      font-size: 12px;
-    }
-    .prudact-details {
-      .name-prudact {
-        font-size: 25px;
-      }
-      p {
-        font-size: 15px;
-        margin: 10px 0 10px 0;
-      }
-      h4,
-      .colors-box h3,
-      .size-options h3 {
-        font-size: 14px;
-        margin: 10px 0 10px 0;
+  }
 
-        span {
-          font-size: 15px;
-        }
-      }
-      .colors .color-square-option,
-      .sizes .size-box {
-        width: fit-content;
-        height: 30px;
-      }
+  .pg-prosact .title-items .prudact-details .name-prudact {
+    font-size: 35px;
+  }
 
-      .colors-box .colors .color-square,
-      .size-options .sizes .span-size {
-        font-size: 14px;
-      }
+  .pg-prosact .title-items .prudact-details p {
+    font-size: 20px;
+    margin: 10px 0;
+  }
 
-      .price {
-        font-size: 25px;
-      }
-    }
+  .pg-prosact .title-items .prudact-details h4,
+  .pg-prosact .title-items .prudact-details .colors-box h3,
+  .pg-prosact .title-items .prudact-details .size-options h3 {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+
+  .pg-prosact .title-items .prudact-details h4 span,
+  .pg-prosact .title-items .prudact-details .colors-box h3 span,
+  .pg-prosact .title-items .prudact-details .size-options h3 span {
+    font-size: 18px;
+  }
+
+  .pg-prosact .title-items .prudact-details .colors-box .color-square-option,
+  .pg-prosact .title-items .prudact-details .size-options .size-box {
+    height: 35px;
+  }
+
+  .pg-prosact .title-items .prudact-details .colors-box .color-square,
+  .pg-prosact .title-items .prudact-details .size-options .span-size {
+    font-size: 16px;
+  }
+
+  .pg-prosact .title-items .prudact-details .price {
+    font-size: 30px;
   }
 }
 
+/* ===========================
+   موبايل (440 فأقل)
+=========================== */
 
+@media only screen and (max-width: 440px) {
+  .pg-prosact .prdact-area {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
 
+  .pg-prosact .prdact-area .title-items {
+    width: 100%;
+  }
 
+  .pg-prosact .title-items .btn.encart {
+    font-size: 12px;
+  }
 
+  .pg-prosact .title-items .prudact-details .name-prudact {
+    font-size: 25px;
+  }
 
+  .pg-prosact .title-items .prudact-details p {
+    font-size: 15px;
+    margin: 10px 0;
+  }
 
+  .pg-prosact .title-items .prudact-details h4,
+  .pg-prosact .title-items .prudact-details .colors-box h3,
+  .pg-prosact .title-items .prudact-details .size-options h3 {
+    font-size: 14px;
+    margin: 10px 0;
+  }
 
+  .pg-prosact .title-items .prudact-details h4 span,
+  .pg-prosact .title-items .prudact-details .colors-box h3 span,
+  .pg-prosact .title-items .prudact-details .size-options h3 span {
+    font-size: 15px;
+  }
 
+  .pg-prosact .title-items .prudact-details .colors-box .color-square-option,
+  .pg-prosact .title-items .prudact-details .size-options .size-box {
+    height: 30px;
+  }
 
-.con .btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+  .pg-prosact .title-items .prudact-details .colors-box .color-square,
+  .pg-prosact .title-items .prudact-details .size-options .span-size {
+    font-size: 14px;
+  }
+
+  .pg-prosact .title-items .prudact-details .price {
+    font-size: 25px;
+  }
 }

@@ -52,7 +52,7 @@ function OrderDetails() {
     return <Navigate to="/cart" replace />;
   }
 
-  // منتج اتخفى أو خلص: نرجّعها للعربة عشان تحذفه (تغيّر السعر تنبيه بس)
+    // منتج اتخفى أو خلص: نرجّعها للعربة عشان تحذفه
   const hasBlockingProblem = Object.keys(problems).length > 0;
   if (hasBlockingProblem) {
     return <Navigate to="/cart" replace />;
